@@ -1,0 +1,42 @@
+<svg width="446" height="931" viewBox="0 0 446 931" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g id="xray 1">
+    <rect width="446" height="931" fill="#C1A694" />
+    <g id="point 3">
+      <circle id="Ellipse 3" cx="385" cy="458" r="26" stroke="white" strokeWidth="2" />
+    </g>
+    <g id="point2">
+      <circle id="Ellipse 2" cx="92" cy="320" r="26" stroke="white" strokeWidth="2" />
+    </g>
+    <g id="point 1">
+      <circle id="Ellipse 1" cx="317" cy="169" r="26" stroke="white" strokeWidth="2" />
+    </g>
+    <g id="body">
+      <circle id="Ellipse 4" cx="221" cy="60" r="59.5" fill="white" stroke="#0C0B0B" />
+      <line id="Line 1" x1="222" y1="120" x2="222" y2="385" stroke="#0C0B0B" strokeWidth="2" />
+      <line id="Line 6" x1="221.972" y1="385.235" x2="157.972" y2="650.235" stroke="#0C0B0B" strokeWidth="2" />
+      <line id="Line 8" x1="158" y1="924.066" x2="158" y2="650" stroke="#0C0B0B" strokeWidth="2" />
+      <line id="Line 9" x1="286" y1="924.066" x2="286" y2="650" stroke="#0C0B0B" strokeWidth="2" />
+      <line
+        id="Line 7"
+        y1="-1"
+        x2="272.619"
+        y2="-1"
+        transform="matrix(0.23476 0.972053 0.972053 -0.23476 223 385)"
+        stroke="#0C0B0B"
+        strokeWidth="2"
+      />
+      <line id="Line 2" x1="123.989" y1="161.01" x2="221.01" y2="161.01" stroke="#0C0B0B" strokeWidth="2" />
+      <line id="Line 3" x1="124.967" y1="160.21" x2="61.9777" y2="453.21" stroke="#0C0B0B" strokeWidth="2" />
+      <line
+        id="Line 5"
+        y1="-1"
+        x2="299.694"
+        y2="-1"
+        transform="matrix(0.210179 0.977663 0.977663 -0.210179 320 160)"
+        stroke="#0C0B0B"
+        strokeWidth="2"
+      />
+      <line id="Line 4" x1="223" y1="161" x2="320.021" y2="161" stroke="#0C0B0B" strokeWidth="2" />
+    </g>
+  </g>
+</svg>;
