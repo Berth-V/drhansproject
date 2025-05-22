@@ -8,7 +8,13 @@ export default function Ankle() {
     <g id="Ankle">
       <AnimatePresence mode="wait">
         {selectedPart === null && (
-          <motion.g key="ankle-elipse" variants={opacityAnimation} initial="show" exit="hide">
+          <motion.g
+            key="ankle-elipse"
+            // Motion Attributes
+            variants={opacityAnimation}
+            initial="show"
+            exit="hide"
+          >
             <motion.circle
               id="Ankle Elipse"
               cx="284"

@@ -92,7 +92,9 @@ export default function TibiaFibula() {
         {selectedPart === 'T&F' && (
           <motion.g
             id="T&#38;F Info"
-            className="t&f__info" // Motion Atributtes
+            key="t&f-info"
+            className="t&f__info"
+            // Motion Atributtes
             variants={opacityAnimation}
             initial="hide"
             animate="show"

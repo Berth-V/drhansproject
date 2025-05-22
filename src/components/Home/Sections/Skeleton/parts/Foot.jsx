@@ -8,7 +8,13 @@ export default function Foot() {
     <g id="Foot">
       <AnimatePresence mode="wait">
         {selectedPart === null && (
-          <motion.g variants={opacityAnimation} initial="show" exit="hide" key="foot-ellipse">
+          <motion.g
+            key="foot-ellipse"
+            // Motion Attributes
+            variants={opacityAnimation}
+            initial="show"
+            exit="hide"
+          >
             <motion.circle
               id="Foot Elipse"
               cx="419"

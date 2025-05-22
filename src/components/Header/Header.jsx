@@ -13,23 +13,17 @@ function Header() {
           <ul className="nav__ul">
             <li className="nav__li">
               <NavLink className="nav__link" to="/">
-                <span className="nav__span">
-                  <b>Home</b>
-                </span>
+                <span className="nav__span">Home</span>
               </NavLink>
             </li>
             <li className="nav__li">
               <NavLink className="nav__link" to="/procedures">
-                <span className="nav__span">
-                  <b>Procedures</b>
-                </span>
+                <span className="nav__span">Procedures</span>
               </NavLink>
             </li>
             <li className="nav__li">
               <NavLink className="nav__link" to="/about">
-                <span className="nav__span">
-                  <b>About</b>
-                </span>
+                <span className="nav__span">About</span>
               </NavLink>
             </li>
             <button className="nav__appoint__btn">Get your Appointment</button>
