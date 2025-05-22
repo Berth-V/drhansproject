@@ -1,4 +1,5 @@
-import frontPage from '../../../assets/frontpage3.jpg';
+import frontPage from '../../../assets/back-pattern.png';
+import hanspic from '../../../assets/hans-pic.jpg';
 
 function HomeSec1() {
   return (
@@ -8,14 +9,10 @@ function HomeSec1() {
         background: `url(${frontPage}) no-repeat center/100%`,
       }}
     >
-      <div className="home__section1__background__filter">
-        <div className="home__section1__textBox">
-          <p className="p">
-            Lower Back Pain, Knee, Wrist, Meniscus Rupture, Tendonitis, Among
-            Many Other Conditions
-          </p>
-          <button className="home__section1__btn">Get your Appointment</button>
-        </div>
+      <img className="home__section1__pic" src={hanspic} />
+      <div className="home__section1__textBox">
+        {/*<p className="p">Lower Back Pain, Knee, Wrist, Meniscus Rupture, Tendonitis, Among Many Other Conditions</p*/}
+        {/*<button className="home__section1__btn">Get your Appointment</button>*/}
       </div>
     </section>
   );

@@ -13,8 +13,14 @@
    align-items: center;
 }
 
+.home__section1__pic{
+   width: 700px;
+   height: 650px;
+   object-fit: cover;
+   clip-path: path('M234.119 27.2262C333.29 -40.966 382.27 26.6527 406.203 199.362C409.819 390.739 848.95 368.578 567.065 553.661C316.022 690.464 135.002 699.091 18.4282 410.5C-43.8997 272.364 68.6084 167.043 234.119 27.2262Z');
+}
+
 .home__section1__background__filter{
-   background-color: rgba(0, 27, 255, 0.25);
    width: 100%;
    height: 100%;
    display: flex;
