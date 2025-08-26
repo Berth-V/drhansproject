@@ -99,7 +99,8 @@ export default function CervicalSpine() {
           <motion.g
             id="Cervical Info"
             key="ccervical-info"
-            className="cervical__info" // Motion Atributtes
+            className="cervical__info" 
+            // Motion Atributtes
             variants={opacityAnimation}
             initial="hide"
             animate="show"

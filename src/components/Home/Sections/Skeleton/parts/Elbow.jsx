@@ -29,7 +29,7 @@ export default function Elbow() {
               variants={scaleAnimation}
               whileHover="hover"
             />
-            <line id="Elbow Line" x1="481" y1="335" x2="694" y2="335" stroke="#F5F5F5" strokeWidth="2" />
+            <path id="Elbow Line" d="M481 335 L694 335" stroke="#F5F5F5" strokeWidth="2" fill="none" />
             <g id="Elbow Tittle">
               <path
                 id="Vector_1751"

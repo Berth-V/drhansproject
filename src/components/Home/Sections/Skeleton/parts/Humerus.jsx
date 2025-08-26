@@ -29,7 +29,7 @@ export default function Humerus() {
               variants={scaleAnimation}
               whileHover="hover"
             />
-            <line id="Humerus Line" x1="6" y1="251" x2="239" y2="251" stroke="#F5F5F5" strokeWidth="2" />
+            <path id="Humerus Line" d="M6 251 L239 251" stroke="#F5F5F5" strokeWidth="2" />
             <g id="Humerus Tittle">
               <path
                 id="Vector_2126"

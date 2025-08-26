@@ -5,7 +5,7 @@ import { useSkeletonContext } from '../context/useSkeletonContext';
 export default function TibiaFibula() {
   const { selectedPart, circleFunctions, backBtnFunctions } = useSkeletonContext();
   return (
-    <g id="Tibia &#38; Fibula">
+    <g id="Tibia Fibula">
       <AnimatePresence mode="wait">
         {selectedPart === null && (
           <motion.g

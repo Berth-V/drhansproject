@@ -29,7 +29,7 @@ export default function Wrist() {
               variants={scaleAnimation}
               whileHover="hover"
             />
-            <line id="Wrist Line" x1="509" y1="466" x2="694" y2="466" stroke="#F5F5F5" strokeWidth="2" />
+            <path id="Wrist Line" d="M509 466 L694 466" stroke="#F5F5F5" strokeWidth="2" />
             <g id="Wrist Tittle">
               <path
                 id="Vector_1308"

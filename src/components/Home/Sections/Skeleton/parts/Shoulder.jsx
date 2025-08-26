@@ -29,7 +29,7 @@ export default function Shoulder() {
               variants={scaleAnimation}
               whileHover="hover"
             />
-            <line id=" Shoulder Line" x1="449" y1="177" x2="694" y2="177" stroke="#F5F5F5" strokeWidth="2" />
+            <path id=" Shoulder Line" d="M449 177 L694 177" stroke="#F5F5F5" strokeWidth="2" />
             <g id="Shoulder Tittle">
               <path
                 id="Vector_2290"

@@ -66,7 +66,7 @@ export default function Forearm() {
                 fill="white"
               />
             </g>
-            <line id="Forearm Line" x1="6" y1="391" x2="202" y2="391" stroke="#F5F5F5" strokeWidth="2" />
+            <path id="Forearm Line" d="M6 391 L202 391" stroke="#F5F5F5" strokeWidth="2" />
           </motion.g>
         )}
         {selectedPart === 'Forearm' && (

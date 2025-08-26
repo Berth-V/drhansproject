@@ -28,7 +28,7 @@ export default function Knee() {
               variants={scaleAnimation}
               whileHover="hover"
             />
-            <line id="Knee Line" x1="6" y1="663" x2="284" y2="663" stroke="#F5F5F5" strokeWidth="2" />
+            <path id="Knee Line" d="M6 663 L284 663" stroke="#F5F5F5" strokeWidth="2" />
             <g id="Knee Tittle">
               <path
                 id="Vector_791"
