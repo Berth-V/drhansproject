@@ -9,7 +9,6 @@ const initialState = {
   // For Zoom animation
   viewBox: defaultViewBox,
   defaultViewBox,
-  // Used to know which information box should be displayed
   selectedPart: null,
 };
 

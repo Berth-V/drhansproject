@@ -6,7 +6,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 5rem;
+  height: var(--header-height);
   width: 100%;
   backdrop-filter: blur(3rem);
   border-bottom: 0.1rem solid var(--secondary-color);
@@ -20,7 +20,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--secondary-color);
+  background-color: var(--thrid-color);
 }
 
 .logo {
@@ -70,12 +70,12 @@
 
 .nav__appoint__btn{
   font-size: 1rem;
-  background-color: rgba(50, 196, 85 , 0.2);
-  border: 0.15rem solid #13D341;
+  border: 0.15rem solid var(--secondary-color);
+  background-color: transparent;
   height: 80%;
   padding: 1rem;
   border-radius: 0.5rem;
-  color: #B8F3C6;
+  color: var(--white-color);
   font-weight: 500;
   transition-property: all;
   transition-timing-function:ease-in;
@@ -84,7 +84,7 @@
 }
 
 .nav__appoint__btn:hover   {
-  background-color: #35D88B;
+  background-color: var(--secondary-color);
 }
 
 .nav__span {
@@ -95,7 +95,7 @@
 }
 
 .nav__span:hover {
-  color: #35D88B;
+  color: var(--secondary-color);
 }
 
 .procedures__extension {

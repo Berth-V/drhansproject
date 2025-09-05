@@ -1,0 +1,222 @@
+/* DoctorProfile.css */
+.doctor-profile {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #fff;
+  color: #333;
+  border-radius: 15px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  padding: 25px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.photo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 40px;
+}
+
+.photo-placeholder {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  margin-bottom: 15px;
+  border: 4px solid #4a90e2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  font-size: 14px;
+  overflow: hidden;
+}
+
+/* Estilo para cuando agregues tu imagen */
+.photo-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+}
+
+.social-icons span {
+  font-size: 22px;
+}
+
+.name-specialty h1 {
+  color: #2c3e50;
+  margin: 0 0 10px 0;
+  font-size: 34px;
+  font-weight: 700;
+}
+
+.name-specialty h2 {
+  color: #4a90e2;
+  margin: 0 0 15px 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.name-specialty p {
+  color: #7f8c8d;
+  margin: 0;
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.profile-content {
+  display: flex;
+  gap: 35px;
+  margin-bottom: 40px;
+}
+
+.left-column, .right-column {
+  flex: 1;
+}
+
+.info-section {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);
+  margin-bottom: 22px;
+  border-left: 4px solid #4a90e2;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.info-section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.08);
+}
+
+.info-section h3 {
+  color: #2c3e50;
+  margin: 0 0 14px 0;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  font-weight: 600;
+}
+
+.info-section p {
+  color: #34495e;
+  margin: 0;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+.timeline-section {
+  padding: 25px;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.timeline-section h3 {
+  color: #2c3e50;
+  margin: 0 0 25px 0;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 35px;
+}
+
+.timeline:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background-color: #4a90e2;
+  border-radius: 2px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-item:before {
+  content: '';
+  position: absolute;
+  left: -42px;
+  top: 6px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #4a90e2;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 2px #4a90e2;
+}
+
+.timeline-date {
+  font-weight: 600;
+  color: #4a90e2;
+  margin-bottom: 6px;
+  font-size: 17px;
+}
+
+.timeline-content {
+  color: #34495e;
+  font-size: 16px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .doctor-profile {
+    padding: 20px;
+  }
+  
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .photo-section {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+  
+  .profile-content {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .name-specialty h1 {
+    font-size: 28px;
+  }
+  
+  .name-specialty h2 {
+    font-size: 20px;
+  }
+  
+  .photo-placeholder {
+    width: 140px;
+    height: 140px;
+  }
+}

@@ -7,7 +7,7 @@ function Header() {
     <>
       <header className="header">
         <nav className="nav">
-          <img className="logo" src={logo} />
+          {/*<img className="logo" src={logo} />*/}
           <span className="toggle__btn">X</span>
           {/* ul For Desktop Mode */}
           <ul className="nav__ul">

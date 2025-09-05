@@ -1,23 +1,36 @@
-import frontPage from '../../../assets/back-pattern.png';
-import hanspic from '../../../assets/hans.png';
-import icon1 from '../../../assets/x-ray.png'
-import icon2 from '../../../assets/fracture.png'
-
+import hanspic from "../../../assets/hans.png";
+import icon1 from "../../../assets/x-ray.png";
+import icon2 from "../../../assets/fracture.png";
 
 function HomeSec1() {
   return (
-    <section
-      className="home__section1"
-    >
-      <img className="home__section1__pic" src={hanspic} />
+    <section className="home__section1">
+      <img className="home__section1__pic" src={hanspic} alt="Dr. Hans" />
+
       <div className="home__section1__textBox">
         <p className="home__section1__text">
-          <b className='home__section1__text --blueText'>Lower Back Pain</b>
-          , Knee, Wrist, Meniscus Rupture, Tendonitis, Among Many Other Conditions</p>
-        <button className="home__section1__btn">Get your Appointment</button>
+          <b className="home__section1__text --blueText">Lower Back Pain</b>, Knee, Wrist, Meniscus Rupture, Tendonitis, Among Many Other Conditions
+        </p>
+
+        {/* === CTAs exactos del mockup (dos botones) === */}
+        <div className="home__section1__ctaGroup">
+          <a className="home__section1__primaryBtn" href="/appointments">
+            Get Your Appointment
+          </a>
+
+          <a className="home__section1__phoneCta" href="tel:18001236789">
+            <svg className="home__section1__phoneIcon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6.5 3.5l3 2.5-2 3c.8 1.6 2 3 3.5 4.5s2.9 2.7 4.5 3.5l3-2 2.5 3c-1.1 1.1-2.3 1.9-3.8 2.2-2 .4-4.7-.4-7.9-3.6s-4-5.9-3.6-7.9c.3-1.5 1.1-2.7 2.2-3.8z" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            <span>1 800 - 1236 789</span>
+          </a>
+
+          <span className="home__section1__line" />
+        </div>
       </div>
-      <img className='home__section1__icon1' src={icon1}/>
-      <img className='home__section1__icon2' src={icon2}/>
+
+      <img className="home__section1__icon1" src={icon1} alt="" />
+      <img className="home__section1__icon2" src={icon2} alt="" />
     </section>
   );
 }
