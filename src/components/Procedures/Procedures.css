@@ -1,0 +1,60 @@
+.procedures {
+  width: 100%;
+  padding: 3rem 1rem;
+  background-color: #0d0d0d; /* fondo oscuro */
+  color: #fff;
+}
+
+.procedures__title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #38bdf8; /* azul como en tu screenshot */
+  margin-bottom: 2rem;
+}
+
+.procedures__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.5rem;
+}
+
+.procedures__card {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 16px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.procedures__card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+}
+
+.procedures__icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1rem;
+  background-color: #262626;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  font-size: 0.8rem;
+}
+
+.procedures__name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.procedures__description {
+  font-size: 0.9rem;
+  color: #bbb;
+  line-height: 1.4;
+}

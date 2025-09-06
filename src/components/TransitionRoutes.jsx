@@ -2,6 +2,8 @@ import { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes, Navigate, useLocation } from 'react-router-dom';
 const Home = lazy(() => import('./Home/Home'));
 const About = lazy(() => import('./About/About'));
+const Procedures = lazy(() => import('./Procedures/Procedures'));
+const ProceduresDetail = lazy(() => import('./Procedures/ProceduresDetail'));
 
 function TransitionRoutes() {
   const location = useLocation();
@@ -18,6 +20,9 @@ function TransitionRoutes() {
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Navigate to="/" />} />
         <Route path="/about" element={<About />} />
+        <Route path="/procedures" element={<Procedures />} />
+        <Route path="/procedures/:partId" element={<ProceduresDetail />} />
+
       </Routes>
     </Suspense>
   );
