@@ -26,7 +26,7 @@ function Header() {
                 <span className="nav__span">About</span>
               </NavLink>
             </li>
-            <button className="nav__appoint__btn">Get your Appointment</button>
+            <NavLink className="nav__appoint__btn" to="/contact">Get your Appointment</NavLink>
           </ul>
         </nav>
       </header>

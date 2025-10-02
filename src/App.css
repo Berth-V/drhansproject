@@ -8,6 +8,10 @@
     font-weight: 300;
     font-style: normal;
   }
+
+  html{
+    background-color: var(--primary-color);
+  }
  
   :root {
     --primary-color: #000;
@@ -15,7 +19,7 @@
     --thrid-color: #075985;
     --fourth-color: #84dfec;
     --fith-color: #005989;
-    --sixth-color: #5e5e5e;
+    --sixth-color: #303030;
     --white-color: #ffff;
     --black-color: #000;
     --header-height: 4rem;

@@ -1,0 +1,340 @@
+/* ProcedureDetail.css */
+.procedure-detail-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: 80vh;
+}
+
+.breadcrumb {
+  margin-bottom: 1.5rem;
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+.breadcrumb a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+  color: #0056b3;
+}
+
+.procedure-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.procedure-title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--white-color);
+}
+
+.procedure-description {
+  font-size: 1.2rem;
+  color: var(--white-color);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Vista de lista de lesiones */
+.injuries-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.injury-card {
+  background-color: var(--sixth-color);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.injury-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+  border-color: var(--secondary-color);
+}
+
+.injury-name {
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  color: var(--secondary-color);
+}
+
+.injury-description {
+  margin: 0 0 1rem 0;
+  line-height: 1.5;
+  color: var(--white-color);
+}
+
+.injury-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.treatment-count {
+  color: var(--white-color);
+  font-size: 0.9rem;
+}
+
+.view-details {
+  color: var(--secondary-color);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+/* Vista de detalle de lesión */
+.injury-detail-view {
+  border: 0.2rem solid var(--secondary-color);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.back-button {
+  background: none;
+  border: none;
+  color: var(--secondary-color);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.back-button:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+.injury-detail-content {
+  padding: 0 1rem;
+}
+
+.injury-detail-title {
+  color: var(--white-color);
+  margin: 0 0 1rem 0;
+  font-size: 2rem;
+}
+
+.injury-detail-description {
+  color: var(--white-color);
+  line-height: 1.6;
+  margin: 0 0 2rem 0;
+  font-size: 1.1rem;
+}
+
+.treatments-section h3 {
+  color: var(--white-color);
+  margin: 0 0 1.5rem 0;
+  font-size: 1.5rem;
+}
+
+.treatments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.treatment-card {
+  background-color: var(--sixth-color);
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--secondary-color);
+}
+
+.treatment-type {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--white-color);
+}
+
+.treatment-description {
+  margin: 0;
+  line-height: 1.5;
+  color: var(--white-color);
+}
+
+/* Back link permanente */
+.procedure-back-link {
+  display: inline-flex;
+  align-items: center;
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid var(--secondary-color);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.procedure-back-link:hover {
+  background: var(--secondary-color);
+  color: white;
+  text-decoration: none;
+}
+
+.procedure-not-found {
+  text-align: center;
+  padding: 3rem;
+}
+
+/* 📱 Móviles pequeños (≤ 480px) */
+@media (max-width: 480px) {
+  .procedure-detail-container {
+    padding: 1rem;
+  }
+
+  .procedure-title {
+    font-size: 1.5rem;
+  }
+
+  .procedure-description {
+    font-size: 1rem;
+  }
+
+  .injuries-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .treatments-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .injury-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .injury-detail-view {
+    padding: 1.5rem;
+  }
+
+  .injury-detail-title {
+    font-size: 1.5rem;
+  }
+
+  .treatments-section h3 {
+    font-size: 1.3rem;
+  }
+}
+
+/* 📱 Tablets (481px – 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .procedure-title {
+    font-size: 1.8rem;
+  }
+
+  .procedure-description {
+    font-size: 1.1rem;
+  }
+
+  .injuries-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
+  .injury-detail-title {
+    font-size: 1.8rem;
+  }
+}
+
+/* Tablets grandes (769px – 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .procedure-title {
+    font-size: 2rem;
+  }
+
+  .procedure-description {
+    font-size: 1.15rem;
+  }
+
+  .injuries-grid {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
+}
+
+/* Escritorios (≥ 1025px) */
+@media (min-width: 1025px) {
+  .procedure-title {
+    font-size: 2.2rem;
+  }
+
+  .procedure-description {
+    font-size: 1.2rem;
+  }
+
+  .injuries-grid {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  }
+}
+
+/* Estilos para mantener compatibilidad con el placeholder de imagen */
+.procedure-image-placeholder {
+  width: 100%;
+  max-width: 600px;
+  height: 300px;
+  background-color: #f5f5f5;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.procedure-icon {
+  font-size: 3rem;
+}
+
+/* Ajustes responsive para el placeholder */
+@media (max-width: 480px) {
+  .procedure-image-placeholder {
+    height: 200px;
+  }
+
+  .procedure-icon {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .procedure-image-placeholder {
+    height: 250px;
+  }
+
+  .procedure-icon {
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .procedure-image-placeholder {
+    height: 280px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .procedure-image-placeholder {
+    height: 320px;
+  }
+
+  .procedure-icon {
+    font-size: 3.2rem;
+  }
+}
