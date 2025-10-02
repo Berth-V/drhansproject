@@ -1,25 +1,46 @@
+import { Link } from "react-router-dom";
 import proceduresData from "./data/proceduresData";
-import "./Procedures.css"; // Importamos estilos
+import "./Procedures.css";
 
 const ProceduresGrid = () => {
-  const parts = Object.values(proceduresData);
+  // Usamos Object.entries para obtener [id, data]
+  const parts = Object.entries(proceduresData);
 
   return (
     <section className="procedures">
       <h2 className="procedures__title">Explore Procedures</h2>
 
       <div className="procedures__grid">
-        {parts.map((part, index) => (
-          <div key={index} className="procedures__card">
+        {parts.map(([id, part]) => (
+          <Link
+            key={id}
+            to={`/procedures/${id}`}
+            className="procedures__card"
+          >
             <div className="procedures__icon">
-              {/* Aquí irá el icono */}
-              <span>Icon</span>
+              {/* Iconos según la parte del cuerpo */}
+              {id === 'ankle' && '🦶'}
+              {id === 'cervicalSpine' && '📋'}
+              {id === 'clavicle' && '🔗'}
+              {id === 'elbow' && '🦾'}
+              {id === 'femur' && '🦵'}
+              {id === 'foot' && '👣'}
+              {id === 'forearm' && '💪'}
+              {id === 'hand' && '✋'}
+              {id === 'hip' && '🦴'}
+              {id === 'humerus' && '💪'}
+              {id === 'knee' && '🦵'}
+              {id === 'lumbarSpine' && '📋'}
+              {id === 'shoulder' && '🤷'}
+              {id === 'thoracicSpine' && '📋'}
+              {id === 'tibiaFibula' && '🦵'}
+              {id === 'wrist' && '🤚'}
             </div>
-            <h3 className="procedures__name">{part.name}</h3>
+            <h3 className="procedures__name">{part.title}</h3>
             <p className="procedures__description">
-              {part.procedures[0].description}
+              {part.injuries.length} injuries and treatments available
             </p>
-          </div>
+          </Link>
         ))}
       </div>
     </section>

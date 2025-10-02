@@ -24,8 +24,6 @@ function HomeSec1() {
             </svg>
             <span>1 800 - 1236 789</span>
           </a>
-
-          <span className="home__section1__line" />
         </div>
       </div>
 

@@ -9,5 +9,16 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+    window.onloadTurnstileCallback = function () {
+      window.__turnstileReady = true;
+      document.dispatchEvent(new Event('turnstile-loaded'));
+    };
+  </script>
+  <script
+  src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit&onload=onloadTurnstileCallback"
+  async
+  defer
+></script>
   </body>
 </html>

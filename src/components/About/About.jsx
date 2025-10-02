@@ -72,24 +72,6 @@ const About = () => {
           </div>
         </div>
       </div>
-      
-      <div className="timeline-section">
-        <h3>Timeline actualizable</h3>
-        <div className="timeline">
-          <div className="timeline-item">
-            <div className="timeline-date">2024</div>
-            <div className="timeline-content">Top Specialist Award</div>
-          </div>
-          <div className="timeline-item">
-            <div className="timeline-date">2022</div>
-            <div className="timeline-content">Joined Mediweb</div>
-          </div>
-          <div className="timeline-item">
-            <div className="timeline-date">2020</div>
-            <div className="timeline-content">Certified in Sports Injuries</div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 };
