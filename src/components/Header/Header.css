@@ -9,7 +9,6 @@
   height: var(--header-height);
   width: 100%;
   backdrop-filter: blur(3rem);
-  border-bottom: 0.1rem solid var(--secondary-color);
 }
 
 .nav {
@@ -20,12 +19,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--thrid-color);
+  background-color: var(--secondary-color);
+  color: var(--third-color);
 }
 
 .logo {
-  height: 35px;
-  margin-left: 10px;
+  height: var(--header-height);
 }
 
 .toggle__btn {
@@ -39,7 +38,6 @@
   width: 600px;
   height: 100%;
   list-style: none;
-  border-left: 0.1rem solid var(--secondary-color);
 }
 
 .nav__li {
@@ -70,32 +68,34 @@
 
 .nav__appoint__btn{
   font-size: 1rem;
-  border: 0.15rem solid var(--secondary-color);
+  border: 0.15rem solid var(--fiveth-color);
   background-color: transparent;
   height: 80%;
   padding: 1rem;
   border-radius: 0.5rem;
-  color: var(--white-color);
+  color: var(--fiveth-color);
   font-weight: 500;
   transition-property: all;
   transition-timing-function:ease-in;
   transition-duration: 0.2s;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .nav__appoint__btn:hover   {
-  background-color: var(--secondary-color);
+  background-color: var(--fiveth-color);
+  color: var(--secondary-color);
 }
 
 .nav__span {
   font-size: 18px;
-  color: var(--white-color);
+  color: var(--fiveth-color);
   transition-duration: 0.3s;
   font-weight: 600;
 }
 
 .nav__span:hover {
-  color: var(--secondary-color);
+  color: var(--white-color);
 }
 
 .procedures__extension {

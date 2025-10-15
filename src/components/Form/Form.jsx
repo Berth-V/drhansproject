@@ -9,18 +9,17 @@ export default function Form({ variant = "full" }) {
 
   async function onSubmit(e) {
     e.preventDefault();
-    if (status.sending) return; // evita doble click
+    if (status.sending) return; 
     setStatus({ sending: true, ok: null, error: "" });
 
     const form = e.currentTarget;
 
-    // Verifica Turnstile (solo si hay SITEKEY configurada)
     const tokenInput = form.querySelector('input[name="cf-turnstile-response"]');
     if (import.meta.env.VITE_TURNSTILE_SITEKEY && (!tokenInput || !tokenInput.value)) {
       setStatus({
         sending: false,
         ok: false,
-        error: "Por favor completa el verificador (captcha) antes de enviar.",
+        error: "Please complete Captcha.",
       });
       if (window.turnstile?.reset) window.turnstile.reset();
       return;
@@ -59,11 +58,11 @@ export default function Form({ variant = "full" }) {
         json = await res.json();
       } catch {
         const text = await res.text();
-        throw new Error(text || `Respuesta no válida del servidor (HTTP ${res.status})`);
+        throw new Error(text || `Ivalid answer from server (HTTP ${res.status})`);
       }
 
       if (!res.ok || !json.ok) {
-        const msg = json?.error || json?.message || `No se pudo enviar (HTTP ${res.status})`;
+        const msg = json?.error || json?.message || `Can't Send (HTTP ${res.status})`;
         throw new Error(msg);
       }
 
@@ -72,8 +71,8 @@ export default function Form({ variant = "full" }) {
       form.reset();
       if (window.turnstile?.reset) window.turnstile.reset();
     } catch (err) {
-      let message = "Ocurrió un error al enviar.";
-      if (err?.name === "AbortError") message = "La solicitud tardó demasiado. Intenta de nuevo.";
+      let message = "Error while send.";
+      if (err?.name === "AbortError") message = "Time too longer. Try again.";
       else if (typeof err?.message === "string" && err.message) message = err.message;
 
       console.error(err);
@@ -163,16 +162,15 @@ export default function Form({ variant = "full" }) {
   return (
     <div className="homeForm homeForm--sticky">
       <button className="homeForm__toggle" onClick={() => setOpen((v) => !v)}>
-        {open ? "✕" : "Form"}
+        {open ? "✕" : ">"}
       </button>
-
       <AnimatePresence>
         {open && (
           <motion.section
             className="homeForm__panel"
-            initial={{ x: "-110%", opacity: 0 }}
+            initial={{ x: -110, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            exit={{ x: "-110%", opacity: 0 }}
+            exit={{ x: -110, opacity: 0 }}
             transition={{ type: "spring", stiffness: 280, damping: 25 }}
           >
             <h2 className="homeForm__title">Make an appointment</h2>

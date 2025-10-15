@@ -29,12 +29,16 @@
 @media (min-width: 700px) {
   .homeReviews__grid { grid-template-columns: repeat(2, 1fr); }
 }
+
 @media (min-width: 1024px) {
   .homeReviews__grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 /* Card */
 .homeReviews__card {
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
   background: #0f1419;
   border: 2px solid var(--secondary-color); /* #00C4FF transparente */
   border-radius: 14px;
