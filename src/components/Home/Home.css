@@ -1,8 +1,7 @@
 /* ===== Layout raíz ===== */
 .home {
   width: 100%;
-  display: flex;
-  flex-direction: column;
+  position: relative;
 }
 
 /* ===== Hero / Section 1 ===== */
@@ -15,13 +14,12 @@
   grid-template-areas:
     "pic"
     "text";
-  align-items: center;      /* centra verticalmente cada área */
-  justify-items: center;    /* centrado en móvil/tablet */
+  align-items: center;      
+  justify-items: center;    
   gap: clamp(16px, 4vw, 40px);
   background: var(--primary-color);
   padding: clamp(20px, 5vw, 56px) clamp(16px, 5vw, 64px);
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 /* Limitar ancho visual del contenido sin wrappers extra */
@@ -93,12 +91,12 @@
 
 /* CTA de teléfono con subrayado */
 .home__section1__phoneCta{
-  display:inline-flex;
+  display: inline-flex;
   align-items:center;
-  gap:10px;
+  gap: 10px;
   color: var(--secondary-color, #1da1f2);
   font-weight:600;
-  text-decoration:none;                 /* quitamos underline nativo */
+  text-decoration: none;                 /* quitamos underline nativo */
   border-bottom: 2px solid currentColor;/* subrayado estilo mockup */
   padding-bottom: 6px;
   line-height: 1;
@@ -107,6 +105,11 @@
   color: red;
   width:20px; 
   height:20px; 
+}
+
+.phoneBtn{
+  text-decoration: none;
+  color: var(--white-color);
 }
 
 /* Línea que continúa a la derecha del número */

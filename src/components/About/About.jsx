@@ -1,4 +1,8 @@
 import './About.css';
+import photo from '../../assets/about-photo.jpg'
+import { FaFacebookSquare } from "react-icons/fa"; 
+import { RiInstagramFill } from "react-icons/ri";
+import { AiFillTikTok } from "react-icons/ai";
 
 const About = () => {
   return (
@@ -6,19 +10,23 @@ const About = () => {
       <div className="profile-header">
         <div className="photo-section">
           <div className="photo-placeholder">
-            {/* Espacio para la foto - puedes reemplazar esto con tu imagen */}
-          </div>
-          <div className="social-icons">
-            <span>💬</span>
-            <span>💮</span>
-            <span>💯</span>
+            <img src={photo} alt="Dr Hans About Photo" />
           </div>
         </div>
-        
+
         <div className="name-specialty">
           <h1>Dr. Hans Ruiz</h1>
           <h2>Traumatology</h2>
-          <p>Follow me - 💬 💮 💯</p>
+          <p>Follow me</p>
+          <a href='https://www.tiktok.com/@drhansruiz' target="_blank" className='socialLinks'>
+            <AiFillTikTok />
+          </a>
+          <a href='https://www.instagram.com/drhansruiz/' target="_blank" className='socialLinks'>
+            <RiInstagramFill/>
+          </a>
+            <a href='https://www.facebook.com/DrHansRuiz' target="_blank" className='socialLinks'>
+          <FaFacebookSquare />
+          </a>
         </div>
       </div>
 
@@ -26,22 +34,17 @@ const About = () => {
         <div className="left-column">
           <div className="info-section">
             <h3>EDUCATION:</h3>
-            <p>Doctor of Medicine (MD)<br />Osteopathic Medicine</p>
+            <p>Doctor of Medicine (MD)<br />UMAE Hospital Lomas Verdes</p>
           </div>
 
           <div className="info-section">
-            <h3>MEDICAL CERTIFICATION:</h3>
+            <h3>CERTIFICATION:</h3>
             <p>National Trauma Association</p>
           </div>
 
           <div className="info-section">
             <h3>SURGERY CERTIFICATION:</h3>
             <p>Expert in Joint Care & Surgery</p>
-          </div>
-
-          <div className="info-section">
-            <h3>RESEARCH:</h3>
-            <p>Interest in joint recovery</p>
           </div>
 
           <div className="info-section">
@@ -59,16 +62,6 @@ const About = () => {
           <div className="info-section">
             <h3>HOSPITAL AFFILIATIONS:</h3>
             <p>Certified in Internal Medicine</p>
-          </div>
-
-          <div className="info-section">
-            <h3>CARDIOLOGY:</h3>
-            <p>Certified for Sports Injuries</p>
-          </div>
-
-          <div className="info-section">
-            <h3>PRO. AFFILIATIONS:</h3>
-            <p>AO Trauma, National Board</p>
           </div>
         </div>
       </div>

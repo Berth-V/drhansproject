@@ -11,6 +11,7 @@ function Home() {
   return (
     <>
       <div className="home">
+        <Form variant="sticky"/>
         <HomeSec1 />
         <SkeletonProvider>
           <Skeleton />

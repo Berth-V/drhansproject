@@ -49,15 +49,6 @@
   object-fit: cover;
 }
 
-.social-icons {
-  display: flex;
-  gap: 12px;
-}
-
-.social-icons span {
-  font-size: 22px;
-}
-
 .name-specialty h1 {
   margin: 0 0 10px 0;
   font-size: 34px;
@@ -71,10 +62,22 @@
 }
 
 .name-specialty p {
-  color: #7f8c8d;
+  color: var(--secondary-color);
   margin: 0;
   font-size: 17px;
   font-weight: 500;
+}
+
+.socialLinks {
+  text-decoration: none;
+  color: var(--white-color);
+  font-size: 1.6rem;
+  margin-right: .2rem;
+}
+
+.socialLinks:hover {
+  color: var(--secondary-color);
+  transition: 0.4s;
 }
 
 .profile-content {
