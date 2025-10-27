@@ -1,15 +1,17 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes, Navigate, useLocation } from 'react-router-dom';
 
-const Home = lazy(() => import('./Home/Home'));
-const About = lazy(() => import('./About/About'));
-const Procedures = lazy(() => import('./Procedures/Procedures'));
-const ProceduresDetail = lazy(() => import('./Procedures/ProceduresDetail'));
-const Contact = lazy(() => import('./Contact/Contact'));
+const Home = lazy(() => import('./components/Home/Home'));
+const About = lazy(() => import('./components/About/About'));
+const Procedures = lazy(() => import('./components/Procedures/Procedures'));
+const ProceduresDetail = lazy(() => import('./components/Procedures/ProceduresDetail'));
+const Contact = lazy(() => import('./components/Contact/Contact'));
+const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy/PrivacyPolicy'));
+const ThankYou = lazy(() => import('./components/ThankYou/ThankYou'));
 
-function TransitionRoutes() {
+function AppRoutes() {
   const location = useLocation();
-  
+
   useEffect(() => {
     scrollTo(0, 0);
   }, [location]);
@@ -23,9 +25,11 @@ function TransitionRoutes() {
         <Route path="/procedures" element={<Procedures />} />
         <Route path="/procedures/:partId" element={<ProceduresDetail />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
+        <Route path="/thankYou" element={<ThankYou />} />
       </Routes>
     </Suspense>
   );
 }
 
-export default TransitionRoutes;
+export default AppRoutes;

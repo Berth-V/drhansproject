@@ -1,8 +1,8 @@
 import './About.css';
-import photo from '../../assets/about-photo.jpg'
-import { FaFacebookSquare } from "react-icons/fa"; 
-import { RiInstagramFill } from "react-icons/ri";
-import { AiFillTikTok } from "react-icons/ai";
+import photo from '../../assets/about-photo.jpg';
+import { FaFacebookSquare } from 'react-icons/fa';
+import { RiInstagramFill } from 'react-icons/ri';
+import { AiFillTikTok } from 'react-icons/ai';
 
 const About = () => {
   return (
@@ -13,55 +13,62 @@ const About = () => {
             <img src={photo} alt="Dr Hans About Photo" />
           </div>
         </div>
-
         <div className="name-specialty">
           <h1>Dr. Hans Ruiz</h1>
           <h2>Traumatology</h2>
           <p>Follow me</p>
-          <a href='https://www.tiktok.com/@drhansruiz' target="_blank" className='socialLinks'>
-            <AiFillTikTok />
-          </a>
-          <a href='https://www.instagram.com/drhansruiz/' target="_blank" className='socialLinks'>
-            <RiInstagramFill/>
-          </a>
-            <a href='https://www.facebook.com/DrHansRuiz' target="_blank" className='socialLinks'>
-          <FaFacebookSquare />
-          </a>
+          <div className="social-links">
+            <a
+              href="https://www.tiktok.com/@drhansruiz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="socialLink"
+            >
+              <AiFillTikTok />
+            </a>
+            <a
+              href="https://www.instagram.com/drhansruiz/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="socialLink"
+            >
+              <RiInstagramFill />
+            </a>
+            <a
+              href="https://www.facebook.com/DrHansRuiz"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="socialLink"
+            >
+              <FaFacebookSquare />
+            </a>
+          </div>
         </div>
       </div>
-
+      <div className="about-description">
+        <p>
+          Hi there, I am Dr. Hans Ruiz Serna, I have experience in the
+          management of sciatic, lumbar, and cervical pain using minimally
+          invasive techniques, as well as in surgical procedures for joint
+          prosthetics and spinal surgery.
+          <br />
+          Since 2014, I have dedicated myself to performing fracture repair
+          surgeries, joint replacements, and comprehensive management of
+          musculoskeletal injuries, offering precise, humane medical care
+          focused on restoring my patients' mobility and quality of life.
+        </p>
+      </div>
       <div className="profile-content">
         <div className="left-column">
           <div className="info-section">
             <h3>EDUCATION:</h3>
-            <p>Doctor of Medicine (MD)<br />UMAE Hospital Lomas Verdes</p>
-          </div>
-
-          <div className="info-section">
-            <h3>CERTIFICATION:</h3>
-            <p>National Trauma Association</p>
-          </div>
-
-          <div className="info-section">
-            <h3>SURGERY CERTIFICATION:</h3>
-            <p>Expert in Joint Care & Surgery</p>
-          </div>
-
-          <div className="info-section">
-            <h3>AWARDS & RECOGNITION:</h3>
-            <p>Top Specialist 2024</p>
+            <p>UAS - Medicine</p>
           </div>
         </div>
-
         <div className="right-column">
           <div className="info-section">
-            <h3>CURRENT POSITION:</h3>
-            <p>Senior Doctor at Mediweb</p>
-          </div>
-
-          <div className="info-section">
-            <h3>HOSPITAL AFFILIATIONS:</h3>
-            <p>Certified in Internal Medicine</p>
+            <h3>SPECIALITY:</h3>
+            <p>UNAM - Traumatology and Orthopedics.</p>
           </div>
         </div>
       </div>

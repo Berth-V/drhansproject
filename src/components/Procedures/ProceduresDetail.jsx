@@ -1,93 +1,115 @@
-import { useState } from "react";
-import { useParams, Link } from "react-router-dom";
-import proceduresData  from "./data/proceduresData";
-import "./ProcedureDetail.css";
+import { useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import proceduresData from './data/proceduresData';
+import './ProcedureDetail.css';
 
 function ProcedureDetail() {
   const { partId } = useParams();
   const [selectedInjury, setSelectedInjury] = useState(null);
-  
   const partData = proceduresData[partId];
 
   if (!partData) {
     return (
-      <div className="procedure-not-found">
+      <div className="procedure-detail__not-found">
         <h2>Body part not found</h2>
         <Link to="/procedures">Back to Procedures</Link>
       </div>
     );
   }
 
-  // Función para seleccionar una lesión
+  // Handle injury selection
   const handleSelectInjury = (injury) => {
     setSelectedInjury(injury);
   };
 
-  // Función para volver a la lista de lesiones
+  // Handle back navigation to injury list
   const handleBackToList = () => {
     setSelectedInjury(null);
   };
 
   return (
-    <div className="procedure-detail-container">
-      {/* Breadcrumb */}
-      <div className="breadcrumb">
-        <Link to="/procedures">Procedures</Link> &gt; {partData.title}
+    <div className="procedure-detail">
+      {/* Breadcrumb navigation */}
+      <div className="procedure-detail__breadcrumb">
+        <Link to="/procedures" className="procedure-detail__breadcrumb-link">
+          Procedures
+        </Link>{' '}
+> {partData.title}
       </div>
 
-      {/* Header */}
-      <div className="procedure-header">
-        <h1 className="procedure-title">{partData.title} Injuries</h1>
-        <p className="procedure-description">
-          Explore injuries and treatments for the {partData.title.toLowerCase()}
+      {/* Section header */}
+      <header className="procedure-detail__header">
+        <h1 className="procedure-detail__title">{partData.title} Injuries</h1>
+        <p className="procedure-detail__description">
+          Explore injuries and treatments for the{' '}
+          {partData.title.toLowerCase()}
         </p>
-      </div>
+      </header>
 
       {selectedInjury ? (
-        /* Vista de detalle de lesión */
-        <div className="injury-detail-view">
-          <button onClick={handleBackToList} className="back-button">
+        // === Injury detail view ===
+        <div className="procedure-detail__injury-view">
+          <button
+            onClick={handleBackToList}
+            className="procedure-detail__back-btn"
+          >
             ← Back to List
           </button>
 
-          <div className="injury-detail-content">
-            <h2 className="injury-detail-title">{selectedInjury.name}</h2>
-            <p className="injury-detail-description">{selectedInjury.description}</p>
+          <div className="procedure-detail__injury-content">
+            <h2 className="procedure-detail__injury-title">
+              {selectedInjury.name}
+            </h2>
+            <p className="procedure-detail__injury-description">
+              {selectedInjury.description}
+            </p>
 
-            <div className="treatments-section">
-              <h3>Treatment Options</h3>
-              <div className="treatments-grid">
+            <section className="procedure-detail__treatments">
+              <h3 className="procedure-detail__treatments-heading">
+                Treatment Options
+              </h3>
+              <div className="procedure-detail__treatments-grid">
                 {Object.entries(selectedInjury.treatment).map(([key, value]) => (
-                  <div key={key} className="treatment-card">
-                    <h4 className="treatment-type">
-                      {key.charAt(0).toUpperCase() + key.slice(1).replace(/([A-Z])/g, ' $1')}
+                  <div
+                    key={key}
+                    className="procedure-detail__treatment-card"
+                  >
+                    <h4 className="procedure-detail__treatment-type">
+                      {key.charAt(0).toUpperCase() +
+                        key.slice(1).replace(/([A-Z])/g, ' $1')}
                     </h4>
-                    <p className="treatment-description">{value}</p>
+                    <p className="procedure-detail__treatment-description">
+                      {value}
+                    </p>
                   </div>
                 ))}
               </div>
-            </div>
+            </section>
           </div>
         </div>
       ) : (
-        /* Vista de lista de lesiones */
-        <div className="injuries-list-view">
-          <div className="injuries-grid">
+        // === Injury list view ===
+        <div className="procedure-detail__injury-list">
+          <div className="procedure-detail__injury-grid">
             {partData.injuries.map((injury) => (
               <div
                 key={injury.id}
-                className="injury-card"
+                className="procedure-detail__injury-card"
                 onClick={() => handleSelectInjury(injury)}
               >
-                <h3 className="injury-name">{injury.name}</h3>
-                <p className="injury-description">
+                <h3 className="procedure-detail__injury-name">
+                  {injury.name}
+                </h3>
+                <p className="procedure-detail__injury-summary">
                   {injury.description.substring(0, 100)}...
                 </p>
-                <div className="injury-meta">
-                  <span className="treatment-count">
+                <div className="procedure-detail__injury-meta">
+                  <span className="procedure-detail__treatment-count">
                     {Object.keys(injury.treatment).length} treatment options
                   </span>
-                  <span className="view-details">View Details →</span>
+                  <span className="procedure-detail__view-details">
+                    View Details →
+                  </span>
                 </div>
               </div>
             ))}
@@ -95,11 +117,13 @@ function ProcedureDetail() {
         </div>
       )}
 
-      {/* Back link permanente */}
-      <Link to="/procedures" className="procedure-back-link">
+      {/* Back to procedures link */}
+      <Link to="/procedures" className="procedure-detail__back-link">
         ← Back to All Procedures
       </Link>
     </div>
+
+
   );
 }
 

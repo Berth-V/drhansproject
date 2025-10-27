@@ -1,0 +1,255 @@
+.form {
+  width: 100%;
+  display: grid;
+  place-items: center;
+  padding: clamp(24px, 6vw, 64px) clamp(16px, 5vw, 48px);
+}
+
+.form__wrap {
+  width: min(700px, 100%);
+}
+
+.form__title {
+  margin: 0;
+  text-align: center;
+  font-weight: 700;
+  color: var(--secondary-color);
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
+}
+
+.form__subtitle {
+  margin: 6px 0 18px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: clamp(0.9rem, 1.6vw, 1rem);
+}
+
+/* Form layout */
+.form__form {
+  display: grid;
+  gap: clamp(12px, 2vw, 16px);
+}
+
+.form__row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(12px, 2vw, 16px);
+}
+
+.form__captcha {
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 70px;
+}
+
+.form__label {
+  display: block;
+}
+
+.form__label--full {
+  grid-column: 1 / -1;
+}
+
+/* Inputs */
+.form__input,
+.form__textarea {
+  width: 100%;
+  color: var(--white-color);
+  background: #161a1f;
+  border: 2px solid rgba(0, 196, 255, 0.5);
+  border-radius: 6px;
+  padding: 12px 14px;
+  outline: none;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+  font-size: clamp(0.95rem, 1.4vw, 1rem);
+}
+
+.form__textarea {
+  resize: none;
+}
+
+.form__input::placeholder,
+.form__textarea::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.form__input:focus,
+.form__textarea:focus {
+  border-color: #00c4ff;
+  box-shadow: 0 0 0 4px rgba(0, 196, 255, 0.12);
+  background: #12161a;
+}
+
+/* Button */
+.form__btn {
+  width: 100%;
+  margin-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: clamp(12px, 1.6vw, 14px);
+  border: none;
+  border-radius: 10px;
+  background: #00a6ff;
+  /* Manteniendo tu color original */
+  color: #00121a;
+  /* Manteniendo tu color original */
+  font-weight: 700;
+  font-size: clamp(1rem, 1.5vw, 1.05rem);
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(0, 166, 255, 0.28);
+  transition:
+    transform 0.12s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.form__btn:hover {
+  background: #0096ea;
+  transform: translateY(-1px);
+}
+
+.form__btn:active {
+  transform: translateY(0);
+}
+
+.form__btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Success / Error messages */
+.form__ok {
+  margin: 8px 0 0;
+  color: #57cf74;
+  font-weight: 600;
+  text-align: center;
+}
+
+.form__error {
+  margin: 8px 0 0;
+  color: #ff6b6b;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Spacer */
+.form__spacer {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .form__spacer {
+    display: block;
+  }
+}
+
+/* Consent / Privacy Policy */
+.form__consent {
+  display: flex;
+  align-items: center;
+  /* Centrado vertical */
+  justify-content: center;
+  /* Centrado horizontal */
+  gap: 0.5rem;
+  margin: 12px 0;
+  font-size: clamp(0.85rem, 1.2vw, 0.9rem);
+  text-align: center;
+  color: var(--white-color);
+  flex-wrap: wrap;
+  /* Para que en pantallas pequeñas se acomode */
+}
+
+.form__checkbox {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.form__consent-label {
+  line-height: 1.3;
+}
+
+.form__consent-link {
+  color: var(--link-color);
+  text-decoration: underline;
+}
+
+.form__consent-link:hover {
+  text-decoration: none;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+  .form__btn,
+  .form__input,
+  .form__textarea {
+    transition: none !important;
+  }
+}
+
+/* Visually hidden */
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Sticky */
+.form--sticky {
+  position: fixed;
+  width: clamp(260px, 26vw, 340px);
+  margin-top: var(--header-height);
+  z-index: 50;
+  padding: 0;
+  left: 0;
+  top: var(--header-height);
+}
+
+/* Toggle Button */
+.form__toggle {
+  position: absolute;
+  top: -36px;
+  left: 0;
+  background: var(--secondary-color, #1da1f2);
+  color: var(--black-color);
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  transition: background 0.2s ease;
+}
+
+.form__toggle:hover {
+  background: #0096ea;
+}
+
+.form__panel {
+  background: var(--primary-color);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 768px) {
+  .form__toggle {
+    font-size: 0.6rem;
+  }
+}

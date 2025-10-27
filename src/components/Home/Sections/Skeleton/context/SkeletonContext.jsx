@@ -6,7 +6,7 @@ import { ZOOM_AREA, RESET_VIEWBOX, SET_PART, DEL_PART } from './constants';
 const defaultViewBox = '0 0 700 1000';
 
 const initialState = {
-  // For Zoom animation
+  // Zoom animation
   viewBox: defaultViewBox,
   defaultViewBox,
   selectedPart: null,
@@ -52,7 +52,9 @@ export const SkeletonProvider = ({ children }) => {
   };
 
   return (
-    <SkeletonContext.Provider value={{ ...state, circleFunctions, backBtnFunctions }}>
+    <SkeletonContext.Provider
+      value={{ ...state, circleFunctions, backBtnFunctions }}
+    >
       {children}
     </SkeletonContext.Provider>
   );

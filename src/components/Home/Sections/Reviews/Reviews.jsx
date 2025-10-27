@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import userFallback from "../../../../assets/x-ray.png";
-import "./Reviews.css";
+import { useEffect, useState } from 'react';
+import userFallback from '../../../../assets/x-ray.png';
+import './Reviews.css';
 
 export default function Reviews() {
   const [reviews, setReviews] = useState([]);
@@ -9,11 +9,13 @@ export default function Reviews() {
   useEffect(() => {
     const fetchReviews = async () => {
       try {
-        const res = await fetch("https://script.google.com/macros/s/AKfycbzZNvfyrWd_RZC9A4u5p9DLX1s6FSlMWkHckQMuy3H74KKHwBrr9j9daPjU7ZfavzWR/exec");
+        const res = await fetch(
+          'https://script.google.com/macros/s/AKfycbzZNvfyrWd_RZC9A4u5p9DLX1s6FSlMWkHckQMuy3H74KKHwBrr9j9daPjU7ZfavzWR/exec'
+        );
         const data = await res.json();
         setReviews(data.reviews || []);
       } catch (error) {
-        console.error("Error al obtener reseñas:", error);
+        console.error('Error al obtener reseñas:', error);
       } finally {
         setLoading(false);
       }
@@ -33,8 +35,8 @@ export default function Reviews() {
             reviews.map((r, i) => (
               <article key={i} className="homeReviews__card">
                 <div className="homeReviews__txtBox">
-                <span className="homeReviews__quote">“</span>
-                <p className="homeReviews__text">{r.text}</p>
+                  <span className="homeReviews__quote">“</span>
+                  <p className="homeReviews__text">{r.text}</p>
                 </div>
 
                 <div className="homeReviews__footer">
@@ -44,7 +46,9 @@ export default function Reviews() {
                     alt={r.author_name}
                   />
                   <div className="homeReviews__meta">
-                    <strong className="homeReviews__name">{r.author_name}</strong>
+                    <strong className="homeReviews__name">
+                      {r.author_name}
+                    </strong>
                     <div className="homeReviews__stars" aria-hidden="true">
                       {Array.from({ length: r.rating }).map((_, j) => (
                         <svg
