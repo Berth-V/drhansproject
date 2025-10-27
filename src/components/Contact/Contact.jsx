@@ -1,5 +1,5 @@
-import Form from "../Form/Form";
-import "./Contact.css"
+import Form from '../Shared/Form/Form';
+import './Contact.css';
 
 export default function Contact() {
   return (

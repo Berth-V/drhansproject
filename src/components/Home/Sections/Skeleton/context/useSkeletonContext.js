@@ -5,7 +5,9 @@ export const SkeletonContext = createContext();
 export const useSkeletonContext = () => {
   const context = useContext(SkeletonContext);
   if (!context) {
-    throw new Error('useSkeletonContext must be used within a SkeletonProvider');
+    throw new Error(
+      'useSkeletonContext must be used within a SkeletonProvider'
+    );
   }
   return context;
 };

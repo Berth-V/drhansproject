@@ -1,82 +1,97 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { partsData } from '../data/partsData';
 import { useSkeletonContext } from '../context/useSkeletonContext';
-import { opacityAnimation, scaleAnimation } from '../motionVariants/motionVariants';
+import {
+  opacityAnimation,
+  scaleAnimation,
+} from '../../../../Shared/motionVariants/motionVariants';
+import { Link } from 'react-router-dom';
+import proceduresData from '../../../../Procedures/data/proceduresData';
 
 export default function SkeletonManager() {
-  const { selectedPart, circleFunctions, backBtnFunctions } = useSkeletonContext();
+  const { selectedPart, circleFunctions, backBtnFunctions } =
+    useSkeletonContext();
 
   const activePart = partsData.find((p) => p.name === selectedPart);
   const inactiveParts = partsData.filter((p) => p.name !== selectedPart);
 
-  return (
-    <AnimatePresence mode="wait" initial={false}>
-      {/* 🦴 Mostrar partes inactivas (solo cuando no hay parte activa) */}
-      {!activePart && (
-        <>
-          {inactiveParts.map((part) => {
-            const { name, default: def = {} } = part;
-            const titlePaths = Array.isArray(def.titlePaths) ? def.titlePaths : [];
+  // Map to id Route Link
+  const titleToIdMap = Object.fromEntries(
+    Object.entries(proceduresData).map(([id, part]) => [part.title, id])
+  );
 
-            return (
-              <motion.g
-                key={name}
+  return (
+    <AnimatePresence initial={false}>
+      {/* Inactive Parts (Default) */}
+      {!activePart &&
+        inactiveParts.map((part) => {
+          const { name, default: def = {} } = part;
+          const titlePaths = Array.isArray(def.titlePaths)
+            ? def.titlePaths
+            : [];
+
+          return (
+            <motion.g
+              key={`${name}-inactive`}
+              variants={opacityAnimation}
+              initial="show"
+              animate="show"
+              exit="hide"
+            >
+              {/* Clickable Circle */}
+              <motion.circle
+                id={`${name} Elipse`}
+                cx={def.cx}
+                cy={def.cy}
+                r={def.r}
+                onClick={() =>
+                  circleFunctions(
+                    name,
+                    def.minX,
+                    def.minY,
+                    def.width,
+                    def.height
+                  )
+                }
+                fill="transparent"
+                stroke="#F5F5F5"
+                strokeWidth={2}
+                variants={scaleAnimation}
+                whileHover="hover"
+              />
+
+              {/* Line */}
+              <motion.path
+                id={`${name} Line`}
+                d={def.lineProps?.d ?? ''}
+                stroke="#F5F5F5"
+                strokeWidth={2}
                 variants={opacityAnimation}
                 initial="show"
                 exit="hide"
+              />
+
+              {/* Title */}
+              <motion.g
+                key={`${name}-title-group`}
+                id={`${name} Title`}
+                variants={opacityAnimation}
               >
-                {/* Círculo clickable */}
-                <motion.circle
-                  id={`${name} Elipse`}
-                  cx={def.cx}
-                  cy={def.cy}
-                  r={def.r}
-                  onClick={() =>
-                    circleFunctions(
-                      name,
-                      def.minX,
-                      def.minY,
-                      def.width,
-                      def.height
-                    )
-                  }
-                  fill="transparent"
-                  stroke="#F5F5F5"
-                  strokeWidth={2}
-                  variants={scaleAnimation}
-                  whileHover="hover"
-                />
-
-                {/* Línea de la parte */}
-                <motion.path
-                  id={`${name} Line`}
-                  d={def.lineProps.d}
-                  stroke="#F5F5F5"
-                  strokeWidth={2}
-                  variants={opacityAnimation}
-                  initial="show"
-                  exit="hide"
-                />
-
-                {/* Título de la parte */}
-                <motion.g
-                  key={`${name}-tittle`}
-                  id={`${name} Tittle`}
-                  variants={opacityAnimation}
-                  initial="show"
-                  exit="hide"
-                >
-                  {titlePaths.map((p) => (
-                    <path key={p.id} id={p.id} d={p.d} fill="white" />
-                  ))}
-                </motion.g>
+                {titlePaths.map((p) => (
+                  <motion.path
+                    key={p.id}
+                    id={p.id}
+                    d={p.d}
+                    fill="white"
+                    variants={opacityAnimation}
+                  />
+                ))}
               </motion.g>
-            );
-          })}
-        </>
-      )}
+            </motion.g>
+          );
+        })}
 
-      {/* 🧩 Mostrar parte activa (cuando se hace zoom o selección) */}
+      {/* Active Part */}
       {activePart && (
         <motion.g
           key={`${activePart.name}-active`}
@@ -91,31 +106,52 @@ export default function SkeletonManager() {
               ? active.textPaths
               : [];
 
+            const linkId = titleToIdMap[activePart.name]; // Dinamic id Routes
+
             return (
               <>
-                {/* Texto o contenido activo */}
-                <g id={`${name} Text`}>
+                {/* Active Text */}
+                <motion.g id={`${name} Text`} variants={opacityAnimation}>
                   {textPaths.map((p) => (
-                    <g key={p.id} id={p.id}>
-                      <path d={p.d} fill="white" />
-                    </g>
+                    <motion.path
+                      key={p.id}
+                      id={p.id}
+                      d={p.d}
+                      fill="white"
+                      variants={opacityAnimation}
+                    />
                   ))}
-                </g>
+                </motion.g>
 
-                {/* Botón "See All" */}
-                <g id="See All Btn">
-                  <rect {...active.seeAllBtn.rectPaths} fill="#BDE2C6" />
-                  <rect
-                    {...active.seeAllBtn.rectPaths}
-                    stroke="#57CF74"
-                    strokeWidth={active.seeAllBtn.rectPaths.strokeWidth}
-                  />
-                  {active.seeAllBtn.othersPaths.map((p) => (
-                    <path key={p.id} id={p.id} d={p.d} fill="black" />
-                  ))}
-                </g>
+                {/* Dinamic Routes to Procedures */}
+                {linkId && (
+                  <Link to={`/procedures/${linkId}`}>
+                    <motion.g
+                      id="See All Btn"
+                      variants={opacityAnimation}
+                      whileHover={{ scale: 1.05 }}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <rect
+                        {...active.seeAllBtn.rectPaths}
+                        fill="#00C4FF"
+                        rx="1"
+                        ry="1"
+                      />
+                      <rect
+                        {...active.seeAllBtn.rectPaths}
+                        stroke="#075985"
+                        strokeWidth={active.seeAllBtn.rectPaths.strokeWidth}
+                        rx="1"
+                      />
+                      {active.seeAllBtn.othersPaths?.map((p) => (
+                        <path key={p.id} id={p.id} d={p.d} fill="black" />
+                      ))}
+                    </motion.g>
+                  </Link>
+                )}
 
-                {/* Botón de regresar */}
+                {/* Back Btn */}
                 {(() => {
                   const circle = active?.backBtn?.circle ?? {};
                   const cx = circle?.cx ?? def.cx ?? 0;
@@ -142,7 +178,9 @@ export default function SkeletonManager() {
                       />
                       <path
                         id="Arrow 1"
-                        d={active?.backBtn?.arrowD ?? def?.backBtn?.arrowD ?? ''}
+                        d={
+                          active?.backBtn?.arrowD ?? def?.backBtn?.arrowD ?? ''
+                        }
                         fill="white"
                       />
                     </motion.g>

@@ -1,50 +1,62 @@
-import { Link } from "react-router-dom";
-import proceduresData from "./data/proceduresData";
-import "./Procedures.css";
+import { Link } from 'react-router-dom';
+import { motion } from 'motion/react';
+import proceduresData from './data/proceduresData';
+import { procedureCard } from '../Shared/motionVariants/motionVariants';
+import './Procedures.css';
 
-const ProceduresGrid = () => {
-  // Usamos Object.entries para obtener [id, data]
+const icons = import.meta.glob('/src/assets/procedures_icons/*.png', {
+  eager: true,
+});
+
+const Procedures = () => {
   const parts = Object.entries(proceduresData);
 
   return (
     <section className="procedures">
       <h2 className="procedures__title">Explore Procedures</h2>
+      <motion.div
+        className="procedures__grid"
+        variants={procedureCard}
+        initial="hidden"
+        animate="visible"
+      >
+        {parts.map(([id, part]) => {
+          const icon = icons[`/src/assets/procedures_icons/${id}.png`];
 
-      <div className="procedures__grid">
-        {parts.map(([id, part]) => (
-          <Link
-            key={id}
-            to={`/procedures/${id}`}
-            className="procedures__card"
-          >
-            <div className="procedures__icon">
-              {/* Iconos según la parte del cuerpo */}
-              {id === 'ankle' && '🦶'}
-              {id === 'cervicalSpine' && '📋'}
-              {id === 'clavicle' && '🔗'}
-              {id === 'elbow' && '🦾'}
-              {id === 'femur' && '🦵'}
-              {id === 'foot' && '👣'}
-              {id === 'forearm' && '💪'}
-              {id === 'hand' && '✋'}
-              {id === 'hip' && '🦴'}
-              {id === 'humerus' && '💪'}
-              {id === 'knee' && '🦵'}
-              {id === 'lumbarSpine' && '📋'}
-              {id === 'shoulder' && '🤷'}
-              {id === 'thoracicSpine' && '📋'}
-              {id === 'tibiaFibula' && '🦵'}
-              {id === 'wrist' && '🤚'}
-            </div>
-            <h3 className="procedures__name">{part.title}</h3>
-            <p className="procedures__description">
-              {part.injuries.length} injuries and treatments available
-            </p>
-          </Link>
-        ))}
-      </div>
+          return (
+            <motion.div
+              key={id}
+              className="procedures__card"
+              variants={procedureCard}
+            >
+              <Link to={`/procedures/${id}`} className="procedures__card-link">
+                <div className="procedures__card-icon">
+                  {icon ? (
+                    <img
+                      src={icon.default}
+                      alt={part.title}
+                      className="procedures__card-img"
+                    />
+                  ) : (
+                    <span className="procedures__card--missing-icon">❓</span>
+                  )}
+                </div>
+
+                <div className="procedures__card-body">
+                  <h3 className="procedures__card-name">{part.title}</h3>
+                  <p className="procedures__card-description">
+                    {part.injuries.length} injuries and treatments available
+                  </p>
+                </div>
+              </Link>
+            </motion.div>
+          );
+        })}
+      </motion.div>
     </section>
+
+
   );
 };
 
-export default ProceduresGrid;
+export default Procedures;

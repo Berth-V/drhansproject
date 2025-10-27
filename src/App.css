@@ -1,26 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Nunito Sans", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 300;
-    font-style: normal;
-  }
 
-  html{
-    background-color: var(--primary-color);
-  }
- 
-  :root {
-    --primary-color: #000;
-    --secondary-color: #00C4FF;
-    --thrid-color: #075985;
-    --fourth-color: #84dfec;
-    --fiveth-color: #0B1D3A;
-    --sixth-color: #303030;
-    --white-color: #ffff;
-    --black-color: #000;
-    --header-height: 4rem;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Nunito Sans', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: var(--primary-color);
+}
+
+body {
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+
+:root {
+  --primary-color: #000;
+  --secondary-color: #00c4ff;
+  --third-color: #075985;
+  --fourth-color: #84dfec;
+  --fiveth-color: #0b1d3a;
+  --sixth-color: #1a1a1a;
+  --white-color: #ffff;
+  --black-color: #000;
+  --header-height: 4rem;
+  --footer-height: 16rem;
+}
