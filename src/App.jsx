@@ -8,8 +8,7 @@ import WhatsAppBtn from './components/Shared/WhatsAppBtn/WhatsAppBtn';
 
 function App() {
   const location = useLocation();
-
-  // Detecta si estamos en la página de contacto
+  // Contact Page Detect
   const isContactPage = location.pathname === '/contact';
 
   return (

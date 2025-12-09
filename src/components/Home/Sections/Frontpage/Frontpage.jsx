@@ -1,13 +1,20 @@
 import "./Frontpage.css";
-import hanspic from '../../../../assets/hans.png';
-import icon1 from '../../../../assets/x-ray.png';
-import icon2 from '../../../../assets/fracture.png';
+import hanspic from '../../../../assets/hans.webp';
+import icon1 from '../../../../assets/x-ray.webp';
+import icon2 from '../../../../assets/fracture.webp';
 import { NavLink } from 'react-router-dom';
 
 function Frontpage() {
   return (
     <section className="frontpage">
-      <img className="frontpage__pic" src={hanspic} alt="Dr. Hans" />
+      <img
+        className="frontpage__pic"
+        src={hanspic}
+        alt="Dr. Hans"
+        width="520"
+        height="600"
+        fetchpriority="high"
+      />
       <div className="frontpage__textBox">
         <p className="frontpage__text">
           <b className="frontpage__text frontpage__text--blue">Lower Back Pain</b>,
@@ -35,9 +42,7 @@ function Frontpage() {
                 strokeLinejoin="round"
               />
             </svg>
-            <a href="tel:526645410955" className="frontpage__phoneBtn">
-              +52 664-541-09-55
-            </a>
+            <span className="frontpage__phoneBtn">+52 664-541-09-55</span>
           </a>
         </div>
       </div>

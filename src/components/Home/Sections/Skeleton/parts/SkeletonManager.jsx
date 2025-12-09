@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'motion/react';
-import { partsData } from '../data/partsData';
+import { getPartsData } from '../data';
 import { useSkeletonContext } from '../context/useSkeletonContext';
 import {
   opacityAnimation,
@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import proceduresData from '../../../../Procedures/data/proceduresData';
 
 export default function SkeletonManager() {
+  const partsData = getPartsData();
   const { selectedPart, circleFunctions, backBtnFunctions } =
     useSkeletonContext();
 
@@ -124,6 +125,7 @@ export default function SkeletonManager() {
                 </motion.g>
 
                 {/* Dinamic Routes to Procedures */}
+                {/* See All Btn */}
                 {linkId && (
                   <Link to={`/procedures/${linkId}`}>
                     <motion.g

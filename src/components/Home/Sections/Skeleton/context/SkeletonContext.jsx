@@ -1,4 +1,4 @@
-import { useReducer, useEffect } from 'react';
+import { useReducer } from 'react';
 import { skeletonReducer } from './skeletonReducer';
 import { SkeletonContext } from './useSkeletonContext';
 import { ZOOM_AREA, RESET_VIEWBOX, SET_PART, DEL_PART } from './constants';
@@ -14,12 +14,6 @@ const initialState = {
 
 export const SkeletonProvider = ({ children }) => {
   const [state, dispatch] = useReducer(skeletonReducer, initialState);
-
-  const { selectedPart } = state;
-
-  useEffect(() => {
-    console.log('selectedPart:', selectedPart);
-  }, [selectedPart]);
 
   // dispatch Fuctions
   const zoomArea = (x, y, width, height) => {

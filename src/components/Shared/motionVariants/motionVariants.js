@@ -7,11 +7,25 @@ export const opacityAnimation = {
   show: { opacity: 1, transition: { duration: 0.3 } },
 };
 
+export const fadeUpVariant = {
+  initial: { opacity: 0, y: 50 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.5 },
+  transition: { duration: 0.6 }
+};
+
+export const fadeInVariant = {
+  initial: { opacity: 0 },
+  whileInView: { opacity: 1 },
+  viewport: { once: true, amount: 0.5 },
+  transition: { duration: 0.6 }
+};
+
 export const procedureCard = {
   hidden: {
     opacity: 0,
-    x: 50, // desde la derecha
-    y: -50, // desde arriba // ligera rotación
+    x: -50,
+    y: 50,
   },
   visible: {
     opacity: 1,

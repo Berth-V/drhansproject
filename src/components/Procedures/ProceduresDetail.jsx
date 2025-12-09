@@ -34,7 +34,7 @@ function ProcedureDetail() {
         <Link to="/procedures" className="procedure-detail__breadcrumb-link">
           Procedures
         </Link>{' '}
-> {partData.title}
+        {partData.title}
       </div>
 
       {/* Section header */}
