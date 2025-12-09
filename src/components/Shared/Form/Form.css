@@ -24,7 +24,6 @@
   font-size: clamp(0.9rem, 1.6vw, 1rem);
 }
 
-/* Form layout */
 .form__form {
   display: grid;
   gap: clamp(12px, 2vw, 16px);
@@ -52,7 +51,6 @@
   grid-column: 1 / -1;
 }
 
-/* Inputs */
 .form__input,
 .form__textarea {
   width: 100%;
@@ -85,7 +83,6 @@
   background: #12161a;
 }
 
-/* Button */
 .form__btn {
   width: 100%;
   margin-top: 6px;
@@ -97,9 +94,7 @@
   border: none;
   border-radius: 10px;
   background: #00a6ff;
-  /* Manteniendo tu color original */
   color: #00121a;
-  /* Manteniendo tu color original */
   font-weight: 700;
   font-size: clamp(1rem, 1.5vw, 1.05rem);
   cursor: pointer;
@@ -124,7 +119,6 @@
   cursor: not-allowed;
 }
 
-/* Success / Error messages */
 .form__ok {
   margin: 8px 0 0;
   color: #57cf74;
@@ -139,7 +133,14 @@
   text-align: center;
 }
 
-/* Spacer */
+.form__error-msg {
+  display: block;
+  min-height: 1.2rem;
+  font-size: 0.85rem;
+  color: #ff6b6b;
+  margin-top: 4px;
+}
+
 .form__spacer {
   display: none;
 }
@@ -150,20 +151,16 @@
   }
 }
 
-/* Consent / Privacy Policy */
 .form__consent {
   display: flex;
   align-items: center;
-  /* Centrado vertical */
   justify-content: center;
-  /* Centrado horizontal */
   gap: 0.5rem;
   margin: 12px 0;
   font-size: clamp(0.85rem, 1.2vw, 0.9rem);
   text-align: center;
   color: var(--white-color);
   flex-wrap: wrap;
-  /* Para que en pantallas pequeñas se acomode */
 }
 
 .form__checkbox {
@@ -185,7 +182,6 @@
   text-decoration: none;
 }
 
-/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
 
   .form__btn,
@@ -195,7 +191,6 @@
   }
 }
 
-/* Visually hidden */
 .sr-only {
   position: absolute !important;
   width: 1px;
@@ -208,7 +203,6 @@
   border: 0;
 }
 
-/* Sticky */
 .form--sticky {
   position: fixed;
   width: clamp(260px, 26vw, 340px);
@@ -219,7 +213,6 @@
   top: var(--header-height);
 }
 
-/* Toggle Button */
 .form__toggle {
   position: absolute;
   top: -36px;
@@ -246,6 +239,19 @@
   border-radius: 12px;
   padding: 16px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.form__placeholder {
+  width: clamp(260px, 26vw, 340px);
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.5);
+  background: #12161a;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 @media (max-width: 768px) {

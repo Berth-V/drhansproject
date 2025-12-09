@@ -9,6 +9,10 @@
 
 .header__logo {
   height: 100%;
+  width: auto;
+  max-height: 100%;
+  aspect-ratio: 248 / 64;
+  display: block;
 }
 
 .header__toggle {
@@ -85,7 +89,6 @@
 .header__link-text {
   font-size: 18px;
   color: var(--fiveth-color);
-  font-weight: 600;
   transition: color 0.3s;
 }
 

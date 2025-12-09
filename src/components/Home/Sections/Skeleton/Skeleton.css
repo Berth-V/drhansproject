@@ -3,10 +3,11 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    height: auto;
     background-color: #000;
+    border: 1px solid yellow;
 }
 
 .svg {
-    width: auto;
-    height: 100%;
+    border: 1px solid red;
 }

@@ -1,5 +1,5 @@
 import './About.css';
-import photo from '../../assets/about-photo.jpg';
+import photo from '../../assets/about-photo.webp';
 import { FaFacebookSquare } from 'react-icons/fa';
 import { RiInstagramFill } from 'react-icons/ri';
 import { AiFillTikTok } from 'react-icons/ai';

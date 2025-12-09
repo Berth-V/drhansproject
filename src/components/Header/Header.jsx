@@ -1,5 +1,5 @@
 import './Header.css';
-import logo from '../../assets/logo.jpg';
+import logo from '../../assets/logo.webp';
 import { NavLink } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 
@@ -42,7 +42,8 @@ export default function Header() {
 
   return (
     <header className="header">
-      <img className="header__logo" src={logo} alt="Logo" />
+      <img className="header__logo" src={logo} alt="Logo" width="248"
+        height="64" />
 
       {/* 🔹 Toggle button now has its own ref to avoid self-click conflict */}
       <button

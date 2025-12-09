@@ -7,7 +7,6 @@ const Procedures = lazy(() => import('./components/Procedures/Procedures'));
 const ProceduresDetail = lazy(() => import('./components/Procedures/ProceduresDetail'));
 const Contact = lazy(() => import('./components/Contact/Contact'));
 const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy/PrivacyPolicy'));
-const ThankYou = lazy(() => import('./components/ThankYou/ThankYou'));
 
 function AppRoutes() {
   const location = useLocation();
@@ -26,7 +25,6 @@ function AppRoutes() {
         <Route path="/procedures/:partId" element={<ProceduresDetail />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
-        <Route path="/thankYou" element={<ThankYou />} />
       </Routes>
     </Suspense>
   );

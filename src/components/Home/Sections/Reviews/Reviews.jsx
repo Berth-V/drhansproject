@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import userFallback from '../../../../assets/x-ray.png';
 import './Reviews.css';
 
 export default function Reviews() {
@@ -42,7 +41,7 @@ export default function Reviews() {
                 <div className="homeReviews__footer">
                   <img
                     className="homeReviews__avatar"
-                    src={r.profile_photo_url || userFallback}
+                    src={r.profile_photo_url || undefined}
                     alt={r.author_name}
                   />
                   <div className="homeReviews__meta">
