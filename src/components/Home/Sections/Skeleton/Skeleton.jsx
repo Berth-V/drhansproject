@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import { useSkeletonContext } from './context/useSkeletonContext';
-import "./Skeleton.css"
+import './Skeleton.css';
 import Bones from './parts/Bones';
 import Defs from './parts/Defs';
 import SkeletonManager from './parts/SkeletonManager';

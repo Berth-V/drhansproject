@@ -54,8 +54,6 @@ const Procedures = () => {
         })}
       </motion.div>
     </section>
-
-
   );
 };
 

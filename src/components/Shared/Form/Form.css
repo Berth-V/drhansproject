@@ -183,7 +183,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-
   .form__btn,
   .form__input,
   .form__textarea {

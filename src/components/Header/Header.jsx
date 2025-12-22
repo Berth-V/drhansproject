@@ -32,8 +32,6 @@ export default function Header() {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-
-
   }, [menuOpen]);
 
   useEffect(() => {
@@ -42,8 +40,13 @@ export default function Header() {
 
   return (
     <header className="header">
-      <img className="header__logo" src={logo} alt="Logo" width="248"
-        height="64" />
+      <img
+        className="header__logo"
+        src={logo}
+        alt="Logo"
+        width="248"
+        height="64"
+      />
 
       {/* 🔹 Toggle button now has its own ref to avoid self-click conflict */}
       <button
@@ -70,7 +73,11 @@ export default function Header() {
           </li>
 
           <li className="header__item">
-            <NavLink className="header__link" to="/procedures" onClick={closeMenu}>
+            <NavLink
+              className="header__link"
+              to="/procedures"
+              onClick={closeMenu}
+            >
               <span className="header__link-text">Procedures</span>
             </NavLink>
           </li>
@@ -93,7 +100,5 @@ export default function Header() {
         </ul>
       </nav>
     </header>
-
-
   );
 }
