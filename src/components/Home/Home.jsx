@@ -3,7 +3,10 @@ import { Suspense, lazy } from 'react';
 import { motion } from 'motion/react';
 import Frontpage from './Sections/Frontpage/Frontpage';
 import { SkeletonProvider } from './Sections/Skeleton/context/SkeletonContext';
-import { fadeUpVariant, fadeInVariant } from '../Shared/motionVariants/motionVariants';
+import {
+  fadeUpVariant,
+  fadeInVariant,
+} from '../Shared/motionVariants/motionVariants';
 
 const Skeleton = lazy(() => import('./Sections/Skeleton/Skeleton'));
 const Map = lazy(() => import('./Sections/Map/Map'));

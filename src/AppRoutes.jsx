@@ -4,9 +4,13 @@ import { Route, Routes, Navigate, useLocation } from 'react-router-dom';
 const Home = lazy(() => import('./components/Home/Home'));
 const About = lazy(() => import('./components/About/About'));
 const Procedures = lazy(() => import('./components/Procedures/Procedures'));
-const ProceduresDetail = lazy(() => import('./components/Procedures/ProceduresDetail'));
+const ProceduresDetail = lazy(
+  () => import('./components/Procedures/ProceduresDetail')
+);
 const Contact = lazy(() => import('./components/Contact/Contact'));
-const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy/PrivacyPolicy'));
+const PrivacyPolicy = lazy(
+  () => import('./components/PrivacyPolicy/PrivacyPolicy')
+);
 
 function AppRoutes() {
   const location = useLocation();

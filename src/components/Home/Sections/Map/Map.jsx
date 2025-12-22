@@ -1,7 +1,7 @@
 import './Map.css';
 import { useState, useEffect, useRef } from 'react';
 
-export default function Map({ embedSrc, title = 'Mapa', }) {
+export default function Map({ embedSrc, title = 'Mapa' }) {
   const [show, setShow] = useState(false);
   const ref = useRef();
 
@@ -26,7 +26,7 @@ export default function Map({ embedSrc, title = 'Mapa', }) {
   if (!embedSrc) return null;
 
   return (
-    <div ref={ref} className="map" >
+    <div ref={ref} className="map">
       {show && (
         <iframe
           className="map__iframe"

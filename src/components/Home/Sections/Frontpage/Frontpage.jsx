@@ -1,4 +1,4 @@
-import "./Frontpage.css";
+import './Frontpage.css';
 import hanspic from '../../../../assets/hans.webp';
 import icon1 from '../../../../assets/x-ray.webp';
 import icon2 from '../../../../assets/fracture.webp';
@@ -17,9 +17,12 @@ function Frontpage() {
       />
       <div className="frontpage__textBox">
         <p className="frontpage__text">
-          <b className="frontpage__text frontpage__text--blue">Lower Back Pain</b>,
-          Knee, Wrist, Meniscus Rupture, Tendonitis, Sport Medicine, Management
-          of Sciatic, Lumbar, and Cervical Pain, Among Many Other Conditions.
+          <b className="frontpage__text frontpage__text--blue">
+            Lower Back Pain
+          </b>
+          , Knee, Wrist, Meniscus Rupture, Tendonitis, Sport Medicine,
+          Management of Sciatic, Lumbar, and Cervical Pain, Among Many Other
+          Conditions.
         </p>
 
         <div className="frontpage__ctaGroup">

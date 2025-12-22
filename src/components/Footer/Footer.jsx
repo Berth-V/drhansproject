@@ -12,7 +12,8 @@ function Footer() {
           <h3>Dr. Hans Ruiz</h3>
           <p>Traumatology and Orthopedics</p>
           <p className="footer-address">
-            Vía Ote. 9750-903, Zona Urbana Rio Tijuana,<br />
+            Vía Ote. 9750-903, Zona Urbana Rio Tijuana,
+            <br />
             22010 Tijuana, B.C.
           </p>
         </div>

@@ -20,7 +20,7 @@ function TurnstileWidget() {
         }
         // (optional, in case something remains stuck in the container)
         ref.current.innerHTML = '';
-      } catch { }
+      } catch {}
 
       // Explicitly render and save the widgetId
       widgetIdRef.current = window.turnstile.render(ref.current, {

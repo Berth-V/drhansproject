@@ -10,7 +10,15 @@ export default function Form({ variant = 'full' }) {
   const [open, setOpen] = useState(false); // para sticky
   const [turnstileVisible, setTurnstileVisible] = useState(variant === 'full'); // <-- clave
 
-  const { formData, consent, status, errors, setConsent, handleChange, onSubmit } = useForm();
+  const {
+    formData,
+    consent,
+    status,
+    errors,
+    setConsent,
+    handleChange,
+    onSubmit,
+  } = useForm();
 
   const commonProps = {
     formData,
@@ -33,13 +41,21 @@ export default function Form({ variant = 'full' }) {
       <section className="form form--full">
         <div className="form__wrap">
           <h2 className="form__title">Make an appointment</h2>
-          <p className="form__subtitle">Book your consultation quickly and easily.</p>
+          <p className="form__subtitle">
+            Book your consultation quickly and easily.
+          </p>
           <form className="form__form" onSubmit={onSubmit}>
             <FormFields {...commonProps} />
-            <button className="form__btn" type="submit" disabled={status.sending}>
+            <button
+              className="form__btn"
+              type="submit"
+              disabled={status.sending}
+            >
               {status.sending ? 'Sending…' : 'Appointment'}
             </button>
-            {status.ok && <p className="form__ok">Thanks! We’ll contact you soon.</p>}
+            {status.ok && (
+              <p className="form__ok">Thanks! We’ll contact you soon.</p>
+            )}
             {status.ok === false && (
               <p className="form__error">
                 {status.error || 'There was a problem sending your message.'}
@@ -68,13 +84,21 @@ export default function Form({ variant = 'full' }) {
             transition={{ type: 'spring', stiffness: 280, damping: 25 }}
           >
             <h2 className="form__title">Make an appointment</h2>
-            <p className="form__subtitle">Book your consultation quickly and easily.</p>
+            <p className="form__subtitle">
+              Book your consultation quickly and easily.
+            </p>
             <form className="form__form" onSubmit={onSubmit}>
               <FormFields {...commonProps} />
-              <button className="form__btn" type="submit" disabled={status.sending}>
+              <button
+                className="form__btn"
+                type="submit"
+                disabled={status.sending}
+              >
                 {status.sending ? 'Sending…' : 'Appointment'}
               </button>
-              {status.ok && <p className="form__ok">Thanks! We’ll contact you soon.</p>}
+              {status.ok && (
+                <p className="form__ok">Thanks! We’ll contact you soon.</p>
+              )}
               {status.ok === false && (
                 <p className="form__error">
                   {status.error || 'There was a problem sending your message.'}

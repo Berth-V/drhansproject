@@ -7,7 +7,7 @@
 }
 
 /* Frontpage */
-.home>div.frontpage-placeholder {
+.home > div.frontpage-placeholder {
   min-height: 60vh;
   /* Aproximación al alto real del hero */
 }

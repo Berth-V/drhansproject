@@ -1,59 +1,59 @@
 /* src/pages/PrivacyPolicy/PrivacyPolicy.css */
 
 .privacy {
-    padding: 2rem;
-    background-color: var(--black-color);
-    color: var(--white-color);
-    font-family: var(--font-family);
+  padding: 2rem;
+  background-color: var(--black-color);
+  color: var(--white-color);
+  font-family: var(--font-family);
 }
 
 .privacy__container {
-    max-width: 800px;
-    margin: 0 auto;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .privacy__title {
-    font-size: var(--title-font-size);
-    font-weight: bold;
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
+  font-size: var(--title-font-size);
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
 }
 
 .privacy__subtitle {
-    font-size: var(--subtitle-font-size);
-    font-weight: 600;
-    margin-top: 1.5rem;
-    margin-bottom: 0.5rem;
-    color: var(--primary-color);
+  font-size: var(--subtitle-font-size);
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--primary-color);
 }
 
 .privacy__text {
-    font-size: var(--text-font-size);
-    line-height: 1.6;
-    margin-bottom: 1rem;
+  font-size: var(--text-font-size);
+  line-height: 1.6;
+  margin-bottom: 1rem;
 }
 
 .privacy__list {
-    list-style-type: disc;
-    padding-left: 1.5rem;
-    margin-bottom: 1rem;
+  list-style-type: disc;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .privacy__list-item {
-    margin-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .privacy__update {
-    font-size: var(--update-font-size);
-    color: var(--text-color);
-    margin-top: 2rem;
+  font-size: var(--update-font-size);
+  color: var(--text-color);
+  margin-top: 2rem;
 }
 
 .privacy__text a {
-    color: var(--link-color);
-    text-decoration: underline;
+  color: var(--link-color);
+  text-decoration: underline;
 }
 
 .privacy__text a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }

@@ -41,8 +41,7 @@ function ProcedureDetail() {
       <header className="procedure-detail__header">
         <h1 className="procedure-detail__title">{partData.title} Injuries</h1>
         <p className="procedure-detail__description">
-          Explore injuries and treatments for the{' '}
-          {partData.title.toLowerCase()}
+          Explore injuries and treatments for the {partData.title.toLowerCase()}
         </p>
       </header>
 
@@ -69,20 +68,19 @@ function ProcedureDetail() {
                 Treatment Options
               </h3>
               <div className="procedure-detail__treatments-grid">
-                {Object.entries(selectedInjury.treatment).map(([key, value]) => (
-                  <div
-                    key={key}
-                    className="procedure-detail__treatment-card"
-                  >
-                    <h4 className="procedure-detail__treatment-type">
-                      {key.charAt(0).toUpperCase() +
-                        key.slice(1).replace(/([A-Z])/g, ' $1')}
-                    </h4>
-                    <p className="procedure-detail__treatment-description">
-                      {value}
-                    </p>
-                  </div>
-                ))}
+                {Object.entries(selectedInjury.treatment).map(
+                  ([key, value]) => (
+                    <div key={key} className="procedure-detail__treatment-card">
+                      <h4 className="procedure-detail__treatment-type">
+                        {key.charAt(0).toUpperCase() +
+                          key.slice(1).replace(/([A-Z])/g, ' $1')}
+                      </h4>
+                      <p className="procedure-detail__treatment-description">
+                        {value}
+                      </p>
+                    </div>
+                  )
+                )}
               </div>
             </section>
           </div>
@@ -97,9 +95,7 @@ function ProcedureDetail() {
                 className="procedure-detail__injury-card"
                 onClick={() => handleSelectInjury(injury)}
               >
-                <h3 className="procedure-detail__injury-name">
-                  {injury.name}
-                </h3>
+                <h3 className="procedure-detail__injury-name">{injury.name}</h3>
                 <p className="procedure-detail__injury-summary">
                   {injury.description.substring(0, 100)}...
                 </p>
@@ -122,8 +118,6 @@ function ProcedureDetail() {
         ← Back to All Procedures
       </Link>
     </div>
-
-
   );
 }
 
