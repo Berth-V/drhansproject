@@ -2,8 +2,10 @@ import './Header.css';
 import logo from '../../assets/logo.webp';
 import { NavLink } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function Header() {
+  const { t } = useTranslation();
   const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef(null);
   const toggleBtnRef = useRef(null);
@@ -13,7 +15,7 @@ export default function Header() {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      // ✅ Avoid closing when clicking on the toggle button
+      // Avoid closing when clicking on the toggle button
       if (
         navRef.current &&
         !navRef.current.contains(event.target) &&
@@ -48,12 +50,11 @@ export default function Header() {
         height="64"
       />
 
-      {/* 🔹 Toggle button now has its own ref to avoid self-click conflict */}
       <button
         ref={toggleBtnRef}
         className={`header__toggle ${menuOpen ? 'header__toggle--open' : ''}`}
         onClick={toggleMenu}
-        aria-label="Toggle menu"
+        aria-label={t('header.toggle')}
         aria-expanded={menuOpen}
       >
         <span className="header__toggle-bar"></span>
@@ -68,7 +69,7 @@ export default function Header() {
         <ul className="header__list">
           <li className="header__item">
             <NavLink className="header__link" to="/" onClick={closeMenu}>
-              <span className="header__link-text">Home</span>
+              <span className="header__link-text">{t('header.home')}</span>
             </NavLink>
           </li>
 
@@ -78,13 +79,13 @@ export default function Header() {
               to="/procedures"
               onClick={closeMenu}
             >
-              <span className="header__link-text">Procedures</span>
+              <span className="header__link-text">{t('header.procedures')}</span>
             </NavLink>
           </li>
 
           <li className="header__item">
             <NavLink className="header__link" to="/about" onClick={closeMenu}>
-              <span className="header__link-text">About</span>
+              <span className="header__link-text">{t('header.about')}</span>
             </NavLink>
           </li>
 
@@ -94,7 +95,7 @@ export default function Header() {
               to="/contact"
               onClick={closeMenu}
             >
-              Get your Appointment
+              {t('header.appointment')}
             </NavLink>
           </li>
         </ul>

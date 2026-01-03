@@ -147,7 +147,7 @@ export default function SkeletonManager() {
                         rx="1"
                       />
                       {active.seeAllBtn.othersPaths?.map((p) => (
-                        <path key={p.id} id={p.id} d={p.d} fill="black" />
+                        <path key={p.id} id={p.id} d={p.d} fill="white" />
                       ))}
                     </motion.g>
                   </Link>

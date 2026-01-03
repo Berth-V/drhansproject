@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export default function FormFields({
   formData,
@@ -8,6 +9,8 @@ export default function FormFields({
   handleChange,
   TurnstileWidget,
 }) {
+  const { t } = useTranslation();
+
   return (
     <>
       <div className="form__row">
@@ -16,14 +19,12 @@ export default function FormFields({
             className={`form__input ${errors.name ? 'form__input--error' : ''}`}
             name="name"
             type="text"
-            placeholder="Full Name"
+            placeholder={t('formFields.name')}
             autoComplete="name"
             value={formData.name}
             onChange={handleChange}
           />
-          {errors.name && (
-            <span className="form__error-msg">{errors.name}</span>
-          )}
+          {errors.name && <span className="form__error-msg">{errors.name}</span>}
         </div>
 
         <div className="form__field">
@@ -31,14 +32,12 @@ export default function FormFields({
             className={`form__input ${errors.email ? 'form__input--error' : ''}`}
             name="email"
             type="email"
-            placeholder="Email Address"
+            placeholder={t('formFields.email')}
             autoComplete="email"
             value={formData.email}
             onChange={handleChange}
           />
-          {errors.email && (
-            <span className="form__error-msg">{errors.email}</span>
-          )}
+          {errors.email && <span className="form__error-msg">{errors.email}</span>}
         </div>
       </div>
 
@@ -48,14 +47,12 @@ export default function FormFields({
             className={`form__input ${errors.phone ? 'form__input--error' : ''}`}
             name="phone"
             type="tel"
-            placeholder="Phone Number"
+            placeholder={t('formFields.phone')}
             autoComplete="tel"
             value={formData.phone}
             onChange={handleChange}
           />
-          {errors.phone && (
-            <span className="form__error-msg">{errors.phone}</span>
-          )}
+          {errors.phone && <span className="form__error-msg">{errors.phone}</span>}
         </div>
 
         <div className="form__spacer" />
@@ -66,7 +63,7 @@ export default function FormFields({
           <textarea
             className="form__textarea"
             name="message"
-            placeholder="Message"
+            placeholder={t('formFields.message')}
             rows={5}
             value={formData.message}
             onChange={handleChange}
@@ -89,13 +86,9 @@ export default function FormFields({
           onChange={(e) => setConsent(e.target.checked)}
         />
         <label htmlFor="consent" className="form__consent-label">
-          I agree to the{' '}
-          <Link
-            to="/privacyPolicy"
-            target="_blank"
-            className="form__consent-link"
-          >
-            Privacy Policy
+          {t('formFields.consentPrefix')}{' '}
+          <Link to="/privacyPolicy" target="_blank" className="form__consent-link">
+            {t('formFields.privacyPolicy')}
           </Link>
         </label>
       </div>

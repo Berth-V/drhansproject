@@ -1,0 +1,115 @@
+{
+    "header": {
+        "home": "Inicio",
+        "procedures": "Procedimientos",
+        "about": "Acerca de",
+        "appointment": "Agenda tu cita",
+        "toggle": "Abrir menú"
+    },
+    "frontpage": {
+        "highlight": "Dolor Lumbar",
+        "description": ", Rodilla, Muñeca, Ruptura de Menisco, Tendinitis, Medicina del Deporte, Manejo del Dolor Ciático, Lumbar y Cervical, entre muchas otras condiciones.",
+        "cta": "Agenda tu Cita"
+    },
+    "reviews": {
+        "title": "Opiniones de Nuestros Pacientes",
+        "loading": "Cargando reseñas...",
+        "empty": "No hay reseñas disponibles"
+    },
+    "procedures": {
+        "title": "Explora los Procedimientos",
+        "injuriesAndTreatments": "Lesiones y Tratamientos Disponibles",
+        "notFound": "Parte del cuerpo no encontrada",
+        "backToProcedures": "Volver a Procedimientos",
+        "injuries": "Lesiones",
+        "exploreInjuriesFor": "Explora lesiones y tratamientos para {{part}}",
+        "treatmentOptions": "Opciones de Tratamiento",
+        "viewDetails": "Ver Detalles",
+        "backToList": "Volver a la Lista",
+        "backToAllProcedures": "Volver a Todos los Procedimientos"
+    },
+    "about": {
+        "photoAlt": "Foto del Dr Hans",
+        "name": "Dr. Hans Ruiz",
+        "profession": "Traumatología",
+        "followMe": "Sígueme",
+        "description": "Hola, soy el Dr. Hans Ruiz Serna, tengo experiencia en el manejo del dolor ciático, lumbar y cervical utilizando técnicas mínimamente invasivas, así como en procedimientos quirúrgicos para prótesis articulares y cirugía de columna.\nDesde 2014 me he dedicado a realizar cirugías de reparación de fracturas, reemplazos articulares y manejo integral de lesiones musculoesqueléticas, ofreciendo atención médica precisa y humana enfocada en restaurar la movilidad y calidad de vida de mis pacientes.",
+        "education": {
+            "title": "EDUCACIÓN:",
+            "value": "UAS - Medicina"
+        },
+        "speciality": {
+            "title": "ESPECIALIDAD:",
+            "value": "UNAM - Traumatología y Ortopedia."
+        }
+    },
+    "form": {
+        "title": "Agendar una cita",
+        "subtitle": "Reserva tu consulta rápida y fácilmente.",
+        "button": "Cita",
+        "sending": "Enviando…",
+        "success": "¡Gracias! Nos pondremos en contacto pronto.",
+        "error": "Hubo un problema al enviar tu mensaje.",
+        "toggle": "Cita →"
+    },
+    "formFields": {
+        "name": "Nombre Completo",
+        "email": "Correo Electrónico",
+        "phone": "Número de Teléfono",
+        "message": "Mensaje",
+        "consentPrefix": "Acepto la",
+        "privacyPolicy": "Política de Privacidad"
+    },
+    "privacy": {
+        "title": "Política de Privacidad",
+        "intro": "Dr. Hans Ruiz, ubicado en Tijuana, Baja California, México, se compromete a proteger su información personal. Esta Política de Privacidad explica cómo recopilamos, usamos y protegemos la información que usted proporciona a través de nuestro sitio web",
+        "section1": {
+            "title": "1. Información que recopilamos",
+            "text": "Recopilamos información personal como su nombre, correo electrónico y número de teléfono cuando completa nuestros formularios de contacto o cita."
+        },
+        "section2": {
+            "title": "2. Cómo usamos su información",
+            "items": [
+                "Para programar citas médicas o consultas.",
+                "Para comunicarnos respecto a servicios y procedimientos médicos.",
+                "Para proporcionar información solicitada por usted."
+            ]
+        },
+        "section3": {
+            "title": "3. Protección de datos",
+            "text": "Implementamos salvaguardas administrativas, físicas y técnicas para asegurar que sus datos estén protegidos contra acceso no autorizado, divulgación o uso indebido."
+        },
+        "section4": {
+            "title": "4. Compartir datos",
+            "text": "No vendemos, alquilamos ni compartimos su información con terceros, excepto cuando la ley lo requiera."
+        },
+        "section5": {
+            "title": "5. Sus derechos",
+            "text1": "Puede solicitar acceder, actualizar o eliminar sus datos personales contactándonos en",
+            "text2": "."
+        },
+        "section6": {
+            "title": "6. Usuarios internacionales",
+            "text": "Al usar este sitio web, comprende que su información puede ser transferida y procesada en México, donde se encuentra nuestra clínica."
+        },
+        "section7": {
+            "title": "7. Actualizaciones",
+            "text": "Podemos actualizar esta Política de Privacidad periódicamente. Cualquier cambio se reflejará en esta página con la fecha de actualización abajo."
+        },
+        "lastUpdated": "Última actualización: {{date}}"
+    },
+    "footer": {
+        "name": "Dr. Hans Ruiz",
+        "specialty": "Traumatología y Ortopedia",
+        "address": {
+            "line1": "Vía Ote. 9750-903, Zona Urbana Rio Tijuana,",
+            "line2": "22010 Tijuana, B.C."
+        },
+        "quickLinks": "Enlaces Rápidos",
+        "procedures": "Procedimientos",
+        "about": "Sobre mí",
+        "appointment": "Agenda tu cita",
+        "followMe": "Sígueme",
+        "privacyPolicy": "Política de Privacidad"
+    }
+}

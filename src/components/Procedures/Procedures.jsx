@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
-import proceduresData from './data/proceduresData';
+import { getProceduresData } from './data';
 import { procedureCard } from '../Shared/motionVariants/motionVariants';
+import { useTranslation } from 'react-i18next';
 import './Procedures.css';
 
 const icons = import.meta.glob('/src/assets/procedures_icons/*.png', {
@@ -9,11 +10,13 @@ const icons = import.meta.glob('/src/assets/procedures_icons/*.png', {
 });
 
 const Procedures = () => {
+  const proceduresData = getProceduresData();
   const parts = Object.entries(proceduresData);
+  const { t } = useTranslation();
 
   return (
     <section className="procedures">
-      <h2 className="procedures__title">Explore Procedures</h2>
+      <h2 className="procedures__title">{t('procedures.title')}</h2> {/* <--- i18n */}
       <motion.div
         className="procedures__grid"
         variants={procedureCard}
@@ -45,7 +48,7 @@ const Procedures = () => {
                 <div className="procedures__card-body">
                   <h3 className="procedures__card-name">{part.title}</h3>
                   <p className="procedures__card-description">
-                    {part.injuries.length} injuries and treatments available
+                    {part.injuries.length} {t('procedures.injuriesAndTreatments')}
                   </p>
                 </div>
               </Link>

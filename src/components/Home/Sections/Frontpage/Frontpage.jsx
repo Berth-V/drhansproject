@@ -2,9 +2,11 @@ import './Frontpage.css';
 import hanspic from '../../../../assets/hans.webp';
 import icon1 from '../../../../assets/x-ray.webp';
 import icon2 from '../../../../assets/fracture.webp';
+import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 
 function Frontpage() {
+  const { t } = useTranslation();
   return (
     <section className="frontpage">
       <img
@@ -13,21 +15,19 @@ function Frontpage() {
         alt="Dr. Hans"
         width="520"
         height="600"
-        fetchpriority="high"
+        fetchPriority="high"
       />
       <div className="frontpage__textBox">
         <p className="frontpage__text">
           <b className="frontpage__text frontpage__text--blue">
-            Lower Back Pain
+            {t('frontpage.highlight')}
           </b>
-          , Knee, Wrist, Meniscus Rupture, Tendonitis, Sport Medicine,
-          Management of Sciatic, Lumbar, and Cervical Pain, Among Many Other
-          Conditions.
+          {t('frontpage.description')}
         </p>
 
         <div className="frontpage__ctaGroup">
           <NavLink className="frontpage__primaryBtn" to="/contact">
-            Get Your Appointment
+            {t('frontpage.cta')}
           </NavLink>
 
           <a className="frontpage__phoneCta" href="tel:+526645410955">
