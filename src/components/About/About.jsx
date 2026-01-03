@@ -3,20 +3,23 @@ import photo from '../../assets/about-photo.webp';
 import { FaFacebookSquare } from 'react-icons/fa';
 import { RiInstagramFill } from 'react-icons/ri';
 import { AiFillTikTok } from 'react-icons/ai';
+import { useTranslation } from 'react-i18next';
 
 const About = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="doctor-profile">
       <div className="profile-header">
         <div className="photo-section">
           <div className="photo-placeholder">
-            <img src={photo} alt="Dr Hans About Photo" />
+            <img src={photo} alt={t('about.photoAlt')} />
           </div>
         </div>
         <div className="name-specialty">
-          <h1>Dr. Hans Ruiz</h1>
-          <h2>Traumatology</h2>
-          <p>Follow me</p>
+          <h1>{t('about.name')}</h1>
+          <h2>{t('about.profession')}</h2>
+          <p>{t('about.followMe')}</p>
           <div className="social-links">
             <a
               href="https://www.tiktok.com/@drhansruiz"
@@ -45,30 +48,26 @@ const About = () => {
           </div>
         </div>
       </div>
+
       <div className="about-description">
-        <p>
-          Hi there, I am Dr. Hans Ruiz Serna, I have experience in the
-          management of sciatic, lumbar, and cervical pain using minimally
-          invasive techniques, as well as in surgical procedures for joint
-          prosthetics and spinal surgery.
-          <br />
-          Since 2014, I have dedicated myself to performing fracture repair
-          surgeries, joint replacements, and comprehensive management of
-          musculoskeletal injuries, offering precise, humane medical care
-          focused on restoring my patients' mobility and quality of life.
-        </p>
+        {t('about.description')
+          .split('\n')
+          .map((line, i) => (
+            <p key={i}>{line}</p>
+          ))}
       </div>
+
       <div className="profile-content">
         <div className="left-column">
           <div className="info-section">
-            <h3>EDUCATION:</h3>
-            <p>UAS - Medicine</p>
+            <h3>{t('about.education.title')}</h3>
+            <p>{t('about.education.value')}</p>
           </div>
         </div>
         <div className="right-column">
           <div className="info-section">
-            <h3>SPECIALITY:</h3>
-            <p>UNAM - Traumatology and Orthopedics.</p>
+            <h3>{t('about.speciality.title')}</h3>
+            <p>{t('about.speciality.value')}</p>
           </div>
         </div>
       </div>

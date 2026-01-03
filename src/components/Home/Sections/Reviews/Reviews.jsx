@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import './Reviews.css';
 
 export default function Reviews() {
+  const { t } = useTranslation();
+
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -22,12 +25,12 @@ export default function Reviews() {
     fetchReviews();
   }, []);
 
-  if (loading) return <p>Loading reviews...</p>;
+  if (loading) return <p>{t('reviews.loading')}</p>;
 
   return (
     <section className="homeReviews">
       <div className="homeReviews__wrap">
-        <h2 className="homeReviews__title">Words from Our Patients</h2>
+        <h2 className="homeReviews__title">{t('reviews.title')}</h2>
 
         <div className="homeReviews__grid">
           {reviews.length > 0 ? (
@@ -67,7 +70,7 @@ export default function Reviews() {
               </article>
             ))
           ) : (
-            <p>No reviews available</p>
+            <p>{t('reviews.empty')}</p>
           )}
         </div>
       </div>

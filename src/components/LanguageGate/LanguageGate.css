@@ -1,0 +1,59 @@
+.language-gate {
+    position: fixed;
+    inset: 0;
+    background-color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: system-ui, sans-serif;
+}
+
+.card {
+    background-color: var(--third-color);
+    backdrop-filter: blur(10px);
+    padding: 3rem;
+    border-radius: 1rem;
+    text-align: center;
+    max-width: 420px;
+    width: 100%;
+}
+
+.card h1 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.actions button {
+    flex: 1;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border-radius: 0.6rem;
+    border: none;
+    cursor: pointer;
+    background: white;
+    color: #020617;
+    font-weight: 600;
+}
+
+.actions button:hover {
+    background: #e5e7eb;
+}
+
+/* Fallback when no JS */
+.noscript {
+    position: fixed;
+    bottom: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.noscript a {
+    color: white;
+    text-decoration: underline;
+}

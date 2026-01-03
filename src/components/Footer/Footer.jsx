@@ -3,39 +3,42 @@ import { AiFillTikTok } from 'react-icons/ai';
 import { RiInstagramFill } from 'react-icons/ri';
 import { FaFacebookSquare } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function Footer() {
+  const { t } = useTranslation();
+
   return (
     <footer className="footer">
       <div className="footer-content">
         <div className="footer-column">
-          <h3>Dr. Hans Ruiz</h3>
-          <p>Traumatology and Orthopedics</p>
+          <h3>{t('footer.name')}</h3>
+          <p>{t('footer.specialty')}</p>
           <p className="footer-address">
-            Vía Ote. 9750-903, Zona Urbana Rio Tijuana,
+            {t('footer.address.line1')}
             <br />
-            22010 Tijuana, B.C.
+            {t('footer.address.line2')}
           </p>
         </div>
 
         <div className="footer-column">
-          <h3>Quick Links</h3>
+          <h3>{t('footer.quickLinks')}</h3>
           <ul>
             <li>
-              <Link to="/procedures">Procedures</Link>
+              <Link to="/procedures">{t('footer.procedures')}</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/about">{t('footer.about')}</Link>
             </li>
             <li>
-              <Link to="/contact">Get Your Appointment</Link>
+              <Link to="/contact">{t('footer.appointment')}</Link>
             </li>
           </ul>
         </div>
       </div>
 
       <div className="footer-bottom">
-        <p>Follow Me</p>
+        <p>{t('footer.followMe')}</p>
         <div className="social-icons">
           <a
             href="https://www.tiktok.com/@drhansruiz"
@@ -66,7 +69,7 @@ function Footer() {
         {/* Privacy Policy */}
         <p className="privacy-wrapper">
           <Link to="/privacyPolicy" className="footerLink privacy-link">
-            Privacy Policy
+            {t('footer.privacyPolicy')}
           </Link>
         </p>
       </div>
