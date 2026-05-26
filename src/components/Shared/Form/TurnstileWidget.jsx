@@ -1,58 +1,51 @@
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 function TurnstileWidget() {
   const ref = useRef(null);
   const widgetIdRef = useRef(null); // <-- store the ID returned by render()
   const [token, setToken] = useState('');
+  const { i18n } = useTranslation();
 
   useEffect(() => {
     const SITEKEY = import.meta.env.VITE_TURNSTILE_SITEKEY;
-    if (!SITEKEY) return;
 
-    const render = () => {
-      if (!window.turnstile || !ref.current) return;
-
-      // If there's already a widget, remove it (prevents duplicates in StrictMode/HMR)
-      try {
-        if (widgetIdRef.current && window.turnstile.remove) {
-          window.turnstile.remove(widgetIdRef.current);
-          widgetIdRef.current = null;
-        }
-        // (optional, in case something remains stuck in the container)
-        ref.current.innerHTML = '';
-      } catch {}
-
-      // Explicitly render and save the widgetId
-      widgetIdRef.current = window.turnstile.render(ref.current, {
-        sitekey: SITEKEY,
-        theme: 'light',
-        appearance: 'always', // remove in prod if you want invisible/auto mode
-        callback: (t) => setToken(t || ''),
-        'expired-callback': () => setToken(''),
-        'error-callback': () => setToken(''),
-      });
-    };
-
-    // Wait for the API to be ready (using your index.html callback)
-    if (window.__turnstileReady) render();
-    else {
-      const handler = () => render();
-      document.addEventListener('turnstile-loaded', handler, { once: true });
-      // cleanup the listener if unmounted before:
-      return () => document.removeEventListener('turnstile-loaded', handler);
+    if (!SITEKEY) {
+      console.error("Turnstile SITEKEY missing");
+      return;
     }
 
-    // Cleanup on unmount (very important with StrictMode)
-    return () => {
-      try {
-        if (widgetIdRef.current && window.turnstile?.remove) {
-          window.turnstile.remove(widgetIdRef.current);
+    const interval = setInterval(() => {
+      if (window.turnstile && ref.current) {
+        clearInterval(interval);
+
+        try {
+          if (widgetIdRef.current && window.turnstile.remove) {
+            window.turnstile.remove(widgetIdRef.current);
+          }
+
+          widgetIdRef.current = window.turnstile.render(ref.current, {
+            sitekey: SITEKEY,
+            theme: 'light',
+            appearance: 'always',
+            callback: (t) => setToken(t || ''),
+            'expired-callback': () => setToken(''),
+            'error-callback': () => setToken(''),
+          });
+        } catch (err) {
+          console.error("Turnstile render error:", err);
         }
-      } finally {
+      }
+    }, 200);
+
+    return () => {
+      clearInterval(interval);
+      if (widgetIdRef.current && window.turnstile?.remove) {
+        window.turnstile.remove(widgetIdRef.current);
         widgetIdRef.current = null;
       }
     };
-  }, []);
+  }, [i18n.language]);
 
   return (
     <>

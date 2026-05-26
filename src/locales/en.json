@@ -7,14 +7,62 @@
         "toggle": "Toggle menu"
     },
     "frontpage": {
-        "highlight": "Lower Back Pain",
-        "description": ", Knee, Wrist, Meniscus Rupture, Tendonitis, Sport Medicine, Management of Sciatic, Lumbar, and Cervical Pain, Among Many Other Conditions.",
+        "title": "Reclaim your life without back pain",
+        "description": "Specialized Spine Surgery, Herniated Disc, Sciatica, Scoliosis, Fractures or Accidents, Biopsy Taking, among many other services.",
         "cta": "Get Your Appointment"
+    },
+    "minInv": {
+        "title": "Minimally Invasive Surgery",
+        "description": "Minimally invasive surgery allows treatment of musculoskeletal conditions through small incisions, reducing tissue damage and speeding up patient recovery.",
+        "benefit1": "Less postoperative pain",
+        "benefit2": "Faster recovery",
+        "benefit3": "Smaller, more aesthetic scars",
+        "imageAlt": "Small minimally invasive surgery scar"
+    },
+    "disc": {
+        "title": "Herniated Disc",
+        "description": "A herniated disc occurs when one of the spinal discs shifts and presses on nearby nerves, causing pain and limiting movement. It is one of the most common causes of lower back and neck pain.",
+        "symptom1": "Lower back or neck pain",
+        "symptom2": "Pain radiating to arms or legs",
+        "symptom3": "Tingling or muscle weakness",
+        "ctaText": "Early diagnosis can prevent complications and improve your quality of life.",
+        "imageAlt": "Illustration of a herniated disc in the spine"
+    },
+    "scoliosis": {
+        "title": "Scoliosis",
+        "description": "Scoliosis is an abnormal curvature of the spine that can develop during growth or appear in adulthood. In some cases, it may progress and cause discomfort or affect posture.",
+        "sign1": "Uneven shoulders or hips",
+        "sign2": "Visible spinal curvature",
+        "sign3": "Back pain or muscle fatigue",
+        "ctaText": "Early diagnosis allows proper treatment and prevents progression.",
+        "imageAlt": "Example of scoliosis in the spine"
+    },
+    "osteo": {
+        "title": "Osteoarthritis",
+        "description": "Osteoarthritis is a degenerative joint disease that occurs when cartilage wears down over time, causing pain, stiffness, and reduced mobility.",
+        "symptom1": "Joint pain during movement",
+        "symptom2": "Stiffness, especially in the morning",
+        "symptom3": "Reduced joint mobility",
+        "ctaText": "Proper treatment can relieve symptoms and significantly improve quality of life.",
+        "imageAlt": "Representation of a joint affected by osteoarthritis"
+    },
+    "sciatica": {
+        "title": "Sciatica / Sciatic Nerve",
+        "description": "Sciatica is pain caused by irritation or compression of the sciatic nerve, the longest nerve in the body. It usually starts in the lower back and may radiate down the leg.",
+        "symptom1": "Lower back pain radiating to buttock and leg",
+        "symptom2": "Tingling or numbness",
+        "symptom3": "Weakness when walking or moving the leg",
+        "ctaText": "Early treatment can relieve pain and prevent complications.",
+        "imageAlt": "Representation of an inflamed sciatic nerve"
+    },
+    "skeleton": {
+        "title": "All procedures"
     },
     "reviews": {
         "title": "Words from Our Patients",
         "loading": "Loading reviews...",
-        "empty": "No reviews available"
+        "empty": "No reviews available",
+        "button": "Write your review"
     },
     "procedures": {
         "title": "Explore Procedures",
@@ -64,37 +112,56 @@
         "title": "Privacy Policy",
         "intro": "Dr. Hans Ruiz, located in Tijuana, Baja California, Mexico, is committed to protecting your personal information. This Privacy Policy explains how we collect, use, and protect the information you provide through our website",
         "section1": {
-            "title": "1. Information we collect",
-            "text": "We collect personal information such as your name, email address, and phone number when you fill out our contact or appointment forms."
+            "title": "1. Information We Collect",
+            "text": [
+                "We collect personal information such as your name, email address, and phone number when you fill out our contact, information request, or appointment forms.",
+                "Additionally, during in-person medical care, information related to your consultation, medical records, and clinical documentation may be generated in accordance with applicable laws."
+            ]
         },
         "section2": {
-            "title": "2. How we use your information",
+            "title": "2. How We Use Your Information",
             "items": [
                 "To schedule medical appointments or consultations.",
-                "To communicate regarding medical services and procedures.",
-                "To provide information requested by you."
+                "To communicate regarding medical services, procedures, and follow-up care.",
+                "To create and manage medical records.",
+                "To provide information requested by you.",
+                "To improve the accuracy and documentation of the medical care provided.",
+                "During medical consultations, technological clinical support tools may be used, including voice processing and transcription, for the purpose of documenting medical information and facilitating the integration of medical records."
             ]
         },
         "section3": {
-            "title": "3. Data protection",
-            "text": "We implement administrative, physical, and technical safeguards to ensure your data is protected against unauthorized access, disclosure, or misuse."
+            "title": "3. Video Surveillance and Clinical Support Tools",
+            "text": [
+                "The clinic facilities may use video surveillance systems for security purposes, protection of patients and medical staff, access control, and incident management.",
+                "Additionally, digital clinical support and medical documentation tools may be used during consultations. The information obtained will be considered confidential and handled in accordance with applicable regulations regarding personal and sensitive personal data protection."
+            ]
         },
         "section4": {
-            "title": "4. Data sharing",
-            "text": "We do not sell, rent, or share your information with third parties, except when required by law."
+            "title": "4. Data Protection",
+            "text": [
+                "We implement administrative, physical, and technical safeguards to ensure your data is protected against unauthorized access, disclosure, loss, or misuse.",
+                "Access to medical information and personal data will be restricted exclusively to authorized personnel and handled under strict confidentiality measures."
+            ]
         },
         "section5": {
-            "title": "5. Your rights",
-            "text1": "You may request to access, update, or delete your personal data by contacting us at",
-            "text2": "."
+            "title": "5. Data Sharing",
+            "text": [
+                "We do not sell, rent, or share your personal information with third parties, except when necessary for technological services related to clinic operations and clinical documentation.",
+                "We may also share information when required by law or when expressly authorized by the data owner."
+            ]
         },
         "section6": {
-            "title": "6. International users",
-            "text": "By using this website, you understand that your information may be transferred to and processed in Mexico where our clinic is located."
+            "title": "6. Your Rights",
+            "text1": "You may request access, correction, updating, cancellation, or objection regarding the processing of your personal data (ARCO Rights) by contacting us at",
+            "text2": "."
         },
         "section7": {
-            "title": "7. Updates",
-            "text": "We may update this Privacy Policy periodically. Any changes will be reflected on this page with the updated date below."
+            "title": "7. International Users",
+            "text": "By using this website, you understand that your information may be transferred to and processed in Mexico, where our medical office is located."
+        },
+        "section8": {
+            "title": "8. Updates",
+            "text": "We may update this Privacy Policy periodically. Any changes will be reflected on this page together with the updated revision date."
         },
         "lastUpdated": "Last updated: {{date}}"
     },

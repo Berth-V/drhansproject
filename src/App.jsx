@@ -5,6 +5,7 @@ import AppRoutes from './AppRoutes';
 import Footer from './components/Footer/Footer';
 import Form from './components/Shared/Form/Form';
 import WhatsAppBtn from './components/Shared/WhatsAppBtn/WhatsAppBtn';
+import CallButton from './components/Shared/CallButton/CallButton';
 
 function App() {
   const location = useLocation();
@@ -16,6 +17,7 @@ function App() {
       <Header />
       <AppRoutes />
       {!isContactPage && <Form variant="sticky" />}
+      <CallButton />
       <WhatsAppBtn />
       <Footer />
     </>

@@ -3,6 +3,7 @@ import logo from '../../assets/logo.webp';
 import { NavLink } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from '../Shared/LanguageSwitcher/LanguageSwitcher';
 
 export default function Header() {
   const { t } = useTranslation();
@@ -42,13 +43,58 @@ export default function Header() {
 
   return (
     <header className="header">
-      <img
-        className="header__logo"
-        src={logo}
-        alt="Logo"
-        width="248"
-        height="64"
-      />
+      <div className='header__nav-top'>
+        <LanguageSwitcher />
+      </div>
+      <div className='header__wrapper'>
+        <img
+          className="header__logo"
+          src={logo}
+          alt="Logo"
+          width="248"
+          height="64"
+        />
+
+        <nav
+          ref={navRef}
+          className={`header__nav ${menuOpen ? 'header__nav--open' : ''}`}
+        >
+          <ul className="header__list">
+            <li className="header__item">
+              <NavLink className="header__link" to="/" onClick={closeMenu}>
+                <span className="header__link-text">{t('header.home')}</span>
+              </NavLink>
+            </li>
+
+            <li className="header__item">
+              <NavLink
+                className="header__link"
+                to="/procedures"
+                onClick={closeMenu}
+              >
+                <span className="header__link-text">{t('header.procedures')}</span>
+              </NavLink>
+            </li>
+
+            <li className="header__item">
+              <NavLink className="header__link" to="/about" onClick={closeMenu}>
+                <span className="header__link-text">{t('header.about')}</span>
+              </NavLink>
+            </li>
+
+            <li className="header__item">
+              <NavLink
+                className="header__appointment-btn"
+                to="/contact"
+                onClick={closeMenu}
+              >
+                {t('header.appointment')}
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
 
       <button
         ref={toggleBtnRef}
@@ -61,45 +107,6 @@ export default function Header() {
         <span className="header__toggle-bar"></span>
         <span className="header__toggle-bar"></span>
       </button>
-
-      <nav
-        ref={navRef}
-        className={`header__nav ${menuOpen ? 'header__nav--open' : ''}`}
-      >
-        <ul className="header__list">
-          <li className="header__item">
-            <NavLink className="header__link" to="/" onClick={closeMenu}>
-              <span className="header__link-text">{t('header.home')}</span>
-            </NavLink>
-          </li>
-
-          <li className="header__item">
-            <NavLink
-              className="header__link"
-              to="/procedures"
-              onClick={closeMenu}
-            >
-              <span className="header__link-text">{t('header.procedures')}</span>
-            </NavLink>
-          </li>
-
-          <li className="header__item">
-            <NavLink className="header__link" to="/about" onClick={closeMenu}>
-              <span className="header__link-text">{t('header.about')}</span>
-            </NavLink>
-          </li>
-
-          <li className="header__item">
-            <NavLink
-              className="header__appointment-btn"
-              to="/contact"
-              onClick={closeMenu}
-            >
-              {t('header.appointment')}
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
     </header>
   );
 }

@@ -9,8 +9,8 @@ const TurnstileWidgetLazy = lazy(() => import('./TurnstileWidget'));
 
 export default function Form({ variant = 'full' }) {
   const { t } = useTranslation();
-  const [open, setOpen] = useState(false); // para sticky
-  const [turnstileVisible, setTurnstileVisible] = useState(variant === 'full'); // <-- clave
+  const [open, setOpen] = useState(false); // Sticky
+  const [turnstileVisible, setTurnstileVisible] = useState(variant === 'full'); // <-- Pass
 
   const {
     formData,
@@ -36,7 +36,7 @@ export default function Form({ variant = 'full' }) {
     if (!turnstileVisible) setTurnstileVisible(true);
   };
 
-  // --- Formulario grande (full) ---
+  // --- Full form ---
   if (variant === 'full') {
     return (
       <section className="form form--full">

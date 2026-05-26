@@ -13,7 +13,7 @@ export default function useForm() {
 
   const regex = {
     name: /^[A-Za-zÀ-ÿ\s]{3,40}$/,
-    email: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/,
+    email: /^[\w-.]+@([\w-]+\.)+[\w-]{2,}$/,
     phone: /^[0-9+\-\s()]{7,20}$/,
   };
 
@@ -88,6 +88,22 @@ export default function useForm() {
       fd.append('formId', 'appointment');
       if (import.meta.env.VITE_FORM_KEY)
         fd.append('form_key', import.meta.env.VITE_FORM_KEY);
+
+      //Turnstile
+      const tokenInput = document.querySelector(
+        '[name="cf-turnstile-response"]'
+      );
+
+      if (!tokenInput?.value) {
+        setStatus({
+          sending: false,
+          ok: false,
+          error: 'Please complete the security check.',
+        });
+        return;
+      }
+
+      fd.append('cf-turnstile-response', tokenInput.value);
 
       const res = await fetch(import.meta.env.VITE_APPS_SCRIPT_URL, {
         method: 'POST',

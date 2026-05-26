@@ -1,0 +1,13 @@
+.switcher__btn {
+    color: white;
+    background-color: transparent;
+    font-size: 13px;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: all;
+    transition-duration: 0.2s;
+}
+
+.switcher__btn:hover {
+    color: var(--black-color);
+}

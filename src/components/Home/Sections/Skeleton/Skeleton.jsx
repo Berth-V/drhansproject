@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import { useTranslation } from 'react-i18next';
 import { useSkeletonContext } from './context/useSkeletonContext';
 import './Skeleton.css';
 import Bones from './parts/Bones';
@@ -7,12 +8,14 @@ import SkeletonManager from './parts/SkeletonManager';
 
 export default function Skeleton() {
   const { viewBox } = useSkeletonContext();
-  return (
+  const { t } = useTranslation();
+  return (<>
+    <h2 className="skeleton__title">
+      {t('skeleton.title')}
+    </h2>
     <div className="skeleton__box">
       <motion.svg
         className="svg"
-        width="700"
-        height="950"
         viewBox={viewBox}
         animate={{ viewBox }}
         transition={{
@@ -29,5 +32,6 @@ export default function Skeleton() {
         <Defs />
       </motion.svg>
     </div>
+  </>
   );
 }

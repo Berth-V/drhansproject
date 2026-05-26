@@ -7,15 +7,39 @@
 }
 
 /* Frontpage */
-.home > div.frontpage-placeholder {
+.home>div.frontpage-placeholder {
   min-height: 60vh;
   /* Aproximación al alto real del hero */
 }
 
+/* Minimally Invasive */
+.home .mininv-placeholder {
+  min-height: 320px;
+}
+
+/* Disc Hernia */
+.home .disc-placeholder {
+  min-height: 320px;
+}
+
+/* Scoliosis */
+.home .scoliosis-placeholder {
+  min-height: 320px;
+}
+
+/* Osteoarthritis */
+.home .osteo-placeholder {
+  min-height: 320px;
+}
+
+/* sciatica */
+.home .sciatica-placeholder {
+  min-height: 320px;
+}
+
 /* Skeleton */
 .home .skeleton-placeholder {
-  min-height: 300px;
-  /* Solo un bloque representativo */
+  min-height: auto;
 }
 
 /* Map */
