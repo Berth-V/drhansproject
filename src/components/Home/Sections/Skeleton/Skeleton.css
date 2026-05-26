@@ -3,6 +3,19 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: auto;
+  max-width: 100%;
   background-color: var(--black-color);
+}
+
+.svg {
+  width: min(100%, 700px);
+  height: auto;
+}
+
+.skeleton__title {
+  font-size: clamp(1.4rem, 2.9vw, 2.2rem);
+  color: var(--secondary-color);
+  font-weight: 700;
+  text-align: center;
+  margin: 0;
 }

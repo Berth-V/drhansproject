@@ -1,7 +1,7 @@
 import './Frontpage.css';
 import hanspic from '../../../../assets/hans.webp';
-import icon1 from '../../../../assets/x-ray.webp';
-import icon2 from '../../../../assets/fracture.webp';
+//import icon1 from '../../../../assets/x-ray.webp';
+//import icon2 from '../../../../assets/fracture.webp';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 
@@ -9,27 +9,19 @@ function Frontpage() {
   const { t } = useTranslation();
   return (
     <section className="frontpage">
-      <img
-        className="frontpage__pic"
-        src={hanspic}
-        alt="Dr. Hans"
-        width="520"
-        height="600"
-        fetchPriority="high"
-      />
       <div className="frontpage__textBox">
-        <p className="frontpage__text">
-          <b className="frontpage__text frontpage__text--blue">
-            {t('frontpage.highlight')}
-          </b>
-          {t('frontpage.description')}
-        </p>
-
+        <div className="frontpage__text">
+          <h1 className="frontpage__title">
+            {t('frontpage.title')}
+          </h1>
+          <p className="frontpage__description">
+            {t('frontpage.description')}
+          </p>
+        </div>
         <div className="frontpage__ctaGroup">
           <NavLink className="frontpage__primaryBtn" to="/contact">
             {t('frontpage.cta')}
           </NavLink>
-
           <a className="frontpage__phoneCta" href="tel:+526645410955">
             <svg
               className="frontpage__phoneIcon"
@@ -49,8 +41,18 @@ function Frontpage() {
           </a>
         </div>
       </div>
+      <img
+        className="frontpage__pic"
+        src={hanspic}
+        alt="Dr. Hans"
+        width="520"
+        height="600"
+        fetchPriority="high"
+      />
+      {/*
       <img className="frontpage__icon frontpage__icon--1" src={icon1} alt="" />
       <img className="frontpage__icon frontpage__icon--2" src={icon2} alt="" />
+      */}
     </section>
   );
 }

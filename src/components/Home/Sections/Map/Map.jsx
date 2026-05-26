@@ -15,7 +15,7 @@ export default function Map({ embedSrc, title = 'Mapa' }) {
           observer.disconnect();
         }
       },
-      { rootMargin: '200px' } // comienza a cargar un poco antes de aparecer
+      { rootMargin: '200px' } // Pre-load
     );
 
     if (ref.current) observer.observe(ref.current);

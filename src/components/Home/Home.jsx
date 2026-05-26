@@ -8,6 +8,11 @@ import {
   fadeInVariant,
 } from '../Shared/motionVariants/motionVariants';
 
+const MinimallyInvasive = lazy(() => import('./Sections/MinimallyInvasive/MinimallyInvasive'));
+const DiscHernia = lazy(() => import('./Sections/DiscHernia/DiscHernia'));
+const Scoliosis = lazy(() => import('./Sections/Scoliosis/Scoliosis'));
+const Osteoarthritis = lazy(() => import('./Sections/Osteoarthritis/Osteoarthritis'));
+const Sciatica = lazy(() => import('./Sections/Sciatica/Sciatica'));
 const Skeleton = lazy(() => import('./Sections/Skeleton/Skeleton'));
 const Map = lazy(() => import('./Sections/Map/Map'));
 const Reviews = lazy(() => import('./Sections/Reviews/Reviews'));
@@ -21,8 +26,27 @@ function Home() {
       <div className="frontpage-placeholder">
         <Frontpage />
       </div>
-
       <Suspense fallback={<div>Loading...</div>}>
+        <motion.div {...fadeUpVariant} className="mininv-placeholder">
+          <MinimallyInvasive />
+        </motion.div>
+
+        <motion.div {...fadeUpVariant} className="disc-placeholder">
+          <DiscHernia />
+        </motion.div>
+
+        <motion.div {...fadeUpVariant} className="scoliosis-placeholder">
+          <Scoliosis />
+        </motion.div>
+
+        <motion.div {...fadeUpVariant} className="osteo-placeholder">
+          <Osteoarthritis />
+        </motion.div>
+
+        <motion.div {...fadeUpVariant} className="sciatica-placeholder">
+          <Sciatica />
+        </motion.div>
+
         <motion.div {...fadeUpVariant} className="skeleton-placeholder">
           <SkeletonProvider>
             <Skeleton />

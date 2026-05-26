@@ -7,14 +7,62 @@
         "toggle": "Abrir menú"
     },
     "frontpage": {
-        "highlight": "Dolor Lumbar",
-        "description": ", Rodilla, Muñeca, Ruptura de Menisco, Tendinitis, Medicina del Deporte, Manejo del Dolor Ciático, Lumbar y Cervical, entre muchas otras condiciones.",
+        "title": "Recupera tu vida sin dolor de espalda",
+        "description": "Cirugía de Columna Especializada, Hernia Discal, Ciática, Escoliosis, Fracturas o Accidentes, Toma de Biopsias, entre muchas otras atenciones.",
         "cta": "Agenda tu Cita"
+    },
+    "minInv": {
+        "title": "Cirugía Mínimamente Invasiva",
+        "description": "La cirugía mínimamente invasiva permite tratar lesiones musculoesqueléticas mediante incisiones pequeñas, reduciendo el daño a los tejidos y acelerando la recuperación del paciente.",
+        "benefit1": "Menor dolor postoperatorio",
+        "benefit2": "Recuperación más rápida",
+        "benefit3": "Cicatrices más pequeñas y estéticas",
+        "imageAlt": "Cicatriz pequeña de cirugía mínimamente invasiva"
+    },
+    "disc": {
+        "title": "Hernia Discal",
+        "description": "La hernia discal ocurre cuando uno de los discos de la columna se desplaza y presiona los nervios cercanos, incluyendo el nervio ciático, causando dolor y limitación en el movimiento. Es una de las causas más comunes de dolor lumbar y cervical.",
+        "symptom1": "Dolor en espalda baja o cuello",
+        "symptom2": "Dolor que se irradia a brazos o piernas",
+        "symptom3": "Hormigueo o debilidad muscular",
+        "ctaText": "Un diagnóstico oportuno puede evitar complicaciones y mejorar tu calidad de vida.",
+        "imageAlt": "Ilustración de hernia discal en la columna"
+    },
+    "scoliosis": {
+        "title": "Escoliosis",
+        "description": "La escoliosis es una curvatura anormal de la columna vertebral que puede desarrollarse durante el crecimiento o aparecer en la edad adulta. En algunos casos puede progresar y causar molestias o afectar la postura.",
+        "sign1": "Desnivel en hombros o caderas",
+        "sign2": "Columna con desviación visible",
+        "sign3": "Dolor de espalda o fatiga muscular",
+        "ctaText": "Un diagnóstico temprano permite un tratamiento adecuado y evita que la curvatura progrese.",
+        "imageAlt": "Ejemplo de escoliosis en la columna vertebral"
+    },
+    "osteo": {
+        "title": "Artrosis (Osteoartritis)",
+        "description": "La artrosis es una enfermedad degenerativa de las articulaciones que ocurre cuando el cartílago se desgasta con el tiempo, provocando dolor, rigidez y limitación en el movimiento.",
+        "symptom1": "Dolor articular al moverse",
+        "symptom2": "Rigidez, especialmente por la mañana",
+        "symptom3": "Pérdida de movilidad en la articulación",
+        "ctaText": "Un tratamiento adecuado puede aliviar los síntomas y mejorar significativamente tu calidad de vida.",
+        "imageAlt": "Representación de articulación afectada por artrosis"
+    },
+    "sciatica": {
+        "title": "Ciática / Nervio Ciático",
+        "description": "La ciática es un dolor que se origina por irritación o compresión del nervio ciático, el nervio más largo del cuerpo. Generalmente comienza en la espalda baja y puede extenderse hacia la pierna.",
+        "symptom1": "Dolor lumbar que baja por glúteo y pierna",
+        "symptom2": "Hormigueo o adormecimiento",
+        "symptom3": "Debilidad al caminar o mover la pierna",
+        "ctaText": "Un tratamiento oportuno puede aliviar el dolor y prevenir complicaciones.",
+        "imageAlt": "Representación del nervio ciático inflamado"
+    },
+    "skeleton": {
+        "title": "Todos los servicios"
     },
     "reviews": {
         "title": "Opiniones de Nuestros Pacientes",
         "loading": "Cargando reseñas...",
-        "empty": "No hay reseñas disponibles"
+        "empty": "No hay reseñas disponibles",
+        "button": "Dejanos tu opinion"
     },
     "procedures": {
         "title": "Explora los Procedimientos",
@@ -65,36 +113,55 @@
         "intro": "Dr. Hans Ruiz, ubicado en Tijuana, Baja California, México, se compromete a proteger su información personal. Esta Política de Privacidad explica cómo recopilamos, usamos y protegemos la información que usted proporciona a través de nuestro sitio web",
         "section1": {
             "title": "1. Información que recopilamos",
-            "text": "Recopilamos información personal como su nombre, correo electrónico y número de teléfono cuando completa nuestros formularios de contacto o cita."
+            "text": [
+                "Recopilamos información personal como su nombre, correo electrónico y número de teléfono cuando completa nuestros formularios de contacto, solicitud de información o programación de citas.",
+                "Asimismo, durante la atención médica presencial podrán generarse datos relacionados con su consulta, expediente clínico y documentación médica conforme a la legislación aplicable."
+            ]
         },
         "section2": {
             "title": "2. Cómo usamos su información",
             "items": [
                 "Para programar citas médicas o consultas.",
-                "Para comunicarnos respecto a servicios y procedimientos médicos.",
-                "Para proporcionar información solicitada por usted."
+                "Para comunicarnos respecto a servicios, procedimientos y seguimiento médico.",
+                "Para integrar y administrar expedientes clínicos.",
+                "Para proporcionar información solicitada por usted.",
+                "Para mejorar la precisión y documentación de la atención médica proporcionada.",
+                "Durante la consulta médica podrán utilizarse herramientas tecnológicas de apoyo clínico que incluyan procesamiento y transcripción de voz con la finalidad de documentar información médica y facilitar la integración del expediente clínico."
             ]
         },
         "section3": {
-            "title": "3. Protección de datos",
-            "text": "Implementamos salvaguardas administrativas, físicas y técnicas para asegurar que sus datos estén protegidos contra acceso no autorizado, divulgación o uso indebido."
+            "title": "3. Videovigilancia y herramientas de apoyo clínico",
+            "text": [
+                "Las instalaciones del consultorio podrán contar con sistemas de videovigilancia con fines de seguridad, protección de pacientes, personal médico, control de acceso y atención de incidentes.",
+                "Asimismo, podrán utilizarse herramientas digitales de apoyo clínico y documentación médica durante la consulta. La información obtenida será considerada confidencial y tratada conforme a las disposiciones aplicables en materia de protección de datos personales y datos personales sensibles."
+            ]
         },
         "section4": {
-            "title": "4. Compartir datos",
-            "text": "No vendemos, alquilamos ni compartimos su información con terceros, excepto cuando la ley lo requiera."
+            "title": "4. Protección de datos",
+            "text": [
+                "Implementamos salvaguardas administrativas, físicas y técnicas para asegurar que sus datos estén protegidos contra acceso no autorizado, divulgación, pérdida o uso indebido.",
+                "El acceso a la información médica y datos personales estará limitado únicamente al personal autorizado y será tratado bajo estrictas medidas de confidencialidad."
+            ]
         },
         "section5": {
-            "title": "5. Sus derechos",
-            "text1": "Puede solicitar acceder, actualizar o eliminar sus datos personales contactándonos en",
-            "text2": "."
+            "title": "5. Compartir datos",
+            "text": [
+                "No vendemos, alquilamos ni compartimos su información personal con terceros, excepto cuando sea necesario para la prestación de servicios tecnológicos relacionados con la operación del consultorio y documentación clínica.",
+                "También podremos compartir información cuando la ley lo requiera o exista autorización expresa del titular de los datos."
+            ]
         },
         "section6": {
-            "title": "6. Usuarios internacionales",
-            "text": "Al usar este sitio web, comprende que su información puede ser transferida y procesada en México, donde se encuentra nuestra clínica."
+            "title": "6. Sus derechos",
+            "text1": "Usted podrá solicitar el acceso, rectificación, actualización, cancelación u oposición respecto al tratamiento de sus datos personales (Derechos ARCO) contactándonos en",
+            "text2": "."
         },
         "section7": {
-            "title": "7. Actualizaciones",
-            "text": "Podemos actualizar esta Política de Privacidad periódicamente. Cualquier cambio se reflejará en esta página con la fecha de actualización abajo."
+            "title": "7. Usuarios internacionales",
+            "text": "Al usar este sitio web, comprende que su información puede ser transferida y procesada en México, donde se encuentra nuestro consultorio médico."
+        },
+        "section8": {
+            "title": "8. Actualizaciones",
+            "text": "Podemos actualizar esta Política de Privacidad periódicamente. Cualquier cambio se reflejará en esta página junto con la fecha de última actualización."
         },
         "lastUpdated": "Última actualización: {{date}}"
     },

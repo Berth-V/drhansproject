@@ -24,18 +24,6 @@
   gap: clamp(14px, 2.2vw, 20px);
 }
 
-@media (min-width: 700px) {
-  .homeReviews__grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .homeReviews__grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
 .homeReviews__card {
   display: flex;
   flex-direction: column;
@@ -109,8 +97,37 @@
   transform: translateY(1px);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .homeReviews__card {
-    transition: none !important;
+.homeReviews__btn {
+  text-decoration: none;
+  padding: 0.7rem 1rem;
+  background-color: var(--secondary-color);
+  border-radius: 14px;
+  color: var(--primary-color);
+  align-self: center;
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+  margin-top: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 180, 255, 0.25);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.homeReviews__btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 40px rgba(0, 180, 255, 0.35);
+}
+
+@media (min-width: 1024px) {
+  .homeReviews__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 700px) {
+  .homeReviews__grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

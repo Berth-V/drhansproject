@@ -183,6 +183,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .form__btn,
   .form__input,
   .form__textarea {
@@ -214,7 +215,7 @@
 
 .form__toggle {
   position: absolute;
-  top: -36px;
+  top: -28px;
   left: 0;
   background: var(--secondary-color, #1da1f2);
   color: var(--black-color);

@@ -7,20 +7,19 @@ import es from './locales/es.json';
 const hostname = window.location.hostname;
 const defaultLng = hostname.includes('.mx') ? 'es' : 'en';
 
-i18n.use(initReactI18next).init({
-  resources: {
-    en: {
-      translation: en
+
+if (!i18n.isInitialized) {
+  i18n.use(initReactI18next).init({
+    resources: {
+      en: { translation: en },
+      es: { translation: es }
     },
-    es: {
-      translation: es
+    lng: defaultLng,
+    fallbackLng: defaultLng,
+    interpolation: {
+      escapeValue: false
     }
-  },
-  lng: defaultLng,
-  fallbackLng: 'en',
-  interpolation: {
-    escapeValue: false
-  }
-});
+  });
+}
 
 export default i18n;
