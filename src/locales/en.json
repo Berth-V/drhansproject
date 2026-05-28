@@ -91,6 +91,12 @@
             "value": "UNAM - Traumatology and Orthopedics."
         }
     },
+    "contact": {
+        "title": "Contact Us",
+        "description1": "We are here to serve you",
+        "description2": "Call us directly",
+        "description3": "or find us on"
+    },
     "form": {
         "title": "Make an appointment",
         "subtitle": "Book your consultation quickly and easily.",

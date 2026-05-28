@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { CiPhone } from "react-icons/ci";
 import { AiFillTikTok } from 'react-icons/ai';
 import { RiInstagramFill } from 'react-icons/ri';
@@ -6,22 +7,23 @@ import { IoLogoWhatsapp } from 'react-icons/io';
 import './Contact.css';
 
 export default function Contact() {
+  const { t } = useTranslation();
   return (
     <section className="contact">
       <div className="contact__glow" />
 
-      <h2 className="contact__title">Contáctanos</h2>
-      <p className="contact__subtitle">Estamos para atenderte</p>
+      <h2 className="contact__title">{t('contact.title')}</h2>
+      <p className="contact__subtitle">{t('contact.description1')}</p>
 
       <a className="contact__phoneCta" href="tel:+526645410955">
         <span className="contact__phoneIcon"><CiPhone /></span>
         +52 664-541-09-55
       </a>
-      <p className="contact__helptext">Llámanos directamente</p>
+      <p className="contact__helptext">{t('contact.description2')}</p>
 
       <div className="contact__divider">
         <span className="contact__divider-line" />
-        <span className="contact__divider-text">o encuéntranos en</span>
+        <span className="contact__divider-text">{t('contact.description3')}</span>
         <span className="contact__divider-line" />
       </div>
 

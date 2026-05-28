@@ -91,6 +91,12 @@
             "value": "UNAM - Traumatología y Ortopedia."
         }
     },
+    "contact": {
+        "title": "Contáctanos",
+        "description1": "Estamos para atenderte",
+        "description2": "Llámanos directamente",
+        "description3": "o encuéntranos en"
+    },
     "form": {
         "title": "Agendar una cita",
         "subtitle": "Reserva tu consulta rápida y fácilmente.",
