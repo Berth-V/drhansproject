@@ -1,7 +1,5 @@
 import './Frontpage.css';
 import hanspic from '../../../../assets/hans.webp';
-//import icon1 from '../../../../assets/x-ray.webp';
-//import icon2 from '../../../../assets/fracture.webp';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 
@@ -49,10 +47,6 @@ function Frontpage() {
         height="600"
         fetchPriority="high"
       />
-      {/*
-      <img className="frontpage__icon frontpage__icon--1" src={icon1} alt="" />
-      <img className="frontpage__icon frontpage__icon--2" src={icon2} alt="" />
-      */}
     </section>
   );
 }
