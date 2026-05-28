@@ -1,3 +1,152 @@
 .contact {
   margin-top: var(--header-height);
+  min-height: 80dvh;
+  background: var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Glow de fondo */
+.contact__glow {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, rgba(7, 89, 133, 0.35) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* Título */
+.contact__title {
+  color: var(--white-color);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 500;
+  text-align: center;
+  margin: 0 0 0.3rem;
+  position: relative;
+}
+
+/* Subtítulo */
+.contact__subtitle {
+  color: var(--fourth-color);
+  font-size: 0.85rem;
+  text-align: center;
+  margin: 0 0 2.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.8;
+  position: relative;
+}
+
+/* Botón de llamada */
+.contact__phoneCta {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--secondary-color);
+  color: var(--black-color);
+  font-size: clamp(1rem, 3vw, 1.15rem);
+  font-weight: 500;
+  padding: 1rem 2.2rem;
+  border-radius: 50px;
+  border: 2px solid var(--secondary-color);
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+  margin-bottom: 0.8rem;
+  position: relative;
+}
+
+.contact__phoneCta:hover {
+  background: transparent;
+  color: var(--secondary-color);
+  transform: scale(1.04);
+}
+
+.contact__phoneIcon {
+  background: var(--fiveth-color);
+  color: var(--secondary-color);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 23px;
+  flex-shrink: 0;
+  transition: background 0.3s;
+}
+
+.contact__phoneCta:hover .contact__phoneIcon {
+  background: var(--third-color);
+}
+
+/* Texto de ayuda */
+.contact__helptext {
+  color: var(--fourth-color);
+  font-size: 0.78rem;
+  margin: 0 0 2.8rem;
+  opacity: 0.6;
+  position: relative;
+}
+
+/* Divisor */
+.contact__divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 320px;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.contact__divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--third-color);
+}
+
+.contact__divider-text {
+  color: var(--fourth-color);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  white-space: nowrap;
+}
+
+/* Íconos sociales */
+.contact__social-icons {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  position: relative;
+}
+
+.contact__link {
+  color: var(--fourth-color);
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  border: 1px solid var(--third-color);
+  background: rgba(7, 89, 133, 0.15);
+  transition: color 0.25s, border-color 0.25s, background 0.25s, transform 0.2s;
+}
+
+.contact__link:hover {
+  color: var(--black-color);
+  border-color: var(--secondary-color);
+  background: var(--secondary-color);
+  transform: translateY(-3px);
 }
