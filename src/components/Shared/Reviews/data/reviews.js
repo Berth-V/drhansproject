@@ -1,6 +1,6 @@
-import user1 from '../../../../../assets/alexpic.png'
-import user2 from '../../../../../assets/amandapic.png'
-import user3 from '../../../../../assets/richardpic.png'
+import user1 from '../../../../assets/alexpic.png'
+import user2 from '../../../../assets/amandapic.png'
+import user3 from '../../../../assets/richardpic.png'
 
 const reviews = [
     {

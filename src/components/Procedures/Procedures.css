@@ -16,26 +16,30 @@
   color: var(--secondary-color);
 }
 
-/* === Grid layout (responsive) === */
+/* === Grid layout (responsive, mobile-first) === */
 .procedures__grid {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 18px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
   width: 100%;
-  max-width: 1100px;
-  margin: 100px;
+  max-width: 1300px;
+  margin: 40px auto;
 }
 
 /* === Card container === */
 .procedures__card {
   will-change: transform, opacity;
+
 }
 
 /* === Card link === */
 .procedures__card-link {
   display: flex;
-  gap: 14px;
-  padding: 18px;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  padding: 14px;
   background: var(--sixth-color);
   border-radius: 10px;
   text-decoration: none;
@@ -49,8 +53,9 @@
 
 /* === Icon container === */
 .procedures__card-icon {
-  flex: 0 0 64px;
-  height: 64px;
+  flex: 0 0 auto;
+  width: 48px;
+  height: 48px;
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.03);
   display: flex;
@@ -60,59 +65,75 @@
 
 /* === Icon image === */
 .procedures__card-img {
-  width: 56px;
-  height: 56px;
+  width: 40px;
+  height: 40px;
   object-fit: contain;
 }
 
 /* === Missing icon state === */
 .procedures__card--missing-icon {
-  font-size: 28px;
+  font-size: 22px;
   opacity: 0.6;
 }
 
 /* === Card body === */
 .procedures__card-body {
-  flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
 }
 
 /* === Card title === */
 .procedures__card-name {
-  margin: 0 0 6px 0;
-  font-size: 16px;
+  margin: 0 0 4px 0;
+  font-size: 14px;
   font-weight: 600;
 }
 
 /* === Card description === */
 .procedures__card-description {
   margin: 0;
-  font-size: 14px;
+  font-size: 12px;
   color: rgba(255, 255, 255, 0.8);
 }
 
-/* === Hover and focus effects === */
 .procedures__card-link:hover {
+  transition-duration: 0.5s;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
   transform: translateY(-6px);
+  outline: 2px solid var(--secondary-color);
+
 }
 
-.procedures__card-link:focus {
-  outline: none;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
-}
-
-/* === Responsive breakpoints === */
-@media (max-width: 980px) {
+@media (min-width: 768px) {
   .procedures__grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
   }
-}
 
-@media (max-width: 600px) {
-  .procedures__grid {
-    grid-template-columns: 1fr;
+  .procedures__card-link {
+    flex-direction: row;
+    /* en pantallas grandes, vuelve al layout horizontal original */
+    text-align: left;
+    align-items: flex-start;
+    padding: 18px;
+  }
+
+  .procedures__card-icon {
+    width: 64px;
+    height: 64px;
+  }
+
+  .procedures__card-img {
+    width: 56px;
+    height: 56px;
+  }
+
+  .procedures__card-name {
+    font-size: 16px;
+  }
+
+  .procedures__card-description {
+    font-size: 14px;
   }
 }

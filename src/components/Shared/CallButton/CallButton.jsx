@@ -1,22 +1,15 @@
 import './CallButton.css';
 import { FaPhoneAlt } from 'react-icons/fa';
+import { trackCall } from '../../../analytics/events';
 
 export default function CallButton() {
-    const handleClick = () => {
-        if (window.gtag) {
-            window.gtag('event', 'CallClick', {
-                event_category: 'Contact',
-                event_label: 'Click Call Button',
-            });
-        }
-    };
 
     return (
         <a
             href="tel:+526645410955"
-            className="callBtn"
+            className="call-btn"
             aria-label="Call Now"
-            onClick={handleClick}
+            onClick={trackCall}
         >
             <FaPhoneAlt />
         </a>

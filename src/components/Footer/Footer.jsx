@@ -10,18 +10,18 @@ function Footer() {
 
   return (
     <footer className="footer">
-      <div className="footer-content">
-        <div className="footer-column">
+      <div className="footer__content">
+        <div className="footer__column">
           <h3>{t('footer.name')}</h3>
           <p>{t('footer.specialty')}</p>
-          <p className="footer-address">
+          <p className="footer__address">
             {t('footer.address.line1')}
             <br />
             {t('footer.address.line2')}
           </p>
         </div>
 
-        <div className="footer-column">
+        <div className="footer__column">
           <h3>{t('footer.quickLinks')}</h3>
           <ul>
             <li>
@@ -33,18 +33,24 @@ function Footer() {
             <li>
               <Link to="/contact">{t('footer.appointment')}</Link>
             </li>
+            <li>
+              <Link to="/blog">{t('footer.blog')}</Link>
+            </li>
+            <li>
+              <Link to="/preguntas">{t('footer.questions')}</Link>
+            </li>
           </ul>
         </div>
       </div>
 
-      <div className="footer-bottom">
+      <div className="footer__bottom">
         <p>{t('footer.followMe')}</p>
-        <div className="social-icons">
+        <div className="footer__social-icons">
           <a
             href="https://www.tiktok.com/@drhansruiz"
             target="_blank"
             rel="noopener noreferrer"
-            className="footerLink"
+            className="footer__link"
           >
             <AiFillTikTok />
           </a>
@@ -52,7 +58,7 @@ function Footer() {
             href="https://www.instagram.com/drhansruiz/"
             target="_blank"
             rel="noopener noreferrer"
-            className="footerLink"
+            className="footer__link"
           >
             <RiInstagramFill />
           </a>
@@ -60,15 +66,14 @@ function Footer() {
             href="https://www.facebook.com/DrHansRuiz"
             target="_blank"
             rel="noopener noreferrer"
-            className="footerLink"
+            className="footer__link"
           >
             <FaFacebookSquare />
           </a>
         </div>
 
-        {/* Privacy Policy */}
-        <p className="privacy-wrapper">
-          <Link to="/privacyPolicy" className="footerLink privacy-link">
+        <p className="footer__privacy-wrapper">
+          <Link to="/privacyPolicy" className="footer__link footer__privacy-link">
             {t('footer.privacyPolicy')}
           </Link>
         </p>

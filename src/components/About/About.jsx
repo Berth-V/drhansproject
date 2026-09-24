@@ -10,22 +10,22 @@ const About = () => {
 
   return (
     <div className="doctor-profile">
-      <div className="profile-header">
-        <div className="photo-section">
-          <div className="photo-placeholder">
+      <div className="doctor-profile__header">
+        <div className="doctor-profile__photo-section">
+          <div className="doctor-profile__photo">
             <img src={photo} alt={t('about.photoAlt')} />
           </div>
         </div>
-        <div className="name-specialty">
+        <div className="doctor-profile__name-specialty">
           <h1>{t('about.name')}</h1>
           <h2>{t('about.profession')}</h2>
           <p>{t('about.followMe')}</p>
-          <div className="social-links">
+          <div className="doctor-profile__social-links">
             <a
               href="https://www.tiktok.com/@drhansruiz"
               target="_blank"
               rel="noopener noreferrer"
-              className="socialLink"
+              className="doctor-profile__social-link"
             >
               <AiFillTikTok />
             </a>
@@ -33,7 +33,7 @@ const About = () => {
               href="https://www.instagram.com/drhansruiz/"
               target="_blank"
               rel="noopener noreferrer"
-              className="socialLink"
+              className="doctor-profile__social-link"
             >
               <RiInstagramFill />
             </a>
@@ -41,7 +41,7 @@ const About = () => {
               href="https://www.facebook.com/DrHansRuiz"
               target="_blank"
               rel="noopener noreferrer"
-              className="socialLink"
+              className="doctor-profile__social-link"
             >
               <FaFacebookSquare />
             </a>
@@ -49,7 +49,7 @@ const About = () => {
         </div>
       </div>
 
-      <div className="about-description">
+      <div className="doctor-profile__description">
         {t('about.description')
           .split('\n')
           .map((line, i) => (
@@ -57,15 +57,15 @@ const About = () => {
           ))}
       </div>
 
-      <div className="profile-content">
-        <div className="left-column">
-          <div className="info-section">
+      <div className="doctor-profile__content">
+        <div className="doctor-profile__col--left">
+          <div className="doctor-profile__info">
             <h3>{t('about.education.title')}</h3>
             <p>{t('about.education.value')}</p>
           </div>
         </div>
-        <div className="right-column">
-          <div className="info-section">
+        <div className="doctor-profile__col--right">
+          <div className="doctor-profile__info">
             <h3>{t('about.speciality.title')}</h3>
             <p>{t('about.speciality.value')}</p>
           </div>

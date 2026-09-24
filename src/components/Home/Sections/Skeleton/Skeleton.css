@@ -7,7 +7,7 @@
   background-color: var(--black-color);
 }
 
-.svg {
+.skeleton__svg {
   width: min(100%, 700px);
   height: auto;
 }

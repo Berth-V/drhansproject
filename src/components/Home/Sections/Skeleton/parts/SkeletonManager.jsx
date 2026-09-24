@@ -6,11 +6,12 @@ import {
   scaleAnimation,
 } from '../../../../Shared/motionVariants/motionVariants';
 import { Link } from 'react-router-dom';
+import { useRef, useLayoutEffect } from 'react';
 import proceduresData from '../../../../Procedures/data/proceduresData';
 
 export default function SkeletonManager() {
   const partsData = getPartsData();
-  const { selectedPart, circleFunctions, backBtnFunctions } =
+  const { selectedPart, circleFunctions, backBtnFunctions, zoomToContent } =
     useSkeletonContext();
 
   const activePart = partsData.find((p) => p.name === selectedPart);
@@ -20,6 +21,21 @@ export default function SkeletonManager() {
   const titleToIdMap = Object.fromEntries(
     Object.entries(proceduresData).map(([id, part]) => [part.title, id])
   );
+
+  const activeGroupRef = useRef(null);
+
+  useLayoutEffect(() => {
+    if (activePart && activeGroupRef.current) {
+      const bbox = activeGroupRef.current.getBBox();
+      const padding = 20;
+      zoomToContent(
+        bbox.x - padding,
+        bbox.y - padding,
+        bbox.width + padding * 2,
+        bbox.height + padding * 2
+      );
+    }
+  }, [activePart, zoomToContent]);
 
   return (
     <AnimatePresence initial={false}>
@@ -95,6 +111,7 @@ export default function SkeletonManager() {
       {/* Active Part */}
       {activePart && (
         <motion.g
+          ref={activeGroupRef}
           key={`${activePart.name}-active`}
           variants={opacityAnimation}
           initial="hide"

@@ -3,6 +3,7 @@
         "home": "Home",
         "procedures": "Procedures",
         "about": "About",
+        "blog": "Blog",
         "appointment": "Get your Appointment",
         "toggle": "Toggle menu"
     },
@@ -171,6 +172,44 @@
         },
         "lastUpdated": "Last updated: {{date}}"
     },
+    "questions": {
+        "title": "Have a question?",
+        "subtitle": "Send your question to Dr. Hans Ruiz and he will get back to you shortly.",
+        "nameLabel": "Your name",
+        "namePlaceholder": "Enter your full name",
+        "questionLabel": "Your question",
+        "questionPlaceholder": "Write your question here...",
+        "submit": "Send question",
+        "sending": "Sending...",
+        "success": "Question sent! The doctor will review it soon.",
+        "another": "Send another question",
+        "error": "Something went wrong. Please try again."
+    },
+    "blog": {
+        "title": "Blog",
+        "subtitle": "Articles and tips from Dr. Hans Ruiz",
+        "loading": "Loading articles...",
+        "error": "Could not load articles. Please try again later.",
+        "empty": "Coming soon — the doctor is preparing content for you.",
+        "post": {
+            "loading": "Loading article...",
+            "notFound": "Article not found.",
+            "back": "← Back to blog"
+        },
+        "pagination": {
+            "page": "Page {{current}} of {{total}}",
+            "prev": "← Previous",
+            "next": "Next →"
+        },
+        "answeredQuestions": {
+            "title": "Questions from Patients",
+            "subtitle": "Real answers from Dr. Hans Ruiz",
+            "loading": "Loading questions...",
+            "empty": "No answered questions yet.",
+            "askCta": "Have a question?",
+            "askBtn": "Ask the Doctor"
+        }
+    },
     "footer": {
         "name": "Dr. Hans Ruiz",
         "specialty": "Traumatology and Orthopedics",
@@ -182,6 +221,8 @@
         "procedures": "Procedures",
         "about": "About",
         "appointment": "Get Your Appointment",
+        "blog": "Blog",
+        "questions": "Ask the Doctor",
         "followMe": "Follow Me",
         "privacyPolicy": "Privacy Policy"
     }

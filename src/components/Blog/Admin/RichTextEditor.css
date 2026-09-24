@@ -1,0 +1,106 @@
+.rte {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.rte:focus-within {
+  border-color: var(--secondary-color);
+}
+
+.rte-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  flex-wrap: wrap;
+}
+
+.rte-toolbar__btn {
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  line-height: 1.4;
+  min-width: 32px;
+}
+
+.rte-toolbar__btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--white-color);
+}
+
+.rte-toolbar__btn--active {
+  background: rgba(0, 196, 255, 0.15);
+  border-color: rgba(0, 196, 255, 0.35);
+  color: var(--secondary-color);
+}
+
+.rte-toolbar__sep {
+  width: 1px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.12);
+  margin: 0 4px;
+}
+
+.rte-editor {
+  background: rgba(255, 255, 255, 0.06);
+  padding: 14px 16px;
+  min-height: 260px;
+  cursor: text;
+}
+
+.rte-editor .tiptap {
+  outline: none;
+  color: var(--white-color);
+  font-size: 1rem;
+  line-height: 1.7;
+  min-height: 220px;
+}
+
+.rte-editor .tiptap p {
+  margin-bottom: 0.75em;
+}
+
+.rte-editor .tiptap p:last-child {
+  margin-bottom: 0;
+}
+
+.rte-editor .tiptap h2,
+.rte-editor .tiptap h3 {
+  margin-top: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.rte-editor .tiptap ul,
+.rte-editor .tiptap ol {
+  padding-left: 22px;
+  margin-bottom: 0.75em;
+}
+
+.rte-editor .tiptap p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  color: rgba(255, 255, 255, 0.25);
+  pointer-events: none;
+  float: left;
+  height: 0;
+}
+
+.rte-hint {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.25);
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.02);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}

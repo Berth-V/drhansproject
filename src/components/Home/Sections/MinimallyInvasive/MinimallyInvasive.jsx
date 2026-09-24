@@ -6,34 +6,32 @@ export default function MinimallyInvasive() {
     const { t } = useTranslation();
 
     return (
-        <section className="minInv">
-            <div className="minInv__wrap">
+        <section className="min-inv">
+            <div className="min-inv__wrap">
 
-                <div className="minInv__grid">
+                <div className="min-inv__grid">
 
-                    {/* TEXTO */}
-                    <div className="minInv__content">
-                        <h2 className="minInv__title">
+                    <div className="min-inv__content">
+                        <h2 className="min-inv__title">
                             {t('minInv.title')}
                         </h2>
 
-                        <p className="minInv__description">
+                        <p className="min-inv__description">
                             {t('minInv.description')}
                         </p>
 
-                        <ul className="minInv__benefits">
+                        <ul className="min-inv__benefits">
                             <li>{t('minInv.benefit1')}</li>
                             <li>{t('minInv.benefit2')}</li>
                             <li>{t('minInv.benefit3')}</li>
                         </ul>
                     </div>
 
-                    {/* IMAGEN */}
-                    <div className="minInv__imageBox">
+                    <div className="min-inv__image-box">
                         <img
                             src={scarImg}
                             alt={t('minInv.imageAlt')}
-                            className="minInv__image"
+                            className="min-inv__image"
                             loading="lazy"
                         />
                     </div>

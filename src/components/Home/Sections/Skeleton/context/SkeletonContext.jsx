@@ -1,9 +1,9 @@
-import { useReducer } from 'react';
+import { useReducer, useCallback } from 'react';
 import { skeletonReducer } from './skeletonReducer';
 import { SkeletonContext } from './useSkeletonContext';
 import { ZOOM_AREA, RESET_VIEWBOX, SET_PART, DEL_PART } from './constants';
 
-const defaultViewBox = '0 0 700 1000';
+const defaultViewBox = '0 0 700 1100';
 
 const initialState = {
   // Zoom animation
@@ -16,38 +16,41 @@ export const SkeletonProvider = ({ children }) => {
   const [state, dispatch] = useReducer(skeletonReducer, initialState);
 
   // dispatch Fuctions
-  const zoomArea = (x, y, width, height) => {
+  const zoomArea = useCallback((x, y, width, height) => {
     dispatch({
       type: ZOOM_AREA,
       payload: { x, y, width, height },
     });
-  };
+  }, []);
 
-  const resetViewBox = () => {
+  const resetViewBox = useCallback(() => {
     dispatch({ type: RESET_VIEWBOX });
-  };
+  }, []);
 
-  const setPartName = (partName) => {
+  const setPartName = useCallback((partName) => {
     dispatch({ type: SET_PART, payload: partName });
-  };
+  }, []);
 
-  const delPartName = () => {
+  const delPartName = useCallback(() => {
     dispatch({ type: DEL_PART });
-  };
+  }, []);
 
-  const circleFunctions = (partName, x, y, width, height) => {
+  const circleFunctions = useCallback((partName) => {
     setPartName(partName);
-    zoomArea(x, y, width, height);
-  };
+  }, [setPartName]);
 
-  const backBtnFunctions = () => {
+  const zoomToContent = useCallback((x, y, width, height) => {
+    dispatch({ type: ZOOM_AREA, payload: { x, y, width, height } });
+  }, []);
+
+  const backBtnFunctions = useCallback(() => {
     resetViewBox();
     delPartName();
-  };
+  }, [resetViewBox, delPartName]);
 
   return (
     <SkeletonContext.Provider
-      value={{ ...state, circleFunctions, backBtnFunctions }}
+      value={{ ...state, circleFunctions, backBtnFunctions, zoomToContent }}
     >
       {children}
     </SkeletonContext.Provider>
