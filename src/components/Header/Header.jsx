@@ -1,12 +1,14 @@
 import './Header.css';
-import logo from '../../assets/logo.webp';
+import logoEn from '../../assets/logoEn.jpeg';
+import logoEs from '../../assets/logoEs.jpeg';
 import { NavLink } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '../Shared/LanguageSwitcher/LanguageSwitcher';
 
 export default function Header() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const logo = i18n.language === 'es' ? logoEs : logoEn;
   const [menuOpen, setMenuOpen] = useState(false);
   const navRef = useRef(null);
   const toggleBtnRef = useRef(null);
@@ -79,6 +81,12 @@ export default function Header() {
             <li className="header__item">
               <NavLink className="header__link" to="/about" onClick={closeMenu}>
                 <span className="header__link-text">{t('header.about')}</span>
+              </NavLink>
+            </li>
+
+            <li className="header__item">
+              <NavLink className="header__link" to="/blog" onClick={closeMenu}>
+                <span className="header__link-text">{t('header.blog')}</span>
               </NavLink>
             </li>
 

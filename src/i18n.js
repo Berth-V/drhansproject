@@ -1,12 +1,9 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
+import { SITE_CONFIG } from './config/siteConfig';
 
 import en from './locales/en.json';
 import es from './locales/es.json';
-
-const hostname = window.location.hostname;
-const defaultLng = hostname.includes('.mx') ? 'es' : 'en';
-
 
 if (!i18n.isInitialized) {
   i18n.use(initReactI18next).init({
@@ -14,8 +11,8 @@ if (!i18n.isInitialized) {
       en: { translation: en },
       es: { translation: es }
     },
-    lng: defaultLng,
-    fallbackLng: defaultLng,
+    lng: SITE_CONFIG.language,
+    fallbackLng: SITE_CONFIG.language,
     interpolation: {
       escapeValue: false
     }

@@ -4,11 +4,9 @@ export const skeletonReducer = (state, action) => {
   switch (action.type) {
     case ZOOM_AREA: {
       const { x, y, width, height } = action.payload;
-      const newMinX = x - width / 2;
-      const newMinY = y - height / 2;
       return {
         ...state,
-        viewBox: `${newMinX} ${newMinY} ${width} ${height}`,
+        viewBox: `${x} ${y} ${width} ${height}`,
       };
     }
 

@@ -1,3 +1,8 @@
+Options -MultiViews
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.html [QL]
+
 # Enable Expires headers to improve caching
 <IfModule mod_expires.c>
   ExpiresActive On

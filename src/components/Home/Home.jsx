@@ -15,7 +15,7 @@ const Osteoarthritis = lazy(() => import('./Sections/Osteoarthritis/Osteoarthrit
 const Sciatica = lazy(() => import('./Sections/Sciatica/Sciatica'));
 const Skeleton = lazy(() => import('./Sections/Skeleton/Skeleton'));
 const Map = lazy(() => import('./Sections/Map/Map'));
-const Reviews = lazy(() => import('./Sections/Reviews/Reviews'));
+const Reviews = lazy(() => import('../Shared/Reviews/Reviews'));
 
 function Home() {
   const EMBED_SRC =

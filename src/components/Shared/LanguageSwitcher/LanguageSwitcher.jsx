@@ -1,24 +1,21 @@
+import { useTranslation } from 'react-i18next';
 import "./LanguageSwitcher.css"
 
 export default function LanguageSwitcher() {
-    const hostname = window.location.hostname;
-    const isSpanish = hostname.includes('.mx');
+    const { i18n } = useTranslation();
+    const isSpanish = i18n.language === 'es';
 
-    const goSpanish = () => {
-        window.location.href = 'https://hansruiztrauma.com.mx';
-    };
-
-    const goEnglish = () => {
-        window.location.href = 'https://hansruiztrauma.com';
+    const toggle = () => {
+        window.location.href = isSpanish
+            ? 'https://hansruiztrauma.com'
+            : 'https://hansruiztrauma.com.mx';
     };
 
     return (
         <div className="language-switcher">
-            {isSpanish ? (
-                <span onClick={goEnglish} className="switcher__btn">U.S English</span>
-            ) : (
-                <span onClick={goSpanish} className="switcher__btn">MX Español</span>
-            )}
+            <span onClick={toggle} className="language-switcher__btn">
+                {isSpanish ? 'U.S English' : 'MX Español'}
+            </span>
         </div>
     );
 }

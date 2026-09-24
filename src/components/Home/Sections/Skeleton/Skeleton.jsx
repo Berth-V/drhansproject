@@ -15,9 +15,11 @@ export default function Skeleton() {
     </h2>
     <div className="skeleton__box">
       <motion.svg
-        className="svg"
+        className="skeleton__svg"
         viewBox={viewBox}
         animate={{ viewBox }}
+        width="700"
+        height="1100"
         transition={{
           duration: 0.7,
           ease: 'easeInOut',

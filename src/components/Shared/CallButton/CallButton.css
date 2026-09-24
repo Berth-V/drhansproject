@@ -1,4 +1,4 @@
-.callBtn {
+.call-btn {
     position: fixed;
     bottom: 1.5rem;
     left: 1.5rem;
@@ -18,7 +18,7 @@
         box-shadow 0.3s ease;
 }
 
-.callBtn:hover {
+.call-btn:hover {
     transform: scale(1.1);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
     background-color: #0095d1;

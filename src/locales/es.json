@@ -3,6 +3,7 @@
         "home": "Inicio",
         "procedures": "Procedimientos",
         "about": "Acerca de",
+        "blog": "Blog",
         "appointment": "Agenda tu cita",
         "toggle": "Abrir menú"
     },
@@ -62,7 +63,7 @@
         "title": "Opiniones de Nuestros Pacientes",
         "loading": "Cargando reseñas...",
         "empty": "No hay reseñas disponibles",
-        "button": "Dejanos tu opinion"
+        "button": "Déjanos tu opinión"
     },
     "procedures": {
         "title": "Explora los Procedimientos",
@@ -171,6 +172,44 @@
         },
         "lastUpdated": "Última actualización: {{date}}"
     },
+    "questions": {
+        "title": "¿Tienes una pregunta?",
+        "subtitle": "Envíale tu pregunta al Dr. Hans Ruiz y te responderá a la brevedad.",
+        "nameLabel": "Tu nombre",
+        "namePlaceholder": "Escribe tu nombre completo",
+        "questionLabel": "Tu pregunta",
+        "questionPlaceholder": "Escribe tu pregunta aquí...",
+        "submit": "Enviar pregunta",
+        "sending": "Enviando...",
+        "success": "¡Pregunta enviada! El doctor la revisará pronto.",
+        "another": "Enviar otra pregunta",
+        "error": "Ocurrió un error. Por favor intenta de nuevo."
+    },
+    "blog": {
+        "title": "Blog",
+        "subtitle": "Artículos y consejos del Dr. Hans Ruiz",
+        "loading": "Cargando artículos...",
+        "error": "No se pudieron cargar los artículos. Intenta más tarde.",
+        "empty": "Próximamente — el doctor está preparando contenido para ti.",
+        "post": {
+            "loading": "Cargando artículo...",
+            "notFound": "Artículo no encontrado.",
+            "back": "← Volver al blog"
+        },
+        "pagination": {
+            "page": "Página {{current}} de {{total}}",
+            "prev": "← Anterior",
+            "next": "Siguiente →"
+        },
+        "answeredQuestions": {
+            "title": "Preguntas de Pacientes",
+            "subtitle": "Respuestas reales del Dr. Hans Ruiz",
+            "loading": "Cargando preguntas...",
+            "empty": "Aún no hay preguntas respondidas.",
+            "askCta": "¿Tienes una pregunta?",
+            "askBtn": "Pregúntale al Doctor"
+        }
+    },
     "footer": {
         "name": "Dr. Hans Ruiz",
         "specialty": "Traumatología y Ortopedia",
@@ -182,6 +221,8 @@
         "procedures": "Procedimientos",
         "about": "Sobre mí",
         "appointment": "Agenda tu cita",
+        "blog": "Blog",
+        "questions": "Pregúntale al Doctor",
         "followMe": "Sígueme",
         "privacyPolicy": "Política de Privacidad"
     }

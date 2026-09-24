@@ -1,4 +1,4 @@
-.switcher__btn {
+.language-switcher__btn {
     color: white;
     background-color: transparent;
     font-size: 13px;
@@ -8,6 +8,6 @@
     transition-duration: 0.2s;
 }
 
-.switcher__btn:hover {
+.language-switcher__btn:hover {
     color: var(--black-color);
 }

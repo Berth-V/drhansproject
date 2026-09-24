@@ -1,5 +1,5 @@
 import './App.css';
-import { HashRouter, useLocation } from 'react-router-dom';
+import { BrowserRouter, useLocation } from 'react-router-dom';
 import Header from './components/Header/Header';
 import AppRoutes from './AppRoutes';
 import Footer from './components/Footer/Footer';
@@ -8,7 +8,6 @@ import CallButton from './components/Shared/CallButton/CallButton';
 
 function App() {
   const location = useLocation();
-  // Contact Page Detect
   const isContactPage = location.pathname === '/contact';
 
   return (
@@ -24,8 +23,8 @@ function App() {
 
 export default function AppWrapper() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <App />
-    </HashRouter>
+    </BrowserRouter>
   );
 }
