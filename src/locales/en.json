@@ -9,7 +9,7 @@
     },
     "frontpage": {
         "title": "Reclaim your life without back pain",
-        "description": "Specialized Spine Surgery, Herniated Disc, Sciatica, Scoliosis, Fractures or Accidents, Biopsy Taking, among many other services.",
+        "description": "Specialized Spine Surgery, Herniated Disc, Sciatica, Shoulder and Knee Replacement and Arthroscopy, among many other services.",
         "cta": "Get Your Appointment"
     },
     "minInv": {
@@ -29,23 +29,23 @@
         "ctaText": "Early diagnosis can prevent complications and improve your quality of life.",
         "imageAlt": "Illustration of a herniated disc in the spine"
     },
-    "scoliosis": {
-        "title": "Scoliosis",
-        "description": "Scoliosis is an abnormal curvature of the spine that can develop during growth or appear in adulthood. In some cases, it may progress and cause discomfort or affect posture.",
-        "sign1": "Uneven shoulders or hips",
-        "sign2": "Visible spinal curvature",
-        "sign3": "Back pain or muscle fatigue",
-        "ctaText": "Early diagnosis allows proper treatment and prevents progression.",
-        "imageAlt": "Example of scoliosis in the spine"
+    "kneeReplacement": {
+        "title": "Knee Replacement",
+        "description": "Knee replacement is a surgery that replaces the damaged surfaces of the joint with high-strength metal and polyethylene components. It is recommended when wear, as in advanced osteoarthritis, causes constant pain and limits mobility.",
+        "sign1": "Persistent pain when walking or climbing stairs",
+        "sign2": "Stiffness, swelling or deformity of the knee",
+        "sign3": "Little improvement with medication or therapy",
+        "ctaText": "A timely evaluation helps choose the best moment to regain your mobility.",
+        "imageAlt": "Illustration of a total knee replacement"
     },
-    "osteo": {
-        "title": "Osteoarthritis",
-        "description": "Osteoarthritis is a degenerative joint disease that occurs when cartilage wears down over time, causing pain, stiffness, and reduced mobility.",
-        "symptom1": "Joint pain during movement",
-        "symptom2": "Stiffness, especially in the morning",
-        "symptom3": "Reduced joint mobility",
-        "ctaText": "Proper treatment can relieve symptoms and significantly improve quality of life.",
-        "imageAlt": "Representation of a joint affected by osteoarthritis"
+    "arthroscopy": {
+        "title": "Shoulder and Knee Arthroscopy",
+        "description": "Arthroscopy is a minimally invasive surgery that uses a small camera and fine instruments through very small incisions to diagnose and treat injuries inside the joint, such as those of the shoulder and knee.",
+        "symptom1": "Pain, swelling or locking in the shoulder or knee",
+        "symptom2": "Meniscus, ligament or rotator cuff injuries",
+        "symptom3": "Small incisions and faster recovery",
+        "ctaText": "A timely evaluation allows the injury to be treated before it worsens so you can return to your activities.",
+        "imageAlt": "Illustration of arthroscopic surgery on the shoulder and knee"
     },
     "sciatica": {
         "title": "Sciatica / Sciatic Nerve",
@@ -96,7 +96,29 @@
         "title": "Contact Us",
         "description1": "We are here to serve you",
         "description2": "Call us directly",
-        "description3": "or find us on"
+        "description3": "or find us on",
+        "priceLabel": "Consultation fee",
+        "price": "$1,200 MXN"
+    },
+    "offices": {
+        "title": "Our offices",
+        "scheduleTitle": "Office hours",
+        "howToGet": "Get directions",
+        "blue": {
+            "name": "Hospital Blue",
+            "addressLine1": "Vía Ote. 9750-903, Zona Urbana Rio Tijuana,",
+            "addressLine2": "22010 Tijuana, B.C.",
+            "days": "Monday to Friday",
+            "hours": "9:00 a.m. – 2:00 p.m."
+        },
+        "saludable": {
+            "name": "Columna Saludable",
+            "addressLine1": "Colinas de Baja California,",
+            "addressLine2": "22647 Tijuana, B.C.",
+            "days": "Monday to Friday",
+            "hours": "4:00 p.m. – 6:00 p.m.",
+            "note": "By appointment only and subject to availability."
+        }
     },
     "form": {
         "title": "Make an appointment",
@@ -213,10 +235,6 @@
     "footer": {
         "name": "Dr. Hans Ruiz",
         "specialty": "Traumatology and Orthopedics",
-        "address": {
-            "line1": "Vía Ote. 9750-903, Zona Urbana Rio Tijuana,",
-            "line2": "22010 Tijuana, B.C."
-        },
         "quickLinks": "Quick Links",
         "procedures": "Procedures",
         "about": "About",

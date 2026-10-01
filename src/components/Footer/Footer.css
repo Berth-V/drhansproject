@@ -57,11 +57,22 @@
   color: var(--secondary-color);
 }
 
-.footer__address {
+.footer__column .footer__address {
+  display: block;
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.4;
-  margin-top: 0.4rem;
+  margin-top: 0.6rem;
+}
+
+.footer__column .footer__address:hover {
+  color: var(--secondary-color);
+}
+
+.footer__address-name {
+  display: block;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* ---- Bottom Bar ---- */

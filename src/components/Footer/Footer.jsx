@@ -4,6 +4,7 @@ import { RiInstagramFill } from 'react-icons/ri';
 import { FaFacebookSquare } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { OFFICES } from '../../config/siteConfig';
 
 function Footer() {
   const { t } = useTranslation();
@@ -14,11 +15,20 @@ function Footer() {
         <div className="footer__column">
           <h3>{t('footer.name')}</h3>
           <p>{t('footer.specialty')}</p>
-          <p className="footer__address">
-            {t('footer.address.line1')}
-            <br />
-            {t('footer.address.line2')}
-          </p>
+          {OFFICES.map((office) => (
+            <a
+              key={office.id}
+              className="footer__address"
+              href={office.mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="footer__address-name">{t(`offices.${office.id}.name`)}</span>
+              {t(`offices.${office.id}.addressLine1`)}
+              <br />
+              {t(`offices.${office.id}.addressLine2`)}
+            </a>
+          ))}
         </div>
 
         <div className="footer__column">

@@ -1,16 +1,27 @@
 import { useTranslation } from 'react-i18next';
+import { Helmet } from 'react-helmet-async';
 import { CiPhone } from "react-icons/ci";
 import { AiFillTikTok } from 'react-icons/ai';
 import { RiInstagramFill } from 'react-icons/ri';
 import { FaFacebookSquare } from 'react-icons/fa';
 import { IoLogoWhatsapp } from 'react-icons/io';
 import './Contact.css';
+import { OFFICES } from '../../config/siteConfig';
 import { trackCall, trackWhatsApp, trackFacebook, trackInstagram, trackTikTok } from '../../analytics/events.js';
 
 export default function Contact() {
   const { t } = useTranslation();
   return (
     <section className="contact">
+      <Helmet>
+        <title>Contacto | Dr. Hans Ruiz — Traumatología Tijuana</title>
+        <meta
+          name="description"
+          content="Agenda tu consulta con el Dr. Hans Ruiz, traumatólogo y ortopedista en Tijuana. Costo de consulta: $1,200 MXN. Llama o escribe por WhatsApp."
+        />
+        <link rel="canonical" href="https://hansruiztrauma.com.mx/contact" />
+      </Helmet>
+
       <div className="contact__glow" />
 
       <h2 className="contact__title">{t('contact.title')}</h2>
@@ -21,6 +32,34 @@ export default function Contact() {
         +52 664-541-09-55
       </a>
       <p className="contact__helptext">{t('contact.description2')}</p>
+
+      <p className="contact__price">
+        {t('contact.priceLabel')}: <strong>{t('contact.price')}</strong>
+      </p>
+
+      <div className="contact__schedule">
+        <h3 className="contact__scheduleTitle">{t('offices.scheduleTitle')}</h3>
+        <div className="contact__offices">
+          {OFFICES.map((office) => (
+            <div key={office.id} className="contact__office">
+              <p className="contact__officeName">{t(`offices.${office.id}.name`)}</p>
+              <p className="contact__officeAddress">
+                {t(`offices.${office.id}.addressLine1`)}
+                <br />
+                {t(`offices.${office.id}.addressLine2`)}
+              </p>
+              <p className="contact__officeHours">
+                {t(`offices.${office.id}.days`)}
+                <br />
+                <strong>{t(`offices.${office.id}.hours`)}</strong>
+              </p>
+              {office.appointmentOnly && (
+                <p className="contact__officeNote">{t(`offices.${office.id}.note`)}</p>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
 
       <div className="contact__divider">
         <span className="contact__divider-line" />

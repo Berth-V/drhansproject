@@ -43,6 +43,9 @@ function Frontpage() {
               <span className="frontpage__phoneBtn">+52 664-541-09-55</span>
             </a>
           </div>
+          <p className="frontpage__price">
+            {t('contact.priceLabel')}: <strong>{t('contact.price')}</strong>
+          </p>
           <div className="frontpage__social">
             <a href="https://www.tiktok.com/@drhansruiz" target="_blank" rel="noopener noreferrer" className="frontpage__socialLink" aria-label="TikTok" onClick={trackTikTok}>
               <AiFillTikTok />

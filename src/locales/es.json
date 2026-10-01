@@ -9,7 +9,7 @@
     },
     "frontpage": {
         "title": "Recupera tu vida sin dolor de espalda",
-        "description": "Cirugía de Columna Especializada, Hernia Discal, Ciática, Escoliosis, Fracturas o Accidentes, Toma de Biopsias, entre muchas otras atenciones.",
+        "description": "Cirugía de Columna Especializada, Hernia Discal, Ciática, Prótesis y Artroscopia de hombro y rodilla, entre muchas otras atenciones.",
         "cta": "Agenda tu Cita"
     },
     "minInv": {
@@ -29,23 +29,23 @@
         "ctaText": "Un diagnóstico oportuno puede evitar complicaciones y mejorar tu calidad de vida.",
         "imageAlt": "Ilustración de hernia discal en la columna"
     },
-    "scoliosis": {
-        "title": "Escoliosis",
-        "description": "La escoliosis es una curvatura anormal de la columna vertebral que puede desarrollarse durante el crecimiento o aparecer en la edad adulta. En algunos casos puede progresar y causar molestias o afectar la postura.",
-        "sign1": "Desnivel en hombros o caderas",
-        "sign2": "Columna con desviación visible",
-        "sign3": "Dolor de espalda o fatiga muscular",
-        "ctaText": "Un diagnóstico temprano permite un tratamiento adecuado y evita que la curvatura progrese.",
-        "imageAlt": "Ejemplo de escoliosis en la columna vertebral"
+    "kneeReplacement": {
+        "title": "Prótesis de Rodilla",
+        "description": "La prótesis de rodilla es una cirugía que reemplaza las superficies dañadas de la articulación por componentes de metal y polietileno de alta resistencia. Se indica cuando el desgaste, como en la artrosis avanzada, causa dolor constante y limita la movilidad.",
+        "sign1": "Dolor persistente al caminar o subir escaleras",
+        "sign2": "Rigidez, inflamación o deformidad de la rodilla",
+        "sign3": "Poca mejoría con medicamentos o terapia",
+        "ctaText": "Una valoración a tiempo ayuda a elegir el mejor momento para recuperar tu movilidad.",
+        "imageAlt": "Ilustración de una prótesis total de rodilla"
     },
-    "osteo": {
-        "title": "Artrosis (Osteoartritis)",
-        "description": "La artrosis es una enfermedad degenerativa de las articulaciones que ocurre cuando el cartílago se desgasta con el tiempo, provocando dolor, rigidez y limitación en el movimiento.",
-        "symptom1": "Dolor articular al moverse",
-        "symptom2": "Rigidez, especialmente por la mañana",
-        "symptom3": "Pérdida de movilidad en la articulación",
-        "ctaText": "Un tratamiento adecuado puede aliviar los síntomas y mejorar significativamente tu calidad de vida.",
-        "imageAlt": "Representación de articulación afectada por artrosis"
+    "arthroscopy": {
+        "title": "Artroscopia de Hombro y Rodilla",
+        "description": "La artroscopia es una cirugía mínimamente invasiva que usa una pequeña cámara y fino instrumental a través de incisiones muy pequeñas para diagnosticar y tratar lesiones dentro de la articulación, como las del hombro y la rodilla.",
+        "symptom1": "Dolor, inflamación o bloqueo en hombro o rodilla",
+        "symptom2": "Lesiones de menisco, ligamentos o manguito rotador",
+        "symptom3": "Incisiones pequeñas y recuperación más rápida",
+        "ctaText": "Una valoración a tiempo permite tratar la lesión antes de que se agrave y volver a tus actividades.",
+        "imageAlt": "Ilustración de cirugía artroscópica en hombro y rodilla"
     },
     "sciatica": {
         "title": "Ciática / Nervio Ciático",
@@ -96,7 +96,29 @@
         "title": "Contáctanos",
         "description1": "Estamos para atenderte",
         "description2": "Llámanos directamente",
-        "description3": "o encuéntranos en"
+        "description3": "o encuéntranos en",
+        "priceLabel": "Costo de consulta",
+        "price": "$1,200 MXN"
+    },
+    "offices": {
+        "title": "Nuestros consultorios",
+        "scheduleTitle": "Horarios de atención",
+        "howToGet": "Cómo llegar",
+        "blue": {
+            "name": "Hospital Blue",
+            "addressLine1": "Vía Ote. 9750-903, Zona Urbana Rio Tijuana,",
+            "addressLine2": "22010 Tijuana, B.C.",
+            "days": "Lunes a viernes",
+            "hours": "9:00 a.m. – 2:00 p.m."
+        },
+        "saludable": {
+            "name": "Columna Saludable",
+            "addressLine1": "Colinas de Baja California,",
+            "addressLine2": "22647 Tijuana, B.C.",
+            "days": "Lunes a viernes",
+            "hours": "4:00 p.m. – 6:00 p.m.",
+            "note": "Atención únicamente con cita previa y sujeta a disponibilidad."
+        }
     },
     "form": {
         "title": "Agendar una cita",
@@ -213,10 +235,6 @@
     "footer": {
         "name": "Dr. Hans Ruiz",
         "specialty": "Traumatología y Ortopedia",
-        "address": {
-            "line1": "Vía Ote. 9750-903, Zona Urbana Rio Tijuana,",
-            "line2": "22010 Tijuana, B.C."
-        },
         "quickLinks": "Enlaces Rápidos",
         "procedures": "Procedimientos",
         "about": "Sobre mí",

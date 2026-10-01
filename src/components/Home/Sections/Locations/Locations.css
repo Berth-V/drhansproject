@@ -1,0 +1,86 @@
+.locations {
+    width: 100%;
+    display: grid;
+    place-items: center;
+    padding: clamp(32px, 6vw, 80px) clamp(16px, 5vw, 64px);
+    background: var(--primary-color);
+}
+
+.locations__wrap {
+    width: min(1200px, 100%);
+}
+
+.locations__title {
+    margin: 0 0 clamp(20px, 3vw, 32px);
+    font-size: clamp(1.6rem, 3vw, 2.3rem);
+    color: var(--secondary-color);
+    font-weight: 700;
+    text-align: center;
+}
+
+.locations__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(20px, 3vw, 32px);
+}
+
+/* Tarjeta */
+
+.locations__card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: clamp(16px, 2.5vw, 24px);
+    border-radius: 18px;
+    background: var(--fiveth-color);
+    border: 1px solid rgba(0, 196, 255, 0.25);
+    color: var(--white-color);
+}
+
+.locations__name {
+    margin: 0;
+    font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+    color: var(--white-color);
+}
+
+.locations__address {
+    margin: 0;
+    line-height: 1.5;
+    opacity: 0.85;
+}
+
+.locations__note {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--fourth-color);
+}
+
+.locations__link {
+    align-self: flex-start;
+    color: var(--secondary-color);
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.locations__link:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+/* Mapa: empuja al fondo para alinear ambas tarjetas */
+
+.locations__map {
+    margin-top: auto;
+    padding-top: 6px;
+}
+
+.locations__map .map__iframe {
+    height: clamp(260px, 30vw, 380px);
+}
+
+@media (min-width: 900px) {
+    .locations__grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}

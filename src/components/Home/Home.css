@@ -22,13 +22,13 @@
   min-height: 320px;
 }
 
-/* Scoliosis */
-.home .scoliosis-placeholder {
+/* Knee Replacement */
+.home .knee-placeholder {
   min-height: 320px;
 }
 
-/* Osteoarthritis */
-.home .osteo-placeholder {
+/* Arthroscopy */
+.home .arthros-placeholder {
   min-height: 320px;
 }
 
@@ -42,7 +42,7 @@
   min-height: auto;
 }
 
-/* Map */
+/* Locations */
 .home .map-placeholder {
   min-height: 300px;
 }

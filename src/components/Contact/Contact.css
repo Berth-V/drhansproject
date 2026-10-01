@@ -91,9 +91,96 @@
 .contact__helptext {
   color: var(--fourth-color);
   font-size: 0.78rem;
-  margin: 0 0 2.8rem;
+  margin: 0 0 0.9rem;
   opacity: 0.6;
   position: relative;
+}
+
+/* Precio de consulta */
+.contact__price {
+  color: var(--fourth-color);
+  font-size: 0.9rem;
+  margin: 0 0 2.8rem;
+  letter-spacing: 0.02em;
+  opacity: 0.9;
+  position: relative;
+}
+
+.contact__price strong {
+  color: var(--secondary-color);
+  font-weight: 600;
+}
+
+/* Horarios de atención */
+.contact__schedule {
+  width: 100%;
+  max-width: 640px;
+  margin-bottom: 2.8rem;
+  position: relative;
+}
+
+.contact__scheduleTitle {
+  color: var(--white-color);
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0 0 1rem;
+}
+
+.contact__offices {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.contact__office {
+  padding: 1rem 1.2rem;
+  border-radius: 12px;
+  border: 1px solid var(--third-color);
+  background: rgba(7, 89, 133, 0.15);
+  text-align: center;
+}
+
+
+.contact__officeName {
+  color: var(--secondary-color);
+  font-weight: 600;
+  margin: 0 0 0.4rem;
+}
+
+.contact__officeAddress {
+  color: var(--fourth-color);
+  font-size: 0.8rem;
+  line-height: 1.4;
+  opacity: 0.75;
+  margin: 0 0 0.5rem;
+}
+
+.contact__officeHours {
+  margin: 0;
+  color: var(--white-color);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.contact__officeHours strong {
+  font-weight: 700;
+}
+
+.contact__officeNote {
+  color: var(--fourth-color);
+  font-size: 0.75rem;
+  font-style: italic;
+  opacity: 0.8;
+  margin: 0.5rem 0 0;
+}
+
+@media (min-width: 600px) {
+  .contact__offices {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 /* Divisor */

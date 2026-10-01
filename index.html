@@ -32,50 +32,80 @@
 
   <!-- Schema.org: Physician -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Physician",
-    "name": "Dr. Hans Ruiz Serna",
-    "description": "Especialista en Traumatología y Ortopedia en Tijuana, Baja California. Atención de fracturas, lesiones deportivas, cirugía articular y ortopédica.",
-    "url": "https://hansruiztrauma.com.mx",
-    "telephone": "+526645410955",
-    "priceRange": "$$",
-    "medicalSpecialty": [
-      "Traumatology",
-      "Orthopedic Surgery"
-    ],
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Vía Ote. 9750-903, Zona Urbana Rio Tijuana",
-      "addressLocality": "Tijuana",
-      "addressRegion": "Baja California",
-      "postalCode": "22010",
-      "addressCountry": "MX"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 32.5332576,
-      "longitude": -117.0225598
-    },
-    "hasMap": "https://www.google.com/maps/place/Dr+Hans+Ruiz+Traumat%C3%B3logo/@32.5332576,-117.0225598,17z",
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      "opens": "09:00",
-      "closes": "14:00"
-    },
-    "affiliation": {
-      "@type": "MedicalClinic",
-      "name": "Hospital Blue"
-    },
-    "sameAs": [
-      "https://www.doctoralia.com.mx/hans-ruiz-serna/traumatologo-ortopedista/tijuana"
-    ],
-    "areaServed": {
-      "@type": "City",
-      "name": "Tijuana"
+{
+  "@context": "https://schema.org",
+  "@type": "Physician",
+  "name": "Dr. Hans Ruiz Serna",
+  "description": "Especialista en Traumatología y Ortopedia en Tijuana, Baja California. Atención de fracturas, lesiones deportivas, cirugía articular y ortopédica.",
+  "url": "https://hansruiztrauma.com.mx",
+  "telephone": "+526645410955",
+  "priceRange": "$1,200 MXN",
+    "makesOffer": {
+    "@type": "Offer",
+    "price": "1200",
+    "priceCurrency": "MXN",
+    "itemOffered": {
+      "@type": "Service",
+      "name": "Consulta de traumatología y ortopedia"
     }
-  }
+  },
+  "medicalSpecialty": ["Traumatology", "Orthopedic Surgery"],
+  "affiliation": [
+    {
+      "@type": "MedicalClinic",
+      "name": "Hospital Blue",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Vía Ote. 9750-903, Zona Urbana Rio Tijuana",
+        "addressLocality": "Tijuana",
+        "addressRegion": "Baja California",
+        "postalCode": "22010",
+        "addressCountry": "MX"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 32.5332576,
+        "longitude": -117.0225598
+      },
+      "hasMap": "https://maps.app.goo.gl/dpBxPV4n5eVN1dWi9",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "14:00"
+      }
+    },
+    {
+      "@type": "MedicalClinic",
+      "name": "Columna Saludable",
+      "description": "Consultorio vespertino, atención únicamente con cita previa.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Colinas de Baja California",
+        "addressLocality": "Tijuana",
+        "addressRegion": "Baja California",
+        "postalCode": "22647",
+        "addressCountry": "MX"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 32.4679242,
+        "longitude": -117.0044807
+      },
+      "hasMap": "https://maps.app.goo.gl/39v9PGX1rF4TtEBH6",
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "16:00",
+        "closes": "18:00"
+      }
+    }
+  ],
+  "sameAs": [
+    "https://www.doctoralia.com.mx/hans-ruiz-serna/traumatologo-ortopedista/tijuana"
+  ],
+  "areaServed": { "@type": "City", "name": "Tijuana" }
+}
   </script>
 </head>
 

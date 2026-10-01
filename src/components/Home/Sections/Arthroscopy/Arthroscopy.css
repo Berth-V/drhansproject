@@ -1,4 +1,4 @@
-.osteo {
+.arthroscopy {
     width: 100%;
     display: grid;
     place-items: center;
@@ -6,25 +6,25 @@
     background: var(--primary-color);
 }
 
-.osteo__wrap {
+.arthroscopy__wrap {
     width: min(1200px, 100%);
 }
 
-.osteo__grid {
+.arthroscopy__grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: clamp(24px, 4vw, 48px);
     align-items: center;
 }
 
-/* 🖼️ IMAGEN */
+/* img */
 
-.osteo__imageBox {
+.arthroscopy__imageBox {
     display: flex;
     justify-content: center;
 }
 
-.osteo__image {
+.arthroscopy__image {
     width: clamp(80%, 45vw, 520px);
     border-radius: 18px;
     object-fit: cover;
@@ -36,19 +36,19 @@
 
 /* 🧠 TEXTO */
 
-.osteo__content {
+.arthroscopy__content {
     color: var(--white-color);
     max-width: 580px;
 }
 
-.osteo__title {
+.arthroscopy__title {
     margin: 0 0 12px;
     font-size: clamp(1.6rem, 3vw, 2.3rem);
     color: var(--secondary-color);
     font-weight: 700;
 }
 
-.osteo__description {
+.arthroscopy__description {
     font-size: clamp(1rem, 2vw, 1.2rem);
     line-height: 1.6;
     opacity: 0.9;
@@ -57,7 +57,7 @@
 
 /* 🔥 SÍNTOMAS */
 
-.osteo__symptoms {
+.arthroscopy__symptoms {
     list-style: none;
     padding: 0;
     margin: 0 0 16px;
@@ -65,13 +65,13 @@
     gap: 8px;
 }
 
-.osteo__symptoms li {
+.arthroscopy__symptoms li {
     position: relative;
     padding-left: 22px;
     font-size: clamp(0.95rem, 1.8vw, 1.05rem);
 }
 
-.osteo__symptoms li::before {
+.arthroscopy__symptoms li::before {
     content: "•";
     position: absolute;
     left: 0;
@@ -80,7 +80,7 @@
 
 /* 🎯 CTA */
 
-.osteo__ctaText {
+.arthroscopy__ctaText {
     font-weight: 600;
     color: var(--secondary-color);
 }
@@ -88,7 +88,7 @@
 /* 💻 DESKTOP */
 
 @media (min-width: 900px) {
-    .osteo__grid {
+    .arthroscopy__grid {
         grid-template-columns: 1fr 1fr;
     }
 }
@@ -96,11 +96,11 @@
 /* responsive */
 @media (max-width: 768px) {
 
-    .osteo__imageBox {
+    .arthroscopy__imageBox {
         order: 2;
     }
 
-    .osteo__content {
+    .arthroscopy__content {
         order: 1;
     }
 
