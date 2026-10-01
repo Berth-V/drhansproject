@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { motion } from 'motion/react';
+import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { db } from '../../../firebase/firebase';
@@ -64,6 +65,15 @@ const BlogHome = () => {
 
   return (
     <section className="blog-home">
+      <Helmet>
+        <title>Blog de Traumatología y Ortopedia | Dr. Hans Ruiz — Tijuana</title>
+        <meta
+          name="description"
+          content="Artículos sobre traumatología, ortopedia, lesiones y tratamientos, escritos por el Dr. Hans Ruiz, especialista en Tijuana, Baja California."
+        />
+        <link rel="canonical" href="https://hansruiztrauma.com.mx/blog" />
+      </Helmet>
+
       <div className="blog-home__header">
         <p className="blog-home__eyebrow">Dr. Hans Ruiz</p>
         <motion.h1 className="blog-home__title" {...fadeUpVariant}>

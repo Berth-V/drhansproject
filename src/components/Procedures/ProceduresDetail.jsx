@@ -1,15 +1,40 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { collection, getDocs, query, where, limit } from 'firebase/firestore';
+import { Helmet } from 'react-helmet-async';
 import { getProceduresData } from './data';
 import { useTranslation } from 'react-i18next';
+import { db } from '../../firebase/firebase'; // ajusta la ruta si no coincide
 import './ProcedureDetail.css';
 
 function ProcedureDetail() {
   const { t } = useTranslation();
   const { partId } = useParams();
   const [selectedInjury, setSelectedInjury] = useState(null);
+  const [relatedPosts, setRelatedPosts] = useState([]);
   const proceduresData = getProceduresData();
   const partData = proceduresData[partId];
+
+  useEffect(() => {
+    if (!partId) return;
+
+    const fetchRelatedPosts = async () => {
+      try {
+        const q = query(
+          collection(db, 'posts'),
+          where('relatedPart', '==', partId),
+          where('published', '==', true),
+          limit(5)
+        );
+        const snapshot = await getDocs(q);
+        setRelatedPosts(snapshot.docs.map((d) => ({ id: d.id, ...d.data() })));
+      } catch (err) {
+        console.error('Error fetching related posts:', err);
+      }
+    };
+
+    fetchRelatedPosts();
+  }, [partId]);
 
   if (!partData) {
     return (
@@ -25,6 +50,15 @@ function ProcedureDetail() {
 
   return (
     <div className="procedure-detail">
+      <Helmet>
+        <title>{partData.title} — Lesiones y Tratamientos | Dr. Hans Ruiz — Traumatología Tijuana</title>
+        <meta
+          name="description"
+          content={`Conoce las lesiones y opciones de tratamiento más comunes de ${partData.title.toLowerCase()}, explicadas por el Dr. Hans Ruiz, traumatólogo y ortopedista en Tijuana.`}
+        />
+        <link rel="canonical" href={`https://hansruiztrauma.com.mx/procedures/${partId}`} />
+      </Helmet>
+
       {/* Breadcrumb navigation */}
       <div className="procedure-detail__breadcrumb">
         <Link to="/procedures" className="procedure-detail__breadcrumb-link">
@@ -93,6 +127,26 @@ function ProcedureDetail() {
             ))}
           </div>
         </div>
+      )}
+
+      {relatedPosts.length > 0 && (
+        <section className="procedure-detail__related">
+          <h3 className="procedure-detail__related-heading">Artículos relacionados</h3>
+          <div className="procedure-detail__related-grid">
+            {relatedPosts.map((post) => (
+              <Link
+                key={post.id}
+                to={`/blog/${post.slug}`}
+                className="procedure-detail__related-card"
+              >
+                {post.category && (
+                  <span className="procedure-detail__related-category">{post.category}</span>
+                )}
+                <h4 className="procedure-detail__related-title">{post.title}</h4>
+              </Link>
+            ))}
+          </div>
+        </section>
       )}
 
       <Link to="/procedures" className="procedure-detail__back-link">

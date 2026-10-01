@@ -15,6 +15,12 @@ const CLOUDINARY_URL = `https://api.cloudinary.com/v1_1/${import.meta.env.VITE_C
 const CLOUDINARY_PRESET = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
 import RichTextEditor from './RichTextEditor';
 import './PostForm.css';
+import { getProceduresData } from '../../Procedures/data';
+
+const RELATED_PART_OPTIONS = Object.entries(getProceduresData()).map(([id, part]) => ({
+  value: id,
+  label: part.title,
+}));
 
 const EMPTY_FORM = {
   title: '',
@@ -22,6 +28,7 @@ const EMPTY_FORM = {
   category: '',
   content: '',
   videoUrl: '',
+  relatedPart: '',
   published: false,
   slugEdited: false,
 };
@@ -55,6 +62,7 @@ const PostForm = () => {
           category: data.category ?? '',
           content: data.content ?? '',
           videoUrl: data.videoUrl ?? '',
+          relatedPart: data.relatedPart ?? '',
           published: data.published ?? false,
           slugEdited: true,
         });
@@ -152,6 +160,7 @@ const PostForm = () => {
         category: form.category,
         content: form.content,
         videoUrl: form.videoUrl,
+        relatedPart: form.relatedPart,
         published: form.published,
         imageUrl,
       };
@@ -224,6 +233,23 @@ const PostForm = () => {
             placeholder="Ej: Cirugía, Alimentación…"
           />
           {errors.category && <span className="post-form__error">{errors.category}</span>}
+        </div>
+
+        <div className="post-form__field">
+          <label htmlFor="relatedPart">Procedimiento relacionado (opcional)</label>
+          <select
+            id="relatedPart"
+            name="relatedPart"
+            value={form.relatedPart}
+            onChange={handleChange}
+          >
+            <option value="">Sin procedimiento relacionado</option>
+            {RELATED_PART_OPTIONS.map((opt) => (
+              <option key={opt.value} value={opt.value}>
+                {opt.label}
+              </option>
+            ))}
+          </select>
         </div>
 
         <div className="post-form__field">

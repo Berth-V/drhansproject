@@ -1,5 +1,6 @@
 import './About.css';
 import photo from '../../assets/about-photo.webp';
+import { Helmet } from 'react-helmet-async';
 import { FaFacebookSquare } from 'react-icons/fa';
 import { RiInstagramFill } from 'react-icons/ri';
 import { AiFillTikTok } from 'react-icons/ai';
@@ -10,6 +11,12 @@ const About = () => {
 
   return (
     <div className="doctor-profile">
+      <Helmet>
+        <title>Sobre el Dr. Hans Ruiz — Traumatólogo en Tijuana</title>
+        <meta name="description" content="Conoce la formación, experiencia y especialidad del Dr. Hans Ruiz, traumatólogo y ortopedista en Tijuana, Baja California." />
+        <link rel="canonical" href="https://hansruiztrauma.com.mx/about" />
+      </Helmet>
+
       <div className="doctor-profile__header">
         <div className="doctor-profile__photo-section">
           <div className="doctor-profile__photo">
@@ -21,28 +28,13 @@ const About = () => {
           <h2>{t('about.profession')}</h2>
           <p>{t('about.followMe')}</p>
           <div className="doctor-profile__social-links">
-            <a
-              href="https://www.tiktok.com/@drhansruiz"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="doctor-profile__social-link"
-            >
+            <a href="https://www.tiktok.com/@drhansruiz" target="_blank" rel="noopener noreferrer" className="doctor-profile__social-link">
               <AiFillTikTok />
             </a>
-            <a
-              href="https://www.instagram.com/drhansruiz/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="doctor-profile__social-link"
-            >
+            <a href="https://www.instagram.com/drhansruiz/" target="_blank" rel="noopener noreferrer" className="doctor-profile__social-link">
               <RiInstagramFill />
             </a>
-            <a
-              href="https://www.facebook.com/DrHansRuiz"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="doctor-profile__social-link"
-            >
+            <a href="https://www.facebook.com/DrHansRuiz" target="_blank" rel="noopener noreferrer" className="doctor-profile__social-link">
               <FaFacebookSquare />
             </a>
           </div>

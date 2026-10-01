@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { collection, getDocs, query, where, limit } from 'firebase/firestore';
 import { motion } from 'motion/react';
+import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { db } from '../../../firebase/firebase';
 import { fadeUpVariant } from '../../Shared/motionVariants/motionVariants';
 import { extractYoutubeId } from '../utils/youtube';
+import { getProceduresData } from '../../Procedures/data';
 import './BlogPost.css';
 
 const BlogPost = () => {
@@ -41,7 +43,6 @@ const BlogPost = () => {
 
   const formatContent = (raw) => {
     if (!raw) return '';
-    // If content has no HTML tags it was saved as plain text — convert to paragraphs
     if (!/<[a-z][\s\S]*>/i.test(raw)) {
       return raw
         .split(/\n{2,}/)
@@ -50,6 +51,12 @@ const BlogPost = () => {
         .join('');
     }
     return raw;
+  };
+
+  const getMetaDescription = (content) => {
+    if (!content) return '';
+    const plainText = content.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+    return plainText.length > 155 ? plainText.slice(0, 155).trim() + '…' : plainText;
   };
 
   const dateLocale = i18n.language === 'es' ? 'es-MX' : 'en-US';
@@ -61,7 +68,16 @@ const BlogPost = () => {
     })
     : '';
 
+  const isoDate = post?.publishedAt?.toDate
+    ? post.publishedAt.toDate().toISOString()
+    : '';
+
   const videoId = extractYoutubeId(post?.videoUrl);
+
+  // Título legible de la parte relacionada, si existe
+  const relatedPartTitle = post?.relatedPart
+    ? getProceduresData()[post.relatedPart]?.title
+    : null;
 
   if (loading) {
     return (
@@ -82,8 +98,44 @@ const BlogPost = () => {
     );
   }
 
+  const metaDescription = getMetaDescription(post.content);
+  const canonicalUrl = `https://hansruiztrauma.com.mx/blog/${post.slug}`;
+
   return (
     <article className="blog-post">
+      <Helmet>
+        <title>{post.title} | Dr. Hans Ruiz — Traumatología Tijuana</title>
+        <meta name="description" content={metaDescription} />
+        <link rel="canonical" href={canonicalUrl} />
+
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={metaDescription} />
+        <meta property="og:url" content={canonicalUrl} />
+        {post.imageUrl && <meta property="og:image" content={post.imageUrl} />}
+
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'MedicalWebPage',
+            headline: post.title,
+            description: metaDescription,
+            url: canonicalUrl,
+            ...(isoDate && { datePublished: isoDate }),
+            ...(post.imageUrl && { image: post.imageUrl }),
+            author: {
+              '@type': 'Physician',
+              name: 'Dr. Hans Ruiz Serna',
+              url: 'https://hansruiztrauma.com.mx',
+            },
+            publisher: {
+              '@type': 'Physician',
+              name: 'Dr. Hans Ruiz Serna',
+            },
+          })}
+        </script>
+      </Helmet>
+
       <div className="blog-post__container">
         <Link to="/blog" className="blog-post__back">
           {t('blog.post.back')}
@@ -122,6 +174,18 @@ const BlogPost = () => {
           viewport={{ once: true, amount: 0.05 }}
           dangerouslySetInnerHTML={{ __html: formatContent(post.content) }}
         />
+
+        {relatedPartTitle && (
+          <div className="blog-post__related">
+            <p className="blog-post__related-label">¿Te interesa saber más?</p>
+            <Link
+              to={`/procedures/${post.relatedPart}`}
+              className="blog-post__related-link"
+            >
+              Ver todo sobre {relatedPartTitle} →
+            </Link>
+          </div>
+        )}
       </div>
     </article>
   );

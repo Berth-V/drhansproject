@@ -1,5 +1,6 @@
 import './App.css';
 import { BrowserRouter, useLocation } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import Header from './components/Header/Header';
 import AppRoutes from './AppRoutes';
 import Footer from './components/Footer/Footer';
@@ -23,8 +24,10 @@ function App() {
 
 export default function AppWrapper() {
   return (
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }
