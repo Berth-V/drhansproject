@@ -6,8 +6,62 @@ import {
   scaleAnimation,
 } from '../../../../Shared/motionVariants/motionVariants';
 import { Link } from 'react-router-dom';
-import { useRef, useLayoutEffect } from 'react';
+import { useRef, useLayoutEffect, useState } from 'react';
 import proceduresData from '../../../../Procedures/data/proceduresData';
+
+// Proporciones del botón "Ver Todo" respecto a la altura de su texto. Cada zona tiene un zoom
+// distinto, así que medidas fijas (rx="1") se veían redondas en unas y cuadradas en otras.
+const SEE_ALL_BTN = {
+  paddingX: 0.65,
+  paddingY: 0.45,
+  radius: 0.35, // del alto del botón; mayor que la mitad del borde para que redondee por dentro
+  stroke: 0.12, // del alto del botón
+};
+
+// Recuadro calculado a partir del texto: mismos márgenes, redondeo y borde en todos los botones
+function SeeAllButton({ textPaths }) {
+  const textRef = useRef(null);
+  const [box, setBox] = useState(null);
+
+  useLayoutEffect(() => {
+    if (!textRef.current) return;
+    const { x, y, width, height: textHeight } = textRef.current.getBBox();
+    const paddingX = textHeight * SEE_ALL_BTN.paddingX;
+    const paddingY = textHeight * SEE_ALL_BTN.paddingY;
+    const height = textHeight + paddingY * 2;
+    setBox({
+      x: x - paddingX,
+      y: y - paddingY,
+      width: width + paddingX * 2,
+      height,
+      rx: height * SEE_ALL_BTN.radius,
+      strokeWidth: height * SEE_ALL_BTN.stroke,
+    });
+  }, [textPaths]);
+
+  return (
+    <>
+      {box && (
+        <rect
+          x={box.x}
+          y={box.y}
+          width={box.width}
+          height={box.height}
+          rx={box.rx}
+          ry={box.rx}
+          fill="#00C4FF"
+          stroke="#075985"
+          strokeWidth={box.strokeWidth}
+        />
+      )}
+      <g ref={textRef}>
+        {textPaths.map((p) => (
+          <path key={p.id} id={p.id} d={p.d} fill="white" />
+        ))}
+      </g>
+    </>
+  );
+}
 
 export default function SkeletonManager() {
   const partsData = getPartsData();
@@ -151,21 +205,7 @@ export default function SkeletonManager() {
                       whileHover={{ scale: 1.05 }}
                       style={{ cursor: 'pointer' }}
                     >
-                      <rect
-                        {...active.seeAllBtn.rectPaths}
-                        fill="#00C4FF"
-                        rx="1"
-                        ry="1"
-                      />
-                      <rect
-                        {...active.seeAllBtn.rectPaths}
-                        stroke="#075985"
-                        strokeWidth={active.seeAllBtn.rectPaths.strokeWidth}
-                        rx="1"
-                      />
-                      {active.seeAllBtn.othersPaths?.map((p) => (
-                        <path key={p.id} id={p.id} d={p.d} fill="white" />
-                      ))}
+                      <SeeAllButton textPaths={active.seeAllBtn.othersPaths ?? []} />
                     </motion.g>
                   </Link>
                 )}
