@@ -9,6 +9,7 @@ import { fileURLToPath } from 'node:url';
 import { build } from 'vite';
 import { SITES } from '../src/config/sites.js';
 import { loadEnv, fetchPosts, buildSitemap, buildRobots } from './generateSitemap.mjs';
+import { prerenderSite } from './prerender.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -51,4 +52,7 @@ for (const id of siteIds) {
   writeFileSync(resolve(outDir, 'sitemap.xml'), buildSitemap(site, posts));
   writeFileSync(resolve(outDir, 'robots.txt'), buildRobots(site));
   console.log(`[sitemap] dist/${id}/sitemap.xml${id === 'mx' ? ` (incluye ${posts.length} artículos)` : ''} y robots.txt`);
+
+  const pageCount = prerenderSite({ site, outDir, posts });
+  console.log(`[prerender] ${pageCount} páginas con sus etiquetas SEO en dist/${id}`);
 }

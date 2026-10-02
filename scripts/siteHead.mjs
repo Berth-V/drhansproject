@@ -1,10 +1,12 @@
-// Genera las etiquetas de <head> de index.html para cada dominio (lo usa vite.config.js).
-// Son las que leen los buscadores y redes sociales sin ejecutar JavaScript; en el navegador,
-// main.jsx quita las marcadas con data-static-seo y cada página pone las suyas con <Seo>.
+// Genera las etiquetas de <head> de index.html para cada dominio (lo usa vite.config.js) y las
+// de cada página prerenderizada (scripts/prerender.mjs). Son las que leen los buscadores y redes
+// sociales sin ejecutar JavaScript; en el navegador, main.jsx quita las marcadas con
+// data-static-seo y cada página pone las suyas con <Seo>.
 import es from '../src/locales/es.json' with { type: 'json' };
 import en from '../src/locales/en.json' with { type: 'json' };
+import { SITES } from '../src/config/sites.js';
 
-const LOCALES = { es, en };
+export const LOCALES = { es, en };
 
 const TEXTS = {
   es: {
@@ -25,7 +27,7 @@ const TEXTS = {
   },
 };
 
-const escapeAttr = (value) =>
+export const escapeAttr = (value) =>
   String(value).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 
 function physicianSchema(site, text) {
@@ -92,21 +94,58 @@ function physicianSchema(site, text) {
   };
 }
 
+// Marcas que delimitan las etiquetas propias de cada página (scripts/prerender.mjs las reemplaza)
+export const SEO_START = '<!-- SEO:START -->';
+export const SEO_END = '<!-- SEO:END -->';
+
+/**
+ * Etiquetas SEO de una página, igual que src/components/Shared/Seo/Seo.jsx.
+ * Llevan data-static-seo para que main.jsx las quite y no se dupliquen con las de <Seo>.
+ */
+export function renderSeoTags({
+  site,
+  title,
+  description,
+  path,
+  canonicalDomain = site.domain,
+  alternates = true,
+  type = 'website',
+  image,
+  locale = site.ogLocale,
+}) {
+  const canonicalUrl = `${canonicalDomain}${path}`;
+  const tags = [
+    `<title data-static-seo>${escapeAttr(title)}</title>`,
+    `<meta data-static-seo name="description" content="${escapeAttr(description)}" />`,
+    `<link data-static-seo rel="canonical" href="${escapeAttr(canonicalUrl)}" />`,
+  ];
+  if (alternates) {
+    for (const s of Object.values(SITES)) {
+      tags.push(`<link data-static-seo rel="alternate" hreflang="${s.htmlLang}" href="${escapeAttr(`${s.domain}${path}`)}" />`);
+    }
+    tags.push(`<link data-static-seo rel="alternate" hreflang="x-default" href="${escapeAttr(`${SITES.mx.domain}${path}`)}" />`);
+  }
+  tags.push(
+    `<meta data-static-seo property="og:type" content="${type}" />`,
+    `<meta data-static-seo property="og:site_name" content="Dr. Hans Ruiz" />`,
+    `<meta data-static-seo property="og:locale" content="${locale}" />`,
+    `<meta data-static-seo property="og:title" content="${escapeAttr(title)}" />`,
+    `<meta data-static-seo property="og:description" content="${escapeAttr(description)}" />`,
+    `<meta data-static-seo property="og:url" content="${escapeAttr(canonicalUrl)}" />`
+  );
+  if (image) tags.push(`<meta data-static-seo property="og:image" content="${escapeAttr(image)}" />`);
+  tags.push(`<meta data-static-seo name="twitter:card" content="${image ? 'summary_large_image' : 'summary'}" />`);
+
+  return `${SEO_START}\n  ${tags.join('\n  ')}\n  ${SEO_END}`;
+}
+
 export function renderSiteHead(site) {
   const { title, description } = LOCALES[site.language].seo.home;
   const text = TEXTS[site.language];
   const schema = JSON.stringify(physicianSchema(site, text), null, 2).replace(/</g, '\\u003c');
 
-  return `<title data-static-seo>${escapeAttr(title)}</title>
-  <meta data-static-seo name="description" content="${escapeAttr(description)}" />
+  return `${renderSeoTags({ site, title, description, path: '/' })}
   <meta name="keywords" content="${escapeAttr(text.keywords)}" />
-
-  <!-- Open Graph -->
-  <meta data-static-seo property="og:type" content="website" />
-  <meta data-static-seo property="og:site_name" content="Dr. Hans Ruiz" />
-  <meta data-static-seo property="og:locale" content="${site.ogLocale}" />
-  <meta data-static-seo property="og:title" content="${escapeAttr(title)}" />
-  <meta data-static-seo property="og:description" content="${escapeAttr(description)}" />
 
   <!-- Schema.org: Physician -->
   <script type="application/ld+json">

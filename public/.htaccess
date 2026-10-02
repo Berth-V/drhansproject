@@ -1,5 +1,14 @@
 Options -MultiViews
+# /procedures es a la vez procedures.html y la carpeta procedures/: sin esto Apache redirige a /procedures/
+DirectorySlash Off
 RewriteEngine On
+
+# Páginas prerenderizadas por scripts/prerender.mjs: /about → about.html, /blog/mi-post → blog/mi-post.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+?)/?$ $1.html [QSA,L]
+
+# Todo lo demás lo resuelve la app (React Router)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.html [QSA,L]
 

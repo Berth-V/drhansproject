@@ -42,6 +42,9 @@ export async function fetchPosts({ VITE_FIREBASE_PROJECT_ID: projectId, VITE_FIR
       posts.push({
         slug,
         lastmod: fields.publishedAt?.timestampValue ?? doc.updateTime,
+        title: fields.title?.stringValue ?? '',
+        content: fields.content?.stringValue ?? '',
+        imageUrl: fields.imageUrl?.stringValue ?? '',
       });
     }
     pageToken = data.nextPageToken ?? '';
