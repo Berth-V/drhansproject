@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next';
 import Seo from '../Shared/Seo/Seo';
 import Frontpage from './Sections/Frontpage/Frontpage';
 import { SkeletonProvider } from './Sections/Skeleton/context/SkeletonContext';
+import { loadPartsData } from './Sections/Skeleton/data';
 import {
   fadeUpVariant,
   fadeInVariant,
@@ -15,7 +16,10 @@ const DiscHernia = lazy(() => import('./Sections/DiscHernia/DiscHernia'));
 const KneeReplacement = lazy(() => import('./Sections/KneeReplacement/KneeReplacement'));
 const Arthroscopy = lazy(() => import('./Sections/Arthroscopy/Arthroscopy'));
 const Sciatica = lazy(() => import('./Sections/Sciatica/Sciatica'));
-const Skeleton = lazy(() => import('./Sections/Skeleton/Skeleton'));
+// El esqueleto se muestra cuando ya cargaron el componente y los datos de su idioma
+const Skeleton = lazy(() =>
+  Promise.all([import('./Sections/Skeleton/Skeleton'), loadPartsData()]).then(([module]) => module)
+);
 const Locations = lazy(() => import('./Sections/Locations/Locations'));
 const Reviews = lazy(() => import('../Shared/Reviews/Reviews'));
 
