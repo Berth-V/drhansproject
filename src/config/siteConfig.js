@@ -1,9 +1,21 @@
+import { SITES, resolveSiteId } from './sites';
+
+// Sitio activo: .com.mx (español) o .com (inglés). Ver src/config/sites.js
+const siteId = resolveSiteId(
+    typeof window !== 'undefined' ? window.location.hostname : '',
+    import.meta.env.VITE_SITE
+);
+
 export const SITE_CONFIG = {
-    country: 'mx',
-    language: 'es',
-    ga4: 'G-V67EQJ7MC3',
-    domain: 'https://hansruiztrauma.com.mx'
+    ...SITES[siteId],
+    ga4: 'G-V67EQJ7MC3'
 };
+
+// El otro dominio (para el selector de idioma y los enlaces hreflang)
+export const ALTERNATE_SITE = Object.values(SITES).find((site) => site.id !== siteId);
+
+// El blog solo se escribe en español: los artículos de ambos dominios apuntan a .com.mx
+export const BLOG_CANONICAL_DOMAIN = SITES.mx.domain;
 
 // Textos de cada consultorio en i18n: offices.<id>.*
 export const OFFICES = [

@@ -4,6 +4,7 @@ import logoEs from '../../assets/logoEs.jpeg';
 import { NavLink } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from '../Shared/LanguageSwitcher/LanguageSwitcher';
 
 export default function Header() {
   const { t, i18n } = useTranslation();
@@ -44,6 +45,9 @@ export default function Header() {
 
   return (
     <header className="header">
+      <div className='header__nav-top'>
+        <LanguageSwitcher />
+      </div>
       <div className='header__wrapper'>
         <img
           className="header__logo"

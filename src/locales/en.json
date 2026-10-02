@@ -1,4 +1,44 @@
 {
+    "common": {
+        "loading": "Loading..."
+    },
+    "seo": {
+        "home": {
+            "title": "Dr. Hans Ruiz | Orthopedic Surgeon in Tijuana, Mexico",
+            "description": "Orthopedic and trauma surgeon in Tijuana, Mexico: minimally invasive spine surgery, herniated disc, sciatica, knee replacement, and shoulder and knee arthroscopy."
+        },
+        "about": {
+            "title": "Meet Dr. Hans Ruiz Serna | Orthopedic Surgeon in Tijuana",
+            "description": "Medical degree from UAS and specialty in Traumatology and Orthopedics from UNAM. Since 2014 he has performed fracture surgery, joint replacements and spine surgery."
+        },
+        "procedures": {
+            "title": "Injuries and Treatments by Body Area | Dr. Hans Ruiz",
+            "description": "Explore the most common injuries of the spine, knee, shoulder, hip, hand, foot and other body areas, with their conservative and surgical treatment options."
+        },
+        "procedureDetail": {
+            "title": "{{part}}: Injuries and Treatments | Dr. Hans Ruiz",
+            "description": "Common {{part}} injuries and their treatment options, explained by Dr. Hans Ruiz, orthopedic and trauma surgeon in Tijuana, Mexico."
+        },
+        "contact": {
+            "title": "Book an Appointment | Dr. Hans Ruiz, Tijuana",
+            "description": "Phone, WhatsApp, office hours and locations of Dr. Hans Ruiz at Hospital Blue and Columna Saludable in Tijuana, Mexico. Consultation fee: $1,200 MXN."
+        },
+        "blog": {
+            "title": "Orthopedics and Trauma Blog | Dr. Hans Ruiz",
+            "description": "Articles by Dr. Hans Ruiz about back pain, injuries, fractures, joint replacement and recovery, plus answers to patient questions (in Spanish)."
+        },
+        "blogPost": {
+            "titleSuffix": "Dr. Hans Ruiz"
+        },
+        "questions": {
+            "title": "Ask the Doctor | Dr. Hans Ruiz",
+            "description": "Send your question about injuries, pain or orthopedic treatments and Dr. Hans Ruiz will answer it. Answers are published on the blog."
+        },
+        "privacy": {
+            "title": "Privacy Policy | Dr. Hans Ruiz",
+            "description": "How the personal data of patients and visitors of Dr. Hans Ruiz's website is collected, used and protected, and how to exercise your ARCO rights."
+        }
+    },
     "header": {
         "home": "Home",
         "procedures": "Procedures",
@@ -70,12 +110,54 @@
         "injuriesAndTreatments": "injuries and treatments available",
         "notFound": "Body part not found",
         "backToProcedures": "Back to Procedures",
-        "injuries": "Injuries",
+        "partInjuries": "{{part}} Injuries",
         "exploreInjuriesFor": "Explore injuries and treatments for the {{part}}",
         "treatmentOptions": "Treatment Options",
         "viewDetails": "View Details",
         "backToList": "Back to List",
-        "backToAllProcedures": "Back to All Procedures"
+        "backToAllProcedures": "Back to All Procedures",
+        "relatedArticles": "Related articles",
+        "treatmentTypes": {
+            "activity": "Activity",
+            "advanced": "Advanced",
+            "advantage": "Advantage",
+            "advantages": "Advantages",
+            "children": "Children",
+            "chronic": "Chronic",
+            "complete": "Complete",
+            "complex": "Complex",
+            "conservative": "Conservative",
+            "displaced": "Displaced",
+            "elderly": "Older adults",
+            "evaluation": "Evaluation",
+            "fixed": "Fixed",
+            "followUp": "Follow-up",
+            "goal": "Goal",
+            "immediate": "Immediate",
+            "indication": "Indication",
+            "indications": "Indications",
+            "initial": "Initial",
+            "injections": "Injections",
+            "methods": "Methods",
+            "mild": "Mild",
+            "moderate": "Moderate",
+            "nonDisplaced": "Non-displaced",
+            "note": "Note",
+            "persistent": "Persistent",
+            "recurrent": "Recurrent",
+            "refractory": "Refractory",
+            "rehabilitation": "Rehabilitation",
+            "resistant": "Resistant",
+            "severe": "Severe",
+            "simple": "Simple",
+            "stabilization": "Stabilization",
+            "stable": "Stable",
+            "standard": "Standard",
+            "surgical": "Surgical",
+            "unstable": "Unstable",
+            "uses": "Uses",
+            "young": "Young patients"
+        }
     },
     "about": {
         "photoAlt": "Dr Hans About Photo",
@@ -216,7 +298,10 @@
         "post": {
             "loading": "Loading article...",
             "notFound": "Article not found.",
-            "back": "← Back to blog"
+            "back": "← Back to blog",
+            "relatedLabel": "Want to learn more?",
+            "relatedLink": "See everything about {{part}} →",
+            "languageNote": "This article is written in Spanish."
         },
         "pagination": {
             "page": "Page {{current}} of {{total}}",
@@ -230,7 +315,8 @@
             "empty": "No answered questions yet.",
             "askCta": "Have a question?",
             "askBtn": "Ask the Doctor"
-        }
+        },
+        "languageNote": "Articles are written in Spanish."
     },
     "footer": {
         "name": "Dr. Hans Ruiz",

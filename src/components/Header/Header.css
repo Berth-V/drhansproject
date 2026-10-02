@@ -1,9 +1,21 @@
 .header {
   display: flex;
   flex-direction: column;
-  height: var(--header-height);
+  height: calc(var(--header-height) + 1.1rem);
   width: 100%;
   background-color: var(--secondary-color);
+}
+
+.header__nav-top {
+  height: 1.1rem;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 0.75rem;
+  box-sizing: border-box;
+  font-size: 0.5rem;
+  background-color: var(--third-color);
 }
 
 .header__wrapper {
@@ -102,6 +114,7 @@
   border: none;
   cursor: pointer;
   padding: 15px;
+  margin-top: 15px;
 }
 
 .header__toggle-bar {

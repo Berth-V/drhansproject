@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { motion } from 'motion/react';
-import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { db } from '../../../firebase/firebase';
+import { SITE_CONFIG } from '../../../config/siteConfig';
+import Seo from '../../Shared/Seo/Seo';
 import { fadeUpVariant } from '../../Shared/motionVariants/motionVariants';
 import PostCard from '../components/PostCard';
 import Reviews from '../../Shared/Reviews/Reviews';
@@ -28,6 +29,7 @@ const BlogHome = () => {
         const snapshot = await getDocs(collection(db, 'posts'));
         const allPosts = snapshot.docs
           .map((doc) => ({ id: doc.id, ...doc.data() }))
+          .filter((post) => post.published !== false) // los borradores solo se ven en /admin
           .sort((a, b) => (b.publishedAt?.seconds ?? 0) - (a.publishedAt?.seconds ?? 0));
         setPosts(allPosts);
       } catch (err) {
@@ -65,14 +67,7 @@ const BlogHome = () => {
 
   return (
     <section className="blog-home">
-      <Helmet>
-        <title>Blog de Traumatología y Ortopedia | Dr. Hans Ruiz — Tijuana</title>
-        <meta
-          name="description"
-          content="Artículos sobre traumatología, ortopedia, lesiones y tratamientos, escritos por el Dr. Hans Ruiz, especialista en Tijuana, Baja California."
-        />
-        <link rel="canonical" href="https://hansruiztrauma.com.mx/blog" />
-      </Helmet>
+      <Seo title={t('seo.blog.title')} description={t('seo.blog.description')} path="/blog" />
 
       <div className="blog-home__header">
         <p className="blog-home__eyebrow">Dr. Hans Ruiz</p>
@@ -82,6 +77,9 @@ const BlogHome = () => {
         <motion.p className="blog-home__subtitle" {...fadeUpVariant}>
           {t('blog.subtitle')}
         </motion.p>
+        {SITE_CONFIG.language !== 'es' && (
+          <p className="blog-home__language-note">{t('blog.languageNote')}</p>
+        )}
       </div>
 
       <div className="blog-home__content">

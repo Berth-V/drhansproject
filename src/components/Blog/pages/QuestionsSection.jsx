@@ -3,6 +3,7 @@ import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../../../firebase/firebase';
 import { useTranslation } from 'react-i18next';
 import emailjs from '@emailjs/browser';
+import Seo from '../../Shared/Seo/Seo';
 import './QuestionsSection.css';
 
 function QuestionsSection() {
@@ -43,6 +44,8 @@ function QuestionsSection() {
 
   return (
     <section className="questions">
+      <Seo title={t('seo.questions.title')} description={t('seo.questions.description')} path="/preguntas" />
+
       <div className="questions__container">
         <h2 className="questions__title">{t('questions.title')}</h2>
         <p className="questions__subtitle">{t('questions.subtitle')}</p>

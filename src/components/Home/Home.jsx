@@ -1,7 +1,8 @@
 import './Home.css';
 import { Suspense, lazy } from 'react';
 import { motion } from 'motion/react';
-import { Helmet } from 'react-helmet-async';
+import { useTranslation } from 'react-i18next';
+import Seo from '../Shared/Seo/Seo';
 import Frontpage from './Sections/Frontpage/Frontpage';
 import { SkeletonProvider } from './Sections/Skeleton/context/SkeletonContext';
 import {
@@ -19,21 +20,16 @@ const Locations = lazy(() => import('./Sections/Locations/Locations'));
 const Reviews = lazy(() => import('../Shared/Reviews/Reviews'));
 
 function Home() {
+  const { t } = useTranslation();
+
   return (
     <div className="home">
-      <Helmet>
-        <title>Dr. Hans Ruiz | Traumatólogo y Ortopedista en Tijuana, B.C.</title>
-        <meta
-          name="description"
-          content="Dr. Hans Ruiz, traumatólogo y ortopedista en Tijuana. Cirugía de columna, prótesis y artroscopia de hombro y rodilla. Costo de consulta: $1,200 MXN."
-        />
-        <link rel="canonical" href="https://hansruiztrauma.com.mx/" />
-      </Helmet>
+      <Seo title={t('seo.home.title')} description={t('seo.home.description')} path="/" />
 
       <div className="frontpage-placeholder">
         <Frontpage />
       </div>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div>{t('common.loading')}</div>}>
         <motion.div {...fadeUpVariant} className="mininv-placeholder">
           <MinimallyInvasive />
         </motion.div>

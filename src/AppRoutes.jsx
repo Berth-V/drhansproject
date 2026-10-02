@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes, Navigate, useLocation } from 'react-router-dom';
 import PrivateRoute from './components/Blog/Admin/PrivateRoute';
+import { useTranslation } from 'react-i18next';
 import { trackPageView } from './analytics/pageViews';
 
 const Home = lazy(() => import('./components/Home/Home'));
@@ -21,6 +22,7 @@ const LoginPage = lazy(() => import('./components/Blog/Admin/LoginPage'));
 const QuestionsSection = lazy(() => import('./components/Blog/pages/QuestionsSection'));
 
 function AppRoutes() {
+  const { t } = useTranslation();
   const location = useLocation();
 
   useEffect(() => {
@@ -29,7 +31,7 @@ function AppRoutes() {
   }, [location]);
 
   return (
-    <Suspense fallback={<h1>Loading...</h1>}>
+    <Suspense fallback={<h1>{t('common.loading')}</h1>}>
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Navigate to="/" />} />

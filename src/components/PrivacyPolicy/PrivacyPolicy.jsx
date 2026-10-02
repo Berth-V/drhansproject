@@ -1,5 +1,10 @@
 import './PrivacyPolicy.css';
 import { useTranslation } from 'react-i18next';
+import { SITE_CONFIG } from '../../config/siteConfig';
+import Seo from '../Shared/Seo/Seo';
+
+// Fecha de la última revisión del aviso (mes base 0: 4 = mayo)
+const LAST_UPDATED = new Date(2026, 4, 1);
 
 const PrivacyPolicy = () => {
   const { t } = useTranslation();
@@ -20,18 +25,14 @@ const PrivacyPolicy = () => {
 
   return (
     <section className="privacy">
+      <Seo title={t('seo.privacy.title')} description={t('seo.privacy.description')} path="/privacyPolicy" />
+
       <div className="privacy__container">
         <h1 className="privacy__title">{t('privacy.title')}</h1>
 
         <p className="privacy__text">
           {t('privacy.intro')}{' '}
-          <a
-            href="https://hansruiztrauma.com"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            https://hansruiztrauma.com
-          </a>
+          <a href={SITE_CONFIG.domain}>{SITE_CONFIG.domain}</a>
           .
         </p>
 
@@ -100,7 +101,7 @@ const PrivacyPolicy = () => {
         {renderParagraphs('privacy.section8.text')}
 
         <p className="privacy__update">
-          {t('privacy.lastUpdated', { date: 'May 2026' })}
+          {t('privacy.lastUpdated', { date: LAST_UPDATED.toLocaleDateString(SITE_CONFIG.htmlLang, { month: 'long', year: 'numeric' }) })}
         </p>
       </div>
     </section>

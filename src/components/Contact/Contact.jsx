@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next';
-import { Helmet } from 'react-helmet-async';
+import Seo from '../Shared/Seo/Seo';
 import { CiPhone } from "react-icons/ci";
 import { AiFillTikTok } from 'react-icons/ai';
 import { RiInstagramFill } from 'react-icons/ri';
@@ -13,14 +13,7 @@ export default function Contact() {
   const { t } = useTranslation();
   return (
     <section className="contact">
-      <Helmet>
-        <title>Contacto | Dr. Hans Ruiz — Traumatología Tijuana</title>
-        <meta
-          name="description"
-          content="Agenda tu consulta con el Dr. Hans Ruiz, traumatólogo y ortopedista en Tijuana. Costo de consulta: $1,200 MXN. Llama o escribe por WhatsApp."
-        />
-        <link rel="canonical" href="https://hansruiztrauma.com.mx/contact" />
-      </Helmet>
+      <Seo title={t('seo.contact.title')} description={t('seo.contact.description')} path="/contact" />
 
       <div className="contact__glow" />
 

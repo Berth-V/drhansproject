@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { collection, getDocs, query, where, limit } from 'firebase/firestore';
 import { motion } from 'motion/react';
-import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { db } from '../../../firebase/firebase';
+import { SITE_CONFIG, BLOG_CANONICAL_DOMAIN } from '../../../config/siteConfig';
+import { SITES } from '../../../config/sites';
+import Seo from '../../Shared/Seo/Seo';
 import { fadeUpVariant } from '../../Shared/motionVariants/motionVariants';
 import { extractYoutubeId } from '../utils/youtube';
 import { getProceduresData } from '../../Procedures/data';
@@ -26,7 +28,8 @@ const BlogPost = () => {
           limit(1)
         );
         const snapshot = await getDocs(q);
-        if (snapshot.empty) {
+        // Los borradores no son públicos
+        if (snapshot.empty || snapshot.docs[0].data().published === false) {
           setNotFound(true);
         } else {
           setPost({ id: snapshot.docs[0].id, ...snapshot.docs[0].data() });
@@ -55,7 +58,9 @@ const BlogPost = () => {
 
   const getMetaDescription = (content) => {
     if (!content) return '';
-    const plainText = content.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+    // DOMParser quita las etiquetas y convierte entidades como &nbsp; o &amp;
+    const doc = new DOMParser().parseFromString(content.replace(/</g, ' <'), 'text/html');
+    const plainText = (doc.body.textContent ?? '').replace(/\s+/g, ' ').trim();
     return plainText.length > 155 ? plainText.slice(0, 155).trim() + '…' : plainText;
   };
 
@@ -99,34 +104,36 @@ const BlogPost = () => {
   }
 
   const metaDescription = getMetaDescription(post.content);
-  const canonicalUrl = `https://hansruiztrauma.com.mx/blog/${post.slug}`;
+  const postPath = `/blog/${post.slug}`;
+  // Los artículos están en español: el sitio en inglés solo traduce la interfaz
+  const isTranslatedSite = SITE_CONFIG.language !== 'es';
 
   return (
     <article className="blog-post">
-      <Helmet>
-        <title>{post.title} | Dr. Hans Ruiz — Traumatología Tijuana</title>
-        <meta name="description" content={metaDescription} />
-        <link rel="canonical" href={canonicalUrl} />
-
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content={post.title} />
-        <meta property="og:description" content={metaDescription} />
-        <meta property="og:url" content={canonicalUrl} />
-        {post.imageUrl && <meta property="og:image" content={post.imageUrl} />}
-
+      <Seo
+        title={`${post.title} | ${t('seo.blogPost.titleSuffix')}`}
+        description={metaDescription}
+        path={postPath}
+        canonicalDomain={BLOG_CANONICAL_DOMAIN}
+        alternates={false}
+        locale={SITES.mx.ogLocale}
+        type="article"
+        image={post.imageUrl}
+      >
         <script type="application/ld+json">
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'MedicalWebPage',
             headline: post.title,
             description: metaDescription,
-            url: canonicalUrl,
+            url: `${BLOG_CANONICAL_DOMAIN}${postPath}`,
+            inLanguage: 'es',
             ...(isoDate && { datePublished: isoDate }),
             ...(post.imageUrl && { image: post.imageUrl }),
             author: {
               '@type': 'Physician',
               name: 'Dr. Hans Ruiz Serna',
-              url: 'https://hansruiztrauma.com.mx',
+              url: BLOG_CANONICAL_DOMAIN,
             },
             publisher: {
               '@type': 'Physician',
@@ -134,12 +141,18 @@ const BlogPost = () => {
             },
           })}
         </script>
-      </Helmet>
+      </Seo>
 
-      <div className="blog-post__container">
-        <Link to="/blog" className="blog-post__back">
+      <div className="blog-post__container" lang={isTranslatedSite ? 'es' : undefined}>
+        <Link to="/blog" className="blog-post__back" lang={SITE_CONFIG.language}>
           {t('blog.post.back')}
         </Link>
+
+        {isTranslatedSite && (
+          <p className="blog-post__language-note" lang={SITE_CONFIG.language}>
+            {t('blog.post.languageNote')}
+          </p>
+        )}
 
         <motion.header className="blog-post__header" {...fadeUpVariant}>
           {post.category && (
@@ -176,13 +189,13 @@ const BlogPost = () => {
         />
 
         {relatedPartTitle && (
-          <div className="blog-post__related">
-            <p className="blog-post__related-label">¿Te interesa saber más?</p>
+          <div className="blog-post__related" lang={SITE_CONFIG.language}>
+            <p className="blog-post__related-label">{t('blog.post.relatedLabel')}</p>
             <Link
               to={`/procedures/${post.relatedPart}`}
               className="blog-post__related-link"
             >
-              Ver todo sobre {relatedPartTitle} →
+              {t('blog.post.relatedLink', { part: relatedPartTitle })}
             </Link>
           </div>
         )}

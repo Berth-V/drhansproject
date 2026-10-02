@@ -1,4 +1,44 @@
 {
+    "common": {
+        "loading": "Cargando..."
+    },
+    "seo": {
+        "home": {
+            "title": "Dr. Hans Ruiz | Traumatólogo y Ortopedista en Tijuana, B.C.",
+            "description": "Traumatólogo y ortopedista en Tijuana: cirugía de columna mínimamente invasiva, hernia discal, ciática, prótesis de rodilla y artroscopia de hombro y rodilla."
+        },
+        "about": {
+            "title": "Conoce al Dr. Hans Ruiz Serna | Traumatólogo en Tijuana",
+            "description": "Médico por la UAS y especialista en Traumatología y Ortopedia por la UNAM. Desde 2014 realiza cirugía de fracturas, prótesis articulares y cirugía de columna."
+        },
+        "procedures": {
+            "title": "Lesiones y tratamientos por zona del cuerpo | Dr. Hans Ruiz",
+            "description": "Explora las lesiones más comunes de columna, rodilla, hombro, cadera, mano, pie y otras zonas del cuerpo, con sus opciones de tratamiento conservador y quirúrgico."
+        },
+        "procedureDetail": {
+            "title": "{{part}}: lesiones y tratamientos | Dr. Hans Ruiz",
+            "description": "Lesiones frecuentes de {{part}} y sus opciones de tratamiento, explicadas por el Dr. Hans Ruiz, traumatólogo y ortopedista en Tijuana."
+        },
+        "contact": {
+            "title": "Agenda tu cita | Dr. Hans Ruiz, Traumatólogo en Tijuana",
+            "description": "Teléfono, WhatsApp, horarios y ubicación de los consultorios del Dr. Hans Ruiz en Hospital Blue y Columna Saludable, Tijuana. Consulta: $1,200 MXN."
+        },
+        "blog": {
+            "title": "Blog de traumatología y ortopedia | Dr. Hans Ruiz",
+            "description": "Artículos del Dr. Hans Ruiz sobre dolor de espalda, lesiones, fracturas, prótesis y recuperación, además de respuestas a preguntas de pacientes."
+        },
+        "blogPost": {
+            "titleSuffix": "Dr. Hans Ruiz"
+        },
+        "questions": {
+            "title": "Pregúntale al doctor | Dr. Hans Ruiz",
+            "description": "Envía tu duda sobre lesiones, dolor o tratamientos ortopédicos y el Dr. Hans Ruiz la responderá. Las respuestas se publican en el blog."
+        },
+        "privacy": {
+            "title": "Aviso de privacidad | Dr. Hans Ruiz",
+            "description": "Cómo se recopilan, usan y protegen los datos personales de los pacientes y visitantes del sitio del Dr. Hans Ruiz, y cómo ejercer tus derechos ARCO."
+        }
+    },
     "header": {
         "home": "Inicio",
         "procedures": "Procedimientos",
@@ -70,12 +110,54 @@
         "injuriesAndTreatments": "Lesiones y Tratamientos Disponibles",
         "notFound": "Parte del cuerpo no encontrada",
         "backToProcedures": "Volver a Procedimientos",
-        "injuries": "Lesiones",
+        "partInjuries": "Lesiones de {{part}}",
         "exploreInjuriesFor": "Explora lesiones y tratamientos para {{part}}",
         "treatmentOptions": "Opciones de Tratamiento",
         "viewDetails": "Ver Detalles",
         "backToList": "Volver a la Lista",
-        "backToAllProcedures": "Volver a Todos los Procedimientos"
+        "backToAllProcedures": "Volver a Todos los Procedimientos",
+        "relatedArticles": "Artículos relacionados",
+        "treatmentTypes": {
+            "activity": "Actividad",
+            "advanced": "Avanzado",
+            "advantage": "Ventaja",
+            "advantages": "Ventajas",
+            "children": "Niños",
+            "chronic": "Crónico",
+            "complete": "Completa",
+            "complex": "Complejo",
+            "conservative": "Conservador",
+            "displaced": "Desplazada",
+            "elderly": "Adultos mayores",
+            "evaluation": "Evaluación",
+            "fixed": "Fija",
+            "followUp": "Seguimiento",
+            "goal": "Objetivo",
+            "immediate": "Inmediato",
+            "indication": "Indicación",
+            "indications": "Indicaciones",
+            "initial": "Inicial",
+            "injections": "Infiltraciones",
+            "methods": "Métodos",
+            "mild": "Leve",
+            "moderate": "Moderado",
+            "nonDisplaced": "No desplazada",
+            "note": "Nota",
+            "persistent": "Persistente",
+            "recurrent": "Recurrente",
+            "refractory": "Refractario",
+            "rehabilitation": "Rehabilitación",
+            "resistant": "Resistente",
+            "severe": "Grave",
+            "simple": "Simple",
+            "stabilization": "Estabilización",
+            "stable": "Estable",
+            "standard": "Estándar",
+            "surgical": "Quirúrgico",
+            "unstable": "Inestable",
+            "uses": "Usos",
+            "young": "Pacientes jóvenes"
+        }
     },
     "about": {
         "photoAlt": "Foto del Dr Hans",
@@ -216,7 +298,10 @@
         "post": {
             "loading": "Cargando artículo...",
             "notFound": "Artículo no encontrado.",
-            "back": "← Volver al blog"
+            "back": "← Volver al blog",
+            "relatedLabel": "¿Te interesa saber más?",
+            "relatedLink": "Ver todo sobre {{part}} →",
+            "languageNote": "Este artículo está escrito en español."
         },
         "pagination": {
             "page": "Página {{current}} de {{total}}",
@@ -230,7 +315,8 @@
             "empty": "Aún no hay preguntas respondidas.",
             "askCta": "¿Tienes una pregunta?",
             "askBtn": "Pregúntale al Doctor"
-        }
+        },
+        "languageNote": "Los artículos están escritos en español."
     },
     "footer": {
         "name": "Dr. Hans Ruiz",

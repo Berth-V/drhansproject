@@ -12,7 +12,7 @@ if (!i18n.isInitialized) {
       es: { translation: es }
     },
     lng: SITE_CONFIG.language,
-    fallbackLng: SITE_CONFIG.language,
+    fallbackLng: 'es',
     interpolation: {
       escapeValue: false
     }

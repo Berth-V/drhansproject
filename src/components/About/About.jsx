@@ -1,6 +1,6 @@
 import './About.css';
 import photo from '../../assets/about-photo.webp';
-import { Helmet } from 'react-helmet-async';
+import Seo from '../Shared/Seo/Seo';
 import { FaFacebookSquare } from 'react-icons/fa';
 import { RiInstagramFill } from 'react-icons/ri';
 import { AiFillTikTok } from 'react-icons/ai';
@@ -11,11 +11,7 @@ const About = () => {
 
   return (
     <div className="doctor-profile">
-      <Helmet>
-        <title>Sobre el Dr. Hans Ruiz — Traumatólogo en Tijuana</title>
-        <meta name="description" content="Conoce la formación, experiencia y especialidad del Dr. Hans Ruiz, traumatólogo y ortopedista en Tijuana, Baja California." />
-        <link rel="canonical" href="https://hansruiztrauma.com.mx/about" />
-      </Helmet>
+      <Seo title={t('seo.about.title')} description={t('seo.about.description')} path="/about" />
 
       <div className="doctor-profile__header">
         <div className="doctor-profile__photo-section">

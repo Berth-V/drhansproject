@@ -5,8 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "node scripts/generateSitemap.mjs && vite build",
-    "sitemap": "node scripts/generateSitemap.mjs",
+    "dev:us": "vite --mode us",
+    "build": "node scripts/build.mjs",
+    "build:mx": "node scripts/build.mjs mx",
+    "build:us": "node scripts/build.mjs us",
+    "preview:mx": "vite preview --outDir dist/mx",
+    "preview:us": "vite preview --outDir dist/us",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write \"src/**/*.{js,jsx,css,html,json}\""

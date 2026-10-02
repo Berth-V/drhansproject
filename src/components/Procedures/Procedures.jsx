@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { Helmet } from 'react-helmet-async';
+import Seo from '../Shared/Seo/Seo';
 import { getProceduresData } from './data';
 import { procedureCard } from '../Shared/motionVariants/motionVariants';
 import { useTranslation } from 'react-i18next';
@@ -17,14 +17,7 @@ const Procedures = () => {
 
   return (
     <section className="procedures">
-      <Helmet>
-        <title>Procedimientos y Especialidades | Dr. Hans Ruiz — Traumatología Tijuana</title>
-        <meta
-          name="description"
-          content="Explora las lesiones y tratamientos que trata el Dr. Hans Ruiz por zona del cuerpo: columna, rodilla, hombro, mano, pie y más, en Tijuana."
-        />
-        <link rel="canonical" href="https://hansruiztrauma.com.mx/procedures" />
-      </Helmet>
+      <Seo title={t('seo.procedures.title')} description={t('seo.procedures.description')} path="/procedures" />
 
       <h2 className="procedures__title">{t('procedures.title')}</h2> {/* <--- i18n */}
       <motion.div

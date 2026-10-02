@@ -1,33 +1,14 @@
-// Genera public/sitemap.xml con las páginas fijas + los artículos del blog (Firestore).
-// Se ejecuta antes de cada build: `pnpm run build` (o solo: `pnpm run sitemap`).
-// Si no puede leer Firestore, conserva el sitemap actual y no detiene el build.
-import { readFileSync, writeFileSync } from 'node:fs';
-import { fileURLToPath } from 'node:url';
-import { dirname, resolve } from 'node:path';
+// Genera sitemap.xml y robots.txt de cada dominio. Lo usa scripts/build.mjs.
+// Los artículos del blog solo van en el sitemap de .com.mx: están en español y en .com
+// su canonical apunta a .com.mx.
+import { readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import { SITES, STATIC_PAGES } from '../src/config/sites.js';
 
-const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const OUTPUT = resolve(ROOT, 'public/sitemap.xml');
-const DOMAIN = 'https://hansruiztrauma.com.mx';
-
-const PROCEDURES = [
-  'ankle', 'cervicalSpine', 'clavicle', 'elbow', 'femur', 'foot', 'forearm', 'hand',
-  'hip', 'humerus', 'knee', 'lumbarSpine', 'shoulder', 'thoracicSpine', 'tibiaFibula', 'wrist',
-];
-
-const STATIC_PAGES = [
-  { path: '/', changefreq: 'weekly', priority: '1.0' },
-  { path: '/about', changefreq: 'monthly', priority: '0.8' },
-  { path: '/procedures', changefreq: 'monthly', priority: '0.8' },
-  ...PROCEDURES.map((id) => ({ path: `/procedures/${id}`, changefreq: 'monthly', priority: '0.7' })),
-  { path: '/contact', changefreq: 'monthly', priority: '0.7' },
-  { path: '/blog', changefreq: 'daily', priority: '0.9' },
-  { path: '/preguntas', changefreq: 'weekly', priority: '0.7' },
-];
-
-function loadEnv() {
+export function loadEnv(root) {
   const env = { ...process.env };
   try {
-    for (const line of readFileSync(resolve(ROOT, '.env'), 'utf8').split(/\r?\n/)) {
+    for (const line of readFileSync(resolve(root, '.env'), 'utf8').split(/\r?\n/)) {
       const match = line.match(/^\s*([\w.]+)\s*=\s*(.*)\s*$/);
       if (match && !(match[1] in env)) env[match[1]] = match[2].replace(/^['"]|['"]$/g, '');
     }
@@ -38,7 +19,7 @@ function loadEnv() {
 }
 
 // Lee la colección `posts` con la API REST de Firestore (lectura pública)
-async function fetchPosts({ VITE_FIREBASE_PROJECT_ID: projectId, VITE_FIREBASE_API_KEY: apiKey }) {
+export async function fetchPosts({ VITE_FIREBASE_PROJECT_ID: projectId, VITE_FIREBASE_API_KEY: apiKey }) {
   if (!projectId) throw new Error('Falta VITE_FIREBASE_PROJECT_ID');
 
   const base = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/(default)/documents/posts`;
@@ -69,10 +50,13 @@ async function fetchPosts({ VITE_FIREBASE_PROJECT_ID: projectId, VITE_FIREBASE_A
   return posts.sort((a, b) => (b.lastmod ?? '').localeCompare(a.lastmod ?? ''));
 }
 
-function urlEntry({ loc, lastmod, changefreq, priority }) {
+function urlEntry({ loc, lastmod, changefreq, priority, alternates = [] }) {
   return [
     '  <url>',
     `    <loc>${loc}</loc>`,
+    ...alternates.map(
+      ({ hreflang, href }) => `    <xhtml:link rel="alternate" hreflang="${hreflang}" href="${href}" />`
+    ),
     lastmod && `    <lastmod>${lastmod.slice(0, 10)}</lastmod>`,
     `    <changefreq>${changefreq}</changefreq>`,
     `    <priority>${priority}</priority>`,
@@ -80,35 +64,46 @@ function urlEntry({ loc, lastmod, changefreq, priority }) {
   ].filter(Boolean).join('\n');
 }
 
-async function main() {
-  let posts;
-  try {
-    posts = await fetchPosts(loadEnv());
-  } catch (err) {
-    console.warn(`[sitemap] No se pudieron leer los artículos (${err.message}). Se conserva el sitemap actual.`);
-    return;
+// Cada página fija existe en los dos dominios: se enlazan entre sí con hreflang
+function pageAlternates(path) {
+  return [
+    ...Object.values(SITES).map((s) => ({ hreflang: s.htmlLang, href: `${s.domain}${path}` })),
+    { hreflang: 'x-default', href: `${SITES.mx.domain}${path}` },
+  ];
+}
+
+export function buildSitemap(site, posts) {
+  const entries = STATIC_PAGES.map((page) =>
+    urlEntry({ loc: `${site.domain}${page.path}`, alternates: pageAlternates(page.path), ...page })
+  );
+
+  if (site.id === 'mx') {
+    entries.push(
+      ...posts.map((post) =>
+        urlEntry({
+          loc: `${site.domain}/blog/${encodeURIComponent(post.slug)}`,
+          lastmod: post.lastmod,
+          changefreq: 'monthly',
+          priority: '0.8',
+        })
+      )
+    );
   }
 
-  const entries = [
-    ...STATIC_PAGES.map((page) => urlEntry({ loc: `${DOMAIN}${page.path}`, ...page })),
-    ...posts.map((post) =>
-      urlEntry({
-        loc: `${DOMAIN}/blog/${encodeURIComponent(post.slug)}`,
-        lastmod: post.lastmod,
-        changefreq: 'monthly',
-        priority: '0.8',
-      })
-    ),
-  ];
-
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 ${entries.join('\n')}
 </urlset>
 `;
-
-  writeFileSync(OUTPUT, xml);
-  console.log(`[sitemap] ${STATIC_PAGES.length} páginas + ${posts.length} artículos → public/sitemap.xml`);
 }
 
-main();
+export function buildRobots(site) {
+  return `User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /login
+
+Sitemap: ${site.domain}/sitemap.xml
+`;
+}
