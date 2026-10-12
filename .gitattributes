@@ -1,0 +1,2 @@
+# Apache no lee bien el .htaccess con finales CRLF (se rompe mod_rewrite): siempre LF
+public/.htaccess text eol=lf

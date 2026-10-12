@@ -6,16 +6,14 @@ import Seo from '../Shared/Seo/Seo';
 import Frontpage from './Sections/Frontpage/Frontpage';
 import { SkeletonProvider } from './Sections/Skeleton/context/SkeletonContext';
 import { loadPartsData } from './Sections/Skeleton/data';
+import { INFO_SECTIONS } from './Sections/InfoSection/sections';
 import {
   fadeUpVariant,
   fadeInVariant,
 } from '../Shared/motionVariants/motionVariants';
 
 const MinimallyInvasive = lazy(() => import('./Sections/MinimallyInvasive/MinimallyInvasive'));
-const DiscHernia = lazy(() => import('./Sections/DiscHernia/DiscHernia'));
-const KneeReplacement = lazy(() => import('./Sections/KneeReplacement/KneeReplacement'));
-const Arthroscopy = lazy(() => import('./Sections/Arthroscopy/Arthroscopy'));
-const Sciatica = lazy(() => import('./Sections/Sciatica/Sciatica'));
+const InfoSection = lazy(() => import('./Sections/InfoSection/InfoSection'));
 // El esqueleto se muestra cuando ya cargaron el componente y los datos de su idioma
 const Skeleton = lazy(() =>
   Promise.all([import('./Sections/Skeleton/Skeleton'), loadPartsData()]).then(([module]) => module)
@@ -38,21 +36,11 @@ function Home() {
           <MinimallyInvasive />
         </motion.div>
 
-        <motion.div {...fadeUpVariant} className="disc-placeholder">
-          <DiscHernia />
-        </motion.div>
-
-        <motion.div {...fadeUpVariant} className="knee-placeholder">
-          <KneeReplacement />
-        </motion.div>
-
-        <motion.div {...fadeUpVariant} className="arthros-placeholder">
-          <Arthroscopy />
-        </motion.div>
-
-        <motion.div {...fadeUpVariant} className="sciatica-placeholder">
-          <Sciatica />
-        </motion.div>
+        {INFO_SECTIONS.map((section) => (
+          <motion.div key={section.id} {...fadeUpVariant} className="info-placeholder">
+            <InfoSection {...section} />
+          </motion.div>
+        ))}
 
         <motion.div {...fadeUpVariant} className="skeleton-placeholder">
           <SkeletonProvider>

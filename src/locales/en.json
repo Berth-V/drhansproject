@@ -5,7 +5,7 @@
     "seo": {
         "home": {
             "title": "Dr. Hans Ruiz | Orthopedic Surgeon in Tijuana, Mexico",
-            "description": "Orthopedic and trauma surgeon in Tijuana, Mexico: minimally invasive spine surgery, herniated disc, sciatica, knee replacement, and shoulder and knee arthroscopy."
+            "description": "Orthopedic and trauma surgeon in Tijuana, Mexico: minimally invasive spine surgery, herniated disc, sciatica, knee and hip replacement, and shoulder and knee arthroscopy."
         },
         "about": {
             "title": "Meet Dr. Hans Ruiz Serna | Orthopedic Surgeon in Tijuana",
@@ -21,7 +21,7 @@
         },
         "contact": {
             "title": "Book an Appointment | Dr. Hans Ruiz, Tijuana",
-            "description": "Phone, WhatsApp, office hours and locations of Dr. Hans Ruiz at Hospital Blue and Columna Saludable in Tijuana, Mexico. Consultation fee: $1,200 MXN."
+            "description": "Phone, WhatsApp, office hours and locations of Dr. Hans Ruiz at Hospital Blue and Columna Saludable in Tijuana, Mexico. Consultation fee: {{price}}."
         },
         "blog": {
             "title": "Orthopedics and Trauma Blog | Dr. Hans Ruiz",
@@ -37,6 +37,9 @@
         "privacy": {
             "title": "Privacy Policy | Dr. Hans Ruiz",
             "description": "How the personal data of patients and visitors of Dr. Hans Ruiz's website is collected, used and protected, and how to exercise your ARCO rights."
+        },
+        "notFound": {
+            "title": "Page not found | Dr. Hans Ruiz"
         }
     },
     "header": {
@@ -63,36 +66,45 @@
     "disc": {
         "title": "Herniated Disc",
         "description": "A herniated disc occurs when one of the spinal discs shifts and presses on nearby nerves, causing pain and limiting movement. It is one of the most common causes of lower back and neck pain.",
-        "symptom1": "Lower back or neck pain",
-        "symptom2": "Pain radiating to arms or legs",
-        "symptom3": "Tingling or muscle weakness",
+        "items": [
+            "Lower back or neck pain",
+            "Pain radiating to arms or legs",
+            "Tingling or muscle weakness"
+        ],
         "ctaText": "Early diagnosis can prevent complications and improve your quality of life.",
         "imageAlt": "Illustration of a herniated disc in the spine"
     },
-    "kneeReplacement": {
-        "title": "Knee Replacement",
-        "description": "Knee replacement is a surgery that replaces the damaged surfaces of the joint with high-strength metal and polyethylene components. It is recommended when wear, as in advanced osteoarthritis, causes constant pain and limits mobility.",
-        "sign1": "Persistent pain when walking or climbing stairs",
-        "sign2": "Stiffness, swelling or deformity of the knee",
-        "sign3": "Little improvement with medication or therapy",
-        "ctaText": "A timely evaluation helps choose the best moment to regain your mobility.",
+    "jointReplacement": {
+        "title": "Knee and Hip Replacement",
+        "description": "Knee and hip replacements are surgeries that replace the damaged joint with high-strength metal, ceramic and polyethylene components. They are recommended when advanced osteoarthritis, a hip fracture or necrosis of the femoral head causes constant pain and limits mobility.",
+        "items": [
+            "Persistent pain in the knee, hip or groin when walking or climbing stairs",
+            "Stiffness, limping or difficulty putting on socks and shoes",
+            "Swelling or deformity of the knee",
+            "Little improvement with medication, injections or therapy"
+        ],
+        "ctaText": "A timely evaluation helps choose the best moment to regain your mobility and walk without pain again.",
         "imageAlt": "Illustration of a total knee replacement"
     },
     "arthroscopy": {
         "title": "Shoulder and Knee Arthroscopy",
         "description": "Arthroscopy is a minimally invasive surgery that uses a small camera and fine instruments through very small incisions to diagnose and treat injuries inside the joint, such as those of the shoulder and knee.",
-        "symptom1": "Pain, swelling or locking in the shoulder or knee",
-        "symptom2": "Meniscus, ligament or rotator cuff injuries",
-        "symptom3": "Small incisions and faster recovery",
+        "items": [
+            "Pain, swelling or locking in the shoulder or knee",
+            "Meniscus, ligament or rotator cuff injuries",
+            "Small incisions and faster recovery"
+        ],
         "ctaText": "A timely evaluation allows the injury to be treated before it worsens so you can return to your activities.",
         "imageAlt": "Illustration of arthroscopic surgery on the shoulder and knee"
     },
     "sciatica": {
         "title": "Sciatica / Sciatic Nerve",
         "description": "Sciatica is pain caused by irritation or compression of the sciatic nerve, the longest nerve in the body. It usually starts in the lower back and may radiate down the leg.",
-        "symptom1": "Lower back pain radiating to buttock and leg",
-        "symptom2": "Tingling or numbness",
-        "symptom3": "Weakness when walking or moving the leg",
+        "items": [
+            "Lower back pain radiating to buttock and leg",
+            "Tingling or numbness",
+            "Weakness when walking or moving the leg"
+        ],
         "ctaText": "Early treatment can relieve pain and prevent complications.",
         "imageAlt": "Representation of an inflamed sciatic nerve"
     },
@@ -180,7 +192,7 @@
         "description2": "Call us directly",
         "description3": "or find us on",
         "priceLabel": "Consultation fee",
-        "price": "$1,200 MXN"
+        "price": "{{price}}"
     },
     "offices": {
         "title": "Our offices",
@@ -329,5 +341,11 @@
         "questions": "Ask the Doctor",
         "followMe": "Follow Me",
         "privacyPolicy": "Privacy Policy"
+    },
+    "notFound": {
+        "title": "Page not found",
+        "text": "The page you are looking for does not exist or has moved.",
+        "home": "Go to home page",
+        "blog": "Visit the blog"
     }
 }

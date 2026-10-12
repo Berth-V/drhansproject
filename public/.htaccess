@@ -3,14 +3,21 @@ Options -MultiViews
 DirectorySlash Off
 RewriteEngine On
 
+# Rutas que no existen: 404 real con la página "no encontrada" (noindex), en vez del home con 200
+ErrorDocument 404 /404.html
+
+# /home era un alias del inicio
+RewriteRule ^home/?$ / [R=301,L]
+
 # Páginas prerenderizadas por scripts/prerender.mjs: /about → about.html, /blog/mi-post → blog/mi-post.html
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^(.+?)/?$ $1.html [QSA,L]
 
-# Todo lo demás lo resuelve la app (React Router)
+# Rutas que solo resuelve la app (React Router): el panel, el login y los artículos publicados
+# después del último build (aún no tienen su .html). Cualquier otra ruta sin archivo da 404.
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^ index.html [QSA,L]
+RewriteRule ^(admin(/.*)?|login|blog/[A-Za-z0-9_-]+)/?$ app.html [QSA,L]
 
 # Enable Expires headers to improve caching
 <IfModule mod_expires.c>

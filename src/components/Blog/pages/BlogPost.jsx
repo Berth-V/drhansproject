@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { db } from '../../../firebase/firebase';
 import { SITE_CONFIG, BLOG_CANONICAL_DOMAIN } from '../../../config/siteConfig';
 import { SITES } from '../../../config/sites';
-import Seo from '../../Shared/Seo/Seo';
+import Seo, { NoIndex } from '../../Shared/Seo/Seo';
 import { fadeUpVariant } from '../../Shared/motionVariants/motionVariants';
 import { extractYoutubeId } from '../utils/youtube';
 import { getProceduresData } from '../../Procedures/data';
@@ -95,6 +95,7 @@ const BlogPost = () => {
   if (notFound) {
     return (
       <div className="blog-post blog-post--state">
+        <NoIndex title={t('seo.notFound.title')} />
         <p>{t('blog.post.notFound')}</p>
         <Link to="/blog" className="blog-post__back">
           {t('blog.post.back')}

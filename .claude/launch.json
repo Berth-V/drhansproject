@@ -4,22 +4,46 @@
     {
       "name": "dev",
       "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["run", "dev"],
+      "runtimeArgs": [
+        "run",
+        "dev"
+      ],
       "port": 5173,
       "autoPort": true
     },
     {
       "name": "dev-us",
       "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["run", "dev:us", "--port", "5174"],
+      "runtimeArgs": [
+        "run",
+        "dev:us",
+        "--port",
+        "5174"
+      ],
       "port": 5174,
       "autoPort": true
     },
     {
       "name": "preview-us",
       "runtimeExecutable": "pnpm",
-      "runtimeArgs": ["run", "preview:us", "--port", "4174"],
+      "runtimeArgs": [
+        "run",
+        "preview:us",
+        "--port",
+        "4174"
+      ],
       "port": 4174
+    },
+    {
+      "name": "preview-mx",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": [
+        "run",
+        "preview:mx",
+        "--port",
+        "4173"
+      ],
+      "port": 4173
     }
   ]
 }

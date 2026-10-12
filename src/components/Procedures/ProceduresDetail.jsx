@@ -4,7 +4,7 @@ import { collection, getDocs, query, where, limit } from 'firebase/firestore';
 import { getProceduresData } from './data';
 import { useTranslation } from 'react-i18next';
 import { db } from '../../firebase/firebase';
-import Seo from '../Shared/Seo/Seo';
+import Seo, { NoIndex } from '../Shared/Seo/Seo';
 import './ProcedureDetail.css';
 
 // "nonDisplaced" → "Non Displaced" (solo si falta la traducción en procedures.treatmentTypes)
@@ -52,6 +52,7 @@ function ProcedureDetail() {
   if (!partData) {
     return (
       <div className="procedure-detail__not-found">
+        <NoIndex title={t('seo.notFound.title')} />
         <h2>{t('procedures.notFound')}</h2>
         <Link to="/procedures">{t('procedures.backToProcedures')}</Link>
       </div>

@@ -17,23 +17,8 @@
   min-height: 320px;
 }
 
-/* Disc Hernia */
-.home .disc-placeholder {
-  min-height: 320px;
-}
-
-/* Knee Replacement */
-.home .knee-placeholder {
-  min-height: 320px;
-}
-
-/* Arthroscopy */
-.home .arthros-placeholder {
-  min-height: 320px;
-}
-
-/* sciatica */
-.home .sciatica-placeholder {
+/* Secciones de texto + imagen (hernia, prótesis, artroscopia, ciática) */
+.home .info-placeholder {
   min-height: 320px;
 }
 

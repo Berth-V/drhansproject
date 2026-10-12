@@ -1,6 +1,7 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import { SITE_CONFIG } from './config/siteConfig';
+import { CONSULTATION_PRICE } from './config/consultation';
 
 import en from './locales/en.json';
 import es from './locales/es.json';
@@ -14,7 +15,9 @@ if (!i18n.isInitialized) {
     lng: SITE_CONFIG.language,
     fallbackLng: 'es',
     interpolation: {
-      escapeValue: false
+      escapeValue: false,
+      // {{price}} en los textos: precio de la consulta (src/config/consultation.js)
+      defaultVariables: { price: CONSULTATION_PRICE }
     }
   });
 }

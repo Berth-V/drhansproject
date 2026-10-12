@@ -48,3 +48,13 @@ export default function Seo({
     </Helmet>
   );
 }
+
+/** Páginas que no existen: que los buscadores no las indexen. */
+export function NoIndex({ title }) {
+  return (
+    <Helmet>
+      {title && <title>{title}</title>}
+      <meta name="robots" content="noindex" />
+    </Helmet>
+  );
+}

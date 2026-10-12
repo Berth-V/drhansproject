@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { signOut } from 'firebase/auth';
 import { collection, deleteDoc, doc, getDocs, orderBy, query, updateDoc, serverTimestamp } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
-import { auth, db } from '../../../firebase/firebase';
+import { db } from '../../../firebase/firebase';
+import { auth } from '../../../firebase/auth';
 import './AdminPanel.css';
 
 const AdminPanel = () => {

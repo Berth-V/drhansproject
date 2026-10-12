@@ -14,7 +14,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;700&display=swap" rel="stylesheet" />
   </noscript>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="index, follow" />
+
+  <!-- El texto prerenderizado en #root (scripts/snapshot.mjs) es para quien no ejecuta JavaScript:
+       buscadores y bots de IA. En el navegador se oculta y React pinta la página como siempre. -->
+  <script>document.documentElement.classList.add('js');</script>
+  <style>.js [data-prerendered] { display: none; }</style>
 
   <!-- Título, descripción, Open Graph y Schema.org según el dominio: scripts/siteHead.mjs -->
   <!-- SITE_HEAD -->

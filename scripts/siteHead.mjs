@@ -5,23 +5,30 @@
 import es from '../src/locales/es.json' with { type: 'json' };
 import en from '../src/locales/en.json' with { type: 'json' };
 import { SITES } from '../src/config/sites.js';
+import { CONSULTATION_FEE, CONSULTATION_CURRENCY, CONSULTATION_PRICE } from '../src/config/consultation.js';
 
-export const LOCALES = { es, en };
+// Igual que i18n.js en la app: pone el precio de la consulta donde los textos dicen {{price}}
+const withPrice = (node) =>
+  typeof node === 'string'
+    ? node.replaceAll('{{price}}', CONSULTATION_PRICE)
+    : Object.fromEntries(Object.entries(node).map(([key, value]) => [key, withPrice(value)]));
 
-const TEXTS = {
+export const LOCALES = { es: withPrice(es), en: withPrice(en) };
+
+export const TEXTS = {
   es: {
     keywords:
       'traumatólogo Tijuana, ortopedista Tijuana, Dr Hans Ruiz, cirugía de columna Tijuana, cirugía ortopédica Tijuana, traumatología Baja California',
     physicianDescription:
-      'Especialista en Traumatología y Ortopedia en Tijuana, Baja California. Cirugía de columna mínimamente invasiva, hernia discal, ciática, prótesis de rodilla y artroscopia de hombro y rodilla.',
+      'Especialista en Traumatología y Ortopedia en Tijuana, Baja California. Cirugía de columna mínimamente invasiva, hernia discal, ciática, prótesis de rodilla y cadera y artroscopia de hombro y rodilla.',
     serviceName: 'Consulta de traumatología y ortopedia',
     saludableDescription: 'Consultorio vespertino, atención únicamente con cita previa.',
   },
   en: {
     keywords:
-      'orthopedic surgeon Tijuana, spine surgeon Tijuana Mexico, Dr Hans Ruiz, knee replacement Tijuana, orthopedic surgery Mexico, trauma surgeon Baja California',
+      'orthopedic surgeon Tijuana, spine surgeon Tijuana Mexico, Dr Hans Ruiz, knee replacement Tijuana, hip replacement Tijuana, orthopedic surgery Mexico, trauma surgeon Baja California',
     physicianDescription:
-      'Orthopedic and trauma surgeon in Tijuana, Baja California, Mexico. Minimally invasive spine surgery, herniated disc, sciatica, knee replacement, and shoulder and knee arthroscopy.',
+      'Orthopedic and trauma surgeon in Tijuana, Baja California, Mexico. Minimally invasive spine surgery, herniated disc, sciatica, knee and hip replacement, and shoulder and knee arthroscopy.',
     serviceName: 'Orthopedics and traumatology consultation',
     saludableDescription: 'Afternoon office, by appointment only.',
   },
@@ -30,69 +37,100 @@ const TEXTS = {
 export const escapeAttr = (value) =>
   String(value).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
 
+export const PHONE = '+526645410955';
+export const DOCTOR_NAME = 'Dr. Hans Ruiz Serna';
+
+// Consultorios (textos visibles en locales/*.json → offices.<id>.*)
+export const OFFICES = [
+  {
+    id: 'blue',
+    name: 'Hospital Blue',
+    streetAddress: 'Vía Ote. 9750-903, Zona Urbana Rio Tijuana',
+    postalCode: '22010',
+    geo: { latitude: 32.5332576, longitude: -117.0225598 },
+    mapsUrl: 'https://maps.app.goo.gl/dpBxPV4n5eVN1dWi9',
+    opens: '09:00',
+    closes: '14:00',
+  },
+  {
+    id: 'saludable',
+    name: 'Columna Saludable',
+    streetAddress: 'Colinas de Baja California',
+    postalCode: '22647',
+    geo: { latitude: 32.4679242, longitude: -117.0044807 },
+    mapsUrl: 'https://maps.app.goo.gl/39v9PGX1rF4TtEBH6',
+    opens: '16:00',
+    closes: '18:00',
+    appointmentOnly: true,
+  },
+];
+
+const WEEKDAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+
+const postalAddress = (office) => ({
+  '@type': 'PostalAddress',
+  streetAddress: office.streetAddress,
+  addressLocality: 'Tijuana',
+  addressRegion: 'Baja California',
+  postalCode: office.postalCode,
+  addressCountry: 'MX',
+});
+
+const openingHours = (office) => ({
+  '@type': 'OpeningHoursSpecification',
+  dayOfWeek: WEEKDAYS,
+  opens: office.opens,
+  closes: office.closes,
+});
+
+// El doctor (Physician es un tipo de LocalBusiness) con la dirección de su consultorio principal,
+// y cada consultorio como MedicalClinic propio, enlazados con @id
 function physicianSchema(site, text) {
+  const offices = OFFICES.map((office) => ({
+    '@type': 'MedicalClinic',
+    '@id': `${site.domain}/#${office.id}`,
+    name: office.name,
+    ...(office.appointmentOnly && { description: text.saludableDescription }),
+    telephone: PHONE,
+    address: postalAddress(office),
+    geo: { '@type': 'GeoCoordinates', ...office.geo },
+    hasMap: office.mapsUrl,
+    openingHoursSpecification: openingHours(office),
+  }));
+  const [main] = OFFICES;
+
   return {
     '@context': 'https://schema.org',
-    '@type': 'Physician',
-    name: 'Dr. Hans Ruiz Serna',
-    description: text.physicianDescription,
-    url: site.domain,
-    telephone: '+526645410955',
-    priceRange: '$1,200 MXN',
-    makesOffer: {
-      '@type': 'Offer',
-      price: '1200',
-      priceCurrency: 'MXN',
-      itemOffered: { '@type': 'Service', name: text.serviceName },
-    },
-    medicalSpecialty: ['Traumatology', 'Orthopedic Surgery'],
-    affiliation: [
+    '@graph': [
       {
-        '@type': 'MedicalClinic',
-        name: 'Hospital Blue',
-        address: {
-          '@type': 'PostalAddress',
-          streetAddress: 'Vía Ote. 9750-903, Zona Urbana Rio Tijuana',
-          addressLocality: 'Tijuana',
-          addressRegion: 'Baja California',
-          postalCode: '22010',
-          addressCountry: 'MX',
+        '@type': 'Physician',
+        '@id': `${site.domain}/#physician`,
+        name: DOCTOR_NAME,
+        description: text.physicianDescription,
+        url: site.domain,
+        telephone: PHONE,
+        priceRange: CONSULTATION_PRICE,
+        makesOffer: {
+          '@type': 'Offer',
+          price: String(CONSULTATION_FEE),
+          priceCurrency: CONSULTATION_CURRENCY,
+          itemOffered: { '@type': 'Service', name: text.serviceName },
         },
-        geo: { '@type': 'GeoCoordinates', latitude: 32.5332576, longitude: -117.0225598 },
-        hasMap: 'https://maps.app.goo.gl/dpBxPV4n5eVN1dWi9',
-        openingHoursSpecification: {
-          '@type': 'OpeningHoursSpecification',
-          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-          opens: '09:00',
-          closes: '14:00',
-        },
+        medicalSpecialty: ['Traumatology', 'Orthopedic Surgery'],
+        address: postalAddress(main),
+        geo: { '@type': 'GeoCoordinates', ...main.geo },
+        openingHoursSpecification: OFFICES.map(openingHours),
+        location: offices.map((office) => ({ '@id': office['@id'] })),
+        sameAs: ['https://www.doctoralia.com.mx/hans-ruiz-serna/traumatologo-ortopedista/tijuana'],
+        areaServed: { '@type': 'City', name: 'Tijuana' },
       },
-      {
-        '@type': 'MedicalClinic',
-        name: 'Columna Saludable',
-        description: text.saludableDescription,
-        address: {
-          '@type': 'PostalAddress',
-          streetAddress: 'Colinas de Baja California',
-          addressLocality: 'Tijuana',
-          addressRegion: 'Baja California',
-          postalCode: '22647',
-          addressCountry: 'MX',
-        },
-        geo: { '@type': 'GeoCoordinates', latitude: 32.4679242, longitude: -117.0044807 },
-        hasMap: 'https://maps.app.goo.gl/39v9PGX1rF4TtEBH6',
-        openingHoursSpecification: {
-          '@type': 'OpeningHoursSpecification',
-          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-          opens: '16:00',
-          closes: '18:00',
-        },
-      },
+      ...offices,
     ],
-    sameAs: ['https://www.doctoralia.com.mx/hans-ruiz-serna/traumatologo-ortopedista/tijuana'],
-    areaServed: { '@type': 'City', name: 'Tijuana' },
   };
 }
+
+export const jsonLdScript = (data, attrs = '') =>
+  `<script${attrs} type="application/ld+json">${JSON.stringify(data).replace(/</g, '\\u003c')}</script>`;
 
 // Marcas que delimitan las etiquetas propias de cada página (scripts/prerender.mjs las reemplaza)
 export const SEO_START = '<!-- SEO:START -->';
@@ -112,6 +150,7 @@ export function renderSeoTags({
   type = 'website',
   image,
   locale = site.ogLocale,
+  jsonLd,
 }) {
   const canonicalUrl = `${canonicalDomain}${path}`;
   const tags = [
@@ -135,6 +174,7 @@ export function renderSeoTags({
   );
   if (image) tags.push(`<meta data-static-seo property="og:image" content="${escapeAttr(image)}" />`);
   tags.push(`<meta data-static-seo name="twitter:card" content="${image ? 'summary_large_image' : 'summary'}" />`);
+  if (jsonLd) tags.push(jsonLdScript(jsonLd, ' data-static-seo'));
 
   return `${SEO_START}\n  ${tags.join('\n  ')}\n  ${SEO_END}`;
 }
@@ -147,7 +187,7 @@ export function renderSiteHead(site) {
   return `${renderSeoTags({ site, title, description, path: '/' })}
   <meta name="keywords" content="${escapeAttr(text.keywords)}" />
 
-  <!-- Schema.org: Physician -->
+  <!-- Schema.org: Physician y sus consultorios -->
   <script type="application/ld+json">
 ${schema}
   </script>`;

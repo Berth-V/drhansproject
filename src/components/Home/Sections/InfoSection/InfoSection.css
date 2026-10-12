@@ -1,4 +1,4 @@
-.sciatica {
+.infoSection {
     width: 100%;
     display: grid;
     place-items: center;
@@ -6,32 +6,32 @@
     background: var(--primary-color);
 }
 
-.sciatica__wrap {
+.infoSection__wrap {
     width: min(1200px, 100%);
 }
 
-.sciatica__grid {
+.infoSection__grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: clamp(24px, 4vw, 48px);
     align-items: center;
 }
 
-/* content */
+/* text */
 
-.sciatica__content {
+.infoSection__content {
     color: var(--white-color);
     max-width: 580px;
 }
 
-.sciatica__title {
+.infoSection__title {
     margin: 0 0 12px;
     font-size: clamp(1.6rem, 3vw, 2.3rem);
     color: var(--secondary-color);
     font-weight: 700;
 }
 
-.sciatica__description {
+.infoSection__description {
     font-size: clamp(1rem, 2vw, 1.2rem);
     line-height: 1.6;
     opacity: 0.9;
@@ -40,7 +40,7 @@
 
 /* list */
 
-.sciatica__symptoms {
+.infoSection__list {
     list-style: none;
     padding: 0;
     margin: 0 0 16px;
@@ -48,34 +48,34 @@
     gap: 8px;
 }
 
-.sciatica__symptoms li {
+.infoSection__list li {
     position: relative;
     padding-left: 22px;
     font-size: clamp(0.95rem, 1.8vw, 1.05rem);
 }
 
-.sciatica__symptoms li::before {
+.infoSection__list li::before {
     content: "•";
     position: absolute;
     left: 0;
     color: var(--secondary-color);
 }
 
-/* CTA */
+/* cta */
 
-.sciatica__ctaText {
+.infoSection__ctaText {
     font-weight: 600;
     color: var(--secondary-color);
 }
 
 /* img */
 
-.sciatica__imageBox {
+.infoSection__imageBox {
     display: flex;
     justify-content: center;
 }
 
-.sciatica__image {
+.infoSection__image {
     width: clamp(80%, 45vw, 520px);
     border-radius: 18px;
     object-fit: cover;
@@ -85,10 +85,14 @@
         0 0 20px rgba(0, 196, 255, 0.15);
 }
 
-/* responsive */
+/* responsive: en móvil el texto va primero; en escritorio la imagen va a la derecha o, con --imageLeft, a la izquierda */
 
 @media (min-width: 900px) {
-    .sciatica__grid {
+    .infoSection__grid {
         grid-template-columns: 1fr 1fr;
+    }
+
+    .infoSection--imageLeft .infoSection__imageBox {
+        order: -1;
     }
 }

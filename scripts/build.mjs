@@ -10,6 +10,7 @@ import { build } from 'vite';
 import { SITES } from '../src/config/sites.js';
 import { loadEnv, fetchPosts, buildSitemap, buildRobots } from './generateSitemap.mjs';
 import { prerenderSite } from './prerender.mjs';
+import { buildLlmsTxt } from './llmsTxt.mjs';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -51,8 +52,10 @@ for (const id of siteIds) {
 
   writeFileSync(resolve(outDir, 'sitemap.xml'), buildSitemap(site, posts));
   writeFileSync(resolve(outDir, 'robots.txt'), buildRobots(site));
-  console.log(`[sitemap] dist/${id}/sitemap.xml${id === 'mx' ? ` (incluye ${posts.length} artículos)` : ''} y robots.txt`);
+  writeFileSync(resolve(outDir, 'llms.txt'), buildLlmsTxt(site, posts));
+  console.log(`[sitemap] dist/${id}/sitemap.xml${id === 'mx' ? ` (incluye ${posts.length} artículos)` : ''}, robots.txt y llms.txt`);
 
-  const pageCount = prerenderSite({ site, outDir, posts });
-  console.log(`[prerender] ${pageCount} páginas con sus etiquetas SEO en dist/${id}`);
+  console.log('[prerender] Capturando el contenido de cada página con Puppeteer…');
+  const { pages, withContent } = await prerenderSite({ root: ROOT, site, outDir, posts });
+  console.log(`[prerender] ${pages} páginas con sus etiquetas SEO en dist/${id}; ${withContent} con su texto`);
 }

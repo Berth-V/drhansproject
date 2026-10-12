@@ -5,7 +5,7 @@
     "seo": {
         "home": {
             "title": "Dr. Hans Ruiz | Traumatólogo y Ortopedista en Tijuana, B.C.",
-            "description": "Traumatólogo y ortopedista en Tijuana: cirugía de columna mínimamente invasiva, hernia discal, ciática, prótesis de rodilla y artroscopia de hombro y rodilla."
+            "description": "Traumatólogo y ortopedista en Tijuana: cirugía de columna mínimamente invasiva, hernia discal, ciática, prótesis de rodilla y cadera y artroscopia de hombro y rodilla."
         },
         "about": {
             "title": "Conoce al Dr. Hans Ruiz Serna | Traumatólogo en Tijuana",
@@ -21,7 +21,7 @@
         },
         "contact": {
             "title": "Agenda tu cita | Dr. Hans Ruiz, Traumatólogo en Tijuana",
-            "description": "Teléfono, WhatsApp, horarios y ubicación de los consultorios del Dr. Hans Ruiz en Hospital Blue y Columna Saludable, Tijuana. Consulta: $1,200 MXN."
+            "description": "Teléfono, WhatsApp, horarios y ubicación de los consultorios del Dr. Hans Ruiz en Hospital Blue y Columna Saludable, Tijuana. Consulta: {{price}}."
         },
         "blog": {
             "title": "Blog de traumatología y ortopedia | Dr. Hans Ruiz",
@@ -37,6 +37,9 @@
         "privacy": {
             "title": "Aviso de privacidad | Dr. Hans Ruiz",
             "description": "Cómo se recopilan, usan y protegen los datos personales de los pacientes y visitantes del sitio del Dr. Hans Ruiz, y cómo ejercer tus derechos ARCO."
+        },
+        "notFound": {
+            "title": "Página no encontrada | Dr. Hans Ruiz"
         }
     },
     "header": {
@@ -63,36 +66,45 @@
     "disc": {
         "title": "Hernia Discal",
         "description": "La hernia discal ocurre cuando uno de los discos de la columna se desplaza y presiona los nervios cercanos, incluyendo el nervio ciático, causando dolor y limitación en el movimiento. Es una de las causas más comunes de dolor lumbar y cervical.",
-        "symptom1": "Dolor en espalda baja o cuello",
-        "symptom2": "Dolor que se irradia a brazos o piernas",
-        "symptom3": "Hormigueo o debilidad muscular",
+        "items": [
+            "Dolor en espalda baja o cuello",
+            "Dolor que se irradia a brazos o piernas",
+            "Hormigueo o debilidad muscular"
+        ],
         "ctaText": "Un diagnóstico oportuno puede evitar complicaciones y mejorar tu calidad de vida.",
         "imageAlt": "Ilustración de hernia discal en la columna"
     },
-    "kneeReplacement": {
-        "title": "Prótesis de Rodilla",
-        "description": "La prótesis de rodilla es una cirugía que reemplaza las superficies dañadas de la articulación por componentes de metal y polietileno de alta resistencia. Se indica cuando el desgaste, como en la artrosis avanzada, causa dolor constante y limita la movilidad.",
-        "sign1": "Dolor persistente al caminar o subir escaleras",
-        "sign2": "Rigidez, inflamación o deformidad de la rodilla",
-        "sign3": "Poca mejoría con medicamentos o terapia",
-        "ctaText": "Una valoración a tiempo ayuda a elegir el mejor momento para recuperar tu movilidad.",
+    "jointReplacement": {
+        "title": "Prótesis de Rodilla y Cadera",
+        "description": "Las prótesis de rodilla y de cadera son cirugías que reemplazan la articulación dañada por componentes de metal, cerámica y polietileno de alta resistencia. Se indican cuando la artrosis avanzada, una fractura de cadera o la necrosis de la cabeza del fémur causan dolor constante y limitan la movilidad.",
+        "items": [
+            "Dolor persistente en rodilla, cadera o ingle al caminar o subir escaleras",
+            "Rigidez, cojera o dificultad para ponerte calcetines y zapatos",
+            "Inflamación o deformidad de la rodilla",
+            "Poca mejoría con medicamentos, infiltraciones o terapia"
+        ],
+        "ctaText": "Una valoración a tiempo ayuda a elegir el mejor momento para recuperar tu movilidad y volver a caminar sin dolor.",
         "imageAlt": "Ilustración de una prótesis total de rodilla"
     },
     "arthroscopy": {
         "title": "Artroscopia de Hombro y Rodilla",
         "description": "La artroscopia es una cirugía mínimamente invasiva que usa una pequeña cámara y fino instrumental a través de incisiones muy pequeñas para diagnosticar y tratar lesiones dentro de la articulación, como las del hombro y la rodilla.",
-        "symptom1": "Dolor, inflamación o bloqueo en hombro o rodilla",
-        "symptom2": "Lesiones de menisco, ligamentos o manguito rotador",
-        "symptom3": "Incisiones pequeñas y recuperación más rápida",
+        "items": [
+            "Dolor, inflamación o bloqueo en hombro o rodilla",
+            "Lesiones de menisco, ligamentos o manguito rotador",
+            "Incisiones pequeñas y recuperación más rápida"
+        ],
         "ctaText": "Una valoración a tiempo permite tratar la lesión antes de que se agrave y volver a tus actividades.",
         "imageAlt": "Ilustración de cirugía artroscópica en hombro y rodilla"
     },
     "sciatica": {
         "title": "Ciática / Nervio Ciático",
         "description": "La ciática es un dolor que se origina por irritación o compresión del nervio ciático, el nervio más largo del cuerpo. Generalmente comienza en la espalda baja y puede extenderse hacia la pierna.",
-        "symptom1": "Dolor lumbar que baja por glúteo y pierna",
-        "symptom2": "Hormigueo o adormecimiento",
-        "symptom3": "Debilidad al caminar o mover la pierna",
+        "items": [
+            "Dolor lumbar que baja por glúteo y pierna",
+            "Hormigueo o adormecimiento",
+            "Debilidad al caminar o mover la pierna"
+        ],
         "ctaText": "Un tratamiento oportuno puede aliviar el dolor y prevenir complicaciones.",
         "imageAlt": "Representación del nervio ciático inflamado"
     },
@@ -180,7 +192,7 @@
         "description2": "Llámanos directamente",
         "description3": "o encuéntranos en",
         "priceLabel": "Costo de consulta",
-        "price": "$1,200 MXN"
+        "price": "{{price}}"
     },
     "offices": {
         "title": "Nuestros consultorios",
@@ -329,5 +341,11 @@
         "questions": "Pregúntale al Doctor",
         "followMe": "Sígueme",
         "privacyPolicy": "Política de Privacidad"
+    },
+    "notFound": {
+        "title": "Página no encontrada",
+        "text": "La página que buscas no existe o cambió de dirección.",
+        "home": "Ir al inicio",
+        "blog": "Ver el blog"
     }
 }

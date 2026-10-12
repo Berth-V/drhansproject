@@ -1,8 +1,10 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes, Navigate, useLocation } from 'react-router-dom';
-import PrivateRoute from './components/Blog/Admin/PrivateRoute';
 import { useTranslation } from 'react-i18next';
 import { trackPageView } from './analytics/pageViews';
+
+// PrivateRoute usa Firebase Auth: con lazy, Firebase solo se descarga en las páginas que lo necesitan
+const PrivateRoute = lazy(() => import('./components/Blog/Admin/PrivateRoute'));
 
 const Home = lazy(() => import('./components/Home/Home'));
 const About = lazy(() => import('./components/About/About'));
@@ -20,6 +22,7 @@ const AdminPanel = lazy(() => import('./components/Blog/Admin/AdminPanel'));
 const PostForm = lazy(() => import('./components/Blog/Admin/PostForm'));
 const LoginPage = lazy(() => import('./components/Blog/Admin/LoginPage'));
 const QuestionsSection = lazy(() => import('./components/Blog/pages/QuestionsSection'));
+const NotFound = lazy(() => import('./components/NotFound/NotFound'));
 
 function AppRoutes() {
   const { t } = useTranslation();
@@ -68,6 +71,7 @@ function AppRoutes() {
             </PrivateRoute>
           }
         />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Suspense>
   );
