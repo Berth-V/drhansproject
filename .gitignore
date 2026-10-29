@@ -27,3 +27,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Contexto privado de Claude Code (incluye precios del cliente)
+CLAUDE.md
+.claude/MEMORY.md
+.claude/seguros-landing.md
+.claude/settings.local.json
