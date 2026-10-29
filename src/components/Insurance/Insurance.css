@@ -314,6 +314,72 @@
   line-height: 1.25;
 }
 
+/* ---- Consultorios ---- */
+/* padding inferior extra: que los botones flotantes no tapen el final de la página */
+.insurance__offices {
+  padding-bottom: 5rem;
+}
+
+.insurance__offices-title {
+  margin-bottom: 1.25rem;
+  font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+  font-weight: 800;
+}
+
+.insurance__offices-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.insurance__office {
+  overflow: hidden;
+  border: 1px solid #e6edf3;
+  border-radius: 1rem;
+  background-color: var(--white-color);
+}
+
+.insurance__office-map .map__iframe {
+  display: block;
+  height: 12rem;
+  border-radius: 0;
+}
+
+.insurance__office-info {
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+.insurance__office-name {
+  margin-bottom: 0.35rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.insurance__office-text {
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: #5b6b7b;
+}
+
+.insurance__office-note {
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--third-color);
+}
+
+.insurance__office-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  color: var(--third-color);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.insurance__office-link:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 480px) {
   .insurance__brand-tagline {
     display: none;
@@ -351,6 +417,11 @@
   .insurance__steps-list {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 2rem;
+  }
+
+  .insurance__offices-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
   }
 
   .insurance__hero-inner {

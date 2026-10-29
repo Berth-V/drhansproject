@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { FaArrowLeft, FaCheck, FaUserMd, FaWhatsapp } from 'react-icons/fa';
 import Seo from '../Shared/Seo/Seo';
 import InsuranceForm from './InsuranceForm';
+import Map from '../Home/Sections/Map/Map';
+import { OFFICES } from '../../config/siteConfig';
 import { trackWhatsApp } from '../../analytics/events';
 
 const WHATSAPP_NUMBER = '526645410955';
@@ -121,6 +123,39 @@ export default function Insurance() {
         <span className="insurance__eyebrow">{t('insurance.request.eyebrow')}</span>
         <h2 className="insurance__request-title">{t('insurance.request.title')}</h2>
         <InsuranceForm whatsappUrl={whatsappUrl} />
+      </section>
+
+      <section className="insurance__container insurance__offices">
+        <h2 className="insurance__offices-title">{t('offices.title')}</h2>
+        <div className="insurance__offices-grid">
+          {OFFICES.map((office) => (
+            <article key={office.id} className="insurance__office">
+              <div className="insurance__office-map">
+                <Map embedSrc={office.embedSrc} title={t(`offices.${office.id}.name`)} />
+              </div>
+              <div className="insurance__office-info">
+                <h3 className="insurance__office-name">{t(`offices.${office.id}.name`)}</h3>
+                <p className="insurance__office-text">
+                  {t(`offices.${office.id}.addressLine1`)} {t(`offices.${office.id}.addressLine2`)}
+                </p>
+                <p className="insurance__office-text">
+                  {t(`offices.${office.id}.days`)} · {t(`offices.${office.id}.hours`)}
+                </p>
+                {office.appointmentOnly && (
+                  <p className="insurance__office-note">{t(`offices.${office.id}.note`)}</p>
+                )}
+                <a
+                  className="insurance__office-link"
+                  href={office.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {t('offices.howToGet')} →
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
       </section>
     </div>
   );
