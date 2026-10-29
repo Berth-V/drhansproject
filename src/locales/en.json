@@ -38,7 +38,7 @@
             "title": "Privacy Policy | Dr. Hans Ruiz",
             "description": "How the personal data of patients and visitors of Dr. Hans Ruiz's website is collected, used and protected, and how to exercise your ARCO rights."
         },
-        "seguros": {
+        "insurance": {
             "title": "Surgery with major medical insurance | Dr. Hans Ruiz, Tijuana",
             "description": "Already diagnosed and have major medical insurance? Send your details and documents, Dr. Hans Ruiz reviews your case and schedules your surgical evaluation in Tijuana."
         },
@@ -335,7 +335,7 @@
         },
         "languageNote": "Articles are written in Spanish."
     },
-    "seguros": {
+    "insurance": {
         "whatsappMessage": "Hi, I have major medical insurance and I'd like to schedule an evaluation",
         "header": {
             "tagline": "Orthopedics and Traumatology · Tijuana",
@@ -349,6 +349,124 @@
             "whatsapp": "I'd rather message on WhatsApp",
             "checkApproval": "We support you through your insurer's surgery approval",
             "checkOffices": "2 offices in Tijuana"
+        },
+        "insurers": {
+            "title": "We see patients from these insurers",
+            "items": [
+                "[Insurer logo]",
+                "[Insurer logo]",
+                "[Insurer logo]",
+                "[Insurer logo]",
+                "[Insurer logo]",
+                "[Insurer logo]"
+            ]
+        },
+        "statement": "If your test already confirms the diagnosis, you're one step away from your surgery",
+        "steps": {
+            "title": "How it works",
+            "items": [
+                {
+                    "title": "You send your details",
+                    "text": "Your insurer, policy number and diagnosis. If you already have your documents, upload them for priority review."
+                },
+                {
+                    "title": "The doctor reviews your case",
+                    "text": "Your medical summary and test results are reviewed to confirm whether you're a candidate for surgery."
+                },
+                {
+                    "title": "We contact you for your appointment",
+                    "text": "We schedule your surgical evaluation and guide you through the requirements for your insurer to approve your surgery."
+                }
+            ]
+        },
+        "request": {
+            "eyebrow": "Request your evaluation",
+            "title": "The more complete your case, the sooner we can see you"
+        },
+        "form": {
+            "step1": {
+                "title": "Your details",
+                "badge": "Step 1 of 2",
+                "submit": "Send and continue",
+                "done": "We received your details. We'll contact you on WhatsApp. For priority review, upload your documents in step 2."
+            },
+            "fields": {
+                "name": "Full name",
+                "whatsapp": "WhatsApp",
+                "insurer": "Insurer",
+                "insurerOther": "Which is your insurer?",
+                "policy": "Policy or certificate",
+                "diagnosis": "Diagnosis"
+            },
+            "placeholders": {
+                "name": "As it appears on your policy",
+                "whatsapp": "664 000 0000",
+                "insurer": "Select your insurer",
+                "policy": "Policy number",
+                "diagnosis": "E.g. L4–L5 herniated disc"
+            },
+            "insurerOptions": [
+                "GNP Seguros",
+                "AXA",
+                "MetLife",
+                "Seguros Monterrey New York Life",
+                "Allianz",
+                "BUPA",
+                "Mapfre",
+                "Plan Seguro",
+                "Seguros Banorte",
+                "Inbursa",
+                "Seguros Atlas",
+                "Sura",
+                "Zurich"
+            ],
+            "otherInsurer": "Other",
+            "consent": {
+                "before": "I accept the ",
+                "link": "privacy notice",
+                "after": " and give my express consent for the processing of my sensitive personal data."
+            },
+            "errors": {
+                "name": "Enter your full name.",
+                "whatsapp": "Enter a 10-digit number (or +1 for the US).",
+                "insurer": "Select your insurer.",
+                "insurerOther": "Enter the name of your insurer.",
+                "policy": "Enter your policy or certificate number.",
+                "diagnosis": "Enter your diagnosis.",
+                "consent": "We need your consent to review your case.",
+                "file_type": "Invalid format. Use PDF, JPG, PNG or HEIC.",
+                "file_size": "The file is larger than 10 MB."
+            },
+            "step2": {
+                "title": "Your documents",
+                "badge": "Step 2 · Optional",
+                "intro": "If you upload your documents now, your case gets priority review. You can take photos of them with your phone.",
+                "upload": "Upload",
+                "change": "Change",
+                "send": "Send documents",
+                "later": "I'll send them later",
+                "privacy": "Your documents are stored privately. Only the doctor can see them.",
+                "locked": "Complete step 1 to upload your documents."
+            },
+            "documents": {
+                "summary": {
+                    "title": "Medical summary",
+                    "hint": "PDF or photo · up to 10 MB"
+                },
+                "policy": {
+                    "title": "Policy or coverage summary page",
+                    "hint": "PDF or photo · up to 10 MB"
+                },
+                "study": {
+                    "title": "Imaging report with interpretation",
+                    "hint": "MRI, X-ray, CT scan"
+                }
+            },
+            "thanks": {
+                "title": "Thank you! We have your request",
+                "text": "Dr. Hans Ruiz will review your case and we'll contact you on WhatsApp to schedule your evaluation. If you have questions, message us.",
+                "whatsapp": "Message on WhatsApp"
+            }
         }
     },
     "footer": {

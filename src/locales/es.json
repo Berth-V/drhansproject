@@ -38,7 +38,7 @@
             "title": "Aviso de privacidad | Dr. Hans Ruiz",
             "description": "Cómo se recopilan, usan y protegen los datos personales de los pacientes y visitantes del sitio del Dr. Hans Ruiz, y cómo ejercer tus derechos ARCO."
         },
-        "seguros": {
+        "insurance": {
             "title": "Cirugía con seguro de gastos médicos mayores | Dr. Hans Ruiz, Tijuana",
             "description": "¿Ya tienes diagnóstico y seguro de gastos médicos mayores? Envía tus datos y documentos, el Dr. Hans Ruiz revisa tu caso y agenda tu valoración quirúrgica en Tijuana."
         },
@@ -335,7 +335,7 @@
         },
         "languageNote": "Los artículos están escritos en español."
     },
-    "seguros": {
+    "insurance": {
         "whatsappMessage": "Hola, tengo seguro de gastos médicos mayores y quiero agendar una valoración",
         "header": {
             "tagline": "Traumatología y Ortopedia · Tijuana",
@@ -349,6 +349,124 @@
             "whatsapp": "Prefiero escribir por WhatsApp",
             "checkApproval": "Te apoyamos para que tu aseguradora autorice tu cirugía",
             "checkOffices": "2 consultorios en Tijuana"
+        },
+        "insurers": {
+            "title": "Atendemos pacientes de estas aseguradoras",
+            "items": [
+                "[Logo aseguradora]",
+                "[Logo aseguradora]",
+                "[Logo aseguradora]",
+                "[Logo aseguradora]",
+                "[Logo aseguradora]",
+                "[Logo aseguradora]"
+            ]
+        },
+        "statement": "Si tu estudio ya confirma el diagnóstico, estás a un paso de tu cirugía",
+        "steps": {
+            "title": "Así de rápido funciona",
+            "items": [
+                {
+                    "title": "Envías tus datos",
+                    "text": "Tu aseguradora, número de póliza y diagnóstico. Si ya tienes tus documentos, súbelos para revisión prioritaria."
+                },
+                {
+                    "title": "El doctor revisa tu caso",
+                    "text": "Analiza tu resumen médico y tu estudio para confirmar si eres candidato a cirugía."
+                },
+                {
+                    "title": "Te contactamos para tu cita",
+                    "text": "Agendamos tu valoración quirúrgica y te orientamos con los requisitos para que tu aseguradora autorice tu cirugía."
+                }
+            ]
+        },
+        "request": {
+            "eyebrow": "Solicita tu valoración",
+            "title": "Mientras más completo envíes tu caso, más rápido te atendemos"
+        },
+        "form": {
+            "step1": {
+                "title": "Tus datos",
+                "badge": "Paso 1 de 2",
+                "submit": "Enviar y continuar",
+                "done": "Recibimos tus datos. Te contactaremos por WhatsApp. Si quieres prioridad, sube tus documentos en el paso 2."
+            },
+            "fields": {
+                "name": "Nombre completo",
+                "whatsapp": "WhatsApp",
+                "insurer": "Aseguradora",
+                "insurerOther": "¿Cuál es tu aseguradora?",
+                "policy": "Póliza o certificado",
+                "diagnosis": "Diagnóstico"
+            },
+            "placeholders": {
+                "name": "Como aparece en tu póliza",
+                "whatsapp": "664 000 0000",
+                "insurer": "Selecciona tu aseguradora",
+                "policy": "Número de póliza",
+                "diagnosis": "Ej. hernia discal L4–L5"
+            },
+            "insurerOptions": [
+                "GNP Seguros",
+                "AXA",
+                "MetLife",
+                "Seguros Monterrey New York Life",
+                "Allianz",
+                "BUPA",
+                "Mapfre",
+                "Plan Seguro",
+                "Seguros Banorte",
+                "Inbursa",
+                "Seguros Atlas",
+                "Sura",
+                "Zurich"
+            ],
+            "otherInsurer": "Otra",
+            "consent": {
+                "before": "Acepto el ",
+                "link": "aviso de privacidad",
+                "after": " y otorgo mi consentimiento expreso para el tratamiento de mis datos personales sensibles."
+            },
+            "errors": {
+                "name": "Escribe tu nombre completo.",
+                "whatsapp": "Escribe un número de 10 dígitos (o +1 si es de EE. UU.).",
+                "insurer": "Selecciona tu aseguradora.",
+                "insurerOther": "Escribe el nombre de tu aseguradora.",
+                "policy": "Escribe tu número de póliza o certificado.",
+                "diagnosis": "Escribe tu diagnóstico.",
+                "consent": "Necesitamos tu consentimiento para revisar tu caso.",
+                "file_type": "Formato no válido. Usa PDF, JPG, PNG o HEIC.",
+                "file_size": "El archivo pesa más de 10 MB."
+            },
+            "step2": {
+                "title": "Tus documentos",
+                "badge": "Paso 2 · Opcional",
+                "intro": "Si subes tus documentos ahora, tu caso se revisa con prioridad. Puedes tomarles foto con tu celular.",
+                "upload": "Subir",
+                "change": "Cambiar",
+                "send": "Enviar documentos",
+                "later": "Lo envío después",
+                "privacy": "Tus documentos se guardan de forma privada. Solo el doctor puede verlos.",
+                "locked": "Completa el paso 1 para subir tus documentos."
+            },
+            "documents": {
+                "summary": {
+                    "title": "Resumen médico",
+                    "hint": "PDF o foto · hasta 10 MB"
+                },
+                "policy": {
+                    "title": "Póliza o carátula con coberturas",
+                    "hint": "PDF o foto · hasta 10 MB"
+                },
+                "study": {
+                    "title": "Reporte del estudio con interpretación",
+                    "hint": "Resonancia, rayos X, tomografía"
+                }
+            },
+            "thanks": {
+                "title": "¡Gracias! Ya tenemos tu solicitud",
+                "text": "El Dr. Hans Ruiz revisará tu caso y te contactaremos por WhatsApp para agendar tu valoración. Si tienes dudas, escríbenos.",
+                "whatsapp": "Escribir por WhatsApp"
+            }
         }
     },
     "footer": {

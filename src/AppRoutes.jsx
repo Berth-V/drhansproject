@@ -22,7 +22,7 @@ const AdminPanel = lazy(() => import('./components/Blog/Admin/AdminPanel'));
 const PostForm = lazy(() => import('./components/Blog/Admin/PostForm'));
 const LoginPage = lazy(() => import('./components/Blog/Admin/LoginPage'));
 const QuestionsSection = lazy(() => import('./components/Blog/pages/QuestionsSection'));
-const Seguros = lazy(() => import('./components/Seguros/Seguros'));
+const Insurance = lazy(() => import('./components/Insurance/Insurance'));
 const NotFound = lazy(() => import('./components/NotFound/NotFound'));
 
 function AppRoutes() {
@@ -46,7 +46,7 @@ function AppRoutes() {
         <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
         <Route path="/blog" element={<BlogHome />} />
         <Route path="/preguntas" element={<QuestionsSection />} />
-        <Route path="/seguros" element={<Seguros />} />
+        <Route path="/seguros" element={<Insurance />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/login" element={<LoginPage />} />
         <Route

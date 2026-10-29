@@ -1,0 +1,369 @@
+/* flow-root: que el margen de la última sección no se salga y deje ver el fondo negro del html */
+.insurance {
+  display: flow-root;
+  background-color: var(--white-color);
+  color: var(--fiveth-color);
+}
+
+.insurance__container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* ---- Header mínimo ---- */
+.insurance__header {
+  background-color: var(--fiveth-color);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.insurance__header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  min-height: 4rem;
+}
+
+.insurance__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--white-color);
+}
+
+.insurance__brand-mark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  flex: none;
+  border-radius: 0.5rem;
+  background-color: var(--secondary-color);
+  color: var(--fiveth-color);
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.insurance__brand-name {
+  display: block;
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+
+.insurance__brand-tagline {
+  display: block;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.insurance__back {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--white-color);
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.3s;
+}
+
+.insurance__back:hover {
+  color: var(--secondary-color);
+}
+
+/* ---- Hero ---- */
+/* El padding inferior deja espacio a la tarjeta de aseguradoras, que se monta sobre el hero */
+.insurance__hero {
+  background-color: var(--fiveth-color);
+  color: var(--white-color);
+  padding: 2.5rem 0 5.5rem;
+}
+
+.insurance__hero-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.insurance__pill {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  background-color: rgba(0, 196, 255, 0.15);
+  color: var(--secondary-color);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.insurance__title {
+  margin: 1rem 0 0.8rem;
+  font-size: clamp(1.9rem, 5vw, 3rem);
+  font-weight: 800;
+  line-height: 1.12;
+}
+
+.insurance__subtitle {
+  max-width: 34rem;
+  font-size: clamp(1rem, 2.2vw, 1.1rem);
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.insurance__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.insurance__btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.3rem;
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    background-color 0.2s ease-in,
+    color 0.2s ease-in;
+}
+
+.insurance__btn--primary {
+  background-color: var(--secondary-color);
+  color: var(--fiveth-color);
+}
+
+.insurance__btn--primary:hover {
+  background-color: var(--fourth-color);
+}
+
+.insurance__btn--outline {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: var(--white-color);
+}
+
+.insurance__btn--outline:hover {
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
+}
+
+.insurance__checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  margin-top: 1.25rem;
+  list-style: none;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.insurance__checks li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.insurance__checks svg {
+  flex: none;
+  color: var(--secondary-color);
+}
+
+.insurance__photo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 14rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 1rem;
+  color: var(--secondary-color);
+  font-size: 2.5rem;
+}
+
+/* ---- Aseguradoras ---- */
+.insurance__insurers {
+  position: relative;
+  margin-top: -3.5rem;
+  padding: 1.25rem;
+  border: 1px solid #e6edf3;
+  border-radius: 1rem;
+  background-color: var(--white-color);
+  box-shadow: 0 10px 30px rgba(11, 29, 58, 0.08);
+}
+
+.insurance__insurers-title {
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #5b6b7b;
+}
+
+.insurance__insurers-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+  list-style: none;
+}
+
+.insurance__insurer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 3.25rem;
+  padding: 0.5rem;
+  border: 1px solid #e6edf3;
+  border-radius: 0.6rem;
+  background-color: #f4f7fa;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #5b6b7b;
+}
+
+/* ---- Frase ---- */
+.insurance__statement {
+  padding-top: 3rem;
+  padding-bottom: 1rem;
+  text-align: center;
+}
+
+.insurance__statement-text {
+  max-width: 40rem;
+  margin: 0 auto;
+  font-size: clamp(1.5rem, 4vw, 2.1rem);
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+/* ---- Cómo funciona ---- */
+.insurance__steps {
+  margin: 2rem 0 3rem;
+  padding: 2rem 1.25rem;
+  border-radius: 1rem;
+  background-color: #f1f5f9;
+}
+
+.insurance__steps-title {
+  margin-bottom: 1.75rem;
+  text-align: center;
+  font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+  font-weight: 800;
+}
+
+.insurance__steps-list {
+  display: grid;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.insurance__step-number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  margin-bottom: 0.75rem;
+  border-radius: 50%;
+  background-color: var(--fiveth-color);
+  color: var(--secondary-color);
+  font-weight: 800;
+}
+
+.insurance__step-title {
+  margin-bottom: 0.35rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+}
+
+.insurance__step-text {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #5b6b7b;
+}
+
+/* ---- Solicitud (formulario) ---- */
+.insurance__request {
+  padding-bottom: 3.5rem;
+  scroll-margin-top: 1rem;
+}
+
+.insurance__eyebrow {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--third-color);
+}
+
+.insurance__request-title {
+  max-width: 36rem;
+  margin: 0.4rem 0 1.5rem;
+  font-size: clamp(1.5rem, 4vw, 2.1rem);
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+@media (max-width: 480px) {
+  .insurance__brand-tagline {
+    display: none;
+  }
+
+  .insurance__btn {
+    width: 100%;
+  }
+}
+
+@media (min-width: 600px) {
+  .insurance__insurers-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 900px) {
+  .insurance__hero {
+    padding: 3.5rem 0 7rem;
+  }
+
+  .insurance__insurers {
+    margin-top: -4.5rem;
+    padding: 1.5rem;
+  }
+
+  .insurance__insurers-list {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .insurance__steps {
+    padding: 2.5rem;
+  }
+
+  .insurance__steps-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
+  .insurance__hero-inner {
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .insurance__hero-text {
+    flex: 1.6;
+  }
+
+  .insurance__photo {
+    flex: 1;
+    min-height: 20rem;
+  }
+}
