@@ -33,6 +33,7 @@ export const STATIC_PAGES = [
   { path: '/contact', changefreq: 'monthly', priority: '0.7' },
   { path: '/blog', changefreq: 'daily', priority: '0.9' },
   { path: '/preguntas', changefreq: 'weekly', priority: '0.7' },
+  { path: '/seguros', changefreq: 'monthly', priority: '0.8' },
   { path: '/privacyPolicy', changefreq: 'yearly', priority: '0.3' },
 ];
 

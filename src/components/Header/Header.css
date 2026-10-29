@@ -34,7 +34,7 @@
 }
 
 .header__nav {
-  width: 55%;
+  flex: 1;
   min-height: 100%;
   display: flex;
   align-items: center;
@@ -75,6 +75,7 @@
 .header__link-text {
   font-size: 18px;
   color: var(--fiveth-color);
+  white-space: nowrap;
   transition: color 0.3s;
 }
 
@@ -91,6 +92,7 @@
   border-radius: 0.5rem;
   color: var(--fiveth-color);
   font-weight: 500;
+  white-space: nowrap;
   transition: all 0.2s ease-in;
   cursor: pointer;
   text-decoration: none;
@@ -153,6 +155,7 @@
   }
 
   .header__nav {
+    flex: none;
     position: fixed;
     top: 0;
     right: 0;
@@ -176,6 +179,12 @@
   .header__item,
   .header__link {
     height: auto;
+  }
+
+  .header__link-text,
+  .header__appointment-btn {
+    white-space: normal;
+    text-align: center;
   }
 
   .header__appointment-btn {

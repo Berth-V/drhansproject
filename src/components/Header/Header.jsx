@@ -79,6 +79,16 @@ export default function Header() {
             </li>
 
             <li className="header__item">
+              <NavLink
+                className="header__link"
+                to="/seguros"
+                onClick={closeMenu}
+              >
+                <span className="header__link-text">{t('header.insurance')}</span>
+              </NavLink>
+            </li>
+
+            <li className="header__item">
               <NavLink className="header__link" to="/about" onClick={closeMenu}>
                 <span className="header__link-text">{t('header.about')}</span>
               </NavLink>

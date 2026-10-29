@@ -10,10 +10,12 @@ import CallButton from './components/Shared/CallButton/CallButton';
 function App() {
   const location = useLocation();
   const isContactPage = location.pathname === '/contact';
+  // La landing de seguros lleva su propio header mínimo, sin menú
+  const isLandingPage = location.pathname === '/seguros';
 
   return (
     <>
-      <Header />
+      {!isLandingPage && <Header />}
       <AppRoutes />
       <CallButton />
       <WhatsAppBtn />

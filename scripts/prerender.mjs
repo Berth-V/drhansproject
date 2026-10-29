@@ -25,6 +25,7 @@ const STATIC_ROUTES = [
   { path: '/contact', key: 'contact' },
   { path: '/blog', key: 'blog' },
   { path: '/preguntas', key: 'questions' },
+  { path: '/seguros', key: 'seguros' },
   { path: '/privacyPolicy', key: 'privacy' },
 ];
 

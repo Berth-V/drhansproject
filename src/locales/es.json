@@ -38,6 +38,10 @@
             "title": "Aviso de privacidad | Dr. Hans Ruiz",
             "description": "Cómo se recopilan, usan y protegen los datos personales de los pacientes y visitantes del sitio del Dr. Hans Ruiz, y cómo ejercer tus derechos ARCO."
         },
+        "seguros": {
+            "title": "Cirugía con seguro de gastos médicos mayores | Dr. Hans Ruiz, Tijuana",
+            "description": "¿Ya tienes diagnóstico y seguro de gastos médicos mayores? Envía tus datos y documentos, el Dr. Hans Ruiz revisa tu caso y agenda tu valoración quirúrgica en Tijuana."
+        },
         "notFound": {
             "title": "Página no encontrada | Dr. Hans Ruiz"
         }
@@ -45,6 +49,7 @@
     "header": {
         "home": "Inicio",
         "procedures": "Procedimientos",
+        "insurance": "Pacientes con seguro",
         "about": "Acerca de",
         "blog": "Blog",
         "appointment": "Agenda tu cita",
@@ -329,6 +334,22 @@
             "askBtn": "Pregúntale al Doctor"
         },
         "languageNote": "Los artículos están escritos en español."
+    },
+    "seguros": {
+        "whatsappMessage": "Hola, tengo seguro de gastos médicos mayores y quiero agendar una valoración",
+        "header": {
+            "tagline": "Traumatología y Ortopedia · Tijuana",
+            "back": "Volver al sitio"
+        },
+        "hero": {
+            "eyebrow": "Pacientes con seguro de gastos médicos mayores",
+            "title": "¿Ya tienes diagnóstico y seguro de gastos médicos mayores?",
+            "subtitle": "Envía tus documentos y agenda tu valoración quirúrgica más rápido. El Dr. Hans Ruiz revisa tu caso personalmente y te contactamos para tu cita.",
+            "cta": "Enviar mis datos",
+            "whatsapp": "Prefiero escribir por WhatsApp",
+            "checkApproval": "Te apoyamos para que tu aseguradora autorice tu cirugía",
+            "checkOffices": "2 consultorios en Tijuana"
+        }
     },
     "footer": {
         "name": "Dr. Hans Ruiz",

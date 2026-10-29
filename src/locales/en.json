@@ -38,6 +38,10 @@
             "title": "Privacy Policy | Dr. Hans Ruiz",
             "description": "How the personal data of patients and visitors of Dr. Hans Ruiz's website is collected, used and protected, and how to exercise your ARCO rights."
         },
+        "seguros": {
+            "title": "Surgery with major medical insurance | Dr. Hans Ruiz, Tijuana",
+            "description": "Already diagnosed and have major medical insurance? Send your details and documents, Dr. Hans Ruiz reviews your case and schedules your surgical evaluation in Tijuana."
+        },
         "notFound": {
             "title": "Page not found | Dr. Hans Ruiz"
         }
@@ -45,6 +49,7 @@
     "header": {
         "home": "Home",
         "procedures": "Procedures",
+        "insurance": "Insured patients",
         "about": "About",
         "blog": "Blog",
         "appointment": "Get your Appointment",
@@ -329,6 +334,22 @@
             "askBtn": "Ask the Doctor"
         },
         "languageNote": "Articles are written in Spanish."
+    },
+    "seguros": {
+        "whatsappMessage": "Hi, I have major medical insurance and I'd like to schedule an evaluation",
+        "header": {
+            "tagline": "Orthopedics and Traumatology · Tijuana",
+            "back": "Back to site"
+        },
+        "hero": {
+            "eyebrow": "Patients with major medical insurance",
+            "title": "Already diagnosed and have major medical insurance?",
+            "subtitle": "Send your documents and get your surgical evaluation sooner. Dr. Hans Ruiz reviews your case personally and we contact you to schedule your appointment.",
+            "cta": "Send my details",
+            "whatsapp": "I'd rather message on WhatsApp",
+            "checkApproval": "We support you through your insurer's surgery approval",
+            "checkOffices": "2 offices in Tijuana"
+        }
     },
     "footer": {
         "name": "Dr. Hans Ruiz",
