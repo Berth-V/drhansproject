@@ -6,6 +6,21 @@
   flex-direction: column;
 }
 
+.home__loading {
+  padding: 2rem;
+  text-align: center;
+  color: var(--color-white);
+}
+
+/* Zonas claras del inicio */
+.home__light {
+  background-color: var(--color-surface);
+}
+
+.home__light--procedures {
+  padding: clamp(2rem, 4vw, 3rem) 0 clamp(2.5rem, 5vw, 4rem);
+}
+
 /* Frontpage */
 .home>div.frontpage-placeholder {
   min-height: 60vh;
@@ -25,6 +40,8 @@
 /* Skeleton */
 .home .skeleton-placeholder {
   min-height: auto;
+  padding: clamp(3rem, 6vw, 5rem) 0.75rem;
+  background-color: var(--color-navy);
 }
 
 /* Locations */

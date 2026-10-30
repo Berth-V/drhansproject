@@ -1,12 +1,20 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import reviews from './data/reviews';
 import './Reviews.css';
 
-export default function Reviews() {
+// Reseñas más largas que esto se muestran recortadas con "Leer completa"
+const LONG_REVIEW = 220;
+
+// variant="light": tarjetas blancas sobre fondo claro (inicio). Sin variant: oscuro (blog).
+export default function Reviews({ variant }) {
   const { t } = useTranslation();
+  const [expanded, setExpanded] = useState({});
+
+  const toggle = (index) => setExpanded((prev) => ({ ...prev, [index]: !prev[index] }));
 
   return (
-    <section className="reviews">
+    <section className={`reviews${variant === 'light' ? ' reviews--light' : ''}`}>
       <div className="reviews__wrap">
         <h2 className="reviews__title">
           {t('reviews.title')}
@@ -14,59 +22,76 @@ export default function Reviews() {
 
         <div className="reviews__grid">
           {reviews.length > 0 ? (
-            reviews.map((r, i) => (
-              <article key={i} className="reviews__card">
-                <div className="reviews__txt-box">
-                  <span className="reviews__quote">"</span>
+            reviews.map((r, i) => {
+              const isLong = r.text.length > LONG_REVIEW;
+              const isOpen = Boolean(expanded[i]);
 
-                  <p className="reviews__text">
-                    {r.text}
-                  </p>
-                </div>
+              return (
+                <article key={i} className="reviews__card">
+                  <div className="reviews__txt-box">
+                    <span className="reviews__quote">"</span>
 
-                <div className="reviews__footer">
-                  {r.profile_photo_url && (
-                    <img
-                      className="reviews__avatar"
-                      src={r.profile_photo_url}
-                      alt={r.author_name}
-                      loading="lazy"
-                    />
-                  )}
+                    <p className={`reviews__text${isLong && !isOpen ? ' reviews__text--clamped' : ''}`}>
+                      {r.text}
+                    </p>
 
-                  <div className="reviews__meta">
-                    <strong className="reviews__name">
-                      {r.author_name}
-                    </strong>
-
-                    <div className="reviews__stars" aria-hidden="true">
-                      {Array.from({ length: r.rating }).map((_, j) => (
-                        <svg
-                          key={j}
-                          width="16"
-                          height="16"
-                          viewBox="0 0 24 24"
-                          fill="#00C4FF"
-                        >
-                          <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.46 4.73L5.82 21z" />
-                        </svg>
-                      ))}
-                    </div>
-
-                    <small style={{ opacity: 0.7 }}>
-                      {r.time}
-                    </small>
+                    {isLong && (
+                      <button
+                        type="button"
+                        className="reviews__more"
+                        onClick={() => toggle(i)}
+                        aria-expanded={isOpen}
+                      >
+                        {isOpen ? t('reviews.readLess') : t('reviews.readMore')}
+                      </button>
+                    )}
                   </div>
-                </div>
-              </article>
-            ))
+
+                  <div className="reviews__footer">
+                    {r.profile_photo_url && (
+                      <img
+                        className="reviews__avatar"
+                        src={r.profile_photo_url}
+                        alt={r.author_name}
+                        loading="lazy"
+                      />
+                    )}
+
+                    <div className="reviews__meta">
+                      <strong className="reviews__name">
+                        {r.author_name}
+                      </strong>
+
+                      <div className="reviews__stars" aria-hidden="true">
+                        {Array.from({ length: r.rating }).map((_, j) => (
+                          <svg
+                            key={j}
+                            width="16"
+                            height="16"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.46 4.73L5.82 21z" />
+                          </svg>
+                        ))}
+                      </div>
+
+                      <small className="reviews__time">
+                        {r.time}
+                      </small>
+                    </div>
+                  </div>
+                </article>
+              );
+            })
           ) : (
             <p>{t('reviews.empty')}</p>
           )}
         </div>
         <a href='https://www.google.com/maps/place/Dr+Hans+Ruiz+Traumat%C3%B3logo/@32.5332621,-117.0251347,17z/data=!3m1!4b1!4m18!1m9!3m8!1s0x80d949ded0c8ef3d:0xf3151848b6171d2!2sDr+Hans+Ruiz+Traumat%C3%B3logo!8m2!3d32.5332576!4d-117.0225598!9m1!1b1!16s%2Fg%2F11jdchmvqr!3m7!1s0x80d949ded0c8ef3d:0xf3151848b6171d2!8m2!3d32.5332576!4d-117.0225598!9m1!1b1!16s%2Fg%2F11jdchmvqr?entry=ttu&g_ep=EgoyMDI2MDQyMC4wIKXMDSoASAFQAw%3D%3D'
           className='reviews__btn'
-          target='blank_'>
+          target='_blank'
+          rel='noopener noreferrer'>
           {t('reviews.button')}
         </a>
       </div>

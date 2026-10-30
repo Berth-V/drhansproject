@@ -1,43 +1,44 @@
 import { useTranslation } from 'react-i18next';
-import './MinimallyInvasive.css';
+// Misma tarjeta que las demás secciones de procedimientos del inicio
+import '../InfoSection/InfoSection.css';
 import scarImg from '../../../../assets/scar2.webp';
 
 export default function MinimallyInvasive() {
     const { t } = useTranslation();
 
     return (
-        <section className="min-inv">
-            <div className="min-inv__wrap">
+        <section className="infoSection infoSection--imageLeft">
+            <div className="infoSection__wrap">
+                <div className="infoSection__grid">
 
-                <div className="min-inv__grid">
-
-                    <div className="min-inv__content">
-                        <h2 className="min-inv__title">
+                    <div className="infoSection__content">
+                        <h2 className="infoSection__title">
                             {t('minInv.title')}
                         </h2>
 
-                        <p className="min-inv__description">
+                        <p className="infoSection__description">
                             {t('minInv.description')}
                         </p>
 
-                        <ul className="min-inv__benefits">
+                        <ul className="infoSection__list">
                             <li>{t('minInv.benefit1')}</li>
                             <li>{t('minInv.benefit2')}</li>
                             <li>{t('minInv.benefit3')}</li>
                         </ul>
                     </div>
 
-                    <div className="min-inv__image-box">
+                    <div className="infoSection__imageBox">
                         <img
                             src={scarImg}
                             alt={t('minInv.imageAlt')}
-                            className="min-inv__image"
+                            className="infoSection__image"
+                            width="960"
+                            height="640"
                             loading="lazy"
                         />
                     </div>
 
                 </div>
-
             </div>
         </section>
     );

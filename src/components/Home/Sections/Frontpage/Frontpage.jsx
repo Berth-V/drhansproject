@@ -1,5 +1,5 @@
 import './Frontpage.css';
-import hanspic from '../../../../assets/hans.webp';
+import doctorPhoto from '../../../../assets/frontpage-doctor.webp';
 import { useTranslation } from 'react-i18next';
 import { NavLink } from 'react-router-dom';
 import { AiFillTikTok } from 'react-icons/ai';
@@ -59,14 +59,16 @@ function Frontpage() {
           </div>
         </div>
       </div>
-      <img
-        className="frontpage__pic"
-        src={hanspic}
-        alt="Dr. Hans"
-        width="520"
-        height="600"
-        fetchPriority="high"
-      />
+      <div className="frontpage__picBox">
+        <img
+          className="frontpage__pic"
+          src={doctorPhoto}
+          alt={t('frontpage.photoAlt')}
+          width="720"
+          height="840"
+          fetchPriority="high"
+        />
+      </div>
     </section>
   );
 }

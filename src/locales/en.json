@@ -62,7 +62,33 @@
     "frontpage": {
         "title": "Reclaim your life without back pain",
         "description": "Specialized Spine Surgery, Herniated Disc, Sciatica, Shoulder and Knee Replacement and Arthroscopy, among many other services.",
-        "cta": "Get Your Appointment"
+        "cta": "Get Your Appointment",
+        "photoAlt": "Dr. Hans Ruiz Serna, orthopedic and trauma surgeon in Tijuana, holding a spine model"
+    },
+    "trustBar": {
+        "items": [
+            {
+                "value": "Since 2014",
+                "label": "treating fractures, spine and joint conditions"
+            },
+            {
+                "value": "500+",
+                "label": "patient reviews on Doctoralia"
+            },
+            {
+                "value": "2",
+                "label": "offices in Tijuana"
+            },
+            {
+                "value": "EN · ES",
+                "label": "patients from Mexico and the U.S."
+            }
+        ]
+    },
+    "homeCta": {
+        "title": "Ready to leave the pain behind?",
+        "text": "Schedule your evaluation with Dr. Hans Ruiz in Tijuana.",
+        "call": "Call 664 541 0955"
     },
     "minInv": {
         "title": "Minimally Invasive Surgery",
@@ -118,13 +144,15 @@
         "imageAlt": "Representation of an inflamed sciatic nerve"
     },
     "skeleton": {
-        "title": "All procedures"
+        "title": "Where does it hurt?"
     },
     "reviews": {
         "title": "Words from Our Patients",
         "loading": "Loading reviews...",
         "empty": "No reviews available",
-        "button": "Write your review"
+        "button": "Write your review",
+        "readMore": "Read more",
+        "readLess": "Read less"
     },
     "procedures": {
         "title": "Explore Procedures",

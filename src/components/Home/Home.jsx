@@ -4,6 +4,7 @@ import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import Seo from '../Shared/Seo/Seo';
 import Frontpage from './Sections/Frontpage/Frontpage';
+import TrustBar from './Sections/TrustBar/TrustBar';
 import { SkeletonProvider } from './Sections/Skeleton/context/SkeletonContext';
 import { loadPartsData } from './Sections/Skeleton/data';
 import { INFO_SECTIONS } from './Sections/InfoSection/sections';
@@ -20,7 +21,9 @@ const Skeleton = lazy(() =>
 );
 const Locations = lazy(() => import('./Sections/Locations/Locations'));
 const Reviews = lazy(() => import('../Shared/Reviews/Reviews'));
+const HomeCta = lazy(() => import('./Sections/HomeCta/HomeCta'));
 
+// Zonas: portada marina → procedimientos en claro → esqueleto marino → reseñas, consultorios y cierre en claro
 function Home() {
   const { t } = useTranslation();
 
@@ -31,16 +34,19 @@ function Home() {
       <div className="frontpage-placeholder">
         <Frontpage />
       </div>
-      <Suspense fallback={<div>{t('common.loading')}</div>}>
-        <motion.div {...fadeUpVariant} className="mininv-placeholder">
-          <MinimallyInvasive />
-        </motion.div>
-
-        {INFO_SECTIONS.map((section) => (
-          <motion.div key={section.id} {...fadeUpVariant} className="info-placeholder">
-            <InfoSection {...section} />
+      <TrustBar />
+      <Suspense fallback={<div className="home__loading">{t('common.loading')}</div>}>
+        <div className="home__light home__light--procedures">
+          <motion.div {...fadeUpVariant} className="mininv-placeholder">
+            <MinimallyInvasive />
           </motion.div>
-        ))}
+
+          {INFO_SECTIONS.map((section) => (
+            <motion.div key={section.id} {...fadeUpVariant} className="info-placeholder">
+              <InfoSection {...section} />
+            </motion.div>
+          ))}
+        </div>
 
         <motion.div {...fadeUpVariant} className="skeleton-placeholder">
           <SkeletonProvider>
@@ -48,13 +54,19 @@ function Home() {
           </SkeletonProvider>
         </motion.div>
 
-        <motion.div {...fadeInVariant} className="map-placeholder">
-          <Locations />
-        </motion.div>
+        <div className="home__light">
+          <motion.div {...fadeUpVariant} className="reviews-placeholder">
+            <Reviews variant="light" />
+          </motion.div>
 
-        <motion.div {...fadeUpVariant} className="reviews-placeholder">
-          <Reviews />
-        </motion.div>
+          <motion.div {...fadeInVariant} className="map-placeholder">
+            <Locations />
+          </motion.div>
+
+          <motion.div {...fadeUpVariant}>
+            <HomeCta />
+          </motion.div>
+        </div>
       </Suspense>
     </div>
   );

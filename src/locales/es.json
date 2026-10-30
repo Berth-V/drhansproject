@@ -62,7 +62,33 @@
     "frontpage": {
         "title": "Recupera tu vida sin dolor de espalda",
         "description": "Cirugía de Columna Especializada, Hernia Discal, Ciática, Prótesis y Artroscopia de hombro y rodilla, entre muchas otras atenciones.",
-        "cta": "Agenda tu Cita"
+        "cta": "Agenda tu Cita",
+        "photoAlt": "Dr. Hans Ruiz Serna, traumatólogo y ortopedista en Tijuana, con un modelo de columna"
+    },
+    "trustBar": {
+        "items": [
+            {
+                "value": "Desde 2014",
+                "label": "operando fracturas, columna y articulaciones"
+            },
+            {
+                "value": "+500",
+                "label": "reseñas de pacientes en Doctoralia"
+            },
+            {
+                "value": "2",
+                "label": "consultorios en Tijuana"
+            },
+            {
+                "value": "ES · EN",
+                "label": "pacientes de México y Estados Unidos"
+            }
+        ]
+    },
+    "homeCta": {
+        "title": "¿Listo para dejar atrás el dolor?",
+        "text": "Agenda tu valoración con el Dr. Hans Ruiz en Tijuana.",
+        "call": "Llamar al 664 541 0955"
     },
     "minInv": {
         "title": "Cirugía Mínimamente Invasiva",
@@ -118,13 +144,15 @@
         "imageAlt": "Representación del nervio ciático inflamado"
     },
     "skeleton": {
-        "title": "Todos los servicios"
+        "title": "¿Dónde te duele?"
     },
     "reviews": {
         "title": "Opiniones de Nuestros Pacientes",
         "loading": "Cargando reseñas...",
         "empty": "No hay reseñas disponibles",
-        "button": "Déjanos tu opinión"
+        "button": "Déjanos tu opinión",
+        "readMore": "Leer completa",
+        "readLess": "Leer menos"
     },
     "procedures": {
         "title": "Explora los Procedimientos",
