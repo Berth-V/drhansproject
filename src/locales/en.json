@@ -381,7 +381,10 @@
             "whatsapp": "I'd rather message on WhatsApp",
             "checkApproval": "We support you through your insurer's surgery approval",
             "checkOffices": "2 offices in Tijuana",
-            "photoAlt": "Dr. Hans Ruiz, orthopedic and trauma surgeon in Tijuana, holding a spine model"
+            "photoAlt": "Dr. Hans Ruiz, orthopedic and trauma surgeon in Tijuana, holding a spine model",
+            "badgeInsurance": "Major medical insurance",
+            "badgeReviewTitle": "Personal review",
+            "badgeReviewText": "by Dr. Hans Ruiz"
         },
         "insurers": {
             "title": "Some of the insurers we work with",
@@ -400,7 +403,10 @@
             "note": "Don't see your insurer? We're not limited to these. Ask us and we'll tell you whether we can see you with your insurance and what steps we can take.",
             "ask": "Ask us on WhatsApp"
         },
-        "statement": "If your test already confirms the diagnosis, you're one step away from your surgery",
+        "statement": {
+            "lead": "If your test already confirms the diagnosis,",
+            "highlight": "you’re one step away from your surgery"
+        },
         "steps": {
             "title": "How it works",
             "items": [

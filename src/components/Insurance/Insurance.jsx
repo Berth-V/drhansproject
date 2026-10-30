@@ -1,7 +1,7 @@
 import './Insurance.css';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { FaArrowLeft, FaCheck, FaWhatsapp } from 'react-icons/fa';
+import { FaArrowLeft, FaArrowRight, FaCheck, FaShieldAlt, FaWhatsapp } from 'react-icons/fa';
 import doctorPhoto from '../../assets/insurance-doctor.webp';
 import logoIcon from '../../assets/logo icon.webp';
 import Seo from '../Shared/Seo/Seo';
@@ -19,6 +19,7 @@ const INSURER_LOGOS = import.meta.glob('../../assets/insurers/*.webp', { eager: 
 
 // Landing para pacientes con seguro de gastos médicos mayores (destino de la campaña de Ads).
 // Usa su propio header mínimo: el Header global se oculta en esta ruta (App.jsx).
+// Portada clara a propósito, para que no se confunda con la portada marina del inicio.
 export default function Insurance() {
   const { t } = useTranslation();
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
@@ -34,7 +35,7 @@ export default function Insurance() {
         <div className="insurance__container insurance__header-inner">
           <div className="insurance__brand">
             {/* Decorativo: el nombre del doctor va justo al lado */}
-            <img className="insurance__brand-mark" src={logoIcon} alt="" width="36" height="36" />
+            <img className="insurance__brand-mark" src={logoIcon} alt="" width="40" height="40" />
             <span>
               <span className="insurance__brand-name">{t('footer.name')}</span>
               <span className="insurance__brand-tagline">{t('insurance.header.tagline')}</span>
@@ -57,6 +58,7 @@ export default function Insurance() {
             <div className="insurance__actions">
               <a href="#request" className="insurance__btn insurance__btn--primary">
                 {t('insurance.hero.cta')}
+                <FaArrowRight className="insurance__btn-arrow" aria-hidden="true" />
               </a>
               <a
                 href={whatsappUrl}
@@ -72,30 +74,42 @@ export default function Insurance() {
 
             <ul className="insurance__checks">
               <li>
-                <FaCheck aria-hidden="true" />
+                <span className="insurance__check-icon" aria-hidden="true"><FaCheck /></span>
                 {t('insurance.hero.checkApproval')}
               </li>
               <li>
-                <FaCheck aria-hidden="true" />
+                <span className="insurance__check-icon" aria-hidden="true"><FaCheck /></span>
                 {t('insurance.hero.checkOffices')}
               </li>
             </ul>
           </div>
 
-          <img
-            className="insurance__photo"
-            src={doctorPhoto}
-            alt={t('insurance.hero.photoAlt')}
-            width="560"
-            height="700"
-            fetchPriority="high"
-          />
+          <div className="insurance__photo-box">
+            <div className="insurance__photo-frame">
+              <img
+                className="insurance__photo"
+                src={doctorPhoto}
+                alt={t('insurance.hero.photoAlt')}
+                width="560"
+                height="700"
+                fetchPriority="high"
+              />
+              <span className="insurance__badge insurance__badge--insurance">
+                <span className="insurance__badge-icon" aria-hidden="true"><FaShieldAlt /></span>
+                {t('insurance.hero.badgeInsurance')}
+              </span>
+              <span className="insurance__badge insurance__badge--review">
+                <strong>{t('insurance.hero.badgeReviewTitle')}</strong>
+                <span>{t('insurance.hero.badgeReviewText')}</span>
+              </span>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Solo las aseguradoras que confirmó el doctor; la nota aclara que no son las únicas */}
-      <section className="insurance__container">
-        <div className="insurance__insurers">
+      <section className="insurance__insurers">
+        <div className="insurance__container">
           <h2 className="insurance__insurers-title">{t('insurance.insurers.title')}</h2>
           <ul className="insurance__insurers-list">
             {INSURERS.map((id) => (
@@ -125,30 +139,33 @@ export default function Insurance() {
       </section>
 
       <section className="insurance__container insurance__statement">
-        <h2 className="insurance__statement-text">{t('insurance.statement')}</h2>
+        <h2 className="insurance__statement-text">
+          {t('insurance.statement.lead')}{' '}
+          <span className="insurance__statement-highlight">{t('insurance.statement.highlight')}</span>
+        </h2>
       </section>
 
-      <section className="insurance__container">
-        <div className="insurance__steps">
-          <h2 className="insurance__steps-title">{t('insurance.steps.title')}</h2>
-          <ol className="insurance__steps-list">
-            {steps.map((step, index) => (
-              <li key={index} className="insurance__step">
-                <span className="insurance__step-number" aria-hidden="true">
-                  {index + 1}
-                </span>
-                <h3 className="insurance__step-title">{step.title}</h3>
-                <p className="insurance__step-text">{step.text}</p>
-              </li>
-            ))}
-          </ol>
+      <section className="insurance__container insurance__steps">
+        <h2 className="insurance__steps-title">{t('insurance.steps.title')}</h2>
+        <ol className="insurance__steps-list">
+          {steps.map((step, index) => (
+            <li key={index} className="insurance__step">
+              <span className="insurance__step-number" aria-hidden="true">
+                {index + 1}
+              </span>
+              <h3 className="insurance__step-title">{step.title}</h3>
+              <p className="insurance__step-text">{step.text}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section id="request" className="insurance__request">
+        <div className="insurance__container">
+          <span className="insurance__eyebrow">{t('insurance.request.eyebrow')}</span>
+          <h2 className="insurance__request-title">{t('insurance.request.title')}</h2>
+          <InsuranceForm whatsappUrl={whatsappUrl} />
         </div>
-      </section>
-
-      <section id="request" className="insurance__container insurance__request">
-        <span className="insurance__eyebrow">{t('insurance.request.eyebrow')}</span>
-        <h2 className="insurance__request-title">{t('insurance.request.title')}</h2>
-        <InsuranceForm whatsappUrl={whatsappUrl} />
       </section>
 
       <section className="insurance__container insurance__offices">
@@ -156,15 +173,12 @@ export default function Insurance() {
         <div className="insurance__offices-grid">
           {OFFICES.map((office) => (
             <article key={office.id} className="insurance__office">
-              <div className="insurance__office-map">
-                <Map embedSrc={office.embedSrc} title={t(`offices.${office.id}.name`)} />
-              </div>
               <div className="insurance__office-info">
                 <h3 className="insurance__office-name">{t(`offices.${office.id}.name`)}</h3>
                 <p className="insurance__office-text">
                   {t(`offices.${office.id}.addressLine1`)} {t(`offices.${office.id}.addressLine2`)}
                 </p>
-                <p className="insurance__office-text">
+                <p className="insurance__office-hours">
                   {t(`offices.${office.id}.days`)} · {t(`offices.${office.id}.hours`)}
                 </p>
                 {office.appointmentOnly && (
@@ -178,6 +192,9 @@ export default function Insurance() {
                 >
                   {t('offices.howToGet')} →
                 </a>
+              </div>
+              <div className="insurance__office-map">
+                <Map embedSrc={office.embedSrc} title={t(`offices.${office.id}.name`)} />
               </div>
             </article>
           ))}

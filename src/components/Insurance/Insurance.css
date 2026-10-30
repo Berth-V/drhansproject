@@ -1,21 +1,20 @@
-/* flow-root: que el margen de la última sección no se salga y deje ver el fondo negro del html */
+/* flow-root: que el margen de la última sección no se salga y deje ver el fondo del html */
 .insurance {
   display: flow-root;
-  background-color: var(--white-color);
-  color: var(--fiveth-color);
+  background-color: var(--color-white);
+  color: var(--color-navy);
 }
 
 .insurance__container {
   width: 100%;
-  max-width: 1100px;
+  max-width: 1240px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 clamp(1rem, 3vw, 2rem);
 }
 
 /* ---- Header mínimo ---- */
 .insurance__header {
-  background-color: var(--fiveth-color);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background-color: var(--color-navy);
 }
 
 .insurance__header-inner {
@@ -23,228 +22,303 @@
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  min-height: 4rem;
+  min-height: 4.25rem;
 }
 
 .insurance__brand {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  color: var(--white-color);
+  gap: 0.75rem;
+  color: var(--color-white);
 }
 
 .insurance__brand-mark {
   display: block;
-  width: 2.25rem;
-  height: 2.25rem;
   flex: none;
-  border-radius: 0.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.65rem;
   object-fit: cover;
 }
 
 .insurance__brand-name {
   display: block;
+  font-size: 1.05rem;
   font-weight: 800;
-  font-size: 0.95rem;
 }
 
 .insurance__brand-tagline {
   display: block;
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .insurance__back {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
-  color: var(--white-color);
-  font-size: 0.9rem;
-  font-weight: 700;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+  color: var(--color-white);
+  font-size: 0.95rem;
+  font-weight: 800;
   text-decoration: none;
   white-space: nowrap;
-  transition: color 0.3s;
+  transition: color 0.2s;
 }
 
 .insurance__back:hover {
-  color: var(--secondary-color);
+  color: var(--color-cyan);
 }
 
-/* ---- Hero ---- */
-/* El padding inferior deja espacio a la tarjeta de aseguradoras, que se monta sobre el hero */
+/* ---- Portada clara ---- */
 .insurance__hero {
-  background-color: var(--fiveth-color);
-  color: var(--white-color);
-  padding: 2.5rem 0 5.5rem;
+  padding: clamp(2rem, 5vw, 4rem) 0 clamp(2.5rem, 5vw, 4.5rem);
+  overflow: hidden;
+  background-color: var(--color-cyan-soft);
 }
 
 .insurance__hero-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  align-items: center;
+  gap: clamp(2rem, 4vw, 3rem);
+}
+
+.insurance__hero-text {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  align-items: flex-start;
+  gap: 1.25rem;
 }
 
 .insurance__pill {
-  display: inline-block;
-  padding: 0.3rem 0.8rem;
-  border-radius: 999px;
-  background-color: rgba(0, 196, 255, 0.15);
-  color: var(--secondary-color);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--radius-sm);
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
 }
 
 .insurance__title {
-  margin: 1rem 0 0.8rem;
-  font-size: clamp(1.9rem, 5vw, 3rem);
+  font-size: clamp(2rem, 4.6vw, 3.5rem);
   font-weight: 800;
-  line-height: 1.12;
+  line-height: 1.06;
+  letter-spacing: -0.02em;
 }
 
 .insurance__subtitle {
-  max-width: 34rem;
-  font-size: clamp(1rem, 2.2vw, 1.1rem);
+  max-width: 36rem;
+  font-size: clamp(1rem, 1.6vw, 1.125rem);
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.85);
+  color: #2b3f55;
 }
 
 .insurance__actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin-top: 1.5rem;
 }
 
+/* Esquinas más cuadradas que en el resto del sitio: la landing tiene su propio estilo */
 .insurance__btn {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.85rem 1.3rem;
-  border-radius: 0.5rem;
-  font-size: 0.95rem;
-  font-weight: 700;
+  gap: 0.6rem;
+  min-height: 3.25rem;
+  padding: 0 1.5rem;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 800;
   text-decoration: none;
   transition:
-    background-color 0.2s ease-in,
-    color 0.2s ease-in;
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .insurance__btn--primary {
-  background-color: var(--secondary-color);
-  color: var(--fiveth-color);
+  background-color: var(--color-navy);
+  color: var(--color-white);
 }
 
 .insurance__btn--primary:hover {
-  background-color: var(--fourth-color);
+  background-color: var(--color-navy-raised);
+}
+
+.insurance__btn-arrow {
+  color: var(--color-cyan);
 }
 
 .insurance__btn--outline {
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  color: var(--white-color);
+  border: 1.5px solid var(--color-navy);
+  background-color: var(--color-white);
+  color: var(--color-navy);
 }
 
 .insurance__btn--outline:hover {
-  border-color: var(--secondary-color);
-  color: var(--secondary-color);
+  background-color: var(--color-navy);
+  color: var(--color-white);
 }
 
 .insurance__checks {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem 1.25rem;
-  margin-top: 1.25rem;
+  flex-direction: column;
+  gap: 0.6rem;
   list-style: none;
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.95rem;
+  font-weight: 700;
 }
 
 .insurance__checks li {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.6rem;
 }
 
-.insurance__checks svg {
+.insurance__check-icon {
+  display: flex;
   flex: none;
-  color: var(--secondary-color);
+  justify-content: center;
+  align-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background-color: var(--color-navy);
+  color: var(--color-cyan);
+  font-size: 0.7rem;
 }
 
-/* Recortada en vertical; object-position mantiene la cara visible si el contenedor la recorta */
+/* Foto circular con aro marino y etiquetas flotantes */
+.insurance__photo-box {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem 1.5rem 1.5rem 2rem;
+}
+
+.insurance__photo-frame {
+  position: relative;
+  width: min(100%, 25rem);
+  aspect-ratio: 1 / 1;
+}
+
+.insurance__photo-frame::before {
+  content: '';
+  position: absolute;
+  inset: -0.9rem;
+  border: 2px dashed rgba(0, 196, 255, 0.6);
+  border-radius: 50%;
+}
+
 .insurance__photo {
   display: block;
   width: 100%;
-  height: auto;
-  max-height: 24rem;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 1rem;
+  height: 100%;
+  border: 0.5rem solid var(--color-navy);
+  border-radius: 50%;
   object-fit: cover;
-  object-position: center 20%;
+  object-position: center 12%;
 }
 
-/* ---- Aseguradoras ---- */
-.insurance__insurers {
-  position: relative;
-  margin-top: -3.5rem;
-  padding: 1.25rem;
-  border: 1px solid #e6edf3;
+.insurance__badge {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1rem;
   border-radius: 1rem;
-  background-color: var(--white-color);
-  box-shadow: 0 10px 30px rgba(11, 29, 58, 0.08);
+  font-size: 0.9rem;
+  box-shadow: 0 16px 34px rgba(11, 29, 58, 0.2);
+}
+
+.insurance__badge--insurance {
+  top: 2.25rem;
+  left: -1.5rem;
+  background-color: var(--color-white);
+  color: var(--color-navy);
+  font-weight: 800;
+}
+
+.insurance__badge-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 0.6rem;
+  background-color: var(--color-cyan-soft);
+  color: var(--color-blue);
+}
+
+.insurance__badge--review {
+  right: -1.25rem;
+  bottom: 1.75rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+  background-color: var(--color-navy);
+  color: var(--color-white);
+}
+
+.insurance__badge--review span {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* ---- Aseguradoras: franja marina ---- */
+.insurance__insurers {
+  padding: clamp(2rem, 4vw, 2.75rem) 0;
+  background-color: var(--color-navy);
 }
 
 .insurance__insurers-title {
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
   text-align: center;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #5b6b7b;
+  color: rgba(255, 255, 255, 0.8);
 }
 
-/* Flex para que la última fila incompleta quede centrada */
 .insurance__insurers-list {
-  --insurer-columns: 2;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.6rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
   list-style: none;
 }
 
 .insurance__insurer {
   display: flex;
-  flex: 0 0 calc((100% - (var(--insurer-columns) - 1) * 0.6rem) / var(--insurer-columns));
   justify-content: center;
   align-items: center;
-  min-height: 4rem;
-  padding: 0.6rem 0.75rem;
-  border: 1px solid #e6edf3;
-  border-radius: 0.6rem;
-  background-color: var(--white-color);
+  min-height: 4.5rem;
+  padding: 0.6rem 0.9rem;
+  border-radius: var(--radius-md);
+  background-color: var(--color-white);
 }
 
 .insurance__insurer-logo {
   display: block;
   max-width: 100%;
-  max-height: 3rem;
+  max-height: 2.75rem;
   object-fit: contain;
 }
 
 .insurance__insurers-note {
-  margin-top: 1rem;
+  max-width: 50rem;
+  margin: 1.25rem auto 0;
   text-align: center;
-  font-size: 0.85rem;
-  line-height: 1.5;
-  color: #5b6b7b;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .insurance__insurers-link {
-  font-weight: 700;
-  color: #075985;
+  font-weight: 800;
+  color: var(--color-cyan);
   white-space: nowrap;
 }
 
@@ -254,147 +328,166 @@
 
 /* ---- Frase ---- */
 .insurance__statement {
-  padding-top: 3rem;
-  padding-bottom: 1rem;
+  padding-top: clamp(3rem, 6vw, 4.5rem);
   text-align: center;
 }
 
 .insurance__statement-text {
-  max-width: 40rem;
+  max-width: 52rem;
   margin: 0 auto;
-  font-size: clamp(1.5rem, 4vw, 2.1rem);
+  font-size: clamp(1.6rem, 3.4vw, 2.5rem);
   font-weight: 800;
-  line-height: 1.25;
+  line-height: 1.2;
 }
 
-/* ---- Cómo funciona ---- */
+.insurance__statement-highlight {
+  color: #0095d1;
+}
+
+/* ---- Cómo funciona: tarjetas marinas ---- */
 .insurance__steps {
-  margin: 2rem 0 3rem;
-  padding: 2rem 1.25rem;
-  border-radius: 1rem;
-  background-color: #f1f5f9;
+  padding-top: clamp(2.5rem, 5vw, 3.5rem);
+  padding-bottom: clamp(3rem, 6vw, 5rem);
 }
 
 .insurance__steps-title {
   margin-bottom: 1.75rem;
   text-align: center;
-  font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+  font-size: clamp(1.5rem, 3vw, 1.85rem);
   font-weight: 800;
 }
 
 .insurance__steps-list {
   display: grid;
-  gap: 1.5rem;
+  gap: 1.25rem;
   list-style: none;
+}
+
+.insurance__step {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.75rem;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  box-shadow: var(--shadow-raised);
 }
 
 .insurance__step-number {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  margin-bottom: 0.75rem;
-  border-radius: 50%;
-  background-color: var(--fiveth-color);
-  color: var(--secondary-color);
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.75rem;
+  background-color: var(--color-cyan);
+  color: var(--color-navy);
+  font-size: 1.2rem;
   font-weight: 800;
 }
 
 .insurance__step-title {
-  margin-bottom: 0.35rem;
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   font-weight: 800;
 }
 
 .insurance__step-text {
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   line-height: 1.6;
-  color: #5b6b7b;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 /* ---- Solicitud (formulario) ---- */
 .insurance__request {
-  padding-bottom: 3.5rem;
+  padding: clamp(3rem, 6vw, 5rem) 0;
   scroll-margin-top: 1rem;
+  background-color: var(--color-cyan-soft);
 }
 
 .insurance__eyebrow {
   display: block;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--third-color);
+  color: var(--color-blue);
 }
 
 .insurance__request-title {
-  max-width: 36rem;
-  margin: 0.4rem 0 1.5rem;
-  font-size: clamp(1.5rem, 4vw, 2.1rem);
+  max-width: 40rem;
+  margin: 0.5rem 0 1.75rem;
+  font-size: clamp(1.6rem, 3vw, 2.35rem);
   font-weight: 800;
-  line-height: 1.25;
+  line-height: 1.15;
 }
 
-/* ---- Consultorios ---- */
-/* padding inferior extra: que los botones flotantes no tapen el final de la página */
+/* ---- Consultorios: tarjetas marinas ---- */
 .insurance__offices {
-  padding-bottom: 5rem;
+  padding-top: clamp(3rem, 6vw, 5rem);
+  padding-bottom: clamp(3rem, 6vw, 5rem);
 }
 
 .insurance__offices-title {
-  margin-bottom: 1.25rem;
-  font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: clamp(1.6rem, 3vw, 2.35rem);
   font-weight: 800;
 }
 
 .insurance__offices-grid {
   display: grid;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 .insurance__office {
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
-  border: 1px solid #e6edf3;
-  border-radius: 1rem;
-  background-color: var(--white-color);
-}
-
-.insurance__office-map .map__iframe {
-  display: block;
-  height: 12rem;
-  border-radius: 0;
+  border-radius: var(--radius-lg);
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  box-shadow: var(--shadow-raised);
 }
 
 .insurance__office-info {
-  padding: 1rem 1.25rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.5rem;
 }
 
 .insurance__office-name {
-  margin-bottom: 0.35rem;
-  font-size: 1.05rem;
+  font-size: 1.25rem;
   font-weight: 800;
 }
 
 .insurance__office-text {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   line-height: 1.55;
-  color: #5b6b7b;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.insurance__office-hours {
+  font-size: 0.95rem;
+  font-weight: 700;
 }
 
 .insurance__office-note {
-  margin-top: 0.35rem;
+  align-self: flex-start;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-pill);
+  background-color: rgba(255, 194, 77, 0.15);
+  color: #ffc24d;
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--third-color);
 }
 
 .insurance__office-link {
-  display: inline-block;
-  margin-top: 0.75rem;
-  color: var(--third-color);
-  font-size: 0.9rem;
-  font-weight: 700;
+  align-self: flex-start;
+  margin-top: 0.25rem;
+  color: var(--color-cyan);
+  font-weight: 800;
   text-decoration: none;
 }
 
@@ -402,63 +495,66 @@
   text-decoration: underline;
 }
 
+.insurance__office-map {
+  margin-top: auto;
+  padding: 0 1rem 1rem;
+}
+
+.insurance__office-map .map__iframe {
+  display: block;
+  height: 13rem;
+  border-radius: var(--radius-md);
+}
+
+/* ---- Celular: la foto va arriba y más chica ---- */
+@media (max-width: 899px) {
+  .insurance__hero-inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .insurance__photo-box {
+    order: -1;
+    padding: 1rem 0 0.5rem;
+  }
+
+  .insurance__photo-frame {
+    width: 13rem;
+  }
+
+  .insurance__badge {
+    display: none;
+  }
+}
+
 @media (max-width: 480px) {
   .insurance__brand-tagline {
     display: none;
   }
 
+  .insurance__brand-name {
+    font-size: 0.92rem;
+  }
+
+  .insurance__back {
+    font-size: 0.85rem;
+  }
+
+  .insurance__actions,
   .insurance__btn {
     width: 100%;
   }
 }
 
-@media (min-width: 600px) {
-  .insurance__insurers-list {
-    --insurer-columns: 3;
-  }
-}
-
 @media (min-width: 900px) {
-  .insurance__hero {
-    padding: 3.5rem 0 7rem;
-  }
-
-  .insurance__insurers {
-    margin-top: -4.5rem;
-    padding: 1.5rem;
-  }
-
   .insurance__insurers-list {
-    --insurer-columns: 5;
-  }
-
-  .insurance__steps {
-    padding: 2.5rem;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
   .insurance__steps-list {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 2rem;
   }
 
   .insurance__offices-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.25rem;
-  }
-
-  .insurance__hero-inner {
-    flex-direction: row;
-    align-items: stretch;
-  }
-
-  .insurance__hero-text {
-    flex: 1.6;
-  }
-
-  .insurance__photo {
-    flex: 1;
-    min-width: 0;
-    max-height: none;
-    min-height: 20rem;
   }
 }
