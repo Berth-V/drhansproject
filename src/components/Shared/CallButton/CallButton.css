@@ -3,8 +3,8 @@
     bottom: 1.5rem;
     left: 1.5rem;
     z-index: 1000;
-    background-color: #00b7ff;
-    color: white;
+    background-color: var(--color-cyan);
+    color: var(--color-navy);
     font-size: 2rem;
     border-radius: 50%;
     width: 3.5rem;
@@ -21,5 +21,9 @@
 .call-btn:hover {
     transform: scale(1.1);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-    background-color: #0095d1;
+    background-color: var(--color-cyan-light);
+}
+
+.call-btn__label {
+    display: none;
 }

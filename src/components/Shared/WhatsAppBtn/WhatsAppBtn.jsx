@@ -22,10 +22,11 @@ export default function WhatsAppButton() {
       className="whatsapp-btn"
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="Contact on WhatsApp"
+      aria-label={t('common.whatsapp')}
       onClick={trackWhatsApp}
     >
-      <FaWhatsapp />
+      <FaWhatsapp aria-hidden="true" />
+      <span className="whatsapp-btn__label">{t('common.whatsapp')}</span>
     </a>
   );
 }

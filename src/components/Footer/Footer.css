@@ -1,126 +1,152 @@
 .footer {
-  background-color: var(--third-color);
-  color: var(--white-color);
-  padding: 1.5rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 3rem clamp(1rem, 3vw, 2rem) 1.75rem;
+  background-color: var(--color-navy-deep);
+  color: var(--color-white);
 }
 
-/* ---- Top Columns ---- */
+/* ---- Columnas ---- */
 .footer__content {
-  width: 100%;
-  max-width: 1100px;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 2rem;
-  margin-bottom: 1.5rem;
+  width: 100%;
+  max-width: 1176px;
+  margin-bottom: 2rem;
   text-align: left;
 }
 
 .footer__column {
   flex: 1 1 220px;
-  max-width: 250px;
+  max-width: 340px;
+}
+
+.footer__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.4rem;
+}
+
+.footer__brand-icon {
+  flex: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.75rem;
 }
 
 .footer__column h3 {
+  margin-bottom: 0.2rem;
   font-size: 1.05rem;
-  margin-bottom: 0.4rem;
-  color: var(--white-color);
+  font-weight: 800;
+  color: var(--color-white);
 }
 
 .footer__column p {
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .footer__column ul {
-  list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .footer__column li {
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.55rem;
 }
 
 .footer__column a {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.95rem;
   text-decoration: none;
-  font-size: 0.9rem;
-  transition: color 0.3s ease;
+  transition: color 0.2s ease;
 }
 
 .footer__column a:hover {
-  color: var(--secondary-color);
+  color: var(--color-cyan);
 }
 
 .footer__column .footer__address {
   display: block;
-  font-size: 0.8rem;
+  margin-top: 0.9rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
   color: rgba(255, 255, 255, 0.7);
-  line-height: 1.4;
-  margin-top: 0.6rem;
 }
 
 .footer__column .footer__address:hover {
-  color: var(--secondary-color);
+  color: var(--color-cyan);
 }
 
 .footer__address-name {
   display: block;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--color-white);
 }
 
-/* ---- Bottom Bar ---- */
+/* ---- Redes y aviso ---- */
 .footer__bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
   width: 100%;
-  max-width: 1100px;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  padding-top: 0.8rem;
+  max-width: 1176px;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   text-align: center;
 }
 
 .footer__bottom p {
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
-  font-weight: 500;
+  font-size: 0.95rem;
+  font-weight: 800;
 }
 
 .footer__social-icons {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 0.6rem;
 }
 
 .footer__link {
-  color: var(--white-color);
-  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.75rem;
+  color: var(--color-white);
+  font-size: 1.25rem;
   transition:
-    color 0.3s ease,
-    transform 0.2s ease;
+    color 0.2s ease,
+    border-color 0.2s ease;
 }
 
 .footer__link:hover {
-  color: var(--secondary-color);
-  transform: translateY(-2px);
+  border-color: var(--color-cyan);
+  color: var(--color-cyan);
 }
 
-.footer__privacy-wrapper {
-  margin-top: 0.6rem;
+.footer__bottom .footer__privacy-wrapper {
+  font-weight: 400;
 }
 
 .footer__privacy-link {
+  width: auto;
+  height: auto;
+  border: none;
   font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.78);
   text-decoration: none;
-  transition: color 0.3s ease;
 }
 
 .footer__privacy-link:hover {
-  color: var(--secondary-color);
   text-decoration: underline;
 }
 
@@ -128,18 +154,12 @@
 @media (max-width: 768px) {
   .footer__content {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
+    gap: 1.75rem;
+    margin-bottom: 1.5rem;
   }
 
   .footer__column {
     flex: none;
     max-width: 100%;
-  }
-
-  .footer__bottom {
-    padding-top: 0.8rem;
   }
 }

@@ -14,8 +14,9 @@ export default function LanguageSwitcher() {
                 hrefLang={ALTERNATE_SITE.htmlLang}
                 lang={ALTERNATE_SITE.language}
                 className="language-switcher__btn"
+                aria-label={isEnglishTarget ? 'U.S. English' : 'MX Español'}
             >
-                {isEnglishTarget ? 'U.S. English' : 'MX Español'}
+                {ALTERNATE_SITE.language.toUpperCase()}
             </a>
         </div>
     );

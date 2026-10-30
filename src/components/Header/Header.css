@@ -1,135 +1,160 @@
 .header {
-  display: flex;
-  flex-direction: column;
-  height: calc(var(--header-height) + 1.1rem);
+  position: relative;
+  z-index: 100;
   width: 100%;
-  background-color: var(--secondary-color);
-}
-
-.header__nav-top {
-  height: 1.1rem;
-  width: 100%;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 0 0.75rem;
-  box-sizing: border-box;
-  font-size: 0.5rem;
-  background-color: var(--third-color);
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-white);
 }
 
 .header__wrapper {
-  height: var(--header-height, 4rem);
   display: flex;
   justify-content: space-between;
-  width: 100%;
-}
-
-.header__logo {
-  height: 100%;
-  width: auto;
-  max-height: 100%;
-  aspect-ratio: 248 / 64;
-  display: block;
-}
-
-.header__nav {
-  flex: 1;
-  min-height: 100%;
-  display: flex;
   align-items: center;
-  background-color: var(--secondary-color);
-  color: var(--third-color);
+  gap: 1.5rem;
+  max-width: 1240px;
+  height: var(--header-height);
+  margin: 0 auto;
+  padding: 0 clamp(1rem, 3vw, 2rem);
 }
 
+/* ---- Marca ---- */
+.header__brand {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--color-navy);
+  text-decoration: none;
+}
+
+.header__brand-icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.75rem;
+}
+
+.header__brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.header__brand-name {
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.header__brand-tagline {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+/* ---- Navegación ---- */
 .header__list {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
-  gap: clamp(12px, 2vw, 28px);
-  padding-right: clamp(8px, 2vw, 24px);
-  width: 100%;
-  height: 100%;
+  gap: clamp(1rem, 2vw, 1.75rem);
   list-style: none;
 }
 
-.header__item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: auto;
-  transition-duration: 0.3s;
-}
-
 .header__link {
+  position: relative;
+  padding: 0.5rem 0;
+  color: var(--color-navy);
+  font-size: 0.95rem;
+  font-weight: 700;
   text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  cursor: pointer;
-}
-
-.header__link-text {
-  font-size: 18px;
-  color: var(--fiveth-color);
   white-space: nowrap;
-  transition: color 0.3s;
+  transition: color 0.2s;
 }
 
-.header__link:hover .header__link-text {
-  color: var(--white-color);
+.header__link:hover,
+.header__link.active {
+  color: var(--color-blue);
+}
+
+.header__link.active::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  border-radius: 2px;
+  background-color: var(--color-cyan);
+}
+
+/* Solo aparece en el menú lateral del celular, donde se oculta el botón del header */
+.header__item--cta {
+  display: none;
+}
+
+.header__menu-cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 3rem;
+  margin-top: 0.75rem;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+/* ---- Acciones ---- */
+.header__actions {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 1rem;
 }
 
 .header__appointment-btn {
-  font-size: 1rem;
-  border: 0.15rem solid var(--fiveth-color);
-  background-color: transparent;
-  height: 80%;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  color: var(--fiveth-color);
-  font-weight: 500;
-  white-space: nowrap;
-  transition: all 0.2s ease-in;
-  cursor: pointer;
-  text-decoration: none;
-  display: flex;
-  justify-content: center;
+  display: inline-flex;
   align-items: center;
+  min-height: 2.75rem;
+  padding: 0 1.25rem;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  font-size: 0.95rem;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.2s;
 }
 
 .header__appointment-btn:hover {
-  background-color: var(--fiveth-color);
-  color: var(--secondary-color);
+  background-color: var(--color-navy-raised);
 }
 
 .header__toggle {
   display: none;
   flex-direction: column;
-  justify-content: space-between;
-  width: 60px;
-  height: 3rem;
-  background: none;
+  justify-content: center;
+  gap: 5px;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0 0.7rem;
   border: none;
+  border-radius: 0.75rem;
+  background-color: var(--color-surface);
   cursor: pointer;
-  padding: 15px;
-  margin-top: 15px;
 }
 
 .header__toggle-bar {
   display: block;
   width: 100%;
-  height: 3px;
-  background-color: var(--fiveth-color);
+  height: 2px;
   border-radius: 2px;
-  transition: all 0.3s ease;
+  background-color: var(--color-navy);
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .header__toggle--open .header__toggle-bar:nth-child(1) {
-  transform: rotate(45deg) translate(5.5px, 5.5px);
+  transform: translateY(7px) rotate(45deg);
 }
 
 .header__toggle--open .header__toggle-bar:nth-child(2) {
@@ -137,59 +162,79 @@
 }
 
 .header__toggle--open .header__toggle-bar:nth-child(3) {
-  transform: rotate(-45deg) translate(5.5px, -5.5px);
+  transform: translateY(-7px) rotate(-45deg);
 }
 
-/* Responsive */
-@media (max-width: 1140px) {
-  :root {
-    --header-height: 3rem;
-  }
-
+/* ---- Menú lateral (tablet y celular) ---- */
+@media (max-width: 1100px) {
   .header__toggle {
     display: flex;
-    position: absolute;
-    z-index: 300;
-    top: 0;
-    right: 0;
   }
 
   .header__nav {
-    flex: none;
     position: fixed;
-    top: 0;
+    top: var(--header-height);
     right: 0;
+    bottom: 0;
     z-index: 200;
-    width: 50vw;
-    height: 100vh;
+    width: min(80vw, 320px);
+    padding: 1.5rem;
+    border-left: 1px solid var(--color-border);
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-raised);
     transform: translateX(100%);
-    transition: transform 0.35s ease-in-out;
+    visibility: hidden;
+    transition:
+      transform 0.3s ease-in-out,
+      visibility 0.3s;
   }
 
   .header__nav--open {
     transform: translateX(0);
+    visibility: visible;
   }
 
   .header__list {
     flex-direction: column;
-    height: 40%;
-    width: 100%;
+    align-items: stretch;
+    gap: 0.25rem;
   }
 
-  .header__item,
   .header__link {
-    height: auto;
+    display: block;
+    padding: 0.85rem 0.75rem;
+    border-radius: var(--radius-sm);
+    font-size: 1.05rem;
   }
 
-  .header__link-text,
-  .header__appointment-btn {
-    white-space: normal;
-    text-align: center;
+  .header__link.active {
+    background-color: var(--color-cyan-soft);
   }
 
-  .header__appointment-btn {
-    height: auto;
-    padding: 0;
-    border: none;
+  .header__link.active::after {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --header-height: 4rem;
+  }
+
+  .header__appointment-btn,
+  .header__brand-tagline {
+    display: none;
+  }
+
+  .header__item--cta {
+    display: block;
+  }
+
+  .header__brand-name {
+    font-size: 1rem;
+  }
+
+  .header__actions {
+    gap: 0.6rem;
   }
 }

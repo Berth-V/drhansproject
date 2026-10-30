@@ -1,13 +1,18 @@
 .language-switcher__btn {
-    color: white;
-    background-color: transparent;
-    font-size: 13px;
-    text-decoration: underline;
-    cursor: pointer;
-    transition: all;
-    transition-duration: 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.75rem;
+    min-height: 2.75rem;
+    border-radius: var(--radius-sm);
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-decoration: none;
+    transition: color 0.2s, background-color 0.2s;
 }
 
 .language-switcher__btn:hover {
-    color: var(--black-color);
+    background-color: var(--color-surface);
+    color: var(--color-navy);
 }

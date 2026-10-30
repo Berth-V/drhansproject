@@ -1,5 +1,7 @@
 {
     "common": {
+        "call": "Llamar",
+        "whatsapp": "WhatsApp",
         "loading": "Cargando..."
     },
     "seo": {
@@ -47,6 +49,8 @@
         }
     },
     "header": {
+        "brandName": "Dr. Hans Ruiz Serna",
+        "brandTagline": "Cirugía de Columna y Ortopedia",
         "home": "Inicio",
         "procedures": "Procedimientos",
         "insurance": "Pacientes con seguro",
@@ -480,7 +484,7 @@
         }
     },
     "footer": {
-        "name": "Dr. Hans Ruiz",
+        "name": "Dr. Hans Ruiz Serna",
         "specialty": "Traumatología y Ortopedia",
         "quickLinks": "Enlaces Rápidos",
         "procedures": "Procedimientos",

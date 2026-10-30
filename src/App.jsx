@@ -4,8 +4,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import Header from './components/Header/Header';
 import AppRoutes from './AppRoutes';
 import Footer from './components/Footer/Footer';
-import WhatsAppBtn from './components/Shared/WhatsAppBtn/WhatsAppBtn';
-import CallButton from './components/Shared/CallButton/CallButton';
+import ContactBar from './components/Shared/ContactBar/ContactBar';
 
 function App() {
   const location = useLocation();
@@ -17,8 +16,7 @@ function App() {
     <>
       {!isLandingPage && <Header />}
       <AppRoutes />
-      <CallButton />
-      <WhatsAppBtn />
+      <ContactBar />
       <Footer />
     </>
   );
