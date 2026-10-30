@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import './MinimallyInvasive.css';
-import scarImg from '../../../../assets/scar2.jpg';
+import scarImg from '../../../../assets/scar2.webp';
 
 export default function MinimallyInvasive() {
     const { t } = useTranslation();

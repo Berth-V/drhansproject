@@ -2,7 +2,6 @@
   padding: 2rem;
   background-color: var(--black-color);
   color: var(--white-color);
-  font-family: var(--font-family);
 }
 
 .privacy__container {

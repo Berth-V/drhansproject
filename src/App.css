@@ -2,11 +2,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: var(--font-family);
 }
 
 html {
-  background-color: var(--primary-color);
+  background-color: var(--color-navy);
 }
 
 body {
@@ -15,15 +15,42 @@ body {
 }
 
 :root {
-  --primary-color: #000;
-  --secondary-color: #00c4ff;
-  --third-color: #075985;
-  --fourth-color: #84dfec;
-  --fiveth-color: #0b1d3a;
-  --sixth-color: #1a1a1a;
-  --blog-card-color: #12263a;
-  --white-color: #ffff;
-  --black-color: #000;
+  --font-family: 'Nunito Sans', sans-serif;
+
+  /* Paleta del rediseño: usar estas variables en el código nuevo */
+  --color-navy: #0b1d3a;
+  --color-navy-deep: #071428;
+  --color-navy-soft: #12263a;
+  --color-navy-raised: #12305c;
+  --color-blue: #075985;
+  --color-cyan: #00c4ff;
+  --color-cyan-light: #84dfec;
+  --color-cyan-soft: #e0f7fb;
+  --color-surface: #f4f7fa;
+  --color-border: #e6edf3;
+  --color-text-muted: #5b6b7b;
+  --color-white: #fff;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1.25rem;
+  --radius-pill: 999px;
+
+  --shadow-card: 0 8px 24px rgba(11, 29, 58, 0.06);
+  --shadow-raised: 0 14px 34px rgba(11, 29, 58, 0.18);
+
+  /* Nombres anteriores: apuntan a la paleta nueva mientras se migran los componentes.
+     El negro (#000 y #1a1a1a) se reemplazó por marino. */
+  --primary-color: var(--color-navy);
+  --secondary-color: var(--color-cyan);
+  --third-color: var(--color-blue);
+  --fourth-color: var(--color-cyan-light);
+  --fiveth-color: var(--color-navy);
+  --sixth-color: var(--color-navy-soft);
+  --blog-card-color: var(--color-navy-soft);
+  --white-color: var(--color-white);
+  --black-color: var(--color-navy);
+
   --header-height: 4.5rem;
   --footer-height: 16rem;
 }
