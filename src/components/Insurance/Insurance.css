@@ -209,25 +209,51 @@
   color: #5b6b7b;
 }
 
+/* Flex para que la última fila incompleta quede centrada */
 .insurance__insurers-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  --insurer-columns: 2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 0.6rem;
   list-style: none;
 }
 
 .insurance__insurer {
   display: flex;
+  flex: 0 0 calc((100% - (var(--insurer-columns) - 1) * 0.6rem) / var(--insurer-columns));
   justify-content: center;
   align-items: center;
-  min-height: 3.25rem;
-  padding: 0.5rem;
+  min-height: 4rem;
+  padding: 0.6rem 0.75rem;
   border: 1px solid #e6edf3;
   border-radius: 0.6rem;
-  background-color: #f4f7fa;
+  background-color: var(--white-color);
+}
+
+.insurance__insurer-logo {
+  display: block;
+  max-width: 100%;
+  max-height: 3rem;
+  object-fit: contain;
+}
+
+.insurance__insurers-note {
+  margin-top: 1rem;
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
   color: #5b6b7b;
+}
+
+.insurance__insurers-link {
+  font-weight: 700;
+  color: #075985;
+  white-space: nowrap;
+}
+
+.insurance__insurers-link:hover {
+  text-decoration: underline;
 }
 
 /* ---- Frase ---- */
@@ -392,7 +418,7 @@
 
 @media (min-width: 600px) {
   .insurance__insurers-list {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    --insurer-columns: 3;
   }
 }
 
@@ -407,7 +433,7 @@
   }
 
   .insurance__insurers-list {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+    --insurer-columns: 5;
   }
 
   .insurance__steps {

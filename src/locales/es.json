@@ -352,14 +352,20 @@
         },
         "insurers": {
             "title": "Atendemos pacientes de estas aseguradoras",
-            "items": [
-                "[Logo aseguradora]",
-                "[Logo aseguradora]",
-                "[Logo aseguradora]",
-                "[Logo aseguradora]",
-                "[Logo aseguradora]",
-                "[Logo aseguradora]"
-            ]
+            "names": {
+                "metlife": "MetLife",
+                "bupa": "Bupa Seguros",
+                "gnp": "GNP Seguros",
+                "axa": "AXA",
+                "allianz": "Allianz",
+                "mapfre": "Mapfre",
+                "banorte": "Seguros Banorte",
+                "bbva": "BBVA Seguros",
+                "bluecross-blueshield": "Blue Cross Blue Shield",
+                "anthem": "Anthem"
+            },
+            "note": "¿Tu aseguradora no aparece? No nos limitamos a estas. Pregúntanos y te decimos si podemos atenderte con tu seguro y qué trámites podemos hacer.",
+            "ask": "Pregúntanos por WhatsApp"
         },
         "statement": "Si tu estudio ya confirma el diagnóstico, estás a un paso de tu cirugía",
         "steps": {
@@ -406,15 +412,18 @@
                 "diagnosis": "Ej. hernia discal L4–L5"
             },
             "insurerOptions": [
+                "MetLife",
+                "Bupa",
                 "GNP Seguros",
                 "AXA",
-                "MetLife",
-                "Seguros Monterrey New York Life",
                 "Allianz",
-                "BUPA",
                 "Mapfre",
-                "Plan Seguro",
                 "Seguros Banorte",
+                "BBVA Seguros",
+                "Blue Cross Blue Shield",
+                "Anthem",
+                "Seguros Monterrey New York Life",
+                "Plan Seguro",
                 "Inbursa",
                 "Seguros Atlas",
                 "Sura",

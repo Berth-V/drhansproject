@@ -10,6 +10,11 @@ import { trackWhatsApp } from '../../analytics/events';
 
 const WHATSAPP_NUMBER = '526645410955';
 
+// Orden pedido por el doctor: MetLife y Bupa primero, luego las de México y al final las de EE. UU.
+// Cada id corresponde a src/assets/insurers/<id>.webp y a insurance.insurers.names.<id>
+const INSURERS = ['metlife', 'bupa', 'gnp', 'axa', 'allianz', 'mapfre', 'banorte', 'bbva', 'bluecross-blueshield', 'anthem'];
+const INSURER_LOGOS = import.meta.glob('../../assets/insurers/*.webp', { eager: true, import: 'default' });
+
 // Landing para pacientes con seguro de gastos médicos mayores (destino de la campaña de Ads).
 // Usa su propio header mínimo: el Header global se oculta en esta ruta (App.jsx).
 export default function Insurance() {
@@ -17,7 +22,6 @@ export default function Insurance() {
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
     t('insurance.whatsappMessage')
   )}`;
-  const insurers = t('insurance.insurers.items', { returnObjects: true });
   const steps = t('insurance.steps.items', { returnObjects: true });
 
   return (
@@ -84,17 +88,34 @@ export default function Insurance() {
         </div>
       </section>
 
-      {/* Lista en i18n: solo las aseguradoras que el doctor confirme (los logos van después) */}
+      {/* Solo las aseguradoras que confirmó el doctor; la nota aclara que no son las únicas */}
       <section className="insurance__container">
         <div className="insurance__insurers">
           <h2 className="insurance__insurers-title">{t('insurance.insurers.title')}</h2>
           <ul className="insurance__insurers-list">
-            {insurers.map((name, index) => (
-              <li key={index} className="insurance__insurer">
-                {name}
+            {INSURERS.map((id) => (
+              <li key={id} className="insurance__insurer">
+                <img
+                  className="insurance__insurer-logo"
+                  src={INSURER_LOGOS[`../../assets/insurers/${id}.webp`]}
+                  alt={t(`insurance.insurers.names.${id}`)}
+                  decoding="async"
+                />
               </li>
             ))}
           </ul>
+          <p className="insurance__insurers-note">
+            {t('insurance.insurers.note')}{' '}
+            <a
+              href={whatsappUrl}
+              className="insurance__insurers-link"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={trackWhatsApp}
+            >
+              {t('insurance.insurers.ask')}
+            </a>
+          </p>
         </div>
       </section>
 
