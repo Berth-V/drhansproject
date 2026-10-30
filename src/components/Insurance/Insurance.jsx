@@ -1,7 +1,9 @@
 import './Insurance.css';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { FaArrowLeft, FaCheck, FaUserMd, FaWhatsapp } from 'react-icons/fa';
+import { FaArrowLeft, FaCheck, FaWhatsapp } from 'react-icons/fa';
+import doctorPhoto from '../../assets/insurance-doctor.webp';
+import logoIcon from '../../assets/logo icon.webp';
 import Seo from '../Shared/Seo/Seo';
 import InsuranceForm from './InsuranceForm';
 import Map from '../Home/Sections/Map/Map';
@@ -31,9 +33,8 @@ export default function Insurance() {
       <header className="insurance__header">
         <div className="insurance__container insurance__header-inner">
           <div className="insurance__brand">
-            <span className="insurance__brand-mark" aria-hidden="true">
-              HR
-            </span>
+            {/* Decorativo: el nombre del doctor va justo al lado */}
+            <img className="insurance__brand-mark" src={logoIcon} alt="" width="36" height="36" />
             <span>
               <span className="insurance__brand-name">{t('footer.name')}</span>
               <span className="insurance__brand-tagline">{t('insurance.header.tagline')}</span>
@@ -81,10 +82,14 @@ export default function Insurance() {
             </ul>
           </div>
 
-          {/* Espacio para la foto profesional del doctor (pendiente) */}
-          <div className="insurance__photo" aria-hidden="true">
-            <FaUserMd />
-          </div>
+          <img
+            className="insurance__photo"
+            src={doctorPhoto}
+            alt={t('insurance.hero.photoAlt')}
+            width="560"
+            height="700"
+            fetchPriority="high"
+          />
         </div>
       </section>
 

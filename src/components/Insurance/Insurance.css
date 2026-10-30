@@ -34,17 +34,12 @@
 }
 
 .insurance__brand-mark {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: block;
   width: 2.25rem;
   height: 2.25rem;
   flex: none;
   border-radius: 0.5rem;
-  background-color: var(--secondary-color);
-  color: var(--fiveth-color);
-  font-weight: 800;
-  font-size: 0.9rem;
+  object-fit: cover;
 }
 
 .insurance__brand-name {
@@ -177,15 +172,16 @@
   color: var(--secondary-color);
 }
 
+/* Recortada en vertical; object-position mantiene la cara visible si el contenedor la recorta */
 .insurance__photo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 14rem;
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 24rem;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 1rem;
-  color: var(--secondary-color);
-  font-size: 2.5rem;
+  object-fit: cover;
+  object-position: center 20%;
 }
 
 /* ---- Aseguradoras ---- */
@@ -461,6 +457,8 @@
 
   .insurance__photo {
     flex: 1;
+    min-width: 0;
+    max-height: none;
     min-height: 20rem;
   }
 }

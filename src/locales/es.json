@@ -348,10 +348,11 @@
             "cta": "Enviar mis datos",
             "whatsapp": "Prefiero escribir por WhatsApp",
             "checkApproval": "Te apoyamos para que tu aseguradora autorice tu cirugía",
-            "checkOffices": "2 consultorios en Tijuana"
+            "checkOffices": "2 consultorios en Tijuana",
+            "photoAlt": "Dr. Hans Ruiz, traumatólogo y ortopedista en Tijuana, con un modelo de columna"
         },
         "insurers": {
-            "title": "Atendemos pacientes de estas aseguradoras",
+            "title": "Algunas de las aseguradoras con las que trabajamos",
             "names": {
                 "metlife": "MetLife",
                 "bupa": "Bupa Seguros",

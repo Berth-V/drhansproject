@@ -348,10 +348,11 @@
             "cta": "Send my details",
             "whatsapp": "I'd rather message on WhatsApp",
             "checkApproval": "We support you through your insurer's surgery approval",
-            "checkOffices": "2 offices in Tijuana"
+            "checkOffices": "2 offices in Tijuana",
+            "photoAlt": "Dr. Hans Ruiz, orthopedic and trauma surgeon in Tijuana, holding a spine model"
         },
         "insurers": {
-            "title": "We see patients from these insurers",
+            "title": "Some of the insurers we work with",
             "names": {
                 "metlife": "MetLife",
                 "bupa": "Bupa",
