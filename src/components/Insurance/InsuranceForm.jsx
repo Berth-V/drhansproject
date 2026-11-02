@@ -10,7 +10,7 @@ import {
   FaWhatsapp,
   FaXRay,
 } from 'react-icons/fa';
-import { trackWhatsApp } from '../../analytics/events';
+import { trackInsuranceLead, trackWhatsApp } from '../../analytics/events';
 import { createInsuranceLead } from '../../firebase/insuranceLeads';
 
 const OTHER_INSURER = 'other';
@@ -104,7 +104,8 @@ export default function InsuranceForm({ whatsappUrl }) {
       setSubmitting(false);
     }
 
-    // TODO: trackInsuranceLead() y aviso por EmailJS sin datos médicos
+    trackInsuranceLead();
+    // TODO: aviso por EmailJS sin datos médicos
     setStep1Done(true);
     requestAnimationFrame(() => step2Ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
   };
