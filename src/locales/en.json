@@ -433,6 +433,7 @@
                 "title": "Your details",
                 "badge": "Step 1 of 2",
                 "submit": "Send and continue",
+                "sending": "Sending…",
                 "done": "We received your details. We'll contact you on WhatsApp. For priority review, upload your documents in step 2."
             },
             "fields": {
@@ -483,7 +484,8 @@
                 "diagnosis": "Enter your diagnosis.",
                 "consent": "We need your consent to review your case.",
                 "file_type": "Invalid format. Use PDF, JPG, PNG or HEIC.",
-                "file_size": "The file is larger than 10 MB."
+                "file_size": "The file is larger than 10 MB.",
+                "submit": "We couldn't send your details. Check your connection and try again, or message us on WhatsApp."
             },
             "step2": {
                 "title": "Your documents",

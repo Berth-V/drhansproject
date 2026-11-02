@@ -433,6 +433,7 @@
                 "title": "Tus datos",
                 "badge": "Paso 1 de 2",
                 "submit": "Enviar y continuar",
+                "sending": "Enviando…",
                 "done": "Recibimos tus datos. Te contactaremos por WhatsApp. Si quieres prioridad, sube tus documentos en el paso 2."
             },
             "fields": {
@@ -483,7 +484,8 @@
                 "diagnosis": "Escribe tu diagnóstico.",
                 "consent": "Necesitamos tu consentimiento para revisar tu caso.",
                 "file_type": "Formato no válido. Usa PDF, JPG, PNG o HEIC.",
-                "file_size": "El archivo pesa más de 10 MB."
+                "file_size": "El archivo pesa más de 10 MB.",
+                "submit": "No pudimos enviar tus datos. Revisa tu conexión e inténtalo de nuevo, o escríbenos por WhatsApp."
             },
             "step2": {
                 "title": "Tus documentos",

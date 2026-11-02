@@ -11,6 +11,7 @@ import {
   FaXRay,
 } from 'react-icons/fa';
 import { trackWhatsApp } from '../../analytics/events';
+import { createInsuranceLead } from '../../firebase/insuranceLeads';
 
 const OTHER_INSURER = 'other';
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
@@ -66,6 +67,9 @@ export default function InsuranceForm({ whatsappUrl }) {
   const [form, setForm] = useState(EMPTY_FORM);
   const [errors, setErrors] = useState({});
   const [step1Done, setStep1Done] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
+  const leadIdRef = useRef(null); // para asociar los documentos del paso 2
   const [files, setFiles] = useState({ summary: null, policy: null, study: null });
   const [fileErrors, setFileErrors] = useState({});
   const [finished, setFinished] = useState(false);
@@ -80,15 +84,27 @@ export default function InsuranceForm({ whatsappUrl }) {
     setErrors((prev) => ({ ...prev, [name]: undefined }));
   };
 
-  const handleStep1 = (event) => {
+  const handleStep1 = async (event) => {
     event.preventDefault();
-    if (form.website) return; // bot
+    if (form.website || submitting) return; // bot o doble clic
 
     const found = validate(form);
     setErrors(found);
     if (Object.keys(found).length > 0) return;
 
-    // TODO (paso 5): crear insuranceLeads/{leadId} en Firestore, trackInsuranceLead() y aviso por EmailJS
+    setSubmitting(true);
+    setSubmitError(false);
+    try {
+      leadIdRef.current = await createInsuranceLead(form);
+    } catch (error) {
+      console.error('Error al guardar el lead de seguros:', error);
+      setSubmitError(true);
+      return;
+    } finally {
+      setSubmitting(false);
+    }
+
+    // TODO: trackInsuranceLead() y aviso por EmailJS sin datos médicos
     setStep1Done(true);
     requestAnimationFrame(() => step2Ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
   };
@@ -169,6 +185,7 @@ export default function InsuranceForm({ whatsappUrl }) {
               className="insurance-form__input"
               type="text"
               autoComplete="name"
+              maxLength={120}
               placeholder={t('insurance.form.placeholders.name')}
               {...fieldProps('name')}
             />
@@ -211,6 +228,7 @@ export default function InsuranceForm({ whatsappUrl }) {
                   className="insurance-form__input"
                   type="text"
                   placeholder={t('insurance.form.placeholders.policy')}
+                  maxLength={60}
                   {...fieldProps('policy')}
                 />
                 {fieldError('policy')}
@@ -222,7 +240,7 @@ export default function InsuranceForm({ whatsappUrl }) {
                 <label className="insurance-form__label" htmlFor="insurance-insurerOther">
                   {t('insurance.form.fields.insurerOther')}
                 </label>
-                <input className="insurance-form__input" type="text" {...fieldProps('insurerOther')} />
+                <input className="insurance-form__input" type="text" maxLength={80} {...fieldProps('insurerOther')} />
                 {fieldError('insurerOther')}
               </>
             )}
@@ -234,6 +252,7 @@ export default function InsuranceForm({ whatsappUrl }) {
               className="insurance-form__input"
               type="text"
               placeholder={t('insurance.form.placeholders.diagnosis')}
+              maxLength={300}
               {...fieldProps('diagnosis')}
             />
             {fieldError('diagnosis')}
@@ -267,9 +286,18 @@ export default function InsuranceForm({ whatsappUrl }) {
             </label>
             {fieldError('consent')}
 
-            <button type="submit" className="insurance-form__btn insurance-form__btn--primary insurance-form__btn--full">
-              {t('insurance.form.step1.submit')}
+            <button
+              type="submit"
+              className="insurance-form__btn insurance-form__btn--primary insurance-form__btn--full"
+              disabled={submitting}
+            >
+              {submitting ? t('insurance.form.step1.sending') : t('insurance.form.step1.submit')}
             </button>
+            {submitError && (
+              <span className="insurance-form__error" role="alert">
+                {t('insurance.form.errors.submit')}
+              </span>
+            )}
           </form>
         )}
       </div>
