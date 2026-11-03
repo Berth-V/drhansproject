@@ -11,51 +11,75 @@ const About = () => {
 
   return (
     <div className="doctor-profile">
-      <Seo title={t('seo.about.title')} description={t('seo.about.description')} path="/about" />
+      <Seo
+        title={t('seo.about.title')}
+        description={t('seo.about.description')}
+        path="/about"
+      />
 
-      <div className="doctor-profile__header">
-        <div className="doctor-profile__photo-section">
-          <div className="doctor-profile__photo">
-            <img src={photo} alt={t('about.photoAlt')} />
+      {/* Banda marina con foto y nombre; abajo, tarjetas blancas sobre fondo claro */}
+      <div className="doctor-profile__hero">
+        <div className="doctor-profile__header">
+          <div className="doctor-profile__photo-section">
+            <div className="doctor-profile__photo">
+              <img src={photo} alt={t('about.photoAlt')} />
+            </div>
           </div>
-        </div>
-        <div className="doctor-profile__name-specialty">
-          <h1>{t('about.name')}</h1>
-          <h2>{t('about.profession')}</h2>
-          <p>{t('about.followMe')}</p>
-          <div className="doctor-profile__social-links">
-            <a href="https://www.tiktok.com/@drhansruiz" target="_blank" rel="noopener noreferrer" className="doctor-profile__social-link">
-              <AiFillTikTok />
-            </a>
-            <a href="https://www.instagram.com/drhansruiz/" target="_blank" rel="noopener noreferrer" className="doctor-profile__social-link">
-              <RiInstagramFill />
-            </a>
-            <a href="https://www.facebook.com/DrHansRuiz" target="_blank" rel="noopener noreferrer" className="doctor-profile__social-link">
-              <FaFacebookSquare />
-            </a>
+          <div className="doctor-profile__name-specialty">
+            <h1>{t('about.name')}</h1>
+            <h2>{t('about.profession')}</h2>
+            <p>{t('about.followMe')}</p>
+            <div className="doctor-profile__social-links">
+              <a
+                href="https://www.tiktok.com/@drhansruiz"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="doctor-profile__social-link"
+              >
+                <AiFillTikTok />
+              </a>
+              <a
+                href="https://www.instagram.com/drhansruiz/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="doctor-profile__social-link"
+              >
+                <RiInstagramFill />
+              </a>
+              <a
+                href="https://www.facebook.com/DrHansRuiz"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="doctor-profile__social-link"
+              >
+                <FaFacebookSquare />
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
-      <div className="doctor-profile__description">
-        {t('about.description')
-          .split('\n')
-          .map((line, i) => (
-            <p key={i}>{line}</p>
-          ))}
-      </div>
-
-      <div className="doctor-profile__content">
-        <div className="doctor-profile__col--left">
-          <div className="doctor-profile__info">
-            <h3>{t('about.education.title')}</h3>
-            <p>{t('about.education.value')}</p>
-          </div>
+      <div className="doctor-profile__body">
+        <div className="doctor-profile__description">
+          {t('about.description')
+            .split('\n')
+            .map((line, i) => (
+              <p key={i}>{line}</p>
+            ))}
         </div>
-        <div className="doctor-profile__col--right">
-          <div className="doctor-profile__info">
-            <h3>{t('about.speciality.title')}</h3>
-            <p>{t('about.speciality.value')}</p>
+
+        <div className="doctor-profile__content">
+          <div className="doctor-profile__col--left">
+            <div className="doctor-profile__info">
+              <h3>{t('about.education.title')}</h3>
+              <p>{t('about.education.value')}</p>
+            </div>
+          </div>
+          <div className="doctor-profile__col--right">
+            <div className="doctor-profile__info">
+              <h3>{t('about.speciality.title')}</h3>
+              <p>{t('about.speciality.value')}</p>
+            </div>
           </div>
         </div>
       </div>

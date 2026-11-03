@@ -1,26 +1,24 @@
 .doctor-profile {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 30px;
-  background-color: var(--primary-color);
-  color: var(--white-color);
-  border-radius: 15px;
-  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
-  height: auto;
-  align-content: center;
+  width: 100%;
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-surface);
 }
 
-/* HEADER */
+/* === Banda marina con foto, nombre y redes === */
+.doctor-profile__hero {
+  padding: clamp(32px, 5vw, 64px) clamp(16px, 5vw, 80px);
+  background-color: var(--color-navy);
+  color: var(--color-white);
+}
+
 .doctor-profile__header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 30px;
-  margin-bottom: 40px;
-  padding: 25px;
-  background-color: var(--sixth-color);
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  gap: clamp(24px, 4vw, 48px);
+  max-width: 1000px;
+  margin: 0 auto;
   flex-wrap: wrap;
 }
 
@@ -35,9 +33,9 @@
   width: 200px;
   height: 200px;
   border-radius: 50%;
-  background-color: #e0e0e0;
-  margin-bottom: 15px;
-  border: 4px solid var(--secondary-color);
+  background-color: var(--color-navy-soft);
+  border: 4px solid var(--color-cyan);
+  box-shadow: var(--shadow-raised);
   overflow: hidden;
 }
 
@@ -53,80 +51,77 @@
 }
 
 .doctor-profile__name-specialty h1 {
-  margin: 0 0 10px 0;
-  font-size: 34px;
-  font-weight: 700;
+  margin: 0 0 8px 0;
+  font-size: clamp(1.75rem, 4vw, 2.4rem);
+  font-weight: 800;
 }
 
 .doctor-profile__name-specialty h2 {
-  margin: 0 0 15px 0;
-  font-size: 24px;
+  margin: 0 0 18px 0;
+  font-size: clamp(1.1rem, 2.4vw, 1.4rem);
   font-weight: 600;
+  color: var(--color-cyan);
 }
 
 .doctor-profile__name-specialty p {
-  color: var(--secondary-color);
   margin: 0;
-  font-size: 17px;
-  font-weight: 500;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .doctor-profile__social-links {
   display: flex;
-  gap: 0.5rem;
-  margin-top: 8px;
+  gap: 0.6rem;
+  margin-top: 10px;
 }
 
 .doctor-profile__social-link {
   text-decoration: none;
-  color: var(--white-color);
+  color: var(--color-white);
   font-size: 1.6rem;
-  transition: color 0.4s;
+  transition: color 0.25s ease;
 }
 
 .doctor-profile__social-link:hover {
-  color: var(--secondary-color);
+  color: var(--color-cyan);
+}
+
+/* === Zona clara con las tarjetas === */
+.doctor-profile__body {
+  flex: 1;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: clamp(28px, 4vw, 48px) clamp(16px, 3vw, 2rem) clamp(48px, 6vw, 72px);
+  color: var(--color-white);
 }
 
 /* DESCRIPTION */
 .doctor-profile__description {
-  background-color: var(--sixth-color);
-  padding: 25px;
-  border-radius: 10px;
-  margin-bottom: 35px;
-  border-left: 4px solid var(--secondary-color);
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.doctor-profile__description:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.08);
-}
-
-.doctor-profile__description h3 {
-  margin-bottom: 12px;
-  font-size: 18px;
-  text-transform: uppercase;
-  letter-spacing: 0.6px;
-  font-weight: 600;
-  color: var(--secondary-color);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  /* Tarjetas marinas sobre fondo claro, como las secciones del Home */
+  background-color: var(--color-navy);
+  padding: 28px;
+  border-radius: var(--radius-md);
+  margin-bottom: 28px;
+  box-shadow: var(--shadow-raised);
 }
 
 .doctor-profile__description p {
   margin: 0;
-  font-size: 18px;
-  line-height: 1.6;
+  font-size: 17px;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 /* COLUMNS */
 .doctor-profile__content {
   display: flex;
-  gap: 35px;
+  gap: 28px;
   flex-wrap: wrap;
-  margin-bottom: 40px;
 }
 
 .doctor-profile__col--left,
@@ -136,45 +131,45 @@
 }
 
 .doctor-profile__info {
-  background-color: var(--sixth-color);
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.04);
-  margin-bottom: 22px;
-  border-left: 4px solid var(--secondary-color);
+  height: 100%;
+  background-color: var(--color-navy);
+  padding: 22px;
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-raised);
   transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
 }
 
 .doctor-profile__info:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
+  border-color: var(--color-cyan);
+  box-shadow: 0 16px 34px rgba(0, 196, 255, 0.22);
 }
 
 .doctor-profile__info h3 {
-  margin: 0 0 14px 0;
-  font-size: 16px;
+  margin: 0 0 10px 0;
+  font-size: 0.8rem;
   text-transform: uppercase;
-  letter-spacing: 0.6px;
-  font-weight: 600;
+  letter-spacing: 0.08em;
+  font-weight: 800;
+  color: var(--color-cyan);
 }
 
 .doctor-profile__info p {
   margin: 0;
   line-height: 1.6;
   font-size: 16px;
+  font-weight: 600;
+  color: var(--color-white);
 }
 
 /* RESPONSIVE */
 @media (max-width: 1024px) {
-  .doctor-profile {
-    padding: 25px;
-  }
-
   .doctor-profile__header {
     flex-direction: column;
-    align-items: center;
     text-align: center;
   }
 
@@ -182,18 +177,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-
-  .doctor-profile__name-specialty h1 {
-    font-size: 30px;
-  }
-
-  .doctor-profile__name-specialty h2 {
-    font-size: 22px;
-  }
-
-  .doctor-profile__description {
-    padding: 20px;
   }
 }
 
@@ -203,12 +186,9 @@
     gap: 20px;
   }
 
-  .doctor-profile__name-specialty h1 {
-    font-size: 26px;
-  }
-
-  .doctor-profile__name-specialty h2 {
-    font-size: 20px;
+  .doctor-profile__col--left,
+  .doctor-profile__col--right {
+    min-width: 0;
   }
 
   .doctor-profile__description p {
@@ -217,21 +197,14 @@
 }
 
 @media (max-width: 480px) {
-  .doctor-profile {
-    padding: 18px;
+  .doctor-profile__photo {
+    width: 160px;
+    height: 160px;
   }
 
   .doctor-profile__description,
   .doctor-profile__info {
-    padding: 15px;
-  }
-
-  .doctor-profile__name-specialty h1 {
-    font-size: 24px;
-  }
-
-  .doctor-profile__name-specialty h2 {
-    font-size: 18px;
+    padding: 18px;
   }
 
   .doctor-profile__social-link {

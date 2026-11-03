@@ -1,126 +1,156 @@
 .procedure-detail {
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-surface);
+}
+
+/* === Banda marina: ruta, título y descripción === */
+.procedure-detail__hero {
+  padding: clamp(28px, 5vw, 56px) clamp(16px, 5vw, 80px) clamp(32px, 5vw, 56px);
+  background-color: var(--color-navy);
+}
+
+.procedure-detail__hero-inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
-  min-height: 80vh;
+  text-align: center;
 }
 
 /* === Breadcrumb navigation === */
 .procedure-detail__breadcrumb {
   margin-bottom: 1.5rem;
-  color: #7f8c8d;
+  color: rgba(255, 255, 255, 0.55);
   font-size: 0.9rem;
+  text-align: left;
 }
 
 .procedure-detail__breadcrumb-link {
-  color: #007bff;
+  color: var(--color-cyan);
   text-decoration: none;
 }
 
 .procedure-detail__breadcrumb-link:hover {
   text-decoration: underline;
-  color: #0056b3;
-}
-
-/* === Header section === */
-.procedure-detail__header {
-  text-align: center;
-  margin-bottom: 2rem;
 }
 
 .procedure-detail__title {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  font-weight: 800;
   margin-bottom: 0.5rem;
-  color: var(--white-color);
+  color: var(--color-white);
 }
 
 .procedure-detail__description {
-  font-size: 1.2rem;
-  color: var(--white-color);
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  color: rgba(255, 255, 255, 0.75);
   line-height: 1.6;
   margin: 0;
+}
+
+/* === Zona clara === */
+.procedure-detail__body {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(28px, 4vw, 48px) clamp(16px, 3vw, 2rem) clamp(48px, 6vw, 72px);
 }
 
 /* === Injury list view === */
 .procedure-detail__injury-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 1.5rem;
   margin-bottom: 2rem;
 }
 
 .procedure-detail__injury-card {
-  background-color: var(--sixth-color);
+  display: flex;
+  flex-direction: column;
+  /* Tarjeta marina sobre fondo claro, como las secciones del Home */
+  background-color: var(--color-navy);
   padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  cursor: pointer;
-  transition: all 0.3s ease;
   border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-raised);
+  cursor: pointer;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
 }
 
 .procedure-detail__injury-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-  border-color: var(--secondary-color);
+  transform: translateY(-4px);
+  border-color: var(--color-cyan);
+  box-shadow: 0 16px 34px rgba(0, 196, 255, 0.22);
 }
 
 .procedure-detail__injury-name {
-  margin: 0 0 1rem 0;
-  font-size: 1.25rem;
-  color: var(--secondary-color);
+  margin: 0 0 0.75rem 0;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--color-cyan);
 }
 
 .procedure-detail__injury-summary {
   margin: 0 0 1rem 0;
-  line-height: 1.5;
-  color: var(--white-color);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.75);
 }
 
 .procedure-detail__injury-meta {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 1rem;
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .procedure-detail__treatment-count {
-  color: var(--white-color);
+  color: rgba(255, 255, 255, 0.6);
   font-size: 0.9rem;
 }
 
 .procedure-detail__view-details {
-  color: var(--secondary-color);
-  font-weight: 500;
+  color: var(--color-cyan-light);
+  font-weight: 700;
   font-size: 0.9rem;
+  transition: color 0.25s ease;
+}
+
+.procedure-detail__injury-card:hover .procedure-detail__view-details {
+  color: var(--color-cyan);
 }
 
 /* === Injury detail view === */
 .procedure-detail__injury-view {
-  border: 0.2rem solid var(--secondary-color);
-  border-radius: 12px;
+  background-color: var(--color-navy);
+  border-radius: var(--radius-lg);
   padding: 2rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-raised);
   margin-bottom: 2rem;
 }
 
 .procedure-detail__back-btn {
   background: none;
   border: none;
-  color: var(--secondary-color);
+  color: var(--color-cyan-light);
   font-size: 1rem;
   cursor: pointer;
   padding: 0.5rem 0;
   margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
-  font-weight: 500;
-  transition: color 0.3s ease;
+  font-weight: 700;
+  transition: color 0.25s ease;
 }
 
 .procedure-detail__back-btn:hover {
-  color: var(--secondary-color);
-  text-decoration: underline;
+  color: var(--color-cyan);
 }
 
 .procedure-detail__injury-content {
@@ -128,23 +158,25 @@
 }
 
 .procedure-detail__injury-title {
-  color: var(--white-color);
+  color: var(--color-cyan);
   margin: 0 0 1rem 0;
   font-size: 2rem;
+  font-weight: 800;
 }
 
 .procedure-detail__injury-description {
-  color: var(--white-color);
-  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.65;
   margin: 0 0 2rem 0;
   font-size: 1.1rem;
 }
 
 /* === Treatments section === */
 .procedure-detail__treatments-heading {
-  color: var(--white-color);
+  color: var(--color-white);
   margin: 0 0 1.5rem 0;
   font-size: 1.5rem;
+  font-weight: 800;
 }
 
 .procedure-detail__treatments-grid {
@@ -154,42 +186,40 @@
 }
 
 .procedure-detail__treatment-card {
-  background-color: var(--sixth-color);
+  background-color: var(--color-navy-raised);
   padding: 1.5rem;
-  border-radius: 8px;
-  border-left: 4px solid var(--secondary-color);
+  border-radius: 0;
+  border-left: 4px solid var(--color-cyan);
 }
 
 .procedure-detail__treatment-type {
   margin: 0 0 0.5rem 0;
   font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--white-color);
+  font-weight: 700;
+  color: var(--color-white);
 }
 
 .procedure-detail__treatment-description {
   margin: 0;
-  line-height: 1.5;
-  color: var(--white-color);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 /* === Back to all procedures link === */
 .procedure-detail__back-link {
   display: inline-flex;
   align-items: center;
-  color: var(--secondary-color);
+  color: var(--color-white);
+  background-color: var(--color-navy);
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 700;
   padding: 0.75rem 1.5rem;
-  border: 2px solid var(--secondary-color);
-  border-radius: 8px;
-  transition: all 0.3s ease;
+  border-radius: var(--radius-pill);
+  transition: background-color 0.25s ease;
 }
 
 .procedure-detail__back-link:hover {
-  background: var(--secondary-color);
-  color: white;
-  text-decoration: none;
+  background-color: var(--color-blue);
 }
 
 /* === Not found view === */
@@ -202,13 +232,14 @@
   margin-top: 3rem;
   margin-bottom: 3rem;
   padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--color-border);
 }
 
 .procedure-detail__related-heading {
-  color: var(--white-color);
+  color: var(--color-navy);
   margin: 0 0 1.5rem 0;
   font-size: 1.5rem;
+  font-weight: 800;
 }
 
 .procedure-detail__related-grid {
@@ -218,19 +249,23 @@
 }
 
 .procedure-detail__related-card {
-  background-color: var(--sixth-color);
+  background-color: var(--color-navy);
   padding: 1.25rem;
-  border-radius: 12px;
+  border: 2px solid transparent;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-raised);
   text-decoration: none;
   display: block;
-  border: 2px solid transparent;
-  transition: all 0.3s ease;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
 }
 
 .procedure-detail__related-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-  border-color: var(--secondary-color);
+  transform: translateY(-4px);
+  border-color: var(--color-cyan);
+  box-shadow: 0 16px 34px rgba(0, 196, 255, 0.22);
 }
 
 .procedure-detail__related-category {
@@ -238,7 +273,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--secondary-color);
+  color: var(--color-cyan);
   display: block;
   margin-bottom: 0.5rem;
 }
@@ -246,24 +281,12 @@
 .procedure-detail__related-title {
   margin: 0;
   font-size: 1.05rem;
-  color: var(--white-color);
+  color: var(--color-white);
   line-height: 1.4;
 }
 
 /* === Responsive breakpoints === */
 @media (max-width: 480px) {
-  .procedure-detail {
-    padding: 1rem;
-  }
-
-  .procedure-detail__title {
-    font-size: 1.5rem;
-  }
-
-  .procedure-detail__description {
-    font-size: 1rem;
-  }
-
   .procedure-detail__injury-grid {
     grid-template-columns: 1fr;
   }
@@ -279,7 +302,11 @@
   }
 
   .procedure-detail__injury-view {
-    padding: 1.5rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .procedure-detail__injury-content {
+    padding: 0;
   }
 
   .procedure-detail__injury-title {

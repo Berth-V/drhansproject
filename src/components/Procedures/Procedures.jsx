@@ -17,48 +17,65 @@ const Procedures = () => {
 
   return (
     <section className="procedures">
-      <Seo title={t('seo.procedures.title')} description={t('seo.procedures.description')} path="/procedures" />
+      <Seo
+        title={t('seo.procedures.title')}
+        description={t('seo.procedures.description')}
+        path="/procedures"
+      />
 
-      <h2 className="procedures__title">{t('procedures.title')}</h2> {/* <--- i18n */}
-      <motion.div
-        className="procedures__grid"
-        variants={procedureCard}
-        initial="hidden"
-        animate="visible"
-      >
-        {parts.map(([id, part]) => {
-          const icon = icons[`/src/assets/procedures_icons/${id}.png`];
+      {/* Banda marina arriba y tarjetas claras abajo, como el Home */}
+      <header className="procedures__hero">
+        <div className="procedures__hero-inner">
+          <p className="procedures__eyebrow">Dr. Hans Ruiz</p>
+          <h1 className="procedures__title">{t('procedures.title')}</h1>
+        </div>
+      </header>
 
-          return (
-            <motion.div
-              key={id}
-              className="procedures__card"
-              variants={procedureCard}
-            >
-              <Link to={`/procedures/${id}`} className="procedures__card-link">
-                <div className="procedures__card-icon">
-                  {icon ? (
-                    <img
-                      src={icon.default}
-                      alt={part.title}
-                      className="procedures__card-img"
-                    />
-                  ) : (
-                    <span className="procedures__card--missing-icon">❓</span>
-                  )}
-                </div>
+      <div className="procedures__body">
+        <motion.div
+          className="procedures__grid"
+          variants={procedureCard}
+          initial="hidden"
+          animate="visible"
+        >
+          {parts.map(([id, part]) => {
+            const icon = icons[`/src/assets/procedures_icons/${id}.png`];
 
-                <div className="procedures__card-body">
-                  <h3 className="procedures__card-name">{part.title}</h3>
-                  <p className="procedures__card-description">
-                    {part.injuries.length} {t('procedures.injuriesAndTreatments')}
-                  </p>
-                </div>
-              </Link>
-            </motion.div>
-          );
-        })}
-      </motion.div>
+            return (
+              <motion.div
+                key={id}
+                className="procedures__card"
+                variants={procedureCard}
+              >
+                <Link
+                  to={`/procedures/${id}`}
+                  className="procedures__card-link"
+                >
+                  <div className="procedures__card-icon">
+                    {icon ? (
+                      <img
+                        src={icon.default}
+                        alt={part.title}
+                        className="procedures__card-img"
+                      />
+                    ) : (
+                      <span className="procedures__card--missing-icon">❓</span>
+                    )}
+                  </div>
+
+                  <div className="procedures__card-body">
+                    <h3 className="procedures__card-name">{part.title}</h3>
+                    <p className="procedures__card-description">
+                      {part.injuries.length}{' '}
+                      {t('procedures.injuriesAndTreatments')}
+                    </p>
+                  </div>
+                </Link>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+      </div>
     </section>
   );
 };

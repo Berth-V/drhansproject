@@ -64,8 +64,21 @@
 
 .blog-home__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  /* Columnas fijas que dividen a POSTS_PER_PAGE (6) para que las filas queden completas */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 28px;
+}
+
+@media (max-width: 900px) {
+  .blog-home__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .blog-home__grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .blog-home__state {
