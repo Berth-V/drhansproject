@@ -24,6 +24,28 @@ function heic_signature(string $path): bool
         && in_array(substr($head, 8, 4), ['heic', 'heix', 'heim', 'heis', 'hevc', 'mif1', 'msf1'], true);
 }
 
+// Vuelve a dibujar una foto JPG o PNG en un archivo nuevo: se pierde cualquier contenido escondido
+// y los datos EXIF (como la ubicación GPS del celular). Devuelve false si no es una imagen real.
+function reencode_image(string $path, string $mime): bool
+{
+    $image = @imagecreatefromstring((string) file_get_contents($path));
+    if (!$image) {
+        return false;
+    }
+
+    // Sin EXIF la foto perdería su orientación: se gira antes de guardarla
+    if ($mime === 'image/jpeg' && function_exists('exif_read_data')) {
+        $angle = [3 => 180, 6 => -90, 8 => 90][@exif_read_data($path)['Orientation'] ?? 1] ?? 0;
+        if ($angle) {
+            $image = imagerotate($image, $angle, 0);
+        }
+    }
+
+    $saved = $mime === 'image/png' ? imagepng($image, $path, 6) : imagejpeg($image, $path, 88);
+    imagedestroy($image);
+    return $saved;
+}
+
 require_method('POST');
 $config = load_config();
 check_origin($config);
@@ -67,6 +89,16 @@ if (!$extension) {
     json_response(415, ['error' => 'file_type']);
 }
 
+// Los PDF y HEIC no se pueden re-dibujar en este servidor: llegan tal cual (ya revisados por contenido)
+$cleaned = false;
+if (in_array($mime, ['image/jpeg', 'image/png'], true) && function_exists('imagecreatefromstring')) {
+    if (!reencode_image($file['tmp_name'], $mime)) {
+        json_response(415, ['error' => 'file_type']);
+    }
+    $cleaned = true;
+    clearstatcache(true, $file['tmp_name']);
+}
+
 $leadDir = $config['storage_dir'] . '/' . $leadId;
 if (!is_dir($leadDir) && !mkdir($leadDir, 0700, true)) {
     json_response(500, ['error' => 'storage']);
@@ -90,7 +122,8 @@ json_response(201, [
         'type' => $type,
         'id' => $fileId,
         'name' => mb_substr($originalName, 0, 120),
-        'size' => $file['size'],
+        'size' => filesize("$leadDir/$fileId"),
         'mime' => $mime,
+        'cleaned' => $cleaned,
     ],
 ]);
