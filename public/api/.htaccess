@@ -3,10 +3,10 @@ Options -Indexes
 # Algunos servidores no le pasan a PHP el encabezado Authorization (el token de Firebase)
 SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
 
-# Solo se pueden abrir los dos endpoints
+# Solo se pueden abrir los endpoints
 <FilesMatch "\.php$">
   Require all denied
 </FilesMatch>
-<FilesMatch "^insurance-(upload|file)\.php$">
+<FilesMatch "^insurance-(upload|file|notify)\.php$">
   Require all granted
 </FilesMatch>

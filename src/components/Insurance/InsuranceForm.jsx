@@ -12,7 +12,7 @@ import {
 } from 'react-icons/fa';
 import { trackInsuranceLead, trackUploadDocs, trackWhatsApp } from '../../analytics/events';
 import { createInsuranceLead, saveLeadFiles } from '../../firebase/insuranceLeads';
-import { uploadInsuranceDocument } from '../../api/insuranceDocuments';
+import { notifyDoctor, uploadInsuranceDocument } from '../../api/insuranceDocuments';
 
 const OTHER_INSURER = 'other';
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
@@ -112,7 +112,7 @@ export default function InsuranceForm({ whatsappUrl }) {
     }
 
     trackInsuranceLead();
-    // TODO: aviso por EmailJS sin datos médicos
+    notifyDoctor(leadIdRef.current, 'lead'); // sin await: el paciente no espera el correo
     setStep1Done(true);
     requestAnimationFrame(() => step2Ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
   };
@@ -138,10 +138,12 @@ export default function InsuranceForm({ whatsappUrl }) {
 
     const uploaded = { ...uploadedFiles };
     let failed = false;
+    let uploadedNow = 0;
     for (const { id } of pendingDocs) {
       setUploadState((prev) => ({ ...prev, [id]: 'uploading' }));
       try {
         uploaded[id] = await uploadInsuranceDocument(leadIdRef.current, id, files[id]);
+        uploadedNow += 1;
         setUploadState((prev) => ({ ...prev, [id]: 'done' }));
       } catch (error) {
         console.error(`Error al subir el documento ${id}:`, error);
@@ -163,6 +165,9 @@ export default function InsuranceForm({ whatsappUrl }) {
       }
     }
     setSendingDocs(false);
+
+    // Con al menos un documento nuevo en el servidor, el doctor recibe un correo con los adjuntos
+    if (uploadedNow > 0) notifyDoctor(leadIdRef.current, 'documents');
 
     if (failed) {
       setDocsError(true);

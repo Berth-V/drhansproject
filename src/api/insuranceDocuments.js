@@ -1,7 +1,8 @@
 import { auth } from '../firebase/auth';
 
-// Endpoint PHP en Hostinger (public/api). En local, vite.config.js lo manda a hansruiztrauma.com.mx
+// Endpoints PHP en Hostinger (public/api). En local, vite.config.js los manda a hansruiztrauma.com.mx
 const UPLOAD_URL = '/api/insurance-upload.php';
+const NOTIFY_URL = '/api/insurance-notify.php';
 
 // Fotos grandes del celular: se reducen antes de subirlas (los PDF y HEIC van tal cual)
 const COMPRESS_FROM = 1.5 * 1024 * 1024;
@@ -49,4 +50,20 @@ export async function uploadInsuranceDocument(leadId, type, file) {
   const data = await response.json().catch(() => ({}));
   if (!response.ok || !data.file) throw new Error(data.error || `http_${response.status}`);
   return data.file;
+}
+
+// Le avisa al doctor por correo: 'lead' (datos del paso 1) o 'documents' (con los archivos adjuntos).
+// Si falla no se le muestra nada al paciente: su solicitud ya quedó guardada
+export async function notifyDoctor(leadId, event) {
+  try {
+    const token = await auth.currentUser.getIdToken();
+    const response = await fetch(NOTIFY_URL, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ leadId, event }),
+    });
+    if (!response.ok) throw new Error(`http_${response.status}`);
+  } catch (error) {
+    console.error(`Error al avisar al doctor (${event}):`, error);
+  }
 }
