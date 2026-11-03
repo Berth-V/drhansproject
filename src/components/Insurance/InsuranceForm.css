@@ -99,11 +99,6 @@
   color: #ff9b9b;
 }
 
-/* Turnstile casi siempre es invisible; si Cloudflare duda, aquí aparece su casilla */
-.insurance-form__captcha:not(:empty) {
-  margin-top: 0.75rem;
-}
-
 .insurance-form__honeypot {
   position: absolute;
   left: -9999px;
@@ -393,7 +388,7 @@
 @media (min-width: 900px) {
   .insurance-form {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    align-items: start;
+    align-items: stretch; /* las dos tarjetas con la misma altura */
     gap: 1.25rem;
   }
 
