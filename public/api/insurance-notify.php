@@ -118,14 +118,15 @@ $attachmentsSize = array_sum(array_map(fn ($document) => filesize($document['pat
 $attach = $event === 'documents' && $attachmentsSize <= MAX_ATTACHMENTS_SIZE;
 $documentLabels = array_column($documents, 'label');
 
+$missing = array_diff(array_column(DOCUMENT_NAMES, 0), $documentLabels);
+// El nombre al final evita que Gmail junte en un solo hilo las solicitudes de distintos pacientes
+$subject = 'Solicitud de Seguro Página Web: Documentos ' . ($missing ? 'Incompletos' : 'Completos') . " – $name";
+
 if ($event === 'lead') {
-    $subject = "Nueva solicitud con seguro: $name ($insurer)";
     $documentsNote = $documentLabels
         ? 'Ya envió: ' . implode(', ', $documentLabels) . '. Te llegarán en otro correo.'
         : 'Todavía no envía documentos.';
 } else {
-    $subject = "Documentos recibidos: $name ($insurer)";
-    $missing = array_diff(array_column(DOCUMENT_NAMES, 0), $documentLabels);
     $documentsNote = ($attach ? 'Adjuntos: ' : 'Recibidos (pesan demasiado para adjuntarlos, están en el servidor): ')
         . implode(', ', $documentLabels) . '.'
         . ($missing ? ' Falta: ' . implode(', ', $missing) . '.' : ' Están completos.');
