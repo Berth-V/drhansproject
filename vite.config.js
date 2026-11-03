@@ -17,10 +17,15 @@ export default defineConfig(({ mode }) => {
   process.env.VITE_SITE = siteId;
 
   return {
-    // En local no hay PHP: /api (subida de documentos de /seguros) se manda al servidor de Hostinger
+    // En local no hay PHP: /api (subida de documentos de /seguros) se manda al servidor de Hostinger.
+    // Se presenta con el Origin del sitio para que config.php no tenga que aceptar localhost ni la IP del WiFi
     server: {
       proxy: {
-        '/api': { target: 'https://hansruiztrauma.com.mx', changeOrigin: true },
+        '/api': {
+          target: 'https://hansruiztrauma.com.mx',
+          changeOrigin: true,
+          headers: { origin: 'https://hansruiztrauma.com.mx' },
+        },
       },
     },
     plugins: [

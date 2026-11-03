@@ -16,7 +16,9 @@ import { uploadInsuranceDocument } from '../../api/insuranceDocuments';
 
 const OTHER_INSURER = 'other';
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
-const ACCEPTED_FILES = '.pdf,.jpg,.jpeg,.png,.heic,.heif,application/pdf,image/*';
+// Dos botones por documento: si un solo input acepta fotos y PDF, Android solo ofrece cámara y galería
+const ACCEPTED_PHOTOS = 'image/*,.heic,.heif';
+const ACCEPTED_PDF = '.pdf,application/pdf';
 const ACCEPTED_EXTENSIONS = ['pdf', 'jpg', 'jpeg', 'png', 'heic', 'heif'];
 
 const DOCUMENTS = [
@@ -378,16 +380,24 @@ export default function InsuranceForm({ whatsappUrl }) {
                   <span className="insurance-form__error">{t(`insurance.form.errors.file_${fileErrors[id]}`)}</span>
                 )}
               </div>
-              <label className="insurance-form__upload">
-                {files[id] ? t('insurance.form.step2.change') : t('insurance.form.step2.upload')}
-                <input
-                  type="file"
-                  accept={ACCEPTED_FILES}
-                  onChange={(event) => handleFile(id, event)}
-                  className="insurance-form__file"
-                  disabled={sendingDocs}
-                />
-              </label>
+              <div className="insurance-form__upload-actions">
+                {[
+                  { kind: 'photo', accept: ACCEPTED_PHOTOS },
+                  { kind: 'pdf', accept: ACCEPTED_PDF },
+                ].map(({ kind, accept }) => (
+                  <label key={kind} className="insurance-form__upload">
+                    {t(`insurance.form.step2.${kind}`)}
+                    <input
+                      type="file"
+                      accept={accept}
+                      onChange={(event) => handleFile(id, event)}
+                      className="insurance-form__file"
+                      disabled={sendingDocs}
+                      aria-label={`${t(`insurance.form.documents.${id}.title`)}: ${t(`insurance.form.step2.${kind}`)}`}
+                    />
+                  </label>
+                ))}
+              </div>
             </li>
           ))}
         </ul>

@@ -1,10 +1,14 @@
+/* minmax(0, 1fr) y min-width: 0: el contenido largo (nombres de archivo, opciones del select)
+   no debe ensanchar la tarjeta más que la pantalla */
 .insurance-form {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 1rem;
 }
 
 .insurance-form__card {
   position: relative;
+  min-width: 0;
   padding: 1.25rem;
   border: 1px solid #e6edf3;
   border-radius: 1rem;
@@ -208,10 +212,12 @@
   list-style: none;
 }
 
+/* Celular: los botones Foto y PDF van en su propia línea, debajo del nombre del documento */
 .insurance-form__doc {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.6rem 0.75rem;
   padding: 0.8rem;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 0.6rem;
@@ -254,11 +260,23 @@
   color: var(--color-cyan);
 }
 
+.insurance-form__upload-actions {
+  display: flex;
+  flex: 1 0 100%;
+  gap: 0.5rem;
+}
+
 .insurance-form__upload {
-  flex: none;
-  padding: 0.4rem 0.2rem;
+  flex: 1;
+  min-height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--secondary-color);
+  border-radius: 0.4rem;
   color: var(--secondary-color);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 700;
   cursor: pointer;
 }
@@ -351,6 +369,19 @@
   .insurance-form__row {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.75rem;
+  }
+
+  .insurance-form__doc {
+    flex-wrap: nowrap;
+  }
+
+  .insurance-form__upload-actions {
+    flex: none;
+  }
+
+  .insurance-form__upload {
+    flex: none;
+    min-height: 0;
   }
 }
 
