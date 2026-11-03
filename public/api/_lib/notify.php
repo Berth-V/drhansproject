@@ -134,8 +134,8 @@ function notify_doctor(array $config, string $leadId, array $lead, string $event
     $text .= "\nWhatsApp: " . whatsapp_link($whatsapp) . "\n\n$documentsNote\n\nDatos personales sensibles: no reenvíes este correo.\n";
 
     $sent = send_mail(
+        $config,
         $config['notify_to'],
-        $config['notify_from'],
         'Avisos Dr. Hans Ruiz',
         $subject,
         $html,

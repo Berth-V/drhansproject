@@ -17,6 +17,8 @@ return [
     // Avisos por correo de cada solicitud (con datos y documentos): solo al correo del doctor
     'notify_to' => 'traumatologiahans@gmail.com',
     'notify_from' => 'avisos@hansruiztrauma.com.mx',
+    // Contraseña del buzón avisos@ en Hostinger: los correos salen por SMTP firmados con el DKIM del dominio
+    'smtp_password' => 'PEGAR_AQUI_LA_CONTRASEÑA_DE_AVISOS',
 
     // Captcha de Cloudflare Turnstile del paso 1 (clave secreta; la del sitio va en VITE_TURNSTILE_SITEKEY)
     'turnstile_secret' => 'PEGAR_AQUI_LA_CLAVE_SECRETA_DE_TURNSTILE',
