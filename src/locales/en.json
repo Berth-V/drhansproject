@@ -485,6 +485,8 @@
                 "consent": "We need your consent to review your case.",
                 "file_type": "Invalid format. Use PDF, JPG, PNG or HEIC.",
                 "file_size": "The file is larger than 10 MB.",
+                "file_upload": "It couldn't be uploaded. Please try again.",
+                "upload": "We couldn't receive all your documents. Try again or send them on WhatsApp.",
                 "submit": "We couldn't send your details. Check your connection and try again, or message us on WhatsApp."
             },
             "step2": {
@@ -494,6 +496,9 @@
                 "upload": "Upload",
                 "change": "Change",
                 "send": "Send documents",
+                "sending": "Sending documents…",
+                "uploading": "Uploading…",
+                "done": "Received",
                 "later": "I'll send them later",
                 "privacy": "Your documents are stored privately. Only the doctor can see them.",
                 "locked": "Complete step 1 to upload your documents."

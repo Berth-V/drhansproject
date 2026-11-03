@@ -1,0 +1,2 @@
+# Solo los incluyen los endpoints de /api; nadie los abre directo
+Require all denied

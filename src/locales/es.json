@@ -485,6 +485,8 @@
                 "consent": "Necesitamos tu consentimiento para revisar tu caso.",
                 "file_type": "Formato no válido. Usa PDF, JPG, PNG o HEIC.",
                 "file_size": "El archivo pesa más de 10 MB.",
+                "file_upload": "No se pudo subir. Inténtalo de nuevo.",
+                "upload": "No pudimos recibir todos tus documentos. Vuelve a intentarlo o envíalos por WhatsApp.",
                 "submit": "No pudimos enviar tus datos. Revisa tu conexión e inténtalo de nuevo, o escríbenos por WhatsApp."
             },
             "step2": {
@@ -494,6 +496,9 @@
                 "upload": "Subir",
                 "change": "Cambiar",
                 "send": "Enviar documentos",
+                "sending": "Enviando documentos…",
+                "uploading": "Subiendo…",
+                "done": "Recibido",
                 "later": "Lo envío después",
                 "privacy": "Tus documentos se guardan de forma privada. Solo el doctor puede verlos.",
                 "locked": "Completa el paso 1 para subir tus documentos."

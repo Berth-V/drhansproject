@@ -24,6 +24,12 @@ export const trackWhatsApp = () => trackLead('whatsapp');
 
 export const trackInsuranceLead = () => trackLead('seguros');
 
+// El paciente de /seguros subió los tres documentos
+export const trackUploadDocs = () => {
+    if (!window.gtag) return;
+    window.gtag('event', 'upload_docs');
+};
+
 const trackSocial = (network) => {
     if (!window.gtag) return;
     window.gtag('event', 'social_click', { social_network: network });

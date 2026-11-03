@@ -1,4 +1,4 @@
-import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import { addDoc, collection, doc, serverTimestamp, updateDoc } from 'firebase/firestore';
 import { signInAnonymously } from 'firebase/auth';
 import { db } from './firebase';
 import { auth } from './auth';
@@ -35,4 +35,13 @@ export async function createInsuranceLead(form) {
   });
 
   return leadRef.id;
+}
+
+// Anota en el lead los documentos que ya están en Hostinger. Con los tres, el caso queda completo
+export async function saveLeadFiles(leadId, files) {
+  const types = new Set(files.map((file) => file.type));
+  await updateDoc(doc(db, 'insuranceLeads', leadId), {
+    files,
+    status: types.size === 3 ? 'complete' : 'incomplete',
+  });
 }

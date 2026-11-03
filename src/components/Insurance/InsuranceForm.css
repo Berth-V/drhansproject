@@ -243,6 +243,17 @@
   white-space: nowrap;
 }
 
+.insurance-form__doc-status {
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+  color: var(--color-cyan-light);
+}
+
+.insurance-form__doc-status--done {
+  font-weight: 700;
+  color: var(--color-cyan);
+}
+
 .insurance-form__upload {
   flex: none;
   padding: 0.4rem 0.2rem;

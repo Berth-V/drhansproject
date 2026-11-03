@@ -10,8 +10,9 @@ import {
   FaWhatsapp,
   FaXRay,
 } from 'react-icons/fa';
-import { trackInsuranceLead, trackWhatsApp } from '../../analytics/events';
-import { createInsuranceLead } from '../../firebase/insuranceLeads';
+import { trackInsuranceLead, trackUploadDocs, trackWhatsApp } from '../../analytics/events';
+import { createInsuranceLead, saveLeadFiles } from '../../firebase/insuranceLeads';
+import { uploadInsuranceDocument } from '../../api/insuranceDocuments';
 
 const OTHER_INSURER = 'other';
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
@@ -72,11 +73,15 @@ export default function InsuranceForm({ whatsappUrl }) {
   const leadIdRef = useRef(null); // para asociar los documentos del paso 2
   const [files, setFiles] = useState({ summary: null, policy: null, study: null });
   const [fileErrors, setFileErrors] = useState({});
+  const [uploadState, setUploadState] = useState({}); // por documento: 'uploading' | 'done'
+  const [uploadedFiles, setUploadedFiles] = useState({}); // por documento: datos del archivo ya en Hostinger
+  const [sendingDocs, setSendingDocs] = useState(false);
+  const [docsError, setDocsError] = useState(false);
   const [finished, setFinished] = useState(false);
   const step2Ref = useRef(null);
 
   const insurerOptions = t('insurance.form.insurerOptions', { returnObjects: true });
-  const hasFiles = Object.values(files).some(Boolean);
+  const pendingDocs = DOCUMENTS.filter(({ id }) => files[id] && uploadState[id] !== 'done');
 
   const handleChange = (event) => {
     const { name, value, type, checked } = event.target;
@@ -120,10 +125,48 @@ export default function InsuranceForm({ whatsappUrl }) {
 
     setFileErrors((prev) => ({ ...prev, [id]: error }));
     setFiles((prev) => ({ ...prev, [id]: error ? null : file }));
+    setUploadState((prev) => ({ ...prev, [id]: undefined }));
   };
 
-  const handleSendDocuments = () => {
-    // TODO: subir los archivos al endpoint PHP y, con los tres, marcar estatus "completo" + upload_docs
+  // Sube uno por uno los documentos pendientes; los que fallan se pueden reintentar
+  const handleSendDocuments = async () => {
+    if (sendingDocs || pendingDocs.length === 0) return;
+    setSendingDocs(true);
+    setDocsError(false);
+
+    const uploaded = { ...uploadedFiles };
+    let failed = false;
+    for (const { id } of pendingDocs) {
+      setUploadState((prev) => ({ ...prev, [id]: 'uploading' }));
+      try {
+        uploaded[id] = await uploadInsuranceDocument(leadIdRef.current, id, files[id]);
+        setUploadState((prev) => ({ ...prev, [id]: 'done' }));
+      } catch (error) {
+        console.error(`Error al subir el documento ${id}:`, error);
+        failed = true;
+        const code = { file_size: 'size', file_type: 'type' }[error.message] ?? 'upload';
+        setFileErrors((prev) => ({ ...prev, [id]: code }));
+        setUploadState((prev) => ({ ...prev, [id]: undefined }));
+      }
+    }
+    setUploadedFiles(uploaded);
+
+    const saved = Object.values(uploaded);
+    if (saved.length > 0) {
+      try {
+        await saveLeadFiles(leadIdRef.current, saved);
+      } catch (error) {
+        console.error('Error al anotar los documentos en el lead:', error);
+        failed = true;
+      }
+    }
+    setSendingDocs(false);
+
+    if (failed) {
+      setDocsError(true);
+      return;
+    }
+    if (saved.length === DOCUMENTS.length) trackUploadDocs();
     setFinished(true);
   };
 
@@ -324,6 +367,13 @@ export default function InsuranceForm({ whatsappUrl }) {
                 <span className="insurance-form__doc-hint">
                   {files[id] ? files[id].name : t(`insurance.form.documents.${id}.hint`)}
                 </span>
+                {uploadState[id] && (
+                  <span
+                    className={`insurance-form__doc-status ${uploadState[id] === 'done' ? 'insurance-form__doc-status--done' : ''}`}
+                  >
+                    {t(`insurance.form.step2.${uploadState[id]}`)}
+                  </span>
+                )}
                 {fileErrors[id] && (
                   <span className="insurance-form__error">{t(`insurance.form.errors.file_${fileErrors[id]}`)}</span>
                 )}
@@ -335,6 +385,7 @@ export default function InsuranceForm({ whatsappUrl }) {
                   accept={ACCEPTED_FILES}
                   onChange={(event) => handleFile(id, event)}
                   className="insurance-form__file"
+                  disabled={sendingDocs}
                 />
               </label>
             </li>
@@ -346,18 +397,24 @@ export default function InsuranceForm({ whatsappUrl }) {
             type="button"
             className="insurance-form__btn insurance-form__btn--primary"
             onClick={handleSendDocuments}
-            disabled={!hasFiles}
+            disabled={pendingDocs.length === 0 || sendingDocs}
           >
-            {t('insurance.form.step2.send')}
+            {sendingDocs ? t('insurance.form.step2.sending') : t('insurance.form.step2.send')}
           </button>
           <button
             type="button"
             className="insurance-form__btn insurance-form__btn--outline"
             onClick={() => setFinished(true)}
+            disabled={sendingDocs}
           >
             {t('insurance.form.step2.later')}
           </button>
         </div>
+        {docsError && (
+          <p className="insurance-form__error" role="alert">
+            {t('insurance.form.errors.upload')}
+          </p>
+        )}
 
         <p className="insurance-form__privacy">
           <FaLock aria-hidden="true" />

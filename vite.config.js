@@ -17,6 +17,12 @@ export default defineConfig(({ mode }) => {
   process.env.VITE_SITE = siteId;
 
   return {
+    // En local no hay PHP: /api (subida de documentos de /seguros) se manda al servidor de Hostinger
+    server: {
+      proxy: {
+        '/api': { target: 'https://hansruiztrauma.com.mx', changeOrigin: true },
+      },
+    },
     plugins: [
       react(),
       {
