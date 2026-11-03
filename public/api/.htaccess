@@ -7,6 +7,6 @@ SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
 <FilesMatch "\.php$">
   Require all denied
 </FilesMatch>
-<FilesMatch "^insurance-(upload|file|notify)\.php$">
+<FilesMatch "^insurance-(lead|upload|file|notify)\.php$">
   Require all granted
 </FilesMatch>

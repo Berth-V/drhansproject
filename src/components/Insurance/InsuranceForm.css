@@ -99,6 +99,11 @@
   color: #ff9b9b;
 }
 
+/* Turnstile casi siempre es invisible; si Cloudflare duda, aquí aparece su casilla */
+.insurance-form__captcha:not(:empty) {
+  margin-top: 0.75rem;
+}
+
 .insurance-form__honeypot {
   position: absolute;
   left: -9999px;

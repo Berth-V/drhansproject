@@ -11,8 +11,9 @@ import {
   FaXRay,
 } from 'react-icons/fa';
 import { trackInsuranceLead, trackUploadDocs, trackWhatsApp } from '../../analytics/events';
-import { createInsuranceLead, saveLeadFiles } from '../../firebase/insuranceLeads';
-import { notifyDoctor, uploadInsuranceDocument } from '../../api/insuranceDocuments';
+import { saveLeadFiles } from '../../firebase/insuranceLeads';
+import { createInsuranceLead, notifyDoctor, uploadInsuranceDocument } from '../../api/insuranceDocuments';
+import Turnstile from './Turnstile';
 
 const OTHER_INSURER = 'other';
 const MAX_FILE_SIZE = 10 * 1024 * 1024;
@@ -66,12 +67,14 @@ function isAcceptedFile(file) {
 }
 
 export default function InsuranceForm({ whatsappUrl }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [form, setForm] = useState(EMPTY_FORM);
   const [errors, setErrors] = useState({});
   const [step1Done, setStep1Done] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-  const [submitError, setSubmitError] = useState(false);
+  const [submitError, setSubmitError] = useState(null); // 'captcha' | 'submit'
+  const [turnstileToken, setTurnstileToken] = useState(null);
+  const [captchaKey, setCaptchaKey] = useState(0); // al cambiar, Turnstile pide un token nuevo
   const leadIdRef = useRef(null); // para asociar los documentos del paso 2
   const [files, setFiles] = useState({ summary: null, policy: null, study: null });
   const [fileErrors, setFileErrors] = useState({});
@@ -98,21 +101,27 @@ export default function InsuranceForm({ whatsappUrl }) {
     const found = validate(form);
     setErrors(found);
     if (Object.keys(found).length > 0) return;
+    if (!turnstileToken) {
+      setSubmitError('captcha'); // Cloudflare todavía no termina de verificar
+      return;
+    }
 
     setSubmitting(true);
-    setSubmitError(false);
+    setSubmitError(null);
     try {
-      leadIdRef.current = await createInsuranceLead(form);
+      // El servidor revisa el captcha, guarda el lead y le manda el primer correo al doctor
+      leadIdRef.current = await createInsuranceLead(form, turnstileToken);
     } catch (error) {
       console.error('Error al guardar el lead de seguros:', error);
-      setSubmitError(true);
+      setSubmitError(error.message === 'captcha' ? 'captcha' : 'submit');
+      setTurnstileToken(null);
+      setCaptchaKey((key) => key + 1); // el token ya se usó: se pide otro
       return;
     } finally {
       setSubmitting(false);
     }
 
     trackInsuranceLead();
-    notifyDoctor(leadIdRef.current, 'lead'); // sin await: el paciente no espera el correo
     setStep1Done(true);
     requestAnimationFrame(() => step2Ref.current?.scrollIntoView({ behavior: 'smooth', block: 'start' }));
   };
@@ -337,6 +346,14 @@ export default function InsuranceForm({ whatsappUrl }) {
             </label>
             {fieldError('consent')}
 
+            <Turnstile
+              action="insurance-lead"
+              language={i18n.language}
+              onToken={setTurnstileToken}
+              resetKey={captchaKey}
+              className="insurance-form__captcha"
+            />
+
             <button
               type="submit"
               className="insurance-form__btn insurance-form__btn--primary insurance-form__btn--full"
@@ -346,7 +363,7 @@ export default function InsuranceForm({ whatsappUrl }) {
             </button>
             {submitError && (
               <span className="insurance-form__error" role="alert">
-                {t('insurance.form.errors.submit')}
+                {t(`insurance.form.errors.${submitError}`)}
               </span>
             )}
           </form>

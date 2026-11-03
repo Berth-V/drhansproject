@@ -487,7 +487,8 @@
                 "file_size": "The file is larger than 10 MB.",
                 "file_upload": "It couldn't be uploaded. Please try again.",
                 "upload": "We couldn't receive all your documents. Try again or send them on WhatsApp.",
-                "submit": "We couldn't send your details. Check your connection and try again, or message us on WhatsApp."
+                "submit": "We couldn't send your details. Check your connection and try again, or message us on WhatsApp.",
+                "captcha": "We're checking that you're not a robot. Wait a few seconds and try again."
             },
             "step2": {
                 "title": "Your documents",

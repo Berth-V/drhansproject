@@ -487,7 +487,8 @@
                 "file_size": "El archivo pesa más de 10 MB.",
                 "file_upload": "No se pudo subir. Inténtalo de nuevo.",
                 "upload": "No pudimos recibir todos tus documentos. Vuelve a intentarlo o envíalos por WhatsApp.",
-                "submit": "No pudimos enviar tus datos. Revisa tu conexión e inténtalo de nuevo, o escríbenos por WhatsApp."
+                "submit": "No pudimos enviar tus datos. Revisa tu conexión e inténtalo de nuevo, o escríbenos por WhatsApp.",
+                "captcha": "Estamos verificando que no eres un robot. Espera unos segundos y vuelve a intentarlo."
             },
             "step2": {
                 "title": "Tus documentos",

@@ -1,8 +1,25 @@
 import { auth } from '../firebase/auth';
+import { ensurePatientSession } from '../firebase/insuranceLeads';
+import { SITE_CONFIG } from '../config/siteConfig';
 
 // Endpoints PHP en Hostinger (public/api). En local, vite.config.js los manda a hansruiztrauma.com.mx
+const LEAD_URL = '/api/insurance-lead.php';
 const UPLOAD_URL = '/api/insurance-upload.php';
 const NOTIFY_URL = '/api/insurance-notify.php';
+
+// Crea la solicitud del paso 1 en el servidor (que revisa el captcha, la guarda y le avisa al doctor)
+// y devuelve su id. Si falla, lanza un Error con el código del servidor (captcha, invalid, rate_limited…)
+export async function createInsuranceLead(form, turnstileToken) {
+  const user = await ensurePatientSession();
+  const response = await fetch(LEAD_URL, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${await user.getIdToken()}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ ...form, site: SITE_CONFIG.id, turnstileToken }),
+  });
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok || !data.leadId) throw new Error(data.error || `http_${response.status}`);
+  return data.leadId;
+}
 
 // Fotos grandes del celular: se reducen antes de subirlas (los PDF y HEIC van tal cual)
 const COMPRESS_FROM = 1.5 * 1024 * 1024;
@@ -52,8 +69,8 @@ export async function uploadInsuranceDocument(leadId, type, file) {
   return data.file;
 }
 
-// Le avisa al doctor por correo: 'lead' (datos del paso 1) o 'documents' (con los archivos adjuntos).
-// Si falla no se le muestra nada al paciente: su solicitud ya quedó guardada
+// Le manda al doctor el correo con los documentos adjuntos ('documents'; el de la solicitud nueva lo
+// manda el servidor al crearla). Si falla no se le muestra nada al paciente: sus archivos ya están guardados
 export async function notifyDoctor(leadId, event) {
   try {
     const token = await auth.currentUser.getIdToken();

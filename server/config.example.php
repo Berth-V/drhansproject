@@ -18,6 +18,12 @@ return [
     'notify_to' => 'traumatologiahans@gmail.com',
     'notify_from' => 'avisos@hansruiztrauma.com.mx',
 
+    // Captcha de Cloudflare Turnstile del paso 1 (clave secreta; la del sitio va en VITE_TURNSTILE_SITEKEY)
+    'turnstile_secret' => 'PEGAR_AQUI_LA_CLAVE_SECRETA_DE_TURNSTILE',
+
+    // Llave JSON de la cuenta de servicio de Firebase: con ella este servidor crea los leads
+    'service_account_file' => '/home/u964128144/domains/hansruiztrauma.com.mx/private/firebase-service-account.json',
+
     // Sitios que pueden usar la API. En local, el proxy de Vite ya manda el Origin del sitio.
     'allowed_origins' => [
         'https://hansruiztrauma.com.mx',
