@@ -8,7 +8,7 @@ import sciaticaImg from '../../../../assets/sciatica.webp';
 // La imagen alterna de lado; MinimallyInvasive (antes de estas) la lleva a la izquierda.
 export const INFO_SECTIONS = [
   { id: 'disc', image: herniaImg },
-  { id: 'jointReplacement', image: jointReplacementImg, imageSide: 'left' },
-  { id: 'arthroscopy', image: arthroscopyImg },
   { id: 'sciatica', image: sciaticaImg, imageSide: 'left' },
+  { id: 'arthroscopy', image: arthroscopyImg },
+  { id: 'jointReplacement', image: jointReplacementImg, imageSide: 'left' },
 ];
