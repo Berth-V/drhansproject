@@ -1,0 +1,63 @@
+// Reglas de Firestore. Copia de referencia: se publican a mano en la consola de Firebase
+// (Firestore Database → Reglas). Ver CLAUDE.md, "Pasos para publicar".
+//
+// Estas cierran la lectura de borradores del blog y de preguntas sin responder: publicarlas SOLO
+// después de subir el build de `rediseno` (el sitio de `master` lee el blog sin filtrar y se rompería).
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Solo el doctor (los pacientes de /seguros tienen sesión anónima)
+    function isDoctor() {
+      return request.auth != null
+        && request.auth.uid == '6oFU4Ob4ntXg11Y5wp6X6PAiW9w1';
+    }
+
+    function isText(value, min, max) {
+      return value is string && value.size() >= min && value.size() <= max;
+    }
+
+    // Blog: todos leen los publicados; los borradores y la escritura son del doctor
+    match /posts/{docId} {
+      allow read: if resource.data.published == true || isDoctor();
+      allow write: if isDoctor();
+    }
+
+    // Preguntas: cualquiera pregunta; todos leen las respondidas (published: true al responder);
+    // las demás (con el nombre de quien pregunta) y responder, editar o borrar son del doctor
+    match /questions/{docId} {
+      allow read: if resource.data.published == true || isDoctor();
+      allow create: if request.resource.data.keys().hasOnly(
+            ['name', 'question', 'answer', 'answeredAt', 'published', 'createdAt'])
+        && isText(request.resource.data.name, 1, 120)
+        && isText(request.resource.data.question, 1, 5000)
+        && request.resource.data.answer == null
+        && request.resource.data.answeredAt == null
+        && request.resource.data.published == false
+        && request.resource.data.createdAt == request.time;
+      allow update, delete: if isDoctor();
+    }
+
+    // Leads de /seguros: los crea SOLO el servidor (insurance-lead.php, después del captcha),
+    // con la cuenta de servicio, que no pasa por estas reglas. El navegador no puede crearlos.
+    match /insuranceLeads/{leadId} {
+      allow list, delete: if isDoctor();
+
+      // El dueño puede leer su propio lead (lo usa el PHP para comprobar que es suyo)
+      allow get: if isDoctor()
+        || (request.auth != null && resource.data.ownerUid == request.auth.uid);
+
+      // El dueño solo puede anotar sus documentos, mientras el doctor no haya cambiado el estatus
+      allow update: if isDoctor()
+        || (request.auth != null
+          && resource.data.ownerUid == request.auth.uid
+          && resource.data.status in ['incomplete', 'complete']
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['files', 'status'])
+          && request.resource.data.files is list
+          && request.resource.data.files.size() <= 3
+          && request.resource.data.status in ['incomplete', 'complete']);
+    }
+
+    // Todo lo demás queda cerrado (regla por defecto de Firestore)
+  }
+}

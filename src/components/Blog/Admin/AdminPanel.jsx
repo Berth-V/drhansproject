@@ -52,6 +52,7 @@ const AdminPanel = () => {
     await updateDoc(doc(db, 'questions', qId), {
       answer: answerDraft[qId],
       answeredAt: serverTimestamp(),
+      published: true, // ya respondida: el blog la muestra
     });
     setQuestions((prev) =>
       prev.map((q) => q.id === qId ? { ...q, answer: answerDraft[qId] } : q)

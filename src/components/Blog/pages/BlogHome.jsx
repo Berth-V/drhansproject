@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, query, where } from 'firebase/firestore';
 import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
@@ -26,10 +26,10 @@ const BlogHome = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const snapshot = await getDocs(collection(db, 'posts'));
+        // Las reglas de Firestore solo dejan leer los publicados: los borradores se ven en /admin
+        const snapshot = await getDocs(query(collection(db, 'posts'), where('published', '==', true)));
         const allPosts = snapshot.docs
           .map((doc) => ({ id: doc.id, ...doc.data() }))
-          .filter((post) => post.published !== false) // los borradores solo se ven en /admin
           .sort((a, b) => (b.publishedAt?.seconds ?? 0) - (a.publishedAt?.seconds ?? 0));
         setPosts(allPosts);
       } catch (err) {
@@ -42,7 +42,8 @@ const BlogHome = () => {
 
     const fetchQuestions = async () => {
       try {
-        const snapshot = await getDocs(collection(db, 'questions'));
+        // Solo las respondidas (published: true al responder); las demás, con el nombre de quien pregunta, son privadas
+        const snapshot = await getDocs(query(collection(db, 'questions'), where('published', '==', true)));
         const answered = snapshot.docs
           .map((doc) => ({ id: doc.id, ...doc.data() }))
           .filter((q) => q.answer)

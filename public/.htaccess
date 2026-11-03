@@ -35,6 +35,20 @@ RewriteRule ^(admin(/.*)?|login|blog/[A-Za-z0-9_-]+)/?$ app.html [QSA,L]
   ExpiresByType application/javascript "access plus 1 month"
 </IfModule>
 
+# Encabezados de seguridad para todo el sitio
+<IfModule mod_headers.c>
+  # Siempre por HTTPS (el navegador lo recuerda un año; Hostinger ya redirige http → https)
+  Header always set Strict-Transport-Security "max-age=31536000"
+  # Nadie puede meter el sitio en un iframe de otra página (clickjacking)
+  Header always set X-Frame-Options "SAMEORIGIN"
+  # El navegador no adivina tipos de archivo
+  Header always set X-Content-Type-Options "nosniff"
+  # Otros sitios solo ven el dominio de donde vino el visitante, no la ruta
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  # El sitio no usa micrófono, ubicación ni pagos (la cámara del celular para fotos no usa este permiso)
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+</IfModule>
+
 # Add Cache-Control headers for specific static files
 <IfModule mod_headers.c>
   <FilesMatch "\.(webp|png|jpg|jpeg|svg|css|js)$">

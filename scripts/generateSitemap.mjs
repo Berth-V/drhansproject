@@ -18,37 +18,39 @@ export function loadEnv(root) {
   return env;
 }
 
-// Lee la colección `posts` con la API REST de Firestore (lectura pública)
+// Lee los `posts` publicados con la API REST de Firestore. La consulta filtra por published == true
+// porque las reglas solo dejan leer esos (los borradores son del doctor)
 export async function fetchPosts({ VITE_FIREBASE_PROJECT_ID: projectId, VITE_FIREBASE_API_KEY: apiKey }) {
   if (!projectId) throw new Error('Falta VITE_FIREBASE_PROJECT_ID');
 
-  const base = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/(default)/documents/posts`;
+  const url = `https://firestore.googleapis.com/v1/projects/${projectId}/databases/(default)/documents:runQuery${apiKey ? `?key=${apiKey}` : ''}`;
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      structuredQuery: {
+        from: [{ collectionId: 'posts' }],
+        where: {
+          fieldFilter: { field: { fieldPath: 'published' }, op: 'EQUAL', value: { booleanValue: true } },
+        },
+      },
+    }),
+  });
+  if (!res.ok) throw new Error(`Firestore respondió ${res.status}`);
+
   const posts = [];
-  let pageToken = '';
-
-  do {
-    const params = new URLSearchParams({ pageSize: '300' });
-    if (apiKey) params.set('key', apiKey);
-    if (pageToken) params.set('pageToken', pageToken);
-
-    const res = await fetch(`${base}?${params}`);
-    if (!res.ok) throw new Error(`Firestore respondió ${res.status}`);
-    const data = await res.json();
-
-    for (const doc of data.documents ?? []) {
-      const fields = doc.fields ?? {};
-      const slug = fields.slug?.stringValue;
-      if (!slug || fields.published?.booleanValue === false) continue;
-      posts.push({
-        slug,
-        lastmod: fields.publishedAt?.timestampValue ?? doc.updateTime,
-        title: fields.title?.stringValue ?? '',
-        content: fields.content?.stringValue ?? '',
-        imageUrl: fields.imageUrl?.stringValue ?? '',
-      });
-    }
-    pageToken = data.nextPageToken ?? '';
-  } while (pageToken);
+  for (const { document: doc } of await res.json()) {
+    const fields = doc?.fields ?? {};
+    const slug = fields.slug?.stringValue;
+    if (!slug) continue;
+    posts.push({
+      slug,
+      lastmod: fields.publishedAt?.timestampValue ?? doc.updateTime,
+      title: fields.title?.stringValue ?? '',
+      content: fields.content?.stringValue ?? '',
+      imageUrl: fields.imageUrl?.stringValue ?? '',
+    });
+  }
 
   return posts.sort((a, b) => (b.lastmod ?? '').localeCompare(a.lastmod ?? ''));
 }

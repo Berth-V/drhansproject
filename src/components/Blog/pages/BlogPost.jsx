@@ -25,11 +25,11 @@ const BlogPost = () => {
         const q = query(
           collection(db, 'posts'),
           where('slug', '==', slug),
+          where('published', '==', true), // los borradores no son públicos (y las reglas no dejan leerlos)
           limit(1)
         );
         const snapshot = await getDocs(q);
-        // Los borradores no son públicos
-        if (snapshot.empty || snapshot.docs[0].data().published === false) {
+        if (snapshot.empty) {
           setNotFound(true);
         } else {
           setPost({ id: snapshot.docs[0].id, ...snapshot.docs[0].data() });
