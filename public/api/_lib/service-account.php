@@ -91,3 +91,91 @@ function firestore_create(array $config, string $collection, array $fields): ?ar
     $document = json_decode($response, true);
     return is_array($document) ? $document : null;
 }
+
+function firestore_documents_url(array $config, string $path = ''): string
+{
+    return sprintf(
+        'https://firestore.googleapis.com/v1/projects/%s/databases/(default)/documents%s',
+        rawurlencode($config['project_id']),
+        $path
+    );
+}
+
+// Petición a la API REST de Firestore con la cuenta de servicio. Devuelve [código HTTP, respuesta decodificada]
+function firestore_request(array $config, string $method, string $url, ?array $body = null): array
+{
+    $token = service_access_token($config);
+    if (!$token) {
+        return [0, null];
+    }
+
+    $ch = curl_init($url);
+    curl_setopt_array($ch, [
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_TIMEOUT => 5,
+        CURLOPT_CUSTOMREQUEST => $method,
+        CURLOPT_HTTPHEADER => ["Authorization: Bearer $token", 'Content-Type: application/json'],
+    ]);
+    if ($body !== null) {
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($body));
+    }
+    $response = curl_exec($ch);
+    $status = $response === false ? 0 : curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    return [$status, $response === false ? null : json_decode($response, true)];
+}
+
+// Lee un documento. Devuelve el documento (formato REST), false si no existe, o null si falló la petición
+function firestore_get(array $config, string $collection, string $docId): array|false|null
+{
+    [$status, $document] = firestore_request(
+        $config,
+        'GET',
+        firestore_documents_url($config, '/' . rawurlencode($collection) . '/' . rawurlencode($docId))
+    );
+    if ($status === 404) {
+        return false;
+    }
+    return $status === 200 && is_array($document) ? $document : null;
+}
+
+// Crea o actualiza un documento con id propio. Solo toca los campos de $fields: los demás se conservan
+function firestore_upsert(array $config, string $collection, string $docId, array $fields): bool
+{
+    $mask = implode('&', array_map(
+        fn ($field) => 'updateMask.fieldPaths=' . rawurlencode($field),
+        array_keys($fields)
+    ));
+    [$status] = firestore_request(
+        $config,
+        'PATCH',
+        firestore_documents_url($config, '/' . rawurlencode($collection) . '/' . rawurlencode($docId)) . "?$mask",
+        ['fields' => $fields]
+    );
+    return $status === 200;
+}
+
+// Ids de los documentos de una colección cuyo campo es igual a un texto. null si falló la petición
+function firestore_ids_where(array $config, string $collection, string $field, string $value): ?array
+{
+    [$status, $results] = firestore_request($config, 'POST', firestore_documents_url($config, ':runQuery'), [
+        'structuredQuery' => [
+            'from' => [['collectionId' => $collection]],
+            'where' => ['fieldFilter' => [
+                'field' => ['fieldPath' => $field],
+                'op' => 'EQUAL',
+                'value' => ['stringValue' => $value],
+            ]],
+            'limit' => 5,
+        ],
+    ]);
+    if ($status !== 200 || !is_array($results)) {
+        return null;
+    }
+    $ids = [];
+    foreach ($results as $result) {
+        if (isset($result['document']['name'])) {
+            $ids[] = basename($result['document']['name']);
+        }
+    }
+    return $ids;
+}
